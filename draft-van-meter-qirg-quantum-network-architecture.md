@@ -101,6 +101,8 @@ normative:
   RFC2119:
 
 informative:
+  RFC1122:
+  RFC1123:
   RFC9340:
   RFC9583:
   I-D.draft-hajdusek-qirg-timing-physics:
@@ -117,6 +119,10 @@ informative:
     format:
       PDF: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
   nist-singles: DOI.10.6028/NIST.IR.8486r1
+  aboy-governance: DOI.10.1126/science.adw0018
+  awschalom-roadmap: DOI.10.2172/1900586
+  bennett-mixed: DOI.10.1103/PhysRevA.54.3824
+  choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   dally-towles:
       title: Principles and Practices of Interconnection Networks
       author:
@@ -131,8 +137,17 @@ informative:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
   drost: DOI.10.1364/JOCN.8.000331
+  hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
+  horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   koyama-24: DOI.10.1109/QCE60285.2024.00219
-  hajudsek-qcomm: DOI.10.48550/arXiv.2311.02367
+  leone-remote: DOI.10.48550/arxiv.2406.18764
+  litinski-gosc: DOI.10.22331/q-2019-03-05-128
+  muralidharan-generations: DOI.10.1038/srep20463
+  ramette-remote: DOI.10.1038/s41534-024-00855-4
+  sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
+  sane-jobs: DOI.10.48550/arXiv.2504.18298
+  schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
+  sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
@@ -142,7 +157,7 @@ informative:
 
 --- abstract
 
-This quantum network architecture defines a set of planes providing different views of the network, supporting different responsibilities and modes of operation; a set of device, node and link types;
+This quantum network architecture defines a set of planes providing different views of the network, supporting different responsibilities and modes of operation; a set of device, node and link types; some network topologies, deployment scenarios and their relationship to applications; and key design decisions as a result of corresponding requirements.
 
 --- middle
 
@@ -153,7 +168,7 @@ This document introduces the key architectural decisions, classical and quantum 
 We define the verb _to architect_ as: within a set of environmental constraints, using a set of building blocks, design a system that satisfies a need, elegantly and economically.
 We use the noun _architecture_ as: the set of blocks or subsystems, their roles and their interfaces and their overall arrangement, that defines the system. This architecture defines the overall structure, and is connected to a specific implementation as an example.
 
-For a description of the key concepts in quantum networks and additional references, see {{RFC9340}} and the book _[Quantum Communications](doi:10.48550/arXiv.2311.02367)_.
+For a description of the key concepts in quantum networks and additional references, see {{RFC9340}} and the book _Quantum Communications_ {{hajdusek-qcomm}}.
 
 For more background and discussion of the design choices in this architecture, see the Ph.D. dissertation of Naphan Benchasattabuse [res-mgmt-het].
 
@@ -178,7 +193,7 @@ This section describes goals and non-goals for this document itself, rather than
 
 # Relationship to Documents by Other Organizations
 
-Other organizations, including national laboratories and standards development organizations, are developing documents describing quantum networks and quantum computing technology. These are mostly _pre-standardization_ documents, not yet on any formal standardization track. To the extent possible, this document conforms to their terminology. However, as this document describes a specific quantum network architecture, it does not attempt to conform to specific design decisions made in other contexts.  See [an August 2025 Science Policy Forum](https://www.science.org/doi/full/10.1126/science.adw0018) for additional discussion of some standardization efforts and their value.
+Other organizations, including national laboratories and standards development organizations, are developing documents describing quantum networks and quantum computing technology. These are mostly _pre-standardization_ documents, not yet on any formal standardization track. To the extent possible, this document conforms to their terminology. However, as this document describes a specific quantum network architecture, it does not attempt to conform to specific design decisions made in other contexts.  See an August 2025 Science Policy Forum {{aboy-governance}} for additional discussion of some standardization efforts and their value.
 
 Some of these are listed here for reference:
 
@@ -193,7 +208,7 @@ Some of these are listed here for reference:
     - [ITU-T Focus Group on Quantum Information Technology for Networks (FG-QIT4N)](https://www.itu.int/en/ITU-T/focusgroups/qit4n/Pages/default.aspx)
     - [Y.3800 series](https://www.itu.int/itu-t/recommendations/index.aspx?ser=Y) on quantum key distribution networks
 * National Institute of Standards and Technology (NIST)
-    - [Single-Photon Sources and Detectors Dictionary](https://www.nist.gov/publications/single-photon-sources-and-detectors-dictionary-0)
+    - Single-Photon Sources and Detectors Dictionary {{nist-singles}}
 * [Quantum Internet Research Group (QIRG)](https://datatracker.ietf.org/group/qirg/about/) (part of IRTF)
     - {{RFC9340}}
     - {{RFC9583}}
@@ -230,8 +245,8 @@ Readers needing additional background are referred to:
 
 * {{RFC9340}}
 * {{RFC9583}}
-* Van Meter, _Quantum Networking_
-* Hajdusek and Van Meter, _[Quantum Communications](https://arxiv.org/abs/2311.02367)_
+* Van Meter, _Quantum Networking_ {{van-meter-q-net-book}}
+* Hajdusek and Van Meter, _Quantum Communications_ {{hajdusek-qcomm}}
 
 # Terminology
 
@@ -276,13 +291,13 @@ For a discussion of some inherently distributed applications of quantum networks
 
 ## Entangled States Consumption Patterns
 
-**Adapted from unpublished text in [https://arxiv.org/abs/1701.04586](https://arxiv.org/abs/1701.04586).**
+(Adapted and extended from unpublished text in {{van-meter-opt-timing}}.)
 
-Distinct from the classification of [quantum repeater generations](https://doi.org/10.1038/srep20463) by Muralidharan et al., one can categorize distributed quantum systems by how applications interface with the network; specifically, the timing at which network interface qubits are freed after attempting entangled state generation.
+Distinct from the classification of quantum repeater generations by Muralidharan et al. {{muralidharan-generations}}, one can categorize distributed quantum systems by how applications interface with the network; specifically, the timing at which network interface qubits are freed after attempting entangled state generation.
 
-In the early days of quantum information research, Bennett et al. [recognized](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.54.3824) that the component qubits of an entangled state may be held at different times in different locations, termed _time-separated Bell pairs_.
+In the early days of quantum information research, Bennett et al. recognized {{bennett-mixed}} that the component qubits of an entangled state may be held at different times in different locations, termed _time-separated Bell pairs_.
 Based on this principle, we can describe the timeline of information availability between two nodes.
-This model assumes entangled states are requested dynamically during execution, rather than [pre-caching entangled states](http://arxiv.org/abs/1610.05238) for immediate consumption.
+This model assumes entangled states are requested dynamically during execution, rather than pre-caching entangled states　{{schoute-shortcuts}} for immediate consumption.
 
 ### The Entanglement Information Timeline
 
@@ -297,7 +312,7 @@ The node now knows the exact entangled state created and can apply corrections (
 
 ### Classification of Consumption Patterns
 
-Based on the timeline above, we classify Bell pair consumption into three classes.
+Based on the timeline above, we classify Bell pair consumption into three classes {{van-meter-opt-timing}}.
 These classes are defined by whether the application must **block execution** while waiting for information at the _Heralded_ or _Correct_ stages.
 Note that the term "blocking" here refers to the blocking versus non-blocking execution models, similar to kernel-level I/O blocking or the event-driven programming paradigm, and is distinct from the concept of blocking in network switches.
 
@@ -333,7 +348,7 @@ If the entanglement attempt failed (information received later), the data is dis
 * **Classical Correlation:** Applications like Quantum Key Distribution (QKD) protocols (e.g., E91) or link fidelity estimation.
 The application filters out failed attempts during classical post-processing.
 
-* **Fault-Tolerant Operations:** Certain remote quantum error correction schemes, such as remote [lattice surgery](https://doi.org/10.1088/1367-2630/14/12/123011) of the surface code.
+* **Fault-Tolerant Operations:** Certain remote quantum error correction schemes, such as remote lattice surgery {{horsman-lattice-surgery}}, {{ramette-remote}}, {{leone-remote}}, {{sinclair-ft-interconnect}} of the surface code.
 If the probability of creating a link is high enough, unsuccessful attempts can be treated as depolarizing errors, which the logical code can tolerate without stalling the pipeline.
 
 ### Reactive Correction (C Class) Applications
@@ -346,7 +361,7 @@ Once confirmed, it executes immediately.
 It does not wait for the _Correct_ stage (Pauli frame); instead, it uses a "Pauli Frame Tracker" to propagate the necessary corrections through the circuit virtually.
 If the network link is deterministic, the specific wait for heralding is removed, as the node assumes success by default.
 
-**Examples:** Clifford circuit execution, [distributed Pauli-based computation with time-optimal scheme](https://doi.org/10.22331/q-2019-03-05-128), and state teleportation.
+**Examples:** Clifford circuit execution, distributed Pauli-based computation with time-optimal scheme {{litinski-gosc}}, and state teleportation.
 
 ### Deterministic (T Class) Applications
 
@@ -381,7 +396,7 @@ Links are described in {{links}}.
 
 ## Direct and Indirect Multicomputer Architectures
 
-In multicomputer architectures, a _direct_ architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An _indirect_ architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect.
+In multicomputer architectures, a _direct_ architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An _indirect_ architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect {{dally-towles}}.
 
 The distinction is somewhat artificial in that direct architectures sometimes incorporate a small switch inside the node, in which case the matching term depends on where you draw the boundary of the node, and because computational nodes can be configured to act only as routers within the network, modeling an indirect architecture using direct hardware.
 
@@ -397,11 +412,11 @@ Many of the detector-centric network topologies can be inverted, such that the p
 
 # A Sketch of the System Model
 
-As noted in the 2022 [roadmap for quantum interconnects](https://www.osti.gov/biblio/1900586), entangled quantum network technology can be deployed in a variety of scenarios with different requirements and assumptions. A full description of each of these is delegated to other documents, but a brief description here will help to orient discussions of design points in order to justify certain decisions.
+As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, entangled quantum network technology can be deployed in a variety of scenarios with different requirements and assumptions. A full description of each of these is delegated to other documents, but a brief description here will help to orient discussions of design points in order to justify certain decisions.
 
 ## Multicomputer
 
-The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)).  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though [one such architecture](https://arxiv.org/abs/2306.09216) has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
+The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)).  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
 
 The execution model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface).
 
@@ -427,7 +442,7 @@ Many aspects of compilation and job execution are beyond the scope of this set o
 * In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)
 * Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.
 * Compilation and execution may achieve application goals via teledata, telegate or measurement of multiqubit Pauli operators transparently; the network is unaware of this distinction. Management of application-level variables and their movement from node to node, if any, is the responsibility of the compiler and is beyond the scope of this specification.
-* The resources in a multicomputer may be [partitioned to run multiple jobs](https://arxiv.org/abs/2504.18298), but this is beyond the scope of the current specifications.
+* The resources in a multicomputer may be partitioned to run multiple jobs {{sane-jobs}}, but this is beyond the scope of the current specifications.
 
 The realities of quantum hardware result in a few important differences from classical multicomputers:
 
@@ -439,7 +454,7 @@ The realities of quantum hardware result in a few important differences from cla
 * Execution of the quantum portion of the node program generally involves hard real-time actions, both unconditional and conditioned on prior quantum measurement results. This generally requires compilation of the quantum program to very low-level actions to be executed by FPGAs or ASICs.
 * Systems may be partially or completely emulated, decoupling development of different subsystems. e.g., an EPPS plus a MEAS together can emulate a COMP node that emits single photons.
 * Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).
-* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery ([Leone et al.](https://arxiv.org/abs/2406.18764) or [Sinclair et al.](https://arxiv.org/abs/2408.08955)).
+* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery {{ramette-remote}}, {{leone-remote}}, or {{sinclair-ft-interconnect}}.
 
 ## Data Center Network (QDCN)
 
@@ -467,7 +482,7 @@ This section informally describes the physical building blocks and concepts used
 
 In this network architecture, we use only qubits, which may have two states identified as 0 and 1.  Quantum information systems using qutrits, qudits, qunats or continuous variable (c.v.) quantum states are beyond the scope of the current set of specifications.
 
-Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiVincenzo criteria.
+Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiVincenzo criteria {{divincenzo-criteria}}.
 
 ## Photons, Wave Packets and Optical Modes
 
@@ -600,7 +615,7 @@ This network architecture is entirely classically controlled.  Its task is to ge
 
 # Communication Service
 
-(Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. and others.)
+(Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. {{van-meter-qi-arch}} and others.)
 
 The design of a quantum network must begin with a clear definition of its fundamental services --- what quantum states or capabilities the network is expected to provide to end users.
 These decisions determine the complexity of the protocols at the network layer and the applications that run above it.
@@ -687,7 +702,7 @@ The architecture of a quantum network is defined by its constituent nodes and th
 For clarity in describing our system, we group these nodes according to their primary contributions to network operation.
 In our architecture, we classify nodes into three main types: end nodes, for application interaction; repeater and router nodes, for extending entanglement and path management; and support nodes, for auxiliary operational tasks.
 
-The qNode specification provides additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs [1122](https://www.rfc-editor.org/info/rfc1122)and [1123](https://www.rfc-editor.org/info/rfc1123). Each node type is further defined in a detailed specification in a separate document.
+The qNode specification provides additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs {{RFC1122}}, {{RFC1123}}. Each node type is further defined in a detailed specification in a separate document.
 
 ## End Nodes
 
@@ -800,7 +815,7 @@ Point-to-point links may be either fiber-based or free space. A link encompassin
 
 A system built around a pool of detectors, particularly organized as BSAs, utilizing switched MIM links can also be characterized as a _detector-centric architecture_.
 
-For pseudocode for switching (routing) certain types of devices, see Koyama et al.
+For pseudocode for switching (routing) certain types of devices, see Koyama et al. {{koyama-24}}.
 
 ## Multidrop or Bus
 
@@ -810,7 +825,7 @@ A multidrop link, or a bus, is a shared physical channel to which more than two 
 
 No task involving quantum communication ever involves a single qubit or single entangled state. The connection provides the framework for managing the creation of an order set of entangled states to be consumed by applications. A connection is _stateful_ at the end nodes. Nodes involved in the creation of end-to-end entanglement for those end nodes will be _connection aware_, meaning that they can identify resources and messages and carry out communication tasks necessary for a specific connection, but may not have substantial amounts of state that is dynamically updated on a per-action basis; any actions for nodes in this class must be idempotent or known to occur only once. Some or all nodes may be _fully stateful_, tracking the disposition of specific, named quantum states.
 
-Connections may be created using either a fully-distributed protocol or a centralized mechanism.  In either case, qNodes involved in the connection receive RuleSets that are created by a single controller to coordinate local operations to build the end-to-end entangled states requested by an application.
+Connections may be created using either a fully-distributed protocol {{I-D.draft-van-meter-qirg-quantum-connection-setup}} or a centralized mechanism.  In either case, qNodes involved in the connection receive RuleSets that are created by a single controller to coordinate local operations to build the end-to-end entangled states requested by an application.
 
 Connections are unaware of the shared use of resources and of other connections. Multiplexing is the responsibility of a separate subsystem, though connection setup should be done with awareness of the availability of unavailability of resources at involved nodes.
 
@@ -893,7 +908,7 @@ Shortest paths:
 
 ## Q-Fly Multicomputer
 
-An _indirect_ interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in [Sakuma et al.](https://arxiv.org/abs/2412.09299).
+An _indirect_ interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in Sakuma et al. {{sakuma-q-fly}}.
 
 For DPFD topologies:
 
@@ -930,7 +945,7 @@ This simplest description assumes homogeneous hardware, where all switches have 
 
 ## Repeater Fat Tree
 
-The repeater fat tree is described in [Choi et al.](https://arxiv.org/abs/2306.09216).
+The repeater fat tree is described in {{choi-fat-tree}}.
 
 ## 2-D Grid Multicomputer
 
