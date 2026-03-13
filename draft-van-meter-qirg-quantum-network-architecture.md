@@ -27,10 +27,8 @@ docname: draft-van-meter-qirg-quantum-network-architecture
 submissiontype: IRTF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
-consensus: true
 v: 3
 area: AREA
-workgroup: WG Working Group
 keyword:
  - next generation
  - unicorn
