@@ -1702,7 +1702,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           <p id="section-5-5.2.1"><span>[<a href="#RFC9583" class="cite xref">RFC9583</a>]</span><a href="#section-5-5.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-5.3">
-          <p id="section-5-5.3.1">Van Meter, <em>Quantum Networking</em><a href="#section-5-5.3.1" class="pilcrow">¶</a></p>
+          <p id="section-5-5.3.1">Van Meter, <em>Quantum Networking</em> <span>[<a href="#van-meter-q-net-book" class="cite xref">van-meter-q-net-book</a>]</span><a href="#section-5-5.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-5.4">
           <p id="section-5-5.4.1">Hajdusek and Van Meter, <em>Quantum Communications</em> <span>[<a href="#hajdusek-qcomm" class="cite xref">hajdusek-qcomm</a>]</span><a href="#section-5-5.4.1" class="pilcrow">¶</a></p>
@@ -1877,7 +1877,7 @@ The node now knows the exact entangled state created and can apply corrections (
           <h4 id="name-classification-of-consumpti">
 <a href="#section-7.2.2" class="section-number selfRef">7.2.2. </a><a href="#name-classification-of-consumpti" class="section-name selfRef">Classification of Consumption Patterns</a>
           </h4>
-<p id="section-7.2.2-1">Based on the timeline above, we classify Bell pair consumption into three classes.
+<p id="section-7.2.2-1">Based on the timeline above, we classify Bell pair consumption into three classes <span>[<a href="#van-meter-opt-timing" class="cite xref">van-meter-opt-timing</a>]</span>.
 These classes are defined by whether the application must <strong>block execution</strong> while waiting for information at the <em>Heralded</em> or <em>Correct</em> stages.
 Note that the term "blocking" here refers to the blocking versus non-blocking execution models, similar to kernel-level I/O blocking or the event-driven programming paradigm, and is distinct from the concept of blocking in network switches.<a href="#section-7.2.2-1" class="pilcrow">¶</a></p>
 <table class="center" id="table-2">
@@ -2312,7 +2312,7 @@ A quantum optical link may define one mode per time window. During each window, 
       <h2 id="name-communication-service">
 <a href="#section-12" class="section-number selfRef">12. </a><a href="#name-communication-service" class="section-name selfRef">Communication Service</a>
       </h2>
-<p id="section-12-1">(Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. and others.)<a href="#section-12-1" class="pilcrow">¶</a></p>
+<p id="section-12-1">(Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. <span>[<a href="#van-meter-qi-arch" class="cite xref">van-meter-qi-arch</a>]</span> and others.)<a href="#section-12-1" class="pilcrow">¶</a></p>
 <p id="section-12-2">The design of a quantum network must begin with a clear definition of its fundamental services --- what quantum states or capabilities the network is expected to provide to end users.
 These decisions determine the complexity of the protocols at the network layer and the applications that run above it.
 A minimalist design treats <em>Bell pairs</em> as the primary network-level service.
@@ -2595,7 +2595,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <a href="#section-17" class="section-number selfRef">17. </a><a href="#name-connections" class="section-name selfRef">Connections</a>
       </h2>
 <p id="section-17-1">No task involving quantum communication ever involves a single qubit or single entangled state. The connection provides the framework for managing the creation of an order set of entangled states to be consumed by applications. A connection is <em>stateful</em> at the end nodes. Nodes involved in the creation of end-to-end entanglement for those end nodes will be <em>connection aware</em>, meaning that they can identify resources and messages and carry out communication tasks necessary for a specific connection, but may not have substantial amounts of state that is dynamically updated on a per-action basis; any actions for nodes in this class must be idempotent or known to occur only once. Some or all nodes may be <em>fully stateful</em>, tracking the disposition of specific, named quantum states.<a href="#section-17-1" class="pilcrow">¶</a></p>
-<p id="section-17-2">Connections may be created using either a fully-distributed protocol or a centralized mechanism.  In either case, qNodes involved in the connection receive RuleSets that are created by a single controller to coordinate local operations to build the end-to-end entangled states requested by an application.<a href="#section-17-2" class="pilcrow">¶</a></p>
+<p id="section-17-2">Connections may be created using either a fully-distributed protocol <span>[<a href="#I-D.draft-van-meter-qirg-quantum-connection-setup" class="cite xref">I-D.draft-van-meter-qirg-quantum-connection-setup</a>]</span> or a centralized mechanism.  In either case, qNodes involved in the connection receive RuleSets that are created by a single controller to coordinate local operations to build the end-to-end entangled states requested by an application.<a href="#section-17-2" class="pilcrow">¶</a></p>
 <p id="section-17-3">Connections are unaware of the shared use of resources and of other connections. Multiplexing is the responsibility of a separate subsystem, though connection setup should be done with awareness of the availability of unavailability of resources at involved nodes.<a href="#section-17-3" class="pilcrow">¶</a></p>
 </section>
 </div>

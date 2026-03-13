@@ -331,7 +331,7 @@ Table of Contents
 
    *  [RFC9583]
 
-   *  Van Meter, _Quantum Networking_
+   *  Van Meter, _Quantum Networking_ [van-meter-q-net-book]
 
    *  Hajdusek and Van Meter, _Quantum Communications_ [hajdusek-qcomm]
 
@@ -515,13 +515,13 @@ Table of Contents
 7.2.2.  Classification of Consumption Patterns
 
    Based on the timeline above, we classify Bell pair consumption into
-   three classes.  These classes are defined by whether the application
-   must *block execution* while waiting for information at the
-   _Heralded_ or _Correct_ stages.  Note that the term "blocking" here
-   refers to the blocking versus non-blocking execution models, similar
-   to kernel-level I/O blocking or the event-driven programming
-   paradigm, and is distinct from the concept of blocking in network
-   switches.
+   three classes [van-meter-opt-timing].  These classes are defined by
+   whether the application must *block execution* while waiting for
+   information at the _Heralded_ or _Correct_ stages.  Note that the
+   term "blocking" here refers to the blocking versus non-blocking
+   execution models, similar to kernel-level I/O blocking or the event-
+   driven programming paradigm, and is distinct from the concept of
+   blocking in network switches.
 
    +================+============+========+===========================+
    | Class          | Wait for   | Wait   | Application Behavior      |
@@ -1050,7 +1050,7 @@ Table of Contents
 
    (Substantial portions of this section are adapted from Naphan
    Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier
-   papers by Van Meter et al. and others.)
+   papers by Van Meter et al. [van-meter-qi-arch] and others.)
 
    The design of a quantum network must begin with a clear definition of
    its fundamental services --- what quantum states or capabilities the
@@ -1472,10 +1472,11 @@ Table of Contents
    the disposition of specific, named quantum states.
 
    Connections may be created using either a fully-distributed protocol
-   or a centralized mechanism.  In either case, qNodes involved in the
-   connection receive RuleSets that are created by a single controller
-   to coordinate local operations to build the end-to-end entangled
-   states requested by an application.
+   [I-D.draft-van-meter-qirg-quantum-connection-setup] or a centralized
+   mechanism.  In either case, qNodes involved in the connection receive
+   RuleSets that are created by a single controller to coordinate local
+   operations to build the end-to-end entangled states requested by an
+   application.
 
    Connections are unaware of the shared use of resources and of other
    connections.  Multiplexing is the responsibility of a separate
