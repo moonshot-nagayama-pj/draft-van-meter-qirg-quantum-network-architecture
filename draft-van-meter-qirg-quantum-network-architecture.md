@@ -101,6 +101,8 @@ normative:
   RFC2119:
 
 informative:
+  RFC1122:
+  RFC1123:
   RFC9340:
   RFC9583:
   I-D.draft-hajdusek-qirg-timing-physics:
@@ -117,6 +119,8 @@ informative:
     format:
       PDF: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
   nist-singles: DOI.10.6028/NIST.IR.8486r1
+  aboy-governance: DOI.10.1126/science.adw0018
+  awschalom-roadmap: DOI.10.2172/1900586
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   dally-towles:
@@ -133,12 +137,17 @@ informative:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
   drost: DOI.10.1364/JOCN.8.000331
+  hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   koyama-24: DOI.10.1109/QCE60285.2024.00219
-  hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
+  leone-remote: DOI.10.48550/arxiv.2406.18764
+  litinski-gosc: DOI.10.22331/q-2019-03-05-128
   muralidharan-generations: DOI.10.1038/srep20463
+  ramette-remote: DOI.10.1038/s41534-024-00855-4
+  sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
   sane-jobs: DOI.10.48550/arXiv.2504.18298
   schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
+  sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
@@ -184,7 +193,7 @@ This section describes goals and non-goals for this document itself, rather than
 
 # Relationship to Documents by Other Organizations
 
-Other organizations, including national laboratories and standards development organizations, are developing documents describing quantum networks and quantum computing technology. These are mostly _pre-standardization_ documents, not yet on any formal standardization track. To the extent possible, this document conforms to their terminology. However, as this document describes a specific quantum network architecture, it does not attempt to conform to specific design decisions made in other contexts.  See [an August 2025 Science Policy Forum](https://www.science.org/doi/full/10.1126/science.adw0018) for additional discussion of some standardization efforts and their value.
+Other organizations, including national laboratories and standards development organizations, are developing documents describing quantum networks and quantum computing technology. These are mostly _pre-standardization_ documents, not yet on any formal standardization track. To the extent possible, this document conforms to their terminology. However, as this document describes a specific quantum network architecture, it does not attempt to conform to specific design decisions made in other contexts.  See an August 2025 Science Policy Forum {{aboy-governance}} for additional discussion of some standardization efforts and their value.
 
 Some of these are listed here for reference:
 
@@ -339,7 +348,7 @@ If the entanglement attempt failed (information received later), the data is dis
 * **Classical Correlation:** Applications like Quantum Key Distribution (QKD) protocols (e.g., E91) or link fidelity estimation.
 The application filters out failed attempts during classical post-processing.
 
-* **Fault-Tolerant Operations:** Certain remote quantum error correction schemes, such as remote lattice surgery {{horsman-lattice-surgery}} of the surface code.
+* **Fault-Tolerant Operations:** Certain remote quantum error correction schemes, such as remote lattice surgery {{horsman-lattice-surgery}}, {{ramette-remote}}, {{leone-remote}}, {{sinclair-ft-interconnect}} of the surface code.
 If the probability of creating a link is high enough, unsuccessful attempts can be treated as depolarizing errors, which the logical code can tolerate without stalling the pipeline.
 
 ### Reactive Correction (C Class) Applications
@@ -352,7 +361,7 @@ Once confirmed, it executes immediately.
 It does not wait for the _Correct_ stage (Pauli frame); instead, it uses a "Pauli Frame Tracker" to propagate the necessary corrections through the circuit virtually.
 If the network link is deterministic, the specific wait for heralding is removed, as the node assumes success by default.
 
-**Examples:** Clifford circuit execution, [distributed Pauli-based computation with time-optimal scheme](https://doi.org/10.22331/q-2019-03-05-128), and state teleportation.
+**Examples:** Clifford circuit execution, distributed Pauli-based computation with time-optimal scheme {{litinski-gosc}}, and state teleportation.
 
 ### Deterministic (T Class) Applications
 
@@ -403,7 +412,7 @@ Many of the detector-centric network topologies can be inverted, such that the p
 
 # A Sketch of the System Model
 
-As noted in the 2022 [roadmap for quantum interconnects](https://www.osti.gov/biblio/1900586), entangled quantum network technology can be deployed in a variety of scenarios with different requirements and assumptions. A full description of each of these is delegated to other documents, but a brief description here will help to orient discussions of design points in order to justify certain decisions.
+As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, entangled quantum network technology can be deployed in a variety of scenarios with different requirements and assumptions. A full description of each of these is delegated to other documents, but a brief description here will help to orient discussions of design points in order to justify certain decisions.
 
 ## Multicomputer
 
@@ -445,7 +454,7 @@ The realities of quantum hardware result in a few important differences from cla
 * Execution of the quantum portion of the node program generally involves hard real-time actions, both unconditional and conditioned on prior quantum measurement results. This generally requires compilation of the quantum program to very low-level actions to be executed by FPGAs or ASICs.
 * Systems may be partially or completely emulated, decoupling development of different subsystems. e.g., an EPPS plus a MEAS together can emulate a COMP node that emits single photons.
 * Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).
-* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery ([Leone et al.](https://arxiv.org/abs/2406.18764) or [Sinclair et al.](https://arxiv.org/abs/2408.08955)).
+* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery {{ramette-remote}}, {{leone-remote}}, or {{sinclair-ft-interconnect}}.
 
 ## Data Center Network (QDCN)
 
@@ -693,7 +702,7 @@ The architecture of a quantum network is defined by its constituent nodes and th
 For clarity in describing our system, we group these nodes according to their primary contributions to network operation.
 In our architecture, we classify nodes into three main types: end nodes, for application interaction; repeater and router nodes, for extending entanglement and path management; and support nodes, for auxiliary operational tasks.
 
-The qNode specification provides additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs [1122](https://www.rfc-editor.org/info/rfc1122)and [1123](https://www.rfc-editor.org/info/rfc1123). Each node type is further defined in a detailed specification in a separate document.
+The qNode specification provides additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs {{RFC1122}}, {{RFC1123}}. Each node type is further defined in a detailed specification in a separate document.
 
 ## End Nodes
 
@@ -899,7 +908,7 @@ Shortest paths:
 
 ## Q-Fly Multicomputer
 
-An _indirect_ interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in [Sakuma et al.](https://arxiv.org/abs/2412.09299).
+An _indirect_ interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in Sakuma et al. {{sakuma-q-fly}}.
 
 For DPFD topologies:
 
@@ -936,7 +945,7 @@ This simplest description assumes homogeneous hardware, where all switches have 
 
 ## Repeater Fat Tree
 
-The repeater fat tree is described in [Choi et al.](https://arxiv.org/abs/2306.09216).
+The repeater fat tree is described in {{choi-fat-tree}}.
 
 ## 2-D Grid Multicomputer
 
