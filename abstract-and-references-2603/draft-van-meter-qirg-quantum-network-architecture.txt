@@ -182,7 +182,7 @@ Table of Contents
 
    For a description of the key concepts in quantum networks and
    additional references, see [RFC9340] and the book _Quantum
-   Communications (doi:10.48550/arXiv.2311.02367)_.
+   Communications_ [hajdusek-qcomm].
 
    For more background and discussion of the design choices in this
    architecture, see the Ph.D. dissertation of Naphan Benchasattabuse
@@ -474,24 +474,23 @@ Table of Contents
 
 7.2.  Entangled States Consumption Patterns
 
-   *Adapted from unpublished text in https://arxiv.org/abs/1701.04586
-   (https://arxiv.org/abs/1701.04586).*
+   (Adapted and extended from unpublished text in
+   [van-meter-opt-timing].)
 
-   Distinct from the classification of quantum repeater generations
-   (https://doi.org/10.1038/srep20463) by Muralidharan et al., one can
-   categorize distributed quantum systems by how applications interface
-   with the network; specifically, the timing at which network interface
-   qubits are freed after attempting entangled state generation.
+   Distinct from the classification of quantum repeater generations by
+   Muralidharan et al. [muralidharan-generations], one can categorize
+   distributed quantum systems by how applications interface with the
+   network; specifically, the timing at which network interface qubits
+   are freed after attempting entangled state generation.
 
    In the early days of quantum information research, Bennett et al.
-   recognized (https://journals.aps.org/pra/abstract/10.1103/
-   PhysRevA.54.3824) that the component qubits of an entangled state may
-   be held at different times in different locations, termed _time-
-   separated Bell pairs_. Based on this principle, we can describe the
-   timeline of information availability between two nodes.  This model
-   assumes entangled states are requested dynamically during execution,
-   rather than pre-caching entangled states (http://arxiv.org/
-   abs/1610.05238) for immediate consumption.
+   recognized [bennett-mixed] that the component qubits of an entangled
+   state may be held at different times in different locations, termed
+   _time-separated Bell pairs_. Based on this principle, we can describe
+   the timeline of information availability between two nodes.  This
+   model assumes entangled states are requested dynamically during
+   execution, rather than pre-caching entangled
+   states　[schoute-shortcuts] for immediate consumption.
 
 7.2.1.  The Entanglement Information Timeline
 
@@ -594,10 +593,10 @@ Table of Contents
 
    *  *Fault-Tolerant Operations:* Certain remote quantum error
       correction schemes, such as remote lattice surgery
-      (https://doi.org/10.1088/1367-2630/14/12/123011) of the surface
-      code.  If the probability of creating a link is high enough,
-      unsuccessful attempts can be treated as depolarizing errors, which
-      the logical code can tolerate without stalling the pipeline.
+      [horsman-lattice-surgery] of the surface code.  If the probability
+      of creating a link is high enough, unsuccessful attempts can be
+      treated as depolarizing errors, which the logical code can
+      tolerate without stalling the pipeline.
 
 7.2.5.  Reactive Correction (C Class) Applications
 
@@ -726,11 +725,11 @@ Table of Contents
    involve computational nodes, optical switches, Bell state analyzers,
    and possibly entangled photon pair sources (all defined below).
    Quantum repeaters with memory are less likely to be deployed in
-   multicomputers, though one such architecture (https://arxiv.org/
-   abs/2306.09216) has been proposed.  Because the current technology
-   roadmaps favor this type of deployment, where design choices are in
-   conflict or unclear, multicomputer designs are given priority over
-   wide-area networks in this set of specifications.
+   multicomputers, though one such architecture [choi-fat-tree] has been
+   proposed.  Because the current technology roadmaps favor this type of
+   deployment, where design choices are in conflict or unclear,
+   multicomputer designs are given priority over wide-area networks in
+   this set of specifications.
 
    The execution model is expected to be much like the classical
    supercomputing Message Passing Interface (MPI)
@@ -842,8 +841,8 @@ Table of Contents
       beyond the scope of this specification.
 
    *  The resources in a multicomputer may be partitioned to run
-      multiple jobs (https://arxiv.org/abs/2504.18298), but this is
-      beyond the scope of the current specifications.
+      multiple jobs [sane-jobs], but this is beyond the scope of the
+      current specifications.
 
    The realities of quantum hardware result in a few important
    differences from classical multicomputers:
@@ -1839,6 +1838,20 @@ Table of Contents
 
 28.2.  Informative References
 
+   [bennett-mixed]
+              Bennett, C., DiVincenzo, D., Smolin, J., and W. Wootters,
+              "Mixed-state entanglement and quantum error correction",
+              American Physical Society (APS), Physical Review A vol.
+              54, no. 5, pp. 3824-3851, DOI 10.1103/physreva.54.3824,
+              November 1996, <https://doi.org/10.1103/physreva.54.3824>.
+
+   [choi-fat-tree]
+              Choi, H., Davis, M., Iñesta, Á., and D. Englund, "Scalable
+              Quantum Networks: Congestion-Free Hierarchical
+              Entanglement Routing with Error Correction", arXiv,
+              DOI 10.48550/ARXIV.2306.09216, 2023,
+              <https://doi.org/10.48550/ARXIV.2306.09216>.
+
    [dally-towles]
               Dally, W. J. and B. P. Towles, "Principles and Practices
               of Interconnection Networks", ISBN 978-0-08-049780-8,
@@ -1861,6 +1874,13 @@ Table of Contents
               Hajdušek, M. and R. Van Meter, "Quantum Communications",
               arXiv, DOI 10.48550/ARXIV.2311.02367, 2023,
               <https://doi.org/10.48550/ARXIV.2311.02367>.
+
+   [horsman-lattice-surgery]
+              Horsman, D., Fowler, A., Devitt, S., and R. Meter,
+              "Surface code quantum computing by lattice surgery", IOP
+              Publishing, New Journal of Physics vol. 14, no. 12, pp.
+              123011, DOI 10.1088/1367-2630/14/12/123011, December 2012,
+              <https://doi.org/10.1088/1367-2630/14/12/123011>.
 
    [I-D.draft-hajdusek-qirg-timing-physics]
               Hajdusek, M. and R. Van Meter, "Timing Regimes in Quantum
@@ -1886,6 +1906,14 @@ Table of Contents
               DOI 10.1109/qce60285.2024.00219, September 2024,
               <https://doi.org/10.1109/qce60285.2024.00219>.
 
+   [muralidharan-generations]
+              Muralidharan, S., Li, L., Kim, J., Lütkenhaus, N., Lukin,
+              M., and L. Jiang, "Optimal architectures for long distance
+              quantum communication", Springer Science and Business
+              Media LLC, Scientific Reports vol. 6, no. 1,
+              DOI 10.1038/srep20463, February 2016,
+              <https://doi.org/10.1038/srep20463>.
+
    [nist-singles]
               Bienfang, J., Gerrits, T., Kuo, P., Migdall, A., Polyakov,
               S., and O. Slattery, "Single-photon Sources and Detectors
@@ -1910,6 +1938,19 @@ Table of Contents
               Chakraborty, "Application Scenarios for the Quantum
               Internet", RFC 9583, DOI 10.17487/RFC9583, June 2024,
               <https://www.rfc-editor.org/rfc/rfc9583>.
+
+   [sane-jobs]
+              Sane, B., Hajdušek, M., and R. Van Meter, "Optimizing
+              Resource Allocation in a Distributed Quantum Computing
+              Cloud: A Game-Theoretic Approach", arXiv,
+              DOI 10.48550/ARXIV.2504.18298, 2025,
+              <https://doi.org/10.48550/ARXIV.2504.18298>.
+
+   [schoute-shortcuts]
+              Schoute, E., Mancinska, L., Islam, T., Kerenidis, I., and
+              S. Wehner, "Shortcuts to quantum network routing", arXiv,
+              DOI 10.48550/ARXIV.1610.05238, 2016,
+              <https://doi.org/10.48550/ARXIV.1610.05238>.
 
    [van-meter-opt-timing]
               Van Meter, R., Satoh, T., Nagayama, S., Matsuo, T., and S.
