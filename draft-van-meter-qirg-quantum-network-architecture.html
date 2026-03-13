@@ -9,7 +9,7 @@
 <meta content="Naphan Benchasattabuse" name="author">
 <meta content="Amin Taherkhani" name="author">
 <meta content="
-       This quantum network architecture defines a set of planes providing different views of the network, supporting different responsibilities and modes of operation; a set of device, node and link types; 
+       This quantum network architecture defines a set of planes providing different views of the network, supporting different responsibilities and modes of operation; a set of device, node and link types; some network topologies, deployment scenarios and their relationship to applications; and key design decisions as a result of corresponding requirements. 
     " name="description">
 <meta content="xml2rfc 3.31.0" name="generator">
 <meta content="network architecture" name="keyword">
@@ -1091,7 +1091,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">A Quantum Network Architecture</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This quantum network architecture defines a set of planes providing different views of the network, supporting different responsibilities and modes of operation; a set of device, node and link types;<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This quantum network architecture defines a set of planes providing different views of the network, supporting different responsibilities and modes of operation; a set of device, node and link types; some network topologies, deployment scenarios and their relationship to applications; and key design decisions as a result of corresponding requirements.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1493,7 +1493,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-1-1">This document introduces the key architectural decisions, classical and quantum communication systems, and main node types for several classes of quantum networks.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">We define the verb <em>to architect</em> as: within a set of environmental constraints, using a set of building blocks, design a system that satisfies a need, elegantly and economically.
 We use the noun <em>architecture</em> as: the set of blocks or subsystems, their roles and their interfaces and their overall arrangement, that defines the system. This architecture defines the overall structure, and is connected to a specific implementation as an example.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">For a description of the key concepts in quantum networks and additional references, see <span>[<a href="#RFC9340" class="cite xref">RFC9340</a>]</span> and the book <em><a href="doi:10.48550/arXiv.2311.02367">Quantum Communications</a></em>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-3">For a description of the key concepts in quantum networks and additional references, see <span>[<a href="#RFC9340" class="cite xref">RFC9340</a>]</span> and the book <em>Quantum Communications</em> <span>[<a href="#hajdusek-qcomm" class="cite xref">hajdusek-qcomm</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">For more background and discussion of the design choices in this architecture, see the Ph.D. dissertation of Naphan Benchasattabuse <span>[<a href="#res-mgmt-het" class="cite xref">res-mgmt-het</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1554,7 +1554,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-relationship-to-documents-b">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-relationship-to-documents-b" class="section-name selfRef">Relationship to Documents by Other Organizations</a>
       </h2>
-<p id="section-4-1">Other organizations, including national laboratories and standards development organizations, are developing documents describing quantum networks and quantum computing technology. These are mostly <em>pre-standardization</em> documents, not yet on any formal standardization track. To the extent possible, this document conforms to their terminology. However, as this document describes a specific quantum network architecture, it does not attempt to conform to specific design decisions made in other contexts.  See <a href="https://www.science.org/doi/full/10.1126/science.adw0018">an August 2025 Science Policy Forum</a> for additional discussion of some standardization efforts and their value.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">Other organizations, including national laboratories and standards development organizations, are developing documents describing quantum networks and quantum computing technology. These are mostly <em>pre-standardization</em> documents, not yet on any formal standardization track. To the extent possible, this document conforms to their terminology. However, as this document describes a specific quantum network architecture, it does not attempt to conform to specific design decisions made in other contexts.  See an August 2025 Science Policy Forum <span>[<a href="#aboy-governance" class="cite xref">aboy-governance</a>]</span> for additional discussion of some standardization efforts and their value.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">Some of these are listed here for reference:<a href="#section-4-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-3.1">
@@ -1599,7 +1599,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           <p id="section-4-3.5.1">National Institute of Standards and Technology (NIST)<a href="#section-4-3.5.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-3.5.2.1">
-              <p id="section-4-3.5.2.1.1"><a href="https://www.nist.gov/publications/single-photon-sources-and-detectors-dictionary-0">Single-Photon Sources and Detectors Dictionary</a><a href="#section-4-3.5.2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-4-3.5.2.1.1">Single-Photon Sources and Detectors Dictionary <span>[<a href="#nist-singles" class="cite xref">nist-singles</a>]</span><a href="#section-4-3.5.2.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
@@ -1702,10 +1702,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           <p id="section-5-5.2.1"><span>[<a href="#RFC9583" class="cite xref">RFC9583</a>]</span><a href="#section-5-5.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-5.3">
-          <p id="section-5-5.3.1">Van Meter, <em>Quantum Networking</em><a href="#section-5-5.3.1" class="pilcrow">¶</a></p>
+          <p id="section-5-5.3.1">Van Meter, <em>Quantum Networking</em> <span>[<a href="#van-meter-q-net-book" class="cite xref">van-meter-q-net-book</a>]</span><a href="#section-5-5.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-5.4">
-          <p id="section-5-5.4.1">Hajdusek and Van Meter, <em><a href="https://arxiv.org/abs/2311.02367">Quantum Communications</a></em><a href="#section-5-5.4.1" class="pilcrow">¶</a></p>
+          <p id="section-5-5.4.1">Hajdusek and Van Meter, <em>Quantum Communications</em> <span>[<a href="#hajdusek-qcomm" class="cite xref">hajdusek-qcomm</a>]</span><a href="#section-5-5.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1845,11 +1845,11 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-entangled-states-consumptio">
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-entangled-states-consumptio" class="section-name selfRef">Entangled States Consumption Patterns</a>
         </h3>
-<p id="section-7.2-1"><strong>Adapted from unpublished text in <a href="https://arxiv.org/abs/1701.04586">https://arxiv.org/abs/1701.04586</a>.</strong><a href="#section-7.2-1" class="pilcrow">¶</a></p>
-<p id="section-7.2-2">Distinct from the classification of <a href="https://doi.org/10.1038/srep20463">quantum repeater generations</a> by Muralidharan et al., one can categorize distributed quantum systems by how applications interface with the network; specifically, the timing at which network interface qubits are freed after attempting entangled state generation.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
-<p id="section-7.2-3">In the early days of quantum information research, Bennett et al. <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.54.3824">recognized</a> that the component qubits of an entangled state may be held at different times in different locations, termed <em>time-separated Bell pairs</em>.
+<p id="section-7.2-1">(Adapted and extended from unpublished text in <span>[<a href="#van-meter-opt-timing" class="cite xref">van-meter-opt-timing</a>]</span>.)<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.2-2">Distinct from the classification of quantum repeater generations by Muralidharan et al. <span>[<a href="#muralidharan-generations" class="cite xref">muralidharan-generations</a>]</span>, one can categorize distributed quantum systems by how applications interface with the network; specifically, the timing at which network interface qubits are freed after attempting entangled state generation.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
+<p id="section-7.2-3">In the early days of quantum information research, Bennett et al. recognized <span>[<a href="#bennett-mixed" class="cite xref">bennett-mixed</a>]</span> that the component qubits of an entangled state may be held at different times in different locations, termed <em>time-separated Bell pairs</em>.
 Based on this principle, we can describe the timeline of information availability between two nodes.
-This model assumes entangled states are requested dynamically during execution, rather than <a href="http://arxiv.org/abs/1610.05238">pre-caching entangled states</a> for immediate consumption.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
+This model assumes entangled states are requested dynamically during execution, rather than pre-caching entangled states　<span>[<a href="#schoute-shortcuts" class="cite xref">schoute-shortcuts</a>]</span> for immediate consumption.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
 <div id="the-entanglement-information-timeline">
 <section id="section-7.2.1">
           <h4 id="name-the-entanglement-informatio">
@@ -1877,7 +1877,7 @@ The node now knows the exact entangled state created and can apply corrections (
           <h4 id="name-classification-of-consumpti">
 <a href="#section-7.2.2" class="section-number selfRef">7.2.2. </a><a href="#name-classification-of-consumpti" class="section-name selfRef">Classification of Consumption Patterns</a>
           </h4>
-<p id="section-7.2.2-1">Based on the timeline above, we classify Bell pair consumption into three classes.
+<p id="section-7.2.2-1">Based on the timeline above, we classify Bell pair consumption into three classes <span>[<a href="#van-meter-opt-timing" class="cite xref">van-meter-opt-timing</a>]</span>.
 These classes are defined by whether the application must <strong>block execution</strong> while waiting for information at the <em>Heralded</em> or <em>Correct</em> stages.
 Note that the term "blocking" here refers to the blocking versus non-blocking execution models, similar to kernel-level I/O blocking or the event-driven programming paradigm, and is distinct from the concept of blocking in network switches.<a href="#section-7.2.2-1" class="pilcrow">¶</a></p>
 <table class="center" id="table-2">
@@ -1953,7 +1953,7 @@ If the entanglement attempt failed (information received later), the data is dis
 The application filters out failed attempts during classical post-processing.<a href="#section-7.2.4-4.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-7.2.4-4.2">
-              <p id="section-7.2.4-4.2.1"><strong>Fault-Tolerant Operations:</strong> Certain remote quantum error correction schemes, such as remote <a href="https://doi.org/10.1088/1367-2630/14/12/123011">lattice surgery</a> of the surface code.
+              <p id="section-7.2.4-4.2.1"><strong>Fault-Tolerant Operations:</strong> Certain remote quantum error correction schemes, such as remote lattice surgery <span>[<a href="#horsman-lattice-surgery" class="cite xref">horsman-lattice-surgery</a>]</span>, <span>[<a href="#ramette-remote" class="cite xref">ramette-remote</a>]</span>, <span>[<a href="#leone-remote" class="cite xref">leone-remote</a>]</span>, <span>[<a href="#sinclair-ft-interconnect" class="cite xref">sinclair-ft-interconnect</a>]</span> of the surface code.
 If the probability of creating a link is high enough, unsuccessful attempts can be treated as depolarizing errors, which the logical code can tolerate without stalling the pipeline.<a href="#section-7.2.4-4.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
@@ -1970,7 +1970,7 @@ The application proceeds by assuming a specific Bell state and managing deviatio
 Once confirmed, it executes immediately.
 It does not wait for the <em>Correct</em> stage (Pauli frame); instead, it uses a "Pauli Frame Tracker" to propagate the necessary corrections through the circuit virtually.
 If the network link is deterministic, the specific wait for heralding is removed, as the node assumes success by default.<a href="#section-7.2.5-2" class="pilcrow">¶</a></p>
-<p id="section-7.2.5-3"><strong>Examples:</strong> Clifford circuit execution, <a href="https://doi.org/10.22331/q-2019-03-05-128">distributed Pauli-based computation with time-optimal scheme</a>, and state teleportation.<a href="#section-7.2.5-3" class="pilcrow">¶</a></p>
+<p id="section-7.2.5-3"><strong>Examples:</strong> Clifford circuit execution, distributed Pauli-based computation with time-optimal scheme <span>[<a href="#litinski-gosc" class="cite xref">litinski-gosc</a>]</span>, and state teleportation.<a href="#section-7.2.5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="deterministic-t-class-applications">
@@ -2027,7 +2027,7 @@ Since consuming extra resources is more costly than waiting, these operations de
         <h3 id="name-direct-and-indirect-multico">
 <a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-direct-and-indirect-multico" class="section-name selfRef">Direct and Indirect Multicomputer Architectures</a>
         </h3>
-<p id="section-8.4-1">In multicomputer architectures, a <em>direct</em> architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An <em>indirect</em> architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
+<p id="section-8.4-1">In multicomputer architectures, a <em>direct</em> architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An <em>indirect</em> architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect <span>[<a href="#dally-towles" class="cite xref">dally-towles</a>]</span>.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
 <p id="section-8.4-2">The distinction is somewhat artificial in that direct architectures sometimes incorporate a small switch inside the node, in which case the matching term depends on where you draw the boundary of the node, and because computational nodes can be configured to act only as routers within the network, modeling an indirect architecture using direct hardware.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2055,13 +2055,13 @@ Since consuming extra resources is more costly than waiting, these operations de
       <h2 id="name-a-sketch-of-the-system-mode">
 <a href="#section-9" class="section-number selfRef">9. </a><a href="#name-a-sketch-of-the-system-mode" class="section-name selfRef">A Sketch of the System Model</a>
       </h2>
-<p id="section-9-1">As noted in the 2022 <a href="https://www.osti.gov/biblio/1900586">roadmap for quantum interconnects</a>, entangled quantum network technology can be deployed in a variety of scenarios with different requirements and assumptions. A full description of each of these is delegated to other documents, but a brief description here will help to orient discussions of design points in order to justify certain decisions.<a href="#section-9-1" class="pilcrow">¶</a></p>
+<p id="section-9-1">As noted in the 2022 roadmap for quantum interconnects <span>[<a href="#awschalom-roadmap" class="cite xref">awschalom-roadmap</a>]</span>, entangled quantum network technology can be deployed in a variety of scenarios with different requirements and assumptions. A full description of each of these is delegated to other documents, but a brief description here will help to orient discussions of design points in order to justify certain decisions.<a href="#section-9-1" class="pilcrow">¶</a></p>
 <div id="multicomputer">
 <section id="section-9.1">
         <h3 id="name-multicomputer">
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-multicomputer" class="section-name selfRef">Multicomputer</a>
         </h3>
-<p id="section-9.1-1">The first deployment of production-level, distant quantum entanglement is likely to be in a <em>quantum multicomputer</em>, based on the same principles as classical distributed-memory supercomputers from the <a href="https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube">Caltech Cosmic Cube</a> to <a href="https://en.wikipedia.org/wiki/Fugaku_(supercomputer)">Fugaku</a>.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though <a href="https://arxiv.org/abs/2306.09216">one such architecture</a> has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.1-1">The first deployment of production-level, distant quantum entanglement is likely to be in a <em>quantum multicomputer</em>, based on the same principles as classical distributed-memory supercomputers from the <a href="https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube">Caltech Cosmic Cube</a> to <a href="https://en.wikipedia.org/wiki/Fugaku_(supercomputer)">Fugaku</a>.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture <span>[<a href="#choi-fat-tree" class="cite xref">choi-fat-tree</a>]</span> has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
 <p id="section-9.1-2">The execution model is expected to be much like the classical supercomputing <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">Message Passing Interface (MPI)</a>.<a href="#section-9.1-2" class="pilcrow">¶</a></p>
 <p id="section-9.1-3">General hardware environment:<a href="#section-9.1-3" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -2120,7 +2120,7 @@ Since consuming extra resources is more costly than waiting, these operations de
             <p id="section-9.1-6.11.1">Compilation and execution may achieve application goals via teledata, telegate or measurement of multiqubit Pauli operators transparently; the network is unaware of this distinction. Management of application-level variables and their movement from node to node, if any, is the responsibility of the compiler and is beyond the scope of this specification.<a href="#section-9.1-6.11.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-6.12">
-            <p id="section-9.1-6.12.1">The resources in a multicomputer may be <a href="https://arxiv.org/abs/2504.18298">partitioned to run multiple jobs</a>, but this is beyond the scope of the current specifications.<a href="#section-9.1-6.12.1" class="pilcrow">¶</a></p>
+            <p id="section-9.1-6.12.1">The resources in a multicomputer may be partitioned to run multiple jobs <span>[<a href="#sane-jobs" class="cite xref">sane-jobs</a>]</span>, but this is beyond the scope of the current specifications.<a href="#section-9.1-6.12.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-9.1-7">The realities of quantum hardware result in a few important differences from classical multicomputers:<a href="#section-9.1-7" class="pilcrow">¶</a></p>
@@ -2150,7 +2150,7 @@ Since consuming extra resources is more costly than waiting, these operations de
             <p id="section-9.1-8.8.1">Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).<a href="#section-9.1-8.8.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-8.9">
-            <p id="section-9.1-8.9.1">Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery (<a href="https://arxiv.org/abs/2406.18764">Leone et al.</a> or <a href="https://arxiv.org/abs/2408.08955">Sinclair et al.</a>).<a href="#section-9.1-8.9.1" class="pilcrow">¶</a></p>
+            <p id="section-9.1-8.9.1">Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery <span>[<a href="#ramette-remote" class="cite xref">ramette-remote</a>]</span>, <span>[<a href="#leone-remote" class="cite xref">leone-remote</a>]</span>, or <span>[<a href="#sinclair-ft-interconnect" class="cite xref">sinclair-ft-interconnect</a>]</span>.<a href="#section-9.1-8.9.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -2196,7 +2196,7 @@ Since consuming extra resources is more costly than waiting, these operations de
 <a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-qubits" class="section-name selfRef">Qubits</a>
         </h3>
 <p id="section-10.1-1">In this network architecture, we use only qubits, which may have two states identified as 0 and 1.  Quantum information systems using qutrits, qudits, qunats or continuous variable (c.v.) quantum states are beyond the scope of the current set of specifications.<a href="#section-10.1-1" class="pilcrow">¶</a></p>
-<p id="section-10.1-2">Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiVincenzo criteria.<a href="#section-10.1-2" class="pilcrow">¶</a></p>
+<p id="section-10.1-2">Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiVincenzo criteria <span>[<a href="#divincenzo-criteria" class="cite xref">divincenzo-criteria</a>]</span>.<a href="#section-10.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="photons-wave-packets-and-optical-modes">
@@ -2312,7 +2312,7 @@ A quantum optical link may define one mode per time window. During each window, 
       <h2 id="name-communication-service">
 <a href="#section-12" class="section-number selfRef">12. </a><a href="#name-communication-service" class="section-name selfRef">Communication Service</a>
       </h2>
-<p id="section-12-1">(Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. and others.)<a href="#section-12-1" class="pilcrow">¶</a></p>
+<p id="section-12-1">(Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. <span>[<a href="#van-meter-qi-arch" class="cite xref">van-meter-qi-arch</a>]</span> and others.)<a href="#section-12-1" class="pilcrow">¶</a></p>
 <p id="section-12-2">The design of a quantum network must begin with a clear definition of its fundamental services --- what quantum states or capabilities the network is expected to provide to end users.
 These decisions determine the complexity of the protocols at the network layer and the applications that run above it.
 A minimalist design treats <em>Bell pairs</em> as the primary network-level service.
@@ -2415,7 +2415,7 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
 <p id="section-15-2">The architecture of a quantum network is defined by its constituent nodes and their specialized functions.
 For clarity in describing our system, we group these nodes according to their primary contributions to network operation.
 In our architecture, we classify nodes into three main types: end nodes, for application interaction; repeater and router nodes, for extending entanglement and path management; and support nodes, for auxiliary operational tasks.<a href="#section-15-2" class="pilcrow">¶</a></p>
-<p id="section-15-3">The qNode specification provides additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs <a href="https://www.rfc-editor.org/info/rfc1122">1122</a>and <a href="https://www.rfc-editor.org/info/rfc1123">1123</a>. Each node type is further defined in a detailed specification in a separate document.<a href="#section-15-3" class="pilcrow">¶</a></p>
+<p id="section-15-3">The qNode specification provides additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs <span>[<a href="#RFC1122" class="cite xref">RFC1122</a>]</span>, <span>[<a href="#RFC1123" class="cite xref">RFC1123</a>]</span>. Each node type is further defined in a detailed specification in a separate document.<a href="#section-15-3" class="pilcrow">¶</a></p>
 <div id="end-nodes">
 <section id="section-15.1">
         <h3 id="name-end-nodes">
@@ -2576,7 +2576,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <a href="#section-16.4" class="section-number selfRef">16.4. </a><a href="#name-switched" class="section-name selfRef">Switched</a>
         </h3>
 <p id="section-16.4-1">A system built around a pool of detectors, particularly organized as BSAs, utilizing switched MIM links can also be characterized as a <em>detector-centric architecture</em>.<a href="#section-16.4-1" class="pilcrow">¶</a></p>
-<p id="section-16.4-2">For pseudocode for switching (routing) certain types of devices, see Koyama et al.<a href="#section-16.4-2" class="pilcrow">¶</a></p>
+<p id="section-16.4-2">For pseudocode for switching (routing) certain types of devices, see Koyama et al. <span>[<a href="#koyama-24" class="cite xref">koyama-24</a>]</span>.<a href="#section-16.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="multidrop-or-bus">
@@ -2595,7 +2595,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <a href="#section-17" class="section-number selfRef">17. </a><a href="#name-connections" class="section-name selfRef">Connections</a>
       </h2>
 <p id="section-17-1">No task involving quantum communication ever involves a single qubit or single entangled state. The connection provides the framework for managing the creation of an order set of entangled states to be consumed by applications. A connection is <em>stateful</em> at the end nodes. Nodes involved in the creation of end-to-end entanglement for those end nodes will be <em>connection aware</em>, meaning that they can identify resources and messages and carry out communication tasks necessary for a specific connection, but may not have substantial amounts of state that is dynamically updated on a per-action basis; any actions for nodes in this class must be idempotent or known to occur only once. Some or all nodes may be <em>fully stateful</em>, tracking the disposition of specific, named quantum states.<a href="#section-17-1" class="pilcrow">¶</a></p>
-<p id="section-17-2">Connections may be created using either a fully-distributed protocol or a centralized mechanism.  In either case, qNodes involved in the connection receive RuleSets that are created by a single controller to coordinate local operations to build the end-to-end entangled states requested by an application.<a href="#section-17-2" class="pilcrow">¶</a></p>
+<p id="section-17-2">Connections may be created using either a fully-distributed protocol <span>[<a href="#I-D.draft-van-meter-qirg-quantum-connection-setup" class="cite xref">I-D.draft-van-meter-qirg-quantum-connection-setup</a>]</span> or a centralized mechanism.  In either case, qNodes involved in the connection receive RuleSets that are created by a single controller to coordinate local operations to build the end-to-end entangled states requested by an application.<a href="#section-17-2" class="pilcrow">¶</a></p>
 <p id="section-17-3">Connections are unaware of the shared use of resources and of other connections. Multiplexing is the responsibility of a separate subsystem, though connection setup should be done with awareness of the availability of unavailability of resources at involved nodes.<a href="#section-17-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2768,7 +2768,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <h3 id="name-q-fly-multicomputer">
 <a href="#section-21.2" class="section-number selfRef">21.2. </a><a href="#name-q-fly-multicomputer" class="section-name selfRef">Q-Fly Multicomputer</a>
         </h3>
-<p id="section-21.2-1">An <em>indirect</em> interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in <a href="https://arxiv.org/abs/2412.09299">Sakuma et al.</a>.<a href="#section-21.2-1" class="pilcrow">¶</a></p>
+<p id="section-21.2-1">An <em>indirect</em> interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in Sakuma et al. <span>[<a href="#sakuma-q-fly" class="cite xref">sakuma-q-fly</a>]</span>.<a href="#section-21.2-1" class="pilcrow">¶</a></p>
 <p id="section-21.2-2">For DPFD topologies:<a href="#section-21.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-21.2-3.1">
@@ -2859,7 +2859,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <h3 id="name-repeater-fat-tree">
 <a href="#section-21.4" class="section-number selfRef">21.4. </a><a href="#name-repeater-fat-tree" class="section-name selfRef">Repeater Fat Tree</a>
         </h3>
-<p id="section-21.4-1">The repeater fat tree is described in <a href="https://arxiv.org/abs/2306.09216">Choi et al.</a>.<a href="#section-21.4-1" class="pilcrow">¶</a></p>
+<p id="section-21.4-1">The repeater fat tree is described in <span>[<a href="#choi-fat-tree" class="cite xref">choi-fat-tree</a>]</span>.<a href="#section-21.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="d-grid-multicomputer">
@@ -3113,6 +3113,22 @@ From IDQ:<a href="#section-24.1-3.10.1" class="pilcrow">¶</a></p>
 <a href="#section-28.2" class="section-number selfRef">28.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="aboy-governance">[aboy-governance]</dt>
+        <dd>
+<span class="refAuthor">Aboy, M.</span>, <span class="refAuthor">Gasser, U.</span>, <span class="refAuthor">Cohen, I.</span>, and <span class="refAuthor">M. Kop</span>, <span class="refTitle">"Quantum technology governance: A standards-first approach"</span>, <span class="refContent">American Association for the Advancement of Science (AAAS)</span>, <span class="seriesInfo">Science vol. 389, no. 6760, pp. 575-578</span>, <span class="seriesInfo">DOI 10.1126/science.adw0018</span>, <time datetime="2025-08" class="refDate">August 2025</time>, <span>&lt;<a href="https://doi.org/10.1126/science.adw0018">https://doi.org/10.1126/science.adw0018</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="awschalom-roadmap">[awschalom-roadmap]</dt>
+        <dd>
+<span class="refAuthor">Awschalom, D.</span>, <span class="refAuthor">Bernien, H.</span>, <span class="refAuthor">Brown, R.</span>, <span class="refAuthor">Clerk, A.</span>, <span class="refAuthor">Chitambar, E.</span>, <span class="refAuthor">Dibos, A.</span>, <span class="refAuthor">Dionne, J.</span>, <span class="refAuthor">Eriksson, M.</span>, <span class="refAuthor">Fefferman, B.</span>, <span class="refAuthor">Fuchs, G.</span>, <span class="refAuthor">Gambetta, J.</span>, <span class="refAuthor">Goldschmidt, E.</span>, <span class="refAuthor">Guha, S.</span>, <span class="refAuthor">Heremans, F.</span>, <span class="refAuthor">Irwin, K.</span>, <span class="refAuthor">Jayich, A.</span>, <span class="refAuthor">Jiang, L.</span>, <span class="refAuthor">Karsch, J.</span>, <span class="refAuthor">Kasevich, M.</span>, <span class="refAuthor">Kolkowitz, S.</span>, <span class="refAuthor">Kwiat, P.</span>, <span class="refAuthor">Ladd, T.</span>, <span class="refAuthor">Lowell, J.</span>, <span class="refAuthor">Maslov, D.</span>, <span class="refAuthor">Mason, N.</span>, <span class="refAuthor">Matsuura, A.</span>, <span class="refAuthor">McDermott, R.</span>, <span class="refAuthor">van Meter, R.</span>, <span class="refAuthor">Miller, A.</span>, <span class="refAuthor">Orcutt, J.</span>, <span class="refAuthor">Saffman, M.</span>, <span class="refAuthor">Schleier-Smith, M.</span>, <span class="refAuthor">Singh, M.</span>, <span class="refAuthor">Smith, P.</span>, <span class="refAuthor">Suchara, M.</span>, <span class="refAuthor">Toudeh-Fallah, F.</span>, <span class="refAuthor">Turlington, M.</span>, <span class="refAuthor">Woods, B.</span>, and <span class="refAuthor">T. Zhong</span>, <span class="refTitle">"A Roadmap for Quantum Interconnects"</span>, <span class="refContent">Office of Scientific and Technical Information (OSTI)</span>, <span class="seriesInfo">DOI 10.2172/1900586</span>, <time datetime="2022-07" class="refDate">July 2022</time>, <span>&lt;<a href="https://doi.org/10.2172/1900586">https://doi.org/10.2172/1900586</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="bennett-mixed">[bennett-mixed]</dt>
+        <dd>
+<span class="refAuthor">Bennett, C.</span>, <span class="refAuthor">DiVincenzo, D.</span>, <span class="refAuthor">Smolin, J.</span>, and <span class="refAuthor">W. Wootters</span>, <span class="refTitle">"Mixed-state entanglement and quantum error correction"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 54, no. 5, pp. 3824-3851</span>, <span class="seriesInfo">DOI 10.1103/physreva.54.3824</span>, <time datetime="1996-11" class="refDate">November 1996</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.54.3824">https://doi.org/10.1103/physreva.54.3824</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="choi-fat-tree">[choi-fat-tree]</dt>
+        <dd>
+<span class="refAuthor">Choi, H.</span>, <span class="refAuthor">Davis, M.</span>, <span class="refAuthor">Iñesta, Á.</span>, and <span class="refAuthor">D. Englund</span>, <span class="refTitle">"Scalable Quantum Networks: Congestion-Free Hierarchical Entanglement Routing with Error Correction"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2306.09216</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2306.09216">https://doi.org/10.48550/ARXIV.2306.09216</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="dally-towles">[dally-towles]</dt>
         <dd>
 <span class="refAuthor">Dally, W. J.</span> and <span class="refAuthor">B. P. Towles</span>, <span class="refTitle">"Principles and Practices of Interconnection Networks"</span>, <span class="seriesInfo">ISBN 978-0-08-049780-8</span>, <time datetime="2004" class="refDate">2004</time>. </dd>
@@ -3125,9 +3141,13 @@ From IDQ:<a href="#section-24.1-3.10.1" class="pilcrow">¶</a></p>
         <dd>
 <span class="refAuthor">Drost, R.</span>, <span class="refAuthor">Moore, T.</span>, and <span class="refAuthor">M. Brodsky</span>, <span class="refTitle">"Switching Networks for Pairwise-Entanglement Distribution"</span>, <span class="refContent">Optica Publishing Group</span>, <span class="seriesInfo">Journal of Optical Communications and Networking vol. 8, no. 5, pp. 331</span>, <span class="seriesInfo">DOI 10.1364/jocn.8.000331</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://doi.org/10.1364/jocn.8.000331">https://doi.org/10.1364/jocn.8.000331</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="hajudsek-qcomm">[hajudsek-qcomm]</dt>
+<dt id="hajdusek-qcomm">[hajdusek-qcomm]</dt>
         <dd>
 <span class="refAuthor">Hajdušek, M.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Quantum Communications"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2311.02367</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2311.02367">https://doi.org/10.48550/ARXIV.2311.02367</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="horsman-lattice-surgery">[horsman-lattice-surgery]</dt>
+        <dd>
+<span class="refAuthor">Horsman, D.</span>, <span class="refAuthor">Fowler, A.</span>, <span class="refAuthor">Devitt, S.</span>, and <span class="refAuthor">R. Meter</span>, <span class="refTitle">"Surface code quantum computing by lattice surgery"</span>, <span class="refContent">IOP Publishing</span>, <span class="seriesInfo">New Journal of Physics vol. 14, no. 12, pp. 123011</span>, <span class="seriesInfo">DOI 10.1088/1367-2630/14/12/123011</span>, <time datetime="2012-12" class="refDate">December 2012</time>, <span>&lt;<a href="https://doi.org/10.1088/1367-2630/14/12/123011">https://doi.org/10.1088/1367-2630/14/12/123011</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.draft-hajdusek-qirg-timing-physics">[I-D.draft-hajdusek-qirg-timing-physics]</dt>
         <dd>
@@ -3141,13 +3161,37 @@ From IDQ:<a href="#section-24.1-3.10.1" class="pilcrow">¶</a></p>
         <dd>
 <span class="refAuthor">Koyama, M.</span>, <span class="refAuthor">Yun, C.</span>, <span class="refAuthor">Taherkhani, A.</span>, <span class="refAuthor">Benchasattabuse, N.</span>, <span class="refAuthor">Sane, B.</span>, <span class="refAuthor">Hajdušek, M.</span>, <span class="refAuthor">Nagayama, S.</span>, and <span class="refAuthor">R. Meter</span>, <span class="refTitle">"Optimal Switching Networks for Paired-Egress Bell State Analyzer Pools"</span>, <span class="refContent">IEEE</span>, <span class="seriesInfo">2024 IEEE International Conference on Quantum Computing and Engineering (QCE) pp. 1897-1907</span>, <span class="seriesInfo">DOI 10.1109/qce60285.2024.00219</span>, <time datetime="2024-09" class="refDate">September 2024</time>, <span>&lt;<a href="https://doi.org/10.1109/qce60285.2024.00219">https://doi.org/10.1109/qce60285.2024.00219</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="leone-remote">[leone-remote]</dt>
+        <dd>
+<span class="refAuthor">Leone, H.</span>, <span class="refAuthor">Le, T.</span>, <span class="refAuthor">Srikara, S.</span>, and <span class="refAuthor">S. Devitt</span>, <span class="refTitle">"Resource overheads and attainable rates for trapped-ion lattice surgery"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2406.18764</span>, <time datetime="2024" class="refDate">2024</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2406.18764">https://doi.org/10.48550/ARXIV.2406.18764</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="litinski-gosc">[litinski-gosc]</dt>
+        <dd>
+<span class="refAuthor">Litinski, D.</span>, <span class="refTitle">"A Game of Surface Codes: Large-Scale Quantum Computing with Lattice Surgery"</span>, <span class="refContent">Verein zur Forderung des Open Access Publizierens in den Quantenwissenschaften</span>, <span class="seriesInfo">Quantum vol. 3, pp. 128</span>, <span class="seriesInfo">DOI 10.22331/q-2019-03-05-128</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://doi.org/10.22331/q-2019-03-05-128">https://doi.org/10.22331/q-2019-03-05-128</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="muralidharan-generations">[muralidharan-generations]</dt>
+        <dd>
+<span class="refAuthor">Muralidharan, S.</span>, <span class="refAuthor">Li, L.</span>, <span class="refAuthor">Kim, J.</span>, <span class="refAuthor">Lütkenhaus, N.</span>, <span class="refAuthor">Lukin, M.</span>, and <span class="refAuthor">L. Jiang</span>, <span class="refTitle">"Optimal architectures for long distance quantum communication"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">Scientific Reports vol. 6, no. 1</span>, <span class="seriesInfo">DOI 10.1038/srep20463</span>, <time datetime="2016-02" class="refDate">February 2016</time>, <span>&lt;<a href="https://doi.org/10.1038/srep20463">https://doi.org/10.1038/srep20463</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="nist-singles">[nist-singles]</dt>
         <dd>
 <span class="refAuthor">Bienfang, J.</span>, <span class="refAuthor">Gerrits, T.</span>, <span class="refAuthor">Kuo, P.</span>, <span class="refAuthor">Migdall, A.</span>, <span class="refAuthor">Polyakov, S.</span>, and <span class="refAuthor">O. Slattery</span>, <span class="refTitle">"Single-photon Sources and Detectors Dictionary"</span>, <span class="refContent">National Institute of Standards and Technology</span>, <span class="seriesInfo">DOI 10.6028/nist.ir.8486r1</span>, <time datetime="2025-08" class="refDate">August 2025</time>, <span>&lt;<a href="https://doi.org/10.6028/nist.ir.8486r1">https://doi.org/10.6028/nist.ir.8486r1</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="ramette-remote">[ramette-remote]</dt>
+        <dd>
+<span class="refAuthor">Ramette, J.</span>, <span class="refAuthor">Sinclair, J.</span>, <span class="refAuthor">Breuckmann, N.</span>, and <span class="refAuthor">V. Vuletić</span>, <span class="refTitle">"Fault-tolerant connection of error-corrected qubits with noisy links"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">npj Quantum Information vol. 10, no. 1</span>, <span class="seriesInfo">DOI 10.1038/s41534-024-00855-4</span>, <time datetime="2024-06" class="refDate">June 2024</time>, <span>&lt;<a href="https://doi.org/10.1038/s41534-024-00855-4">https://doi.org/10.1038/s41534-024-00855-4</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="res-mgmt-het">[res-mgmt-het]</dt>
         <dd>
 <span class="refAuthor">Benchasattabuse, N.</span>, <span class="refTitle">"Resource Management in Heterogeneous Quantum Repeater Networks"</span>, <span class="seriesInfo">Ph.D. Dissertation, Keio University</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf">https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1122">[RFC1122]</dt>
+        <dd>
+<span class="refAuthor">Braden, R., Ed.</span>, <span class="refTitle">"Requirements for Internet Hosts - Communication Layers"</span>, <span class="seriesInfo">STD 3</span>, <span class="seriesInfo">RFC 1122</span>, <span class="seriesInfo">DOI 10.17487/RFC1122</span>, <time datetime="1989-10" class="refDate">October 1989</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc1122">https://www.rfc-editor.org/rfc/rfc1122</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1123">[RFC1123]</dt>
+        <dd>
+<span class="refAuthor">Braden, R., Ed.</span>, <span class="refTitle">"Requirements for Internet Hosts - Application and Support"</span>, <span class="seriesInfo">STD 3</span>, <span class="seriesInfo">RFC 1123</span>, <span class="seriesInfo">DOI 10.17487/RFC1123</span>, <time datetime="1989-10" class="refDate">October 1989</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc1123">https://www.rfc-editor.org/rfc/rfc1123</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9340">[RFC9340]</dt>
         <dd>
@@ -3156,6 +3200,22 @@ From IDQ:<a href="#section-24.1-3.10.1" class="pilcrow">¶</a></p>
 <dt id="RFC9583">[RFC9583]</dt>
         <dd>
 <span class="refAuthor">Wang, C.</span>, <span class="refAuthor">Rahman, A.</span>, <span class="refAuthor">Li, R.</span>, <span class="refAuthor">Aelmans, M.</span>, and <span class="refAuthor">K. Chakraborty</span>, <span class="refTitle">"Application Scenarios for the Quantum Internet"</span>, <span class="seriesInfo">RFC 9583</span>, <span class="seriesInfo">DOI 10.17487/RFC9583</span>, <time datetime="2024-06" class="refDate">June 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9583">https://www.rfc-editor.org/rfc/rfc9583</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="sakuma-q-fly">[sakuma-q-fly]</dt>
+        <dd>
+<span class="refAuthor">Sakuma, D.</span>, <span class="refAuthor">Tsuno, T.</span>, <span class="refAuthor">Shimizu, H.</span>, <span class="refAuthor">Kurosawa, Y.</span>, <span class="refAuthor">Friedrich, M.</span>, <span class="refAuthor">Teramoto, K.</span>, <span class="refAuthor">Taherkhani, A.</span>, <span class="refAuthor">Todd, A.</span>, <span class="refAuthor">Ueno, Y.</span>, <span class="refAuthor">Hajdušek, M.</span>, <span class="refAuthor">Ikuta, R.</span>, <span class="refAuthor">Van Meter, R.</span>, <span class="refAuthor">Sasaki, T.</span>, and <span class="refAuthor">S. Nagayama</span>, <span class="refTitle">"Q-Fly: An Optical Interconnect for Modular Quantum Computers"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2412.09299</span>, <time datetime="2024" class="refDate">2024</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2412.09299">https://doi.org/10.48550/ARXIV.2412.09299</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="sane-jobs">[sane-jobs]</dt>
+        <dd>
+<span class="refAuthor">Sane, B.</span>, <span class="refAuthor">Hajdušek, M.</span>, and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Optimizing Resource Allocation in a Distributed Quantum Computing Cloud: A Game-Theoretic Approach"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2504.18298</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2504.18298">https://doi.org/10.48550/ARXIV.2504.18298</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="schoute-shortcuts">[schoute-shortcuts]</dt>
+        <dd>
+<span class="refAuthor">Schoute, E.</span>, <span class="refAuthor">Mancinska, L.</span>, <span class="refAuthor">Islam, T.</span>, <span class="refAuthor">Kerenidis, I.</span>, and <span class="refAuthor">S. Wehner</span>, <span class="refTitle">"Shortcuts to quantum network routing"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.1610.05238</span>, <time datetime="2016" class="refDate">2016</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.1610.05238">https://doi.org/10.48550/ARXIV.1610.05238</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="sinclair-ft-interconnect">[sinclair-ft-interconnect]</dt>
+        <dd>
+<span class="refAuthor">Sinclair, J.</span>, <span class="refAuthor">Ramette, J.</span>, <span class="refAuthor">Grinkemeyer, B.</span>, <span class="refAuthor">Bluvstein, D.</span>, <span class="refAuthor">Lukin, M.</span>, and <span class="refAuthor">V. Vuletić</span>, <span class="refTitle">"Fault-tolerant optical interconnects for neutral-atom arrays"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2408.08955</span>, <time datetime="2024" class="refDate">2024</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2408.08955">https://doi.org/10.48550/ARXIV.2408.08955</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="van-meter-opt-timing">[van-meter-opt-timing]</dt>
         <dd>

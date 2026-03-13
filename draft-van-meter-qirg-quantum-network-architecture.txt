@@ -16,7 +16,10 @@ Abstract
 
    This quantum network architecture defines a set of planes providing
    different views of the network, supporting different responsibilities
-   and modes of operation; a set of device, node and link types;
+   and modes of operation; a set of device, node and link types; some
+   network topologies, deployment scenarios and their relationship to
+   applications; and key design decisions as a result of corresponding
+   requirements.
 
 About This Document
 
@@ -179,7 +182,7 @@ Table of Contents
 
    For a description of the key concepts in quantum networks and
    additional references, see [RFC9340] and the book _Quantum
-   Communications (doi:10.48550/arXiv.2311.02367)_.
+   Communications_ [hajdusek-qcomm].
 
    For more background and discussion of the design choices in this
    architecture, see the Ph.D. dissertation of Naphan Benchasattabuse
@@ -225,9 +228,8 @@ Table of Contents
    conforms to their terminology.  However, as this document describes a
    specific quantum network architecture, it does not attempt to conform
    to specific design decisions made in other contexts.  See an August
-   2025 Science Policy Forum (https://www.science.org/doi/full/10.1126/
-   science.adw0018) for additional discussion of some standardization
-   efforts and their value.
+   2025 Science Policy Forum [aboy-governance] for additional discussion
+   of some standardization efforts and their value.
 
    Some of these are listed here for reference:
 
@@ -261,9 +263,7 @@ Table of Contents
 
    *  National Institute of Standards and Technology (NIST)
 
-      -  Single-Photon Sources and Detectors Dictionary
-         (https://www.nist.gov/publications/single-photon-sources-and-
-         detectors-dictionary-0)
+      -  Single-Photon Sources and Detectors Dictionary [nist-singles]
 
    *  Quantum Internet Research Group (QIRG)
       (https://datatracker.ietf.org/group/qirg/about/) (part of IRTF)
@@ -330,10 +330,9 @@ Table of Contents
 
    *  [RFC9583]
 
-   *  Van Meter, _Quantum Networking_
+   *  Van Meter, _Quantum Networking_ [van-meter-q-net-book]
 
-   *  Hajdusek and Van Meter, _Quantum Communications
-      (https://arxiv.org/abs/2311.02367)_
+   *  Hajdusek and Van Meter, _Quantum Communications_ [hajdusek-qcomm]
 
 6.  Terminology
 
@@ -474,24 +473,23 @@ Table of Contents
 
 7.2.  Entangled States Consumption Patterns
 
-   *Adapted from unpublished text in https://arxiv.org/abs/1701.04586
-   (https://arxiv.org/abs/1701.04586).*
+   (Adapted and extended from unpublished text in
+   [van-meter-opt-timing].)
 
-   Distinct from the classification of quantum repeater generations
-   (https://doi.org/10.1038/srep20463) by Muralidharan et al., one can
-   categorize distributed quantum systems by how applications interface
-   with the network; specifically, the timing at which network interface
-   qubits are freed after attempting entangled state generation.
+   Distinct from the classification of quantum repeater generations by
+   Muralidharan et al. [muralidharan-generations], one can categorize
+   distributed quantum systems by how applications interface with the
+   network; specifically, the timing at which network interface qubits
+   are freed after attempting entangled state generation.
 
    In the early days of quantum information research, Bennett et al.
-   recognized (https://journals.aps.org/pra/abstract/10.1103/
-   PhysRevA.54.3824) that the component qubits of an entangled state may
-   be held at different times in different locations, termed _time-
-   separated Bell pairs_. Based on this principle, we can describe the
-   timeline of information availability between two nodes.  This model
-   assumes entangled states are requested dynamically during execution,
-   rather than pre-caching entangled states (http://arxiv.org/
-   abs/1610.05238) for immediate consumption.
+   recognized [bennett-mixed] that the component qubits of an entangled
+   state may be held at different times in different locations, termed
+   _time-separated Bell pairs_. Based on this principle, we can describe
+   the timeline of information availability between two nodes.  This
+   model assumes entangled states are requested dynamically during
+   execution, rather than pre-caching entangled
+   states　[schoute-shortcuts] for immediate consumption.
 
 7.2.1.  The Entanglement Information Timeline
 
@@ -515,13 +513,13 @@ Table of Contents
 7.2.2.  Classification of Consumption Patterns
 
    Based on the timeline above, we classify Bell pair consumption into
-   three classes.  These classes are defined by whether the application
-   must *block execution* while waiting for information at the
-   _Heralded_ or _Correct_ stages.  Note that the term "blocking" here
-   refers to the blocking versus non-blocking execution models, similar
-   to kernel-level I/O blocking or the event-driven programming
-   paradigm, and is distinct from the concept of blocking in network
-   switches.
+   three classes [van-meter-opt-timing].  These classes are defined by
+   whether the application must *block execution* while waiting for
+   information at the _Heralded_ or _Correct_ stages.  Note that the
+   term "blocking" here refers to the blocking versus non-blocking
+   execution models, similar to kernel-level I/O blocking or the event-
+   driven programming paradigm, and is distinct from the concept of
+   blocking in network switches.
 
    +================+============+========+===========================+
    | Class          | Wait for   | Wait   | Application Behavior      |
@@ -594,10 +592,11 @@ Table of Contents
 
    *  *Fault-Tolerant Operations:* Certain remote quantum error
       correction schemes, such as remote lattice surgery
-      (https://doi.org/10.1088/1367-2630/14/12/123011) of the surface
-      code.  If the probability of creating a link is high enough,
-      unsuccessful attempts can be treated as depolarizing errors, which
-      the logical code can tolerate without stalling the pipeline.
+      [horsman-lattice-surgery], [ramette-remote], [leone-remote],
+      [sinclair-ft-interconnect] of the surface code.  If the
+      probability of creating a link is high enough, unsuccessful
+      attempts can be treated as depolarizing errors, which the logical
+      code can tolerate without stalling the pipeline.
 
 7.2.5.  Reactive Correction (C Class) Applications
 
@@ -615,8 +614,8 @@ Table of Contents
    by default.
 
    *Examples:* Clifford circuit execution, distributed Pauli-based
-   computation with time-optimal scheme (https://doi.org/10.22331/
-   q-2019-03-05-128), and state teleportation.
+   computation with time-optimal scheme [litinski-gosc], and state
+   teleportation.
 
 7.2.6.  Deterministic (T Class) Applications
 
@@ -675,7 +674,7 @@ Table of Contents
    Hypercubes, meshes and toruses are typically direct architectures.
    An _indirect_ architecture interposes one or more switches between
    computational nodes.  Fat trees, Clos and Benes networks, and the
-   various -fly topologies are generally indirect.
+   various -fly topologies are generally indirect [dally-towles].
 
    The distinction is somewhat artificial in that direct architectures
    sometimes incorporate a small switch inside the node, in which case
@@ -708,12 +707,11 @@ Table of Contents
 9.  A Sketch of the System Model
 
    As noted in the 2022 roadmap for quantum interconnects
-   (https://www.osti.gov/biblio/1900586), entangled quantum network
-   technology can be deployed in a variety of scenarios with different
-   requirements and assumptions.  A full description of each of these is
-   delegated to other documents, but a brief description here will help
-   to orient discussions of design points in order to justify certain
-   decisions.
+   [awschalom-roadmap], entangled quantum network technology can be
+   deployed in a variety of scenarios with different requirements and
+   assumptions.  A full description of each of these is delegated to
+   other documents, but a brief description here will help to orient
+   discussions of design points in order to justify certain decisions.
 
 9.1.  Multicomputer
 
@@ -726,11 +724,11 @@ Table of Contents
    involve computational nodes, optical switches, Bell state analyzers,
    and possibly entangled photon pair sources (all defined below).
    Quantum repeaters with memory are less likely to be deployed in
-   multicomputers, though one such architecture (https://arxiv.org/
-   abs/2306.09216) has been proposed.  Because the current technology
-   roadmaps favor this type of deployment, where design choices are in
-   conflict or unclear, multicomputer designs are given priority over
-   wide-area networks in this set of specifications.
+   multicomputers, though one such architecture [choi-fat-tree] has been
+   proposed.  Because the current technology roadmaps favor this type of
+   deployment, where design choices are in conflict or unclear,
+   multicomputer designs are given priority over wide-area networks in
+   this set of specifications.
 
    The execution model is expected to be much like the classical
    supercomputing Message Passing Interface (MPI)
@@ -842,8 +840,8 @@ Table of Contents
       beyond the scope of this specification.
 
    *  The resources in a multicomputer may be partitioned to run
-      multiple jobs (https://arxiv.org/abs/2504.18298), but this is
-      beyond the scope of the current specifications.
+      multiple jobs [sane-jobs], but this is beyond the scope of the
+      current specifications.
 
    The realities of quantum hardware result in a few important
    differences from classical multicomputers:
@@ -891,9 +889,8 @@ Table of Contents
       scale quantum (FASQ).
 
    *  Quantum error correction is above the level of these
-      specifications, but may involve distributed lattice surgery (Leone
-      et al. (https://arxiv.org/abs/2406.18764) or Sinclair et al.
-      (https://arxiv.org/abs/2408.08955)).
+      specifications, but may involve distributed lattice surgery
+      [ramette-remote], [leone-remote], or [sinclair-ft-interconnect].
 
 9.2.  Data Center Network (QDCN)
 
@@ -945,7 +942,7 @@ Table of Contents
    are beyond the scope of the current set of specifications.
 
    Qubits (also defined in RFC 9340) must conform to a sufficient subset
-   of the DiVincenzo criteria.
+   of the DiVincenzo criteria [divincenzo-criteria].
 
 10.2.  Photons, Wave Packets and Optical Modes
 
@@ -1050,7 +1047,7 @@ Table of Contents
 
    (Substantial portions of this section are adapted from Naphan
    Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier
-   papers by Van Meter et al. and others.)
+   papers by Van Meter et al. [van-meter-qi-arch] and others.)
 
    The design of a quantum network must begin with a clear definition of
    its fundamental services --- what quantum states or capabilities the
@@ -1222,10 +1219,9 @@ Table of Contents
 
    The qNode specification provides additional details on the common
    roles and responsibilities of all quantum network nodes, and serves
-   as the equivalent of the Internet hosts requirements RFCs 1122
-   (https://www.rfc-editor.org/info/rfc1122)and 1123 (https://www.rfc-
-   editor.org/info/rfc1123).  Each node type is further defined in a
-   detailed specification in a separate document.
+   as the equivalent of the Internet hosts requirements RFCs [RFC1122],
+   [RFC1123].  Each node type is further defined in a detailed
+   specification in a separate document.
 
 15.1.  End Nodes
 
@@ -1449,7 +1445,7 @@ Table of Contents
    _detector-centric architecture_.
 
    For pseudocode for switching (routing) certain types of devices, see
-   Koyama et al.
+   Koyama et al. [koyama-24].
 
 16.5.  Multidrop or Bus
 
@@ -1472,10 +1468,11 @@ Table of Contents
    the disposition of specific, named quantum states.
 
    Connections may be created using either a fully-distributed protocol
-   or a centralized mechanism.  In either case, qNodes involved in the
-   connection receive RuleSets that are created by a single controller
-   to coordinate local operations to build the end-to-end entangled
-   states requested by an application.
+   [I-D.draft-van-meter-qirg-quantum-connection-setup] or a centralized
+   mechanism.  In either case, qNodes involved in the connection receive
+   RuleSets that are created by a single controller to coordinate local
+   operations to build the end-to-end entangled states requested by an
+   application.
 
    Connections are unaware of the shared use of resources and of other
    connections.  Multiplexing is the responsibility of a separate
@@ -1623,7 +1620,7 @@ Table of Contents
 
    An _indirect_ interconnect.  A multi-group, BSA-centric architecture.
    All nodes are part of the same PSD.  The Q-Fly architecture is
-   described in Sakuma et al. (https://arxiv.org/abs/2412.09299).
+   described in Sakuma et al. [sakuma-q-fly].
 
    For DPFD topologies:
 
@@ -1683,8 +1680,7 @@ Table of Contents
 
 21.4.  Repeater Fat Tree
 
-   The repeater fat tree is described in Choi et al. (https://arxiv.org/
-   abs/2306.09216).
+   The repeater fat tree is described in [choi-fat-tree].
 
 21.5.  2-D Grid Multicomputer
 
@@ -1838,6 +1834,43 @@ Table of Contents
 
 28.2.  Informative References
 
+   [aboy-governance]
+              Aboy, M., Gasser, U., Cohen, I., and M. Kop, "Quantum
+              technology governance: A standards-first approach",
+              American Association for the Advancement of Science
+              (AAAS), Science vol. 389, no. 6760, pp. 575-578,
+              DOI 10.1126/science.adw0018, August 2025,
+              <https://doi.org/10.1126/science.adw0018>.
+
+   [awschalom-roadmap]
+              , Awschalom, D., Bernien, H., Brown, R., Clerk, A.,
+              Chitambar, E., Dibos, A., Dionne, J., Eriksson, M.,
+              Fefferman, B., Fuchs, G., Gambetta, J., Goldschmidt, E.,
+              Guha, S., Heremans, F., Irwin, K., Jayich, A., Jiang, L.,
+              Karsch, J., Kasevich, M., Kolkowitz, S., Kwiat, P., Ladd,
+              T., Lowell, J., Maslov, D., Mason, N., Matsuura, A.,
+              McDermott, R., van Meter, R., Miller, A., Orcutt, J.,
+              Saffman, M., Schleier-Smith, M., Singh, M., Smith, P.,
+              Suchara, M., Toudeh-Fallah, F., Turlington, M., Woods, B.,
+              and T. Zhong, "A Roadmap for Quantum Interconnects",
+              Office of Scientific and Technical Information (OSTI),
+              DOI 10.2172/1900586, July 2022,
+              <https://doi.org/10.2172/1900586>.
+
+   [bennett-mixed]
+              Bennett, C., DiVincenzo, D., Smolin, J., and W. Wootters,
+              "Mixed-state entanglement and quantum error correction",
+              American Physical Society (APS), Physical Review A vol.
+              54, no. 5, pp. 3824-3851, DOI 10.1103/physreva.54.3824,
+              November 1996, <https://doi.org/10.1103/physreva.54.3824>.
+
+   [choi-fat-tree]
+              Choi, H., Davis, M., Iñesta, Á., and D. Englund, "Scalable
+              Quantum Networks: Congestion-Free Hierarchical
+              Entanglement Routing with Error Correction", arXiv,
+              DOI 10.48550/ARXIV.2306.09216, 2023,
+              <https://doi.org/10.48550/ARXIV.2306.09216>.
+
    [dally-towles]
               Dally, W. J. and B. P. Towles, "Principles and Practices
               of Interconnection Networks", ISBN 978-0-08-049780-8,
@@ -1856,10 +1889,17 @@ Table of Contents
               DOI 10.1364/jocn.8.000331, April 2016,
               <https://doi.org/10.1364/jocn.8.000331>.
 
-   [hajudsek-qcomm]
+   [hajdusek-qcomm]
               Hajdušek, M. and R. Van Meter, "Quantum Communications",
               arXiv, DOI 10.48550/ARXIV.2311.02367, 2023,
               <https://doi.org/10.48550/ARXIV.2311.02367>.
+
+   [horsman-lattice-surgery]
+              Horsman, D., Fowler, A., Devitt, S., and R. Meter,
+              "Surface code quantum computing by lattice surgery", IOP
+              Publishing, New Journal of Physics vol. 14, no. 12, pp.
+              123011, DOI 10.1088/1367-2630/14/12/123011, December 2012,
+              <https://doi.org/10.1088/1367-2630/14/12/123011>.
 
    [I-D.draft-hajdusek-qirg-timing-physics]
               Hajdusek, M. and R. Van Meter, "Timing Regimes in Quantum
@@ -1885,6 +1925,28 @@ Table of Contents
               DOI 10.1109/qce60285.2024.00219, September 2024,
               <https://doi.org/10.1109/qce60285.2024.00219>.
 
+   [leone-remote]
+              Leone, H., Le, T., Srikara, S., and S. Devitt, "Resource
+              overheads and attainable rates for trapped-ion lattice
+              surgery", arXiv, DOI 10.48550/ARXIV.2406.18764, 2024,
+              <https://doi.org/10.48550/ARXIV.2406.18764>.
+
+   [litinski-gosc]
+              Litinski, D., "A Game of Surface Codes: Large-Scale
+              Quantum Computing with Lattice Surgery", Verein zur
+              Forderung des Open Access Publizierens in den
+              Quantenwissenschaften, Quantum vol. 3, pp. 128,
+              DOI 10.22331/q-2019-03-05-128, March 2019,
+              <https://doi.org/10.22331/q-2019-03-05-128>.
+
+   [muralidharan-generations]
+              Muralidharan, S., Li, L., Kim, J., Lütkenhaus, N., Lukin,
+              M., and L. Jiang, "Optimal architectures for long distance
+              quantum communication", Springer Science and Business
+              Media LLC, Scientific Reports vol. 6, no. 1,
+              DOI 10.1038/srep20463, February 2016,
+              <https://doi.org/10.1038/srep20463>.
+
    [nist-singles]
               Bienfang, J., Gerrits, T., Kuo, P., Migdall, A., Polyakov,
               S., and O. Slattery, "Single-photon Sources and Detectors
@@ -1892,12 +1954,30 @@ Table of Contents
               Technology, DOI 10.6028/nist.ir.8486r1, August 2025,
               <https://doi.org/10.6028/nist.ir.8486r1>.
 
+   [ramette-remote]
+              Ramette, J., Sinclair, J., Breuckmann, N., and V. Vuletić,
+              "Fault-tolerant connection of error-corrected qubits with
+              noisy links", Springer Science and Business Media LLC, npj
+              Quantum Information vol. 10, no. 1,
+              DOI 10.1038/s41534-024-00855-4, June 2024,
+              <https://doi.org/10.1038/s41534-024-00855-4>.
+
    [res-mgmt-het]
               Benchasattabuse, N., "Resource Management in Heterogeneous
               Quantum Repeater Networks", Ph.D. Dissertation, Keio
               University, 2025,
               <https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-
               local-compiled.pdf>.
+
+   [RFC1122]  Braden, R., Ed., "Requirements for Internet Hosts -
+              Communication Layers", STD 3, RFC 1122,
+              DOI 10.17487/RFC1122, October 1989,
+              <https://www.rfc-editor.org/rfc/rfc1122>.
+
+   [RFC1123]  Braden, R., Ed., "Requirements for Internet Hosts -
+              Application and Support", STD 3, RFC 1123,
+              DOI 10.17487/RFC1123, October 1989,
+              <https://www.rfc-editor.org/rfc/rfc1123>.
 
    [RFC9340]  Kozlowski, W., Wehner, S., Van Meter, R., Rijsman, B.,
               Cacciapuoti, A. S., Caleffi, M., and S. Nagayama,
@@ -1909,6 +1989,35 @@ Table of Contents
               Chakraborty, "Application Scenarios for the Quantum
               Internet", RFC 9583, DOI 10.17487/RFC9583, June 2024,
               <https://www.rfc-editor.org/rfc/rfc9583>.
+
+   [sakuma-q-fly]
+              Sakuma, D., Tsuno, T., Shimizu, H., Kurosawa, Y.,
+              Friedrich, M., Teramoto, K., Taherkhani, A., Todd, A.,
+              Ueno, Y., Hajdušek, M., Ikuta, R., Van Meter, R., Sasaki,
+              T., and S. Nagayama, "Q-Fly: An Optical Interconnect for
+              Modular Quantum Computers", arXiv,
+              DOI 10.48550/ARXIV.2412.09299, 2024,
+              <https://doi.org/10.48550/ARXIV.2412.09299>.
+
+   [sane-jobs]
+              Sane, B., Hajdušek, M., and R. Van Meter, "Optimizing
+              Resource Allocation in a Distributed Quantum Computing
+              Cloud: A Game-Theoretic Approach", arXiv,
+              DOI 10.48550/ARXIV.2504.18298, 2025,
+              <https://doi.org/10.48550/ARXIV.2504.18298>.
+
+   [schoute-shortcuts]
+              Schoute, E., Mancinska, L., Islam, T., Kerenidis, I., and
+              S. Wehner, "Shortcuts to quantum network routing", arXiv,
+              DOI 10.48550/ARXIV.1610.05238, 2016,
+              <https://doi.org/10.48550/ARXIV.1610.05238>.
+
+   [sinclair-ft-interconnect]
+              Sinclair, J., Ramette, J., Grinkemeyer, B., Bluvstein, D.,
+              Lukin, M., and V. Vuletić, "Fault-tolerant optical
+              interconnects for neutral-atom arrays", arXiv,
+              DOI 10.48550/ARXIV.2408.08955, 2024,
+              <https://doi.org/10.48550/ARXIV.2408.08955>.
 
    [van-meter-opt-timing]
               Van Meter, R., Satoh, T., Nagayama, S., Matsuo, T., and S.
