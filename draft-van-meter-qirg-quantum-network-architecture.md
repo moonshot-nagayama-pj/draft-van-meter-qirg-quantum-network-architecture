@@ -230,7 +230,7 @@ Readers needing additional background are referred to:
 
 * {{RFC9340}}
 * {{RFC9583}}
-* Van Meter, _Quantum Networking_
+* Van Meter, _Quantum Networking_ {{van-meter-q-net-book}}
 * Hajdusek and Van Meter, _Quantum Communications_ {{hajdusek-qcomm}}
 
 # Terminology
@@ -297,7 +297,7 @@ The node now knows the exact entangled state created and can apply corrections (
 
 ### Classification of Consumption Patterns
 
-Based on the timeline above, we classify Bell pair consumption into three classes.
+Based on the timeline above, we classify Bell pair consumption into three classes {{van-meter-opt-timing}}.
 These classes are defined by whether the application must **block execution** while waiting for information at the _Heralded_ or _Correct_ stages.
 Note that the term "blocking" here refers to the blocking versus non-blocking execution models, similar to kernel-level I/O blocking or the event-driven programming paradigm, and is distinct from the concept of blocking in network switches.
 
@@ -600,7 +600,7 @@ This network architecture is entirely classically controlled.  Its task is to ge
 
 # Communication Service
 
-(Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. and others.)
+(Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. {{van-meter-qi-arch}} and others.)
 
 The design of a quantum network must begin with a clear definition of its fundamental services --- what quantum states or capabilities the network is expected to provide to end users.
 These decisions determine the complexity of the protocols at the network layer and the applications that run above it.
@@ -810,7 +810,7 @@ A multidrop link, or a bus, is a shared physical channel to which more than two 
 
 No task involving quantum communication ever involves a single qubit or single entangled state. The connection provides the framework for managing the creation of an order set of entangled states to be consumed by applications. A connection is _stateful_ at the end nodes. Nodes involved in the creation of end-to-end entanglement for those end nodes will be _connection aware_, meaning that they can identify resources and messages and carry out communication tasks necessary for a specific connection, but may not have substantial amounts of state that is dynamically updated on a per-action basis; any actions for nodes in this class must be idempotent or known to occur only once. Some or all nodes may be _fully stateful_, tracking the disposition of specific, named quantum states.
 
-Connections may be created using either a fully-distributed protocol or a centralized mechanism.  In either case, qNodes involved in the connection receive RuleSets that are created by a single controller to coordinate local operations to build the end-to-end entangled states requested by an application.
+Connections may be created using either a fully-distributed protocol {{I-D.draft-van-meter-qirg-quantum-connection-setup}} or a centralized mechanism.  In either case, qNodes involved in the connection receive RuleSets that are created by a single controller to coordinate local operations to build the end-to-end entangled states requested by an application.
 
 Connections are unaware of the shared use of resources and of other connections. Multiplexing is the responsibility of a separate subsystem, though connection setup should be done with awareness of the availability of unavailability of resources at involved nodes.
 
