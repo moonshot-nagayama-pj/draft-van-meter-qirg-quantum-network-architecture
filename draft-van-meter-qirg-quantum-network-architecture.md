@@ -117,6 +117,8 @@ informative:
     format:
       PDF: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
   nist-singles: DOI.10.6028/NIST.IR.8486r1
+  bennett-mixed: DOI.10.1103/PhysRevA.54.3824
+  choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   dally-towles:
       title: Principles and Practices of Interconnection Networks
       author:
@@ -131,8 +133,12 @@ informative:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
   drost: DOI.10.1364/JOCN.8.000331
+  horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
+  muralidharan-generations: DOI.10.1038/srep20463
+  sane-jobs: DOI.10.48550/arXiv.2504.18298
+  schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
@@ -153,7 +159,7 @@ This document introduces the key architectural decisions, classical and quantum 
 We define the verb _to architect_ as: within a set of environmental constraints, using a set of building blocks, design a system that satisfies a need, elegantly and economically.
 We use the noun _architecture_ as: the set of blocks or subsystems, their roles and their interfaces and their overall arrangement, that defines the system. This architecture defines the overall structure, and is connected to a specific implementation as an example.
 
-For a description of the key concepts in quantum networks and additional references, see {{RFC9340}} and the book _[Quantum Communications](doi:10.48550/arXiv.2311.02367)_.
+For a description of the key concepts in quantum networks and additional references, see {{RFC9340}} and the book _Quantum Communications_ {{hajdusek-qcomm}}.
 
 For more background and discussion of the design choices in this architecture, see the Ph.D. dissertation of Naphan Benchasattabuse [res-mgmt-het].
 
@@ -276,13 +282,13 @@ For a discussion of some inherently distributed applications of quantum networks
 
 ## Entangled States Consumption Patterns
 
-**Adapted from unpublished text in [https://arxiv.org/abs/1701.04586](https://arxiv.org/abs/1701.04586).**
+(Adapted and extended from unpublished text in {{van-meter-opt-timing}}.)
 
-Distinct from the classification of [quantum repeater generations](https://doi.org/10.1038/srep20463) by Muralidharan et al., one can categorize distributed quantum systems by how applications interface with the network; specifically, the timing at which network interface qubits are freed after attempting entangled state generation.
+Distinct from the classification of quantum repeater generations by Muralidharan et al. {{muralidharan-generations}}, one can categorize distributed quantum systems by how applications interface with the network; specifically, the timing at which network interface qubits are freed after attempting entangled state generation.
 
-In the early days of quantum information research, Bennett et al. [recognized](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.54.3824) that the component qubits of an entangled state may be held at different times in different locations, termed _time-separated Bell pairs_.
+In the early days of quantum information research, Bennett et al. recognized {{bennett-mixed}} that the component qubits of an entangled state may be held at different times in different locations, termed _time-separated Bell pairs_.
 Based on this principle, we can describe the timeline of information availability between two nodes.
-This model assumes entangled states are requested dynamically during execution, rather than [pre-caching entangled states](http://arxiv.org/abs/1610.05238) for immediate consumption.
+This model assumes entangled states are requested dynamically during execution, rather than pre-caching entangled states　{{schoute-shortcuts}} for immediate consumption.
 
 ### The Entanglement Information Timeline
 
@@ -333,7 +339,7 @@ If the entanglement attempt failed (information received later), the data is dis
 * **Classical Correlation:** Applications like Quantum Key Distribution (QKD) protocols (e.g., E91) or link fidelity estimation.
 The application filters out failed attempts during classical post-processing.
 
-* **Fault-Tolerant Operations:** Certain remote quantum error correction schemes, such as remote [lattice surgery](https://doi.org/10.1088/1367-2630/14/12/123011) of the surface code.
+* **Fault-Tolerant Operations:** Certain remote quantum error correction schemes, such as remote lattice surgery {{horsman-lattice-surgery}} of the surface code.
 If the probability of creating a link is high enough, unsuccessful attempts can be treated as depolarizing errors, which the logical code can tolerate without stalling the pipeline.
 
 ### Reactive Correction (C Class) Applications
@@ -401,7 +407,7 @@ As noted in the 2022 [roadmap for quantum interconnects](https://www.osti.gov/bi
 
 ## Multicomputer
 
-The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)).  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though [one such architecture](https://arxiv.org/abs/2306.09216) has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
+The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)).  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
 
 The execution model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface).
 
@@ -427,7 +433,7 @@ Many aspects of compilation and job execution are beyond the scope of this set o
 * In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)
 * Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.
 * Compilation and execution may achieve application goals via teledata, telegate or measurement of multiqubit Pauli operators transparently; the network is unaware of this distinction. Management of application-level variables and their movement from node to node, if any, is the responsibility of the compiler and is beyond the scope of this specification.
-* The resources in a multicomputer may be [partitioned to run multiple jobs](https://arxiv.org/abs/2504.18298), but this is beyond the scope of the current specifications.
+* The resources in a multicomputer may be partitioned to run multiple jobs {{sane-jobs}}, but this is beyond the scope of the current specifications.
 
 The realities of quantum hardware result in a few important differences from classical multicomputers:
 
