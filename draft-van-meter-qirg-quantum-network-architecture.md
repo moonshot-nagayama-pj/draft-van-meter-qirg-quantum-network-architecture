@@ -7,7 +7,7 @@ area: IRTF
 wg: QIRG
 keyword: Internet-Draft
 
-docname: draft-van-meter-qirg-quantum-network-architecture-00
+docname: draft-van-meter-qirg-quantum-network-architecture
 pi: [toc, sortrefs, symrefs]
 
 title: A Quantum Network Architecture
