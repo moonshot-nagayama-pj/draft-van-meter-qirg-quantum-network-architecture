@@ -45,13 +45,13 @@ jobs:
 
     - name: "Build Drafts"
       id: build
-      uses: martinthomson/i-d-template@v1
+      uses: martinthomson/i-d-template@v1m
       with:
         make: releases
         token: ${{ github.token }}
 
     - name: "Upload to Datatracker"
-      uses: martinthomson/i-d-template@v1
+      uses: martinthomson/i-d-template@v1m
       with:
         make: upload
       env:
