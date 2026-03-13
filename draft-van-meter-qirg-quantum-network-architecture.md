@@ -8,18 +8,18 @@ submissiontype: IRTF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
 v: 3
-area: AREA
+# area: AREA
 keyword:
  - next generation
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+#  group: WG
+#  type: Working Group
+#  mail: WG@example.com
+#  arch: https://example.com/WG
+  github: "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture"
+  latest: "https://moonshot-nagayama-pj.github.io/draft-van-meter-qirg-quantum-network-architecture/draft-van-meter-qirg-quantum-network-architecture.html"
 
 author:
  -
