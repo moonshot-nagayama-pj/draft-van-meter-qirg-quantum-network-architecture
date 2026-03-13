@@ -2,14 +2,14 @@
 
 
 
-Network Working Group                                         Y. N. Here
+Network Working Group                                            A. Todd
 Internet-Draft                                    Your Organization Here
 Intended status: Informational                             13 March 2026
 Expires: 14 September 2026
 
 
                      A Quantum Network Architecture
-           draft-van-meter-qirg-quantum-network-architecture
+        draft-van-meter-qirg-quantum-network-architecture-latest
 
 Abstract
 
@@ -19,17 +19,16 @@ About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   The latest revision of this draft can be found at
-   https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-van-meter-qirg-
-   quantum-network/.
-
-   Discussion of this document takes place on the WG Working Group
-   mailing list (mailto:WG@example.com), which is archived at
-   https://example.com/WG.
+   The latest revision of this draft can be found at https://moonshot-
+   nagayama-pj.github.io/draft-van-meter-qirg-quantum-network-
+   architecture/draft-van-meter-qirg-quantum-network-architecture.html.
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-van-meter-qirg-quantum-
+   network-architecture/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/USER/REPO.
+   https://github.com/moonshot-nagayama-pj/draft-van-meter-qirg-quantum-
+   network-architecture.
 
 Status of This Memo
 
@@ -106,6 +105,6 @@ Acknowledgments
 
 Author's Address
 
-   Your Name Here
+   Andrew Todd
    Your Organization Here
-   Email: your.email@example.com
+   Email: at@auspicacious.org
