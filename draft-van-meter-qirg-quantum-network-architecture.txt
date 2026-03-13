@@ -2,7 +2,7 @@
 
 
 
-WG Working Group                                              Y. N. Here
+Network Working Group                                         Y. N. Here
 Internet-Draft                                    Your Organization Here
 Intended status: Informational                             13 March 2026
 Expires: 14 September 2026
