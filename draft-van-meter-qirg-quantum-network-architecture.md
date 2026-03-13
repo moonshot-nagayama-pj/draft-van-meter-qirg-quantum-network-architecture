@@ -132,7 +132,7 @@ informative:
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
   drost: DOI.10.1364/JOCN.8.000331
   koyama-24: DOI.10.1109/QCE60285.2024.00219
-  hajudsek-qcomm: DOI.10.48550/arXiv.2311.02367
+  hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
@@ -142,7 +142,7 @@ informative:
 
 --- abstract
 
-This quantum network architecture defines a set of planes providing different views of the network, supporting different responsibilities and modes of operation; a set of device, node and link types;
+This quantum network architecture defines a set of planes providing different views of the network, supporting different responsibilities and modes of operation; a set of device, node and link types; some network topologies, deployment scenarios and their relationship to applications; and key design decisions as a result of corresponding requirements.
 
 --- middle
 
@@ -193,7 +193,7 @@ Some of these are listed here for reference:
     - [ITU-T Focus Group on Quantum Information Technology for Networks (FG-QIT4N)](https://www.itu.int/en/ITU-T/focusgroups/qit4n/Pages/default.aspx)
     - [Y.3800 series](https://www.itu.int/itu-t/recommendations/index.aspx?ser=Y) on quantum key distribution networks
 * National Institute of Standards and Technology (NIST)
-    - [Single-Photon Sources and Detectors Dictionary](https://www.nist.gov/publications/single-photon-sources-and-detectors-dictionary-0)
+    - Single-Photon Sources and Detectors Dictionary {{nist-singles}}
 * [Quantum Internet Research Group (QIRG)](https://datatracker.ietf.org/group/qirg/about/) (part of IRTF)
     - {{RFC9340}}
     - {{RFC9583}}
@@ -231,7 +231,7 @@ Readers needing additional background are referred to:
 * {{RFC9340}}
 * {{RFC9583}}
 * Van Meter, _Quantum Networking_
-* Hajdusek and Van Meter, _[Quantum Communications](https://arxiv.org/abs/2311.02367)_
+* Hajdusek and Van Meter, _Quantum Communications_ {{hajdusek-qcomm}}
 
 # Terminology
 
@@ -381,7 +381,7 @@ Links are described in {{links}}.
 
 ## Direct and Indirect Multicomputer Architectures
 
-In multicomputer architectures, a _direct_ architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An _indirect_ architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect.
+In multicomputer architectures, a _direct_ architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An _indirect_ architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect {{dally-towles}}.
 
 The distinction is somewhat artificial in that direct architectures sometimes incorporate a small switch inside the node, in which case the matching term depends on where you draw the boundary of the node, and because computational nodes can be configured to act only as routers within the network, modeling an indirect architecture using direct hardware.
 
@@ -467,7 +467,7 @@ This section informally describes the physical building blocks and concepts used
 
 In this network architecture, we use only qubits, which may have two states identified as 0 and 1.  Quantum information systems using qutrits, qudits, qunats or continuous variable (c.v.) quantum states are beyond the scope of the current set of specifications.
 
-Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiVincenzo criteria.
+Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiVincenzo criteria {{divincenzo-criteria}}.
 
 ## Photons, Wave Packets and Optical Modes
 
@@ -800,7 +800,7 @@ Point-to-point links may be either fiber-based or free space. A link encompassin
 
 A system built around a pool of detectors, particularly organized as BSAs, utilizing switched MIM links can also be characterized as a _detector-centric architecture_.
 
-For pseudocode for switching (routing) certain types of devices, see Koyama et al.
+For pseudocode for switching (routing) certain types of devices, see Koyama et al. {{koyama-24}}.
 
 ## Multidrop or Bus
 
