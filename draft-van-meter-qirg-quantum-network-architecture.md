@@ -58,8 +58,7 @@ contributor: # Same structure as author list, but goes into contributors
   code: 252-0882
   country: JP
   contribution: |
-    Michal was involved in document development from the beginning.
-    That was quite helpful.
+    Michal was involved in document development and technical discussions from the beginning.
 - ins: A. Todd
   name: Andrew Todd
   org: Keio University
@@ -122,6 +121,7 @@ informative:
   aboy-governance: DOI.10.1126/science.adw0018
   awschalom-roadmap: DOI.10.2172/1900586
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
+  bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   dally-towles:
       title: Principles and Practices of Interconnection Networks
@@ -137,11 +137,15 @@ informative:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
   drost: DOI.10.1364/JOCN.8.000331
+  fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
+  fischer-dgs: DOI.10.1109/QCE52317.2021.00049
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
   litinski-gosc: DOI.10.22331/q-2019-03-05-128
+  meignant-dgs: DOI.10.1103/PhysRevA.100.052333
+  mori-psds: DOI.10.1109/QCE60285.2024.00218
   muralidharan-generations: DOI.10.1038/srep20463
   ramette-remote: DOI.10.1038/s41534-024-00855-4
   sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
@@ -394,6 +398,10 @@ A node comprises one or more quantum devices, and serves as a single locus of co
 
 Links are described in {{links}}.
 
+## Photonic Synchronization Domains
+
+A photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping {{mori-psds}}. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in {{I-D.draft-hajdusek-qirg-timing-physics}}.
+
 ## Direct and Indirect Multicomputer Architectures
 
 In multicomputer architectures, a _direct_ architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An _indirect_ architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect {{dally-towles}}.
@@ -520,7 +528,13 @@ The entanglement of a memory qubit with a photon is a technology-dependent proce
 
 ## Photon Sources
 
+Photons may be emitted by _sources_ of many types {{nist-singles}} .  Single photons may come from attenuated lasers, or be emitted by a variety of quantum devices, such as quantum dots, or by individual atoms.
+
+Photons may be unentangled, entangled with other photons, or entangled with quantum memories.
+
 ### Unentangled Single Photons
+
+Unentangled photons exhibit quantum properties.  They can carry information in any of the characteristics listed above, and may be put into a superposition of multiple basis states for e.g. quantum key distribution purposes.  In this document, unentangled individual photons are not used.
 
 ### Entangled Photon Pairs
 
@@ -528,13 +542,15 @@ Pairs of photons entangled with each other can be made via a variety of physical
 
 ### Memory-Emitted Photons
 
+Photons emitted by quantum memories, such as single atoms, may remain entangled to the memory, if the memory was in a superposition of basis states.
+
 ## Detectors
 
-## Photonic Synchronization Domains
-
-As defined in Mori et al. (QCE 2024), a photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in {{I-D.draft-hajdusek-qirg-timing-physics}}.
+Detectors may be either _single-photon detectors_, which click when _one or more_ photons hit the detector, or _number resolving detectors_, which can distinguish between one, two, or more photons hitting the detector within the same time window. In this document, detectors may be assumed to be single-photon detectors.
 
 # Requirements
+
+This section documents the requirements for all networks adhering to this architecture.
 
 ## General Requirements
 
@@ -766,9 +782,8 @@ An RGSS typically distributes segments of the generated repeater graph state to 
 Unlike basic BSAs, an ABSA must be capable of performing measurements on single or multiple photons in dynamically selectable bases.
 The choice of measurement basis often depends on the outcomes of prior measurements within the network and the specific structure of the repeater graph state being utilized, implying more complex hardware and real-time classical control logic.
 
-**An optical switch (OSW)** is a device that can passively route photons from input optical fibers or paths to different output paths without performing measurements on them. <!-- ~\cite{mia-switch-design-paired-egress-bsa-pools}. -->
-OSWs, which can be based on technologies like nanomechanical systems or nanophotonic circuits, <!-- ~\cite{mia-switch-design-paired-egress-bsa-pools}, -->
-can be integrated as components within other node types (e.g., routers or complex end nodes) or can function as standalone elements in the network to dynamically reconfigure optical pathways.
+**An optical switch (OSW)** is a device that can passively route photons from input optical fibers or paths to different output paths without performing measurements on them {{koyama-24}}.
+OSWs, which can be based on technologies like nanomechanical systems or nanophotonic circuits, can be integrated as components within other node types (e.g., routers or complex end nodes) or can function as standalone elements in the network to dynamically reconfigure optical pathways.
 
 ## Repeater Nodes
 
@@ -782,7 +797,7 @@ This approach inherently demands more sophisticated hardware and advanced comput
 
 **A quantum router (RTR)** is a more complex and versatile node, possessing all capabilities of a quantum repeater and typically featuring three or more quantum network interfaces, enabling it to make sophisticated path selection decisions in complex topologies.
 Architecturally, an RTR may consist of multiple line cards and a quantum backplane, allowing it to run a full suite of network operation protocols.
-Beyond basic repeating functions like entanglement swapping, an RTR can govern network borders potentially interfacing between different repeater generations or technologies, participate in generating multipartite entangled states if the network provides such a servic, <!-- e~\cite{clement-graph-state,bugalhoDistributingMultipartiteEntanglement2023,fischerDistributingGraphStates2021,fanOptimizedDistributionEntanglement2025}, -->
+Beyond basic repeating functions like entanglement swapping, an RTR can govern network borders potentially interfacing between different repeater generations or technologies, participate in generating multipartite entangled states if the network provides such a service {{meignant-dgs}} {{bugalho-dist-multipartite}} {{fischer-dgs}} {{fan-dgs-dist}},
 and may act as a Responder in connection setups by rewriting or generating new RuleSets for different network domains.
 
 ## Composite Nodes
@@ -823,7 +838,7 @@ In a switched architecture, for example, photons may pass through paths such as:
 * MXIXM
 * MXXIXM
 
-(Does this also need to represent frequency conversion?)
+(Question: Does this notation also need to represent frequency conversion?)
 
 ## Point-to-point
 
@@ -889,6 +904,8 @@ Yes, the quantum plane includes some classical signals.
     - especially qubit-mode RuleSet notifications
 
 # Naming and Addressing
+
+(To be filled in.)
 
 ## State naming and management in RuleSets
 
@@ -990,52 +1007,5 @@ The API used by classical software to interface with the quantum depends on whic
 # Security Considerations
 
 Quantum multicomputer systems are assumed to be constructed as isolated, centrally controlled systems with no need for confidentiality, integrity, and availability (the "CIA triad") assurance via cryptographic methods.
-
-# Structural Analysis
-
-## The role of detectors in physical architecture of the network
-
-* Detector centric
-Using high efficiency quantum detectors in SNSPD technology would be beneficial for improving performance of quantum networks.
-Rack mount form of detectors become popular:
-<https://www.pixelphotonics.com/en/single-photon-detector-products/rack-snspd-system/>
-
-* With many detectors
-* High detection efficiency
-* Low jitter
-* Low dark count
-* Vast variety of wavelength
-
-* <https://arxiv.org/pdf/2501.07357>
-* <https://pubs.acs.org/doi/full/10.1021/acs.nanolett.3c01228?casa_token=N90P6GOD4MUAAAAA%3AFfFlnTpzGBAvJTYAPJJnLpS2D-Y4q67l4YuPBtgzjmI658zKYVFZTECaZgX8bWNNpNaA_JlTy7mLDbQKMA>
-* <https://www.nature.com/articles/s41586-023-06550-2>
-
-* Trade off between cost and efficiency and network performance (requires more analysis)
-
-* Parameters (Criteria)
-From IDQ:
-<https://marketing.idquantique.com/acton/attachment/11868/f-13600d1a-a44d-4a05-a5dd-7b26a661356a/1/-/-/-/-/ID281%20Pro_Brochure.pdf>
-<https://marketing.idquantique.com/acton/attachment/11868/f-023b/1/-/-/-/-/ID281_Brochure.pdf>
-<https://www.wikiwand.com/en/articles/Superconducting_nanowire_single-photon_detector>
-<https://www.nict.go.jp/publication/shuppan/kihou-journal/journal-vol64no1/J2017Q-04-02.pdf>
-
-    - Peak system detection efficiency (SDE)
-    - Maximum detection rate
-    - Broadband detection efficiency
-    - Maximum dark count
-    - Timing jitter (FWHM)
-    - Output pulse width
-    - Output pulse voltage
-
-* Operational:
-    - Overall system runtime
-    - detector base temperature
-    - Power consumption
-    - interfaces : FC/PC RF output: SMA female
-    - Operating temperature
-
-# Behavioral Analysis
-
-# Physical Analysis
 
 --- back
