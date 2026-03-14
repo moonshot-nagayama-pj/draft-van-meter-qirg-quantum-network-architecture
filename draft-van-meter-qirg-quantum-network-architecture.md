@@ -545,6 +545,24 @@ Photons emitted by quantum memories, such as single atoms, may remain entangled 
 
 Detectors may be either _single-photon detectors_, which click when _one or more_ photons hit the detector, or _number resolving detectors_, which can distinguish between one, two, or more photons hitting the detector within the same time window. In this document, detectors may be assumed to be single-photon detectors.
 
+# Requirements
+
+## General Requirements
+
+### Functional Requirement
+
+### Interface Requirements
+
+### Physical Requirements
+
+### Environmental Requirements
+
+## Network Management Requirements
+
+### Fault Management
+
+### Configuration Management
+
 # Top Level Architecture
 
 <!--
@@ -1030,23 +1048,5 @@ From IDQ:
 # Behavioral Analysis
 
 # Physical Analysis
-
-# Requirements
-
-## General Requirements
-
-### Functional Requirement
-
-### Interface Requirements
-
-### Physical Requirements
-
-### Environmental Requirements
-
-## Network Management Requirements
-
-### Fault Management
-
-### Configuration Management
 
 --- back
