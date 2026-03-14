@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 14 September 2026                               Keio University
-                                                           13 March 2026
+Expires: 15 September 2026                               Keio University
+                                                           14 March 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 September 2026.
+   This Internet-Draft will expire on 15 September 2026.
 
 Copyright Notice
 
@@ -106,60 +106,60 @@ Table of Contents
        10.5.3.  Memory-Emitted Photons
      10.6.  Detectors
      10.7.  Photonic Synchronization Domains
-   11. Top Level Architecture
-     11.1.  Deterministic Classical Control of Quantum States
-   12. Communication Service
-   13. Architectural Planes
-     13.1.  Quantum
-     13.2.  Data
-     13.3.  Control
-     13.4.  Management
-   14. Protocol Layers
-   15. Nodes and Node Types
-     15.1.  End Nodes
-     15.2.  Support Nodes
-     15.3.  Repeater Nodes
-     15.4.  Composite Nodes
-   16. Links
-     16.1.  The Link Service
-     16.2.  Photonic Path Description
-     16.3.  Point-to-point
-     16.4.  Switched
-     16.5.  Multidrop or Bus
-   17. Connections
-   18. Resource Management: Multiplexing and Routing
-   19. Classical Communication
-     19.1.  Quantum Plane
-     19.2.  Control Plane
-     19.3.  Data Plane
-     19.4.  Management plane: Node and link management
-     19.5.  Mechanisms
-   20. Naming and Addressing
-     20.1.  State naming and management in RuleSets
-   21. Example Networks
-     21.1.  Fully Connected
-     21.2.  Q-Fly Multicomputer
-     21.3.  Optically Switched Fat Tree
-     21.4.  Repeater Fat Tree
-     21.5.  2-D Grid Multicomputer
-     21.6.  Ring
-     21.7.  QLAN
-   22. APIs for Network Service ("Quantum Sockets")
-   23. Security Considerations
-   24. Structural Analysis
-     24.1.  The role of detectors in physical architecture of the
+   11. Requirements
+     11.1.  General Requirements
+       11.1.1.  Functional Requirement
+       11.1.2.  Interface Requirements
+       11.1.3.  Physical Requirements
+       11.1.4.  Environmental Requirements
+     11.2.  Network Management Requirements
+       11.2.1.  Fault Management
+       11.2.2.  Configuration Management
+   12. Top Level Architecture
+     12.1.  Deterministic Classical Control of Quantum States
+   13. Communication Service
+   14. Architectural Planes
+     14.1.  Quantum
+     14.2.  Data
+     14.3.  Control
+     14.4.  Management
+   15. Protocol Layers
+   16. Nodes and Node Types
+     16.1.  End Nodes
+     16.2.  Support Nodes
+     16.3.  Repeater Nodes
+     16.4.  Composite Nodes
+   17. Links
+     17.1.  The Link Service
+     17.2.  Photonic Path Description
+     17.3.  Point-to-point
+     17.4.  Switched
+     17.5.  Multidrop or Bus
+   18. Connections
+   19. Resource Management: Multiplexing and Routing
+   20. Classical Communication
+     20.1.  Quantum Plane
+     20.2.  Control Plane
+     20.3.  Data Plane
+     20.4.  Management plane: Node and link management
+     20.5.  Mechanisms
+   21. Naming and Addressing
+     21.1.  State naming and management in RuleSets
+   22. Example Networks
+     22.1.  Fully Connected
+     22.2.  Q-Fly Multicomputer
+     22.3.  Optically Switched Fat Tree
+     22.4.  Repeater Fat Tree
+     22.5.  2-D Grid Multicomputer
+     22.6.  Ring
+     22.7.  QLAN
+   23. APIs for Network Service ("Quantum Sockets")
+   24. Security Considerations
+   25. Structural Analysis
+     25.1.  The role of detectors in physical architecture of the
             network
-   25. Behavioral Analysis
-   26. Physical Analysis
-   27. Requirements
-     27.1.  General Requirements
-       27.1.1.  Functional Requirement
-       27.1.2.  Interface Requirements
-       27.1.3.  Physical Requirements
-       27.1.4.  Environmental Requirements
-     27.2.  Network Management Requirements
-       27.2.1.  Fault Management
-       27.2.2.  Configuration Management
+   26. Behavioral Analysis
+   27. Physical Analysis
    28. References
      28.1.  Normative References
      28.2.  Informative References
@@ -665,7 +665,7 @@ Table of Contents
 
 8.3.  Quantum Links
 
-   Links are described in Section 16.
+   Links are described in Section 17.
 
 8.4.  Direct and Indirect Multicomputer Architectures
 
@@ -1030,9 +1030,27 @@ Table of Contents
    sufficient overlap, as specified in
    [I-D.draft-hajdusek-qirg-timing-physics].
 
-11.  Top Level Architecture
+11.  Requirements
 
-11.1.  Deterministic Classical Control of Quantum States
+11.1.  General Requirements
+
+11.1.1.  Functional Requirement
+
+11.1.2.  Interface Requirements
+
+11.1.3.  Physical Requirements
+
+11.1.4.  Environmental Requirements
+
+11.2.  Network Management Requirements
+
+11.2.1.  Fault Management
+
+11.2.2.  Configuration Management
+
+12.  Top Level Architecture
+
+12.1.  Deterministic Classical Control of Quantum States
 
    This network architecture is entirely classically controlled.  Its
    task is to generate shared quantum states for applications residing
@@ -1043,7 +1061,7 @@ Table of Contents
    architecture may support generation of multi-partite state for
    applications at a later date.)
 
-12.  Communication Service
+13.  Communication Service
 
    (Substantial portions of this section are adapted from Naphan
    Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier
@@ -1089,7 +1107,7 @@ Table of Contents
    Hence, high-precision timestamps may need to be bundled into the
    service interface offered by the network.
 
-13.  Architectural Planes
+14.  Architectural Planes
 
    All nodes in the network will have one or more of the following
    classes of interfaces, also referred to as _planes_.
@@ -1116,7 +1134,7 @@ Table of Contents
       collecting statistics on traffic through the node, any alerts such
       as security, etc.
 
-13.1.  Quantum
+14.1.  Quantum
 
    The quantum signals and in-channel, hardware-dependent, real-time
    classical signals for timing and synchronization of photon wave
@@ -1128,7 +1146,7 @@ Table of Contents
    to the constraints in "Detector Timing Windows" in the Timing Regimes
    document.
 
-13.2.  Data
+14.2.  Data
 
    When operating in qubit mode, the Data Plane consists of classical
    messages that convey events for RuleSet operation and the
@@ -1145,7 +1163,7 @@ Table of Contents
    The control plane functionality executes the functions described as
    "Pre-configured Event-driven Tasks" in the Timing Regimes document.
 
-13.3.  Control
+14.3.  Control
 
    The classical control plane is responsible for establishing and
    managing connections and testing sessions.  Routing and multiplexing
@@ -1160,7 +1178,7 @@ Table of Contents
    tasks in "Host-side Application-level Tasks" in the Timing Regimes
    document.
 
-13.4.  Management
+14.4.  Management
 
    While connection-specific changes to configuration, such as switching
    and necessary, immediate changes to e.g. polarization and optical
@@ -1174,7 +1192,7 @@ Table of Contents
    The management plane functionality executes the functions described
    as "Background Tasks" in the Timing Regimes document.
 
-14.  Protocol Layers
+15.  Protocol Layers
 
    This document describes a network architecture.  Network designs are
    often described in terms of a layered protocol stack such as the
@@ -1203,7 +1221,7 @@ Table of Contents
 
    (More to be added here.)
 
-15.  Nodes and Node Types
+16.  Nodes and Node Types
 
    (Substantial portions of this section are adapted from Naphan
    Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier
@@ -1223,7 +1241,7 @@ Table of Contents
    [RFC1123].  Each node type is further defined in a detailed
    specification in a separate document.
 
-15.1.  End Nodes
+16.1.  End Nodes
 
    End nodes represent hosts that wish to execute a quantum application
    such as quantum key distribution, secret sharing and blind quantum
@@ -1283,7 +1301,7 @@ Table of Contents
    asynchronous interfaces to coordinate their local quantum workloads
    with network operations.
 
-15.2.  Support Nodes
+16.2.  Support Nodes
 
    *An entangled photon pair source (EPPS)* is a device dedicated to
    generating pairs of entangled photons, commonly through processes
@@ -1331,7 +1349,7 @@ Table of Contents
    routers or complex end nodes) or can function as standalone elements
    in the network to dynamically reconfigure optical pathways.
 
-15.3.  Repeater Nodes
+16.3.  Repeater Nodes
 
    *A first-generation repeater (REP1)* is a network node with two
    quantum interfaces, whose main task is to extend entanglement.  Its
@@ -1367,7 +1385,7 @@ Table of Contents
    connection setups by rewriting or generating new RuleSets for
    different network domains.
 
-15.4.  Composite Nodes
+16.4.  Composite Nodes
 
    A node may also aggregate the functions of more than one node, in a
    form known as a _composite node_ or _composite logical node_. A
@@ -1377,15 +1395,15 @@ Table of Contents
    composite node where each device is in turn represented as a node.
    Presenting as a single node is preferred.
 
-16.  Links
+17.  Links
 
-16.1.  The Link Service
+17.1.  The Link Service
 
    A link provides Bell pairs across a single PSD.  Each Bell pair is
    named via an identifier.  This service may be either real time or
    batched.
 
-16.2.  Photonic Path Description
+17.2.  Photonic Path Description
 
    The optical path over which photons flow from source to detector in
    the process of creating a Bell pair can be described using
@@ -1432,13 +1450,13 @@ Table of Contents
 
    (Does this also need to represent frequency conversion?)
 
-16.3.  Point-to-point
+17.3.  Point-to-point
 
    Point-to-point links may be either fiber-based or free space.  A link
    encompassing the path of one or more photons may be partially fiber
    and partially free space.
 
-16.4.  Switched
+17.4.  Switched
 
    A system built around a pool of detectors, particularly organized as
    BSAs, utilizing switched MIM links can also be characterized as a
@@ -1447,12 +1465,12 @@ Table of Contents
    For pseudocode for switching (routing) certain types of devices, see
    Koyama et al. [koyama-24].
 
-16.5.  Multidrop or Bus
+17.5.  Multidrop or Bus
 
    A multidrop link, or a bus, is a shared physical channel to which
    more than two stations may be attached.
 
-17.  Connections
+18.  Connections
 
    No task involving quantum communication ever involves a single qubit
    or single entangled state.  The connection provides the framework for
@@ -1479,13 +1497,13 @@ Table of Contents
    subsystem, though connection setup should be done with awareness of
    the availability of unavailability of resources at involved nodes.
 
-18.  Resource Management: Multiplexing and Routing
+19.  Resource Management: Multiplexing and Routing
 
    Both link usage time slots and memory can be shared among multiple
    connections and therefore must be actively managed via a multiplexing
    system.  This task is particularly challenging in switched networks.
 
-19.  Classical Communication
+20.  Classical Communication
 
    A quantum network depends on classical communication; indeed, almost
    all of the behavior is governed by, initiated by, or managed and
@@ -1495,11 +1513,11 @@ Table of Contents
    [I-D.draft-hajdusek-qirg-timing-physics] for an outline of the
    physics driving these requirements.
 
-19.1.  Quantum Plane
+20.1.  Quantum Plane
 
    Yes, the quantum plane includes some classical signals.
 
-19.2.  Control Plane
+20.2.  Control Plane
 
    *  Qubit mode connections and communication
 
@@ -1509,7 +1527,7 @@ Table of Contents
 
    *  Device mode control
 
-19.3.  Data Plane
+20.3.  Data Plane
 
    *  Qubit mode connections and communication
 
@@ -1519,7 +1537,7 @@ Table of Contents
 
    *  Device mode control
 
-19.4.  Management plane: Node and link management
+20.4.  Management plane: Node and link management
 
    *  reporting of parameters fixed by device physics
 
@@ -1531,7 +1549,7 @@ Table of Contents
 
    *  typical network node management tasks such as software updates
 
-19.5.  Mechanisms
+20.5.  Mechanisms
 
    *  RPC for some tasks
 
@@ -1543,9 +1561,9 @@ Table of Contents
 
       -  especially qubit-mode RuleSet notifications
 
-20.  Naming and Addressing
+21.  Naming and Addressing
 
-20.1.  State naming and management in RuleSets
+21.1.  State naming and management in RuleSets
 
    (Incorporates naming material from Naphan's thesis.  Probably needs
    updating to account for testbed realities.)
@@ -1601,7 +1619,7 @@ Table of Contents
    protocols while allowing creativity with minimal restrictions on
    RuleSet creator parts.
 
-21.  Example Networks
+22.  Example Networks
 
    While a full taxonomy of networks is neither desirable nor possible
    here, we present a few network examples using point-to-point links or
@@ -1609,14 +1627,14 @@ Table of Contents
    described, followed by analysis of the path characteristics of the
    shortest path and network diameter.
 
-21.1.  Fully Connected
+22.1.  Fully Connected
 
    A number of the early quantum multicomputer proposals assumed a
    single, large optical switch.
 
    Shortest paths:
 
-21.2.  Q-Fly Multicomputer
+22.2.  Q-Fly Multicomputer
 
    An _indirect_ interconnect.  A multi-group, BSA-centric architecture.
    All nodes are part of the same PSD.  The Q-Fly architecture is
@@ -1658,7 +1676,7 @@ Table of Contents
 
       -  non-shortest path: MXXXIXM or longer
 
-21.3.  Optically Switched Fat Tree
+22.3.  Optically Switched Fat Tree
 
    An _indirect_ interconnect.  Several parameters are needed to
    describe the full topology of a fat tree, which can also be called a
@@ -1678,11 +1696,11 @@ Table of Contents
    multiple links to several switches at higher levels of the tree, in a
    configuration that is also know as a _folded Clos_ network.
 
-21.4.  Repeater Fat Tree
+22.4.  Repeater Fat Tree
 
    The repeater fat tree is described in [choi-fat-tree].
 
-21.5.  2-D Grid Multicomputer
+22.5.  2-D Grid Multicomputer
 
    A _direct_ interconnect.  A 2-D grid of nodes, where nodes with
    memory and certain computational capabilities (canonically COMP
@@ -1690,7 +1708,7 @@ Table of Contents
    Each node must act as a memory buffer and repeater to enable
    communication between non-neighboring nodes.
 
-21.6.  Ring
+22.6.  Ring
 
    A _direct_ interconnect.  All nodes in a ring have exactly two
    neighbors.  Each node must act as a memory buffer and repeater to
@@ -1698,7 +1716,7 @@ Table of Contents
 
    A ring is described in (something from Simon's group).
 
-21.7.  QLAN
+22.7.  QLAN
 
    A quantum local area network will have:
 
@@ -1708,22 +1726,22 @@ Table of Contents
 
    *  distributed routing
 
-22.  APIs for Network Service ("Quantum Sockets")
+23.  APIs for Network Service ("Quantum Sockets")
 
    The API used by classical software to interface with the quantum
    depends on which class of timing dependency pattern (B, C, or T) is
    to be supported.
 
-23.  Security Considerations
+24.  Security Considerations
 
    Quantum multicomputer systems are assumed to be constructed as
    isolated, centrally controlled systems with no need for
    confidentiality, integrity, and availability (the "CIA triad")
    assurance via cryptographic methods.
 
-24.  Structural Analysis
+25.  Structural Analysis
 
-24.1.  The role of detectors in physical architecture of the network
+25.1.  The role of detectors in physical architecture of the network
 
    *  Detector centric Using high efficiency quantum detectors in SNSPD
       technology would be beneficial for improving performance of
@@ -1797,27 +1815,9 @@ Table of Contents
 
       -  Operating temperature
 
-25.  Behavioral Analysis
+26.  Behavioral Analysis
 
-26.  Physical Analysis
-
-27.  Requirements
-
-27.1.  General Requirements
-
-27.1.1.  Functional Requirement
-
-27.1.2.  Interface Requirements
-
-27.1.3.  Physical Requirements
-
-27.1.4.  Environmental Requirements
-
-27.2.  Network Management Requirements
-
-27.2.1.  Fault Management
-
-27.2.2.  Configuration Management
+27.  Physical Analysis
 
 28.  References
 
