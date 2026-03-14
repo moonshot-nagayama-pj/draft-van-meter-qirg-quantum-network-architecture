@@ -87,9 +87,10 @@ Table of Contents
      8.1.  Quantum Devices
      8.2.  Quantum Nodes
      8.3.  Quantum Links
-     8.4.  Direct and Indirect Multicomputer Architectures
-     8.5.  Detector-centric Architecture
-     8.6.  Source-centric Architecture
+     8.4.  Photonic Synchronization Domains
+     8.5.  Direct and Indirect Multicomputer Architectures
+     8.6.  Detector-centric Architecture
+     8.7.  Source-centric Architecture
    9.  A Sketch of the System Model
      9.1.  Multicomputer
      9.2.  Data Center Network (QDCN)
@@ -105,7 +106,6 @@ Table of Contents
        10.5.2.  Entangled Photon Pairs
        10.5.3.  Memory-Emitted Photons
      10.6.  Detectors
-     10.7.  Photonic Synchronization Domains
    11. Requirements
      11.1.  General Requirements
        11.1.1.  Functional Requirement
@@ -155,14 +155,9 @@ Table of Contents
      22.7.  QLAN
    23. APIs for Network Service ("Quantum Sockets")
    24. Security Considerations
-   25. Structural Analysis
-     25.1.  The role of detectors in physical architecture of the
-            network
-   26. Behavioral Analysis
-   27. Physical Analysis
-   28. References
-     28.1.  Normative References
-     28.2.  Informative References
+   25. References
+     25.1.  Normative References
+     25.2.  Informative References
    Contributors
    Authors' Addresses
 
@@ -667,7 +662,16 @@ Table of Contents
 
    Links are described in Section 17.
 
-8.4.  Direct and Indirect Multicomputer Architectures
+8.4.  Photonic Synchronization Domains
+
+   A photonic synchronization domain (PSD) is the range of devices and
+   fibers over which photons must be controlled with high precision in
+   order to effect e.g. photonic entanglement swapping [mori-psds].  The
+   primary concern of a PSD is getting photons to arrive at
+   beamsplitters "simultaneously", with sufficient overlap, as specified
+   in [I-D.draft-hajdusek-qirg-timing-physics].
+
+8.5.  Direct and Indirect Multicomputer Architectures
 
    In multicomputer architectures, a _direct_ architecture features
    links that go directly from computational node to computational node.
@@ -683,7 +687,7 @@ Table of Contents
    routers within the network, modeling an indirect architecture using
    direct hardware.
 
-8.5.  Detector-centric Architecture
+8.6.  Detector-centric Architecture
 
    Several detectors may be packaged as a single subsystem for purposes
    such as cooling, power, control and time stamping.  An architecture
@@ -695,7 +699,7 @@ Table of Contents
    A detector-centric architecture is an indirect architecture if the
    pool of detectors is behind a switch or network of switches.
 
-8.6.  Source-centric Architecture
+8.7.  Source-centric Architecture
 
    Many of the detector-centric network topologies can be inverted, such
    that the pool of detectors is replaced by a pool of entangled photon
@@ -1007,7 +1011,21 @@ Table of Contents
 
 10.5.  Photon Sources
 
+   Photons may be emitted by _sources_ of many types [nist-singles] .
+   Single photons may come from attenuated lasers, or be emitted by a
+   variety of quantum devices, such as quantum dots, or by individual
+   atoms.
+
+   Photons may be unentangled, entangled with other photons, or
+   entangled with quantum memories.
+
 10.5.1.  Unentangled Single Photons
+
+   Unentangled photons exhibit quantum properties.  They can carry
+   information in any of the characteristics listed above, and may be
+   put into a superposition of multiple basis states for e.g. quantum
+   key distribution purposes.  In this document, unentangled individual
+   photons are not used.
 
 10.5.2.  Entangled Photon Pairs
 
@@ -1018,19 +1036,22 @@ Table of Contents
 
 10.5.3.  Memory-Emitted Photons
 
+   Photons emitted by quantum memories, such as single atoms, may remain
+   entangled to the memory, if the memory was in a superposition of
+   basis states.
+
 10.6.  Detectors
 
-10.7.  Photonic Synchronization Domains
-
-   As defined in Mori et al.  (QCE 2024), a photonic synchronization
-   domain (PSD) is the range of devices and fibers over which photons
-   must be controlled with high precision in order to effect e.g.
-   photonic entanglement swapping.  The primary concern of a PSD is
-   getting photons to arrive at beamsplitters "simultaneously", with
-   sufficient overlap, as specified in
-   [I-D.draft-hajdusek-qirg-timing-physics].
+   Detectors may be either _single-photon detectors_, which click when
+   _one or more_ photons hit the detector, or _number resolving
+   detectors_, which can distinguish between one, two, or more photons
+   hitting the detector within the same time window.  In this document,
+   detectors may be assumed to be single-photon detectors.
 
 11.  Requirements
+
+   This section documents the requirements for all networks adhering to
+   this architecture.
 
 11.1.  General Requirements
 
@@ -1343,11 +1364,11 @@ Table of Contents
 
    *An optical switch (OSW)* is a device that can passively route
    photons from input optical fibers or paths to different output paths
-   without performing measurements on them.  OSWs, which can be based on
-   technologies like nanomechanical systems or nanophotonic circuits,
-   can be integrated as components within other node types (e.g.,
-   routers or complex end nodes) or can function as standalone elements
-   in the network to dynamically reconfigure optical pathways.
+   without performing measurements on them [koyama-24].  OSWs, which can
+   be based on technologies like nanomechanical systems or nanophotonic
+   circuits, can be integrated as components within other node types
+   (e.g., routers or complex end nodes) or can function as standalone
+   elements in the network to dynamically reconfigure optical pathways.
 
 16.3.  Repeater Nodes
 
@@ -1381,9 +1402,10 @@ Table of Contents
    entanglement swapping, an RTR can govern network borders potentially
    interfacing between different repeater generations or technologies,
    participate in generating multipartite entangled states if the
-   network provides such a servic, and may act as a Responder in
-   connection setups by rewriting or generating new RuleSets for
-   different network domains.
+   network provides such a service [meignant-dgs]
+   [bugalho-dist-multipartite] [fischer-dgs] [fan-dgs-dist], and may act
+   as a Responder in connection setups by rewriting or generating new
+   RuleSets for different network domains.
 
 16.4.  Composite Nodes
 
@@ -1448,7 +1470,8 @@ Table of Contents
 
    *  MXXIXM
 
-   (Does this also need to represent frequency conversion?)
+   (Question: Does this notation also need to represent frequency
+   conversion?)
 
 17.3.  Point-to-point
 
@@ -1562,6 +1585,8 @@ Table of Contents
       -  especially qubit-mode RuleSet notifications
 
 21.  Naming and Addressing
+
+   (To be filled in.)
 
 21.1.  State naming and management in RuleSets
 
@@ -1739,89 +1764,9 @@ Table of Contents
    confidentiality, integrity, and availability (the "CIA triad")
    assurance via cryptographic methods.
 
-25.  Structural Analysis
+25.  References
 
-25.1.  The role of detectors in physical architecture of the network
-
-   *  Detector centric Using high efficiency quantum detectors in SNSPD
-      technology would be beneficial for improving performance of
-      quantum networks.  Rack mount form of detectors become popular:
-
-   https://www.pixelphotonics.com/en/single-photon-detector-products/
-   rack-snspd-system/ (https://www.pixelphotonics.com/en/single-photon-
-   detector-products/rack-snspd-system/)
-
-   *  With many detectors
-
-   *  High detection efficiency
-
-   *  Low jitter
-
-   *  Low dark count
-
-   *  Vast variety of wavelength
-
-   *  https://arxiv.org/pdf/2501.07357 (https://arxiv.org/
-      pdf/2501.07357)
-
-   *  https://pubs.acs.org/doi/full/10.1021/acs.nanolett.3c01228?casa_to
-      ken=N90P6GOD4MUAAAAA%3AFfFlnTpzGBAvJTYAPJJnLpS2D-
-      Y4q67l4YuPBtgzjmI658zKYVFZTECaZgX8bWNNpNaA_JlTy7mLDbQKMA
-      (https://pubs.acs.org/doi/full/10.1021/acs.nanolett.3c01228?casa_t
-      oken=N90P6GOD4MUAAAAA%3AFfFlnTpzGBAvJTYAPJJnLpS2D-
-      Y4q67l4YuPBtgzjmI658zKYVFZTECaZgX8bWNNpNaA_JlTy7mLDbQKMA)
-
-   *  https://www.nature.com/articles/s41586-023-06550-2
-      (https://www.nature.com/articles/s41586-023-06550-2)
-
-   *  Trade off between cost and efficiency and network performance
-      (requires more analysis)
-
-   *  Parameters (Criteria) From IDQ:
-
-   https://marketing.idquantique.com/acton/attachment/11868/f-13600d1a-
-   a44d-4a05-a5dd-7b26a661356a/1/-/-/-/-/ID281%20Pro_Brochure.pdf
-   (https://marketing.idquantique.com/acton/attachment/11868/f-13600d1a-
-   a44d-4a05-a5dd-7b26a661356a/1/-/-/-/-/ID281%20Pro_Brochure.pdf)
-   https://marketing.idquantique.com/acton/attachment/11868/
-   f-023b/1/-/-/-/-/ID281_Brochure.pdf
-   (https://marketing.idquantique.com/acton/attachment/11868/
-   f-023b/1/-/-/-/-/ID281_Brochure.pdf)
-   https://www.wikiwand.com/en/articles/Superconducting_nanowire_single-
-   photon_detector (https://www.wikiwand.com/en/articles/
-   Superconducting_nanowire_single-photon_detector)
-   https://www.nict.go.jp/publication/shuppan/kihou-journal/journal-
-   vol64no1/J2017Q-04-02.pdf
-   (https://www.nict.go.jp/publication/shuppan/kihou-journal/journal-
-   vol64no1/J2017Q-04-02.pdf)
-
-   - Peak system detection efficiency (SDE)
-   - Maximum detection rate
-   - Broadband detection efficiency
-   - Maximum dark count
-   - Timing jitter (FWHM)
-   - Output pulse width
-   - Output pulse voltage
-
-   *  Operational:
-
-      -  Overall system runtime
-
-      -  detector base temperature
-
-      -  Power consumption
-
-      -  interfaces : FC/PC RF output: SMA female
-
-      -  Operating temperature
-
-26.  Behavioral Analysis
-
-27.  Physical Analysis
-
-28.  References
-
-28.1.  Normative References
+25.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1832,7 +1777,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-28.2.  Informative References
+25.2.  Informative References
 
    [aboy-governance]
               Aboy, M., Gasser, U., Cohen, I., and M. Kop, "Quantum
@@ -1864,6 +1809,14 @@ Table of Contents
               54, no. 5, pp. 3824-3851, DOI 10.1103/physreva.54.3824,
               November 1996, <https://doi.org/10.1103/physreva.54.3824>.
 
+   [bugalho-dist-multipartite]
+              Bugalho, L., Coutinho, B., Monteiro, F., and Y. Omar,
+              "Distributing Multipartite Entanglement over Noisy Quantum
+              Networks", Verein zur Forderung des Open Access
+              Publizierens in den Quantenwissenschaften, Quantum vol. 7,
+              pp. 920, DOI 10.22331/q-2023-02-09-920, February 2023,
+              <https://doi.org/10.22331/q-2023-02-09-920>.
+
    [choi-fat-tree]
               Choi, H., Davis, M., Iñesta, Á., and D. Englund, "Scalable
               Quantum Networks: Congestion-Free Hierarchical
@@ -1888,6 +1841,22 @@ Table of Contents
               Networking vol. 8, no. 5, pp. 331,
               DOI 10.1364/jocn.8.000331, April 2016,
               <https://doi.org/10.1364/jocn.8.000331>.
+
+   [fan-dgs-dist]
+              Fan, X., Zhan, C., Gupta, H., and C. Ramakrishnan,
+              "Optimized Distribution of Entanglement Graph States in
+              Quantum Networks", Institute of Electrical and Electronics
+              Engineers (IEEE), IEEE Transactions on Quantum
+              Engineering vol. 6, pp. 1-17,
+              DOI 10.1109/tqe.2025.3552006, 2025,
+              <https://doi.org/10.1109/tqe.2025.3552006>.
+
+   [fischer-dgs]
+              Fischer, A. and D. Towsley, "Distributing Graph States
+              Across Quantum Networks", IEEE, 2021 IEEE International
+              Conference on Quantum Computing and Engineering (QCE) pp.
+              324-333, DOI 10.1109/qce52317.2021.00049, October 2021,
+              <https://doi.org/10.1109/qce52317.2021.00049>.
 
    [hajdusek-qcomm]
               Hajdušek, M. and R. Van Meter, "Quantum Communications",
@@ -1938,6 +1907,22 @@ Table of Contents
               Quantenwissenschaften, Quantum vol. 3, pp. 128,
               DOI 10.22331/q-2019-03-05-128, March 2019,
               <https://doi.org/10.22331/q-2019-03-05-128>.
+
+   [meignant-dgs]
+              Meignant, C., Markham, D., and F. Grosshans, "Distributing
+              graph states over arbitrary quantum networks", American
+              Physical Society (APS), Physical Review A vol. 100, no. 5,
+              DOI 10.1103/physreva.100.052333, November 2019,
+              <https://doi.org/10.1103/physreva.100.052333>.
+
+   [mori-psds]
+              Mori, Y., Sasaki, T., Ikuta, R., Teramoto, K., Ohno, H.,
+              Hajdušek, M., Van Meter, R., and S. Nagayama, "Scalable
+              Timing Coordination of Bell State Analyzers in Quantum
+              Networks", IEEE, 2024 IEEE International Conference on
+              Quantum Computing and Engineering (QCE) pp. 1890-1896,
+              DOI 10.1109/qce60285.2024.00218, September 2024,
+              <https://doi.org/10.1109/qce60285.2024.00218>.
 
    [muralidharan-generations]
               Muralidharan, S., Li, L., Kim, J., Lütkenhaus, N., Lukin,
@@ -2049,8 +2034,8 @@ Contributors
    Japan
 
 
-   Michal was involved in document development from the beginning.  That
-   was quite helpful.
+   Michal was involved in document development and technical discussions
+   from the beginning.
 
    Andrew Todd
    Keio University
