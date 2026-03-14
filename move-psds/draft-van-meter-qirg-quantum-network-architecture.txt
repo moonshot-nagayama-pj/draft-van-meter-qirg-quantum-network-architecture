@@ -155,14 +155,9 @@ Table of Contents
      22.7.  QLAN
    23. APIs for Network Service ("Quantum Sockets")
    24. Security Considerations
-   25. Structural Analysis
-     25.1.  The role of detectors in physical architecture of the
-            network
-   26. Behavioral Analysis
-   27. Physical Analysis
-   28. References
-     28.1.  Normative References
-     28.2.  Informative References
+   25. References
+     25.1.  Normative References
+     25.2.  Informative References
    Contributors
    Authors' Addresses
 
@@ -1762,89 +1757,9 @@ Table of Contents
    confidentiality, integrity, and availability (the "CIA triad")
    assurance via cryptographic methods.
 
-25.  Structural Analysis
+25.  References
 
-25.1.  The role of detectors in physical architecture of the network
-
-   *  Detector centric Using high efficiency quantum detectors in SNSPD
-      technology would be beneficial for improving performance of
-      quantum networks.  Rack mount form of detectors become popular:
-
-   https://www.pixelphotonics.com/en/single-photon-detector-products/
-   rack-snspd-system/ (https://www.pixelphotonics.com/en/single-photon-
-   detector-products/rack-snspd-system/)
-
-   *  With many detectors
-
-   *  High detection efficiency
-
-   *  Low jitter
-
-   *  Low dark count
-
-   *  Vast variety of wavelength
-
-   *  https://arxiv.org/pdf/2501.07357 (https://arxiv.org/
-      pdf/2501.07357)
-
-   *  https://pubs.acs.org/doi/full/10.1021/acs.nanolett.3c01228?casa_to
-      ken=N90P6GOD4MUAAAAA%3AFfFlnTpzGBAvJTYAPJJnLpS2D-
-      Y4q67l4YuPBtgzjmI658zKYVFZTECaZgX8bWNNpNaA_JlTy7mLDbQKMA
-      (https://pubs.acs.org/doi/full/10.1021/acs.nanolett.3c01228?casa_t
-      oken=N90P6GOD4MUAAAAA%3AFfFlnTpzGBAvJTYAPJJnLpS2D-
-      Y4q67l4YuPBtgzjmI658zKYVFZTECaZgX8bWNNpNaA_JlTy7mLDbQKMA)
-
-   *  https://www.nature.com/articles/s41586-023-06550-2
-      (https://www.nature.com/articles/s41586-023-06550-2)
-
-   *  Trade off between cost and efficiency and network performance
-      (requires more analysis)
-
-   *  Parameters (Criteria) From IDQ:
-
-   https://marketing.idquantique.com/acton/attachment/11868/f-13600d1a-
-   a44d-4a05-a5dd-7b26a661356a/1/-/-/-/-/ID281%20Pro_Brochure.pdf
-   (https://marketing.idquantique.com/acton/attachment/11868/f-13600d1a-
-   a44d-4a05-a5dd-7b26a661356a/1/-/-/-/-/ID281%20Pro_Brochure.pdf)
-   https://marketing.idquantique.com/acton/attachment/11868/
-   f-023b/1/-/-/-/-/ID281_Brochure.pdf
-   (https://marketing.idquantique.com/acton/attachment/11868/
-   f-023b/1/-/-/-/-/ID281_Brochure.pdf)
-   https://www.wikiwand.com/en/articles/Superconducting_nanowire_single-
-   photon_detector (https://www.wikiwand.com/en/articles/
-   Superconducting_nanowire_single-photon_detector)
-   https://www.nict.go.jp/publication/shuppan/kihou-journal/journal-
-   vol64no1/J2017Q-04-02.pdf
-   (https://www.nict.go.jp/publication/shuppan/kihou-journal/journal-
-   vol64no1/J2017Q-04-02.pdf)
-
-   - Peak system detection efficiency (SDE)
-   - Maximum detection rate
-   - Broadband detection efficiency
-   - Maximum dark count
-   - Timing jitter (FWHM)
-   - Output pulse width
-   - Output pulse voltage
-
-   *  Operational:
-
-      -  Overall system runtime
-
-      -  detector base temperature
-
-      -  Power consumption
-
-      -  interfaces : FC/PC RF output: SMA female
-
-      -  Operating temperature
-
-26.  Behavioral Analysis
-
-27.  Physical Analysis
-
-28.  References
-
-28.1.  Normative References
+25.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1855,7 +1770,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-28.2.  Informative References
+25.2.  Informative References
 
    [aboy-governance]
               Aboy, M., Gasser, U., Cohen, I., and M. Kop, "Quantum
