@@ -1050,6 +1050,9 @@ Table of Contents
 
 11.  Requirements
 
+   This section documents the requirements for all networks adhering to
+   this architecture.
+
 11.1.  General Requirements
 
 11.1.1.  Functional Requirement
@@ -1361,11 +1364,11 @@ Table of Contents
 
    *An optical switch (OSW)* is a device that can passively route
    photons from input optical fibers or paths to different output paths
-   without performing measurements on them.  OSWs, which can be based on
-   technologies like nanomechanical systems or nanophotonic circuits,
-   can be integrated as components within other node types (e.g.,
-   routers or complex end nodes) or can function as standalone elements
-   in the network to dynamically reconfigure optical pathways.
+   without performing measurements on them [koyama-24].  OSWs, which can
+   be based on technologies like nanomechanical systems or nanophotonic
+   circuits, can be integrated as components within other node types
+   (e.g., routers or complex end nodes) or can function as standalone
+   elements in the network to dynamically reconfigure optical pathways.
 
 16.3.  Repeater Nodes
 
@@ -1399,9 +1402,10 @@ Table of Contents
    entanglement swapping, an RTR can govern network borders potentially
    interfacing between different repeater generations or technologies,
    participate in generating multipartite entangled states if the
-   network provides such a servic, and may act as a Responder in
-   connection setups by rewriting or generating new RuleSets for
-   different network domains.
+   network provides such a service [meignant-dgs]
+   [bugalho-dist-multipartite] [fischer-dgs] [fan-dgs-dist], and may act
+   as a Responder in connection setups by rewriting or generating new
+   RuleSets for different network domains.
 
 16.4.  Composite Nodes
 
@@ -1466,7 +1470,8 @@ Table of Contents
 
    *  MXXIXM
 
-   (Does this also need to represent frequency conversion?)
+   (Question: Does this notation also need to represent frequency
+   conversion?)
 
 17.3.  Point-to-point
 
@@ -1580,6 +1585,8 @@ Table of Contents
       -  especially qubit-mode RuleSet notifications
 
 21.  Naming and Addressing
+
+   (To be filled in.)
 
 21.1.  State naming and management in RuleSets
 
@@ -1802,6 +1809,14 @@ Table of Contents
               54, no. 5, pp. 3824-3851, DOI 10.1103/physreva.54.3824,
               November 1996, <https://doi.org/10.1103/physreva.54.3824>.
 
+   [bugalho-dist-multipartite]
+              Bugalho, L., Coutinho, B., Monteiro, F., and Y. Omar,
+              "Distributing Multipartite Entanglement over Noisy Quantum
+              Networks", Verein zur Forderung des Open Access
+              Publizierens in den Quantenwissenschaften, Quantum vol. 7,
+              pp. 920, DOI 10.22331/q-2023-02-09-920, February 2023,
+              <https://doi.org/10.22331/q-2023-02-09-920>.
+
    [choi-fat-tree]
               Choi, H., Davis, M., Iñesta, Á., and D. Englund, "Scalable
               Quantum Networks: Congestion-Free Hierarchical
@@ -1826,6 +1841,22 @@ Table of Contents
               Networking vol. 8, no. 5, pp. 331,
               DOI 10.1364/jocn.8.000331, April 2016,
               <https://doi.org/10.1364/jocn.8.000331>.
+
+   [fan-dgs-dist]
+              Fan, X., Zhan, C., Gupta, H., and C. Ramakrishnan,
+              "Optimized Distribution of Entanglement Graph States in
+              Quantum Networks", Institute of Electrical and Electronics
+              Engineers (IEEE), IEEE Transactions on Quantum
+              Engineering vol. 6, pp. 1-17,
+              DOI 10.1109/tqe.2025.3552006, 2025,
+              <https://doi.org/10.1109/tqe.2025.3552006>.
+
+   [fischer-dgs]
+              Fischer, A. and D. Towsley, "Distributing Graph States
+              Across Quantum Networks", IEEE, 2021 IEEE International
+              Conference on Quantum Computing and Engineering (QCE) pp.
+              324-333, DOI 10.1109/qce52317.2021.00049, October 2021,
+              <https://doi.org/10.1109/qce52317.2021.00049>.
 
    [hajdusek-qcomm]
               Hajdušek, M. and R. Van Meter, "Quantum Communications",
@@ -1876,6 +1907,13 @@ Table of Contents
               Quantenwissenschaften, Quantum vol. 3, pp. 128,
               DOI 10.22331/q-2019-03-05-128, March 2019,
               <https://doi.org/10.22331/q-2019-03-05-128>.
+
+   [meignant-dgs]
+              Meignant, C., Markham, D., and F. Grosshans, "Distributing
+              graph states over arbitrary quantum networks", American
+              Physical Society (APS), Physical Review A vol. 100, no. 5,
+              DOI 10.1103/physreva.100.052333, November 2019,
+              <https://doi.org/10.1103/physreva.100.052333>.
 
    [mori-psds]
               Mori, Y., Sasaki, T., Ikuta, R., Teramoto, K., Ohno, H.,
@@ -1996,8 +2034,8 @@ Contributors
    Japan
 
 
-   Michal was involved in document development from the beginning.  That
-   was quite helpful.
+   Michal was involved in document development and technical discussions
+   from the beginning.
 
    Andrew Todd
    Keio University

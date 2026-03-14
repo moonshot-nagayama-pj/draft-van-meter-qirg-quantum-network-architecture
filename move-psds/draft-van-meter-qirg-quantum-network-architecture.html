@@ -2288,6 +2288,7 @@ A quantum optical link may define one mode per time window. During each window, 
       <h2 id="name-requirements">
 <a href="#section-11" class="section-number selfRef">11. </a><a href="#name-requirements" class="section-name selfRef">Requirements</a>
       </h2>
+<p id="section-11-1">This section documents the requirements for all networks adhering to this architecture.<a href="#section-11-1" class="pilcrow">¶</a></p>
 <div id="general-requirements">
 <section id="section-11.1">
         <h3 id="name-general-requirements">
@@ -2513,9 +2514,8 @@ An RGSS typically distributes segments of the generated repeater graph state to 
 <p id="section-16.2-4"><strong>An advanced Bell state analyzer (ABSA)</strong> represents a more sophisticated version of a BSA, particularly required in advanced all-photonic repeater protocols based on repeater graph states. 
 Unlike basic BSAs, an ABSA must be capable of performing measurements on single or multiple photons in dynamically selectable bases.
 The choice of measurement basis often depends on the outcomes of prior measurements within the network and the specific structure of the repeater graph state being utilized, implying more complex hardware and real-time classical control logic.<a href="#section-16.2-4" class="pilcrow">¶</a></p>
-<p id="section-16.2-5"><strong>An optical switch (OSW)</strong> is a device that can passively route photons from input optical fibers or paths to different output paths without performing measurements on them. 
-OSWs, which can be based on technologies like nanomechanical systems or nanophotonic circuits, 
-can be integrated as components within other node types (e.g., routers or complex end nodes) or can function as standalone elements in the network to dynamically reconfigure optical pathways.<a href="#section-16.2-5" class="pilcrow">¶</a></p>
+<p id="section-16.2-5"><strong>An optical switch (OSW)</strong> is a device that can passively route photons from input optical fibers or paths to different output paths without performing measurements on them <span>[<a href="#koyama-24" class="cite xref">koyama-24</a>]</span>.
+OSWs, which can be based on technologies like nanomechanical systems or nanophotonic circuits, can be integrated as components within other node types (e.g., routers or complex end nodes) or can function as standalone elements in the network to dynamically reconfigure optical pathways.<a href="#section-16.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="repeater-nodes">
@@ -2531,7 +2531,7 @@ Instead of, or in addition to, purifying link-level physical Bell pairs, a REP2 
 This approach inherently demands more sophisticated hardware and advanced computational capabilities for encoding, decoding, and error correction routines during swapping.<a href="#section-16.3-2" class="pilcrow">¶</a></p>
 <p id="section-16.3-3"><strong>A quantum router (RTR)</strong> is a more complex and versatile node, possessing all capabilities of a quantum repeater and typically featuring three or more quantum network interfaces, enabling it to make sophisticated path selection decisions in complex topologies.
 Architecturally, an RTR may consist of multiple line cards and a quantum backplane, allowing it to run a full suite of network operation protocols.
-Beyond basic repeating functions like entanglement swapping, an RTR can govern network borders potentially interfacing between different repeater generations or technologies, participate in generating multipartite entangled states if the network provides such a servic, 
+Beyond basic repeating functions like entanglement swapping, an RTR can govern network borders potentially interfacing between different repeater generations or technologies, participate in generating multipartite entangled states if the network provides such a service <span>[<a href="#meignant-dgs" class="cite xref">meignant-dgs</a>]</span> <span>[<a href="#bugalho-dist-multipartite" class="cite xref">bugalho-dist-multipartite</a>]</span> <span>[<a href="#fischer-dgs" class="cite xref">fischer-dgs</a>]</span> <span>[<a href="#fan-dgs-dist" class="cite xref">fan-dgs-dist</a>]</span>,
 and may act as a Responder in connection setups by rewriting or generating new RuleSets for different network domains.<a href="#section-16.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2613,7 +2613,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
             <p id="section-17.2-8.3.1">MXXIXM<a href="#section-17.2-8.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-17.2-9">(Does this also need to represent frequency conversion?)<a href="#section-17.2-9" class="pilcrow">¶</a></p>
+<p id="section-17.2-9">(Question: Does this notation also need to represent frequency conversion?)<a href="#section-17.2-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="point-to-point">
@@ -2777,6 +2777,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
       <h2 id="name-naming-and-addressing">
 <a href="#section-21" class="section-number selfRef">21. </a><a href="#name-naming-and-addressing" class="section-name selfRef">Naming and Addressing</a>
       </h2>
+<p id="section-21-1">(To be filled in.)<a href="#section-21-1" class="pilcrow">¶</a></p>
 <div id="state-naming-and-management-in-rulesets">
 <section id="section-21.1">
         <h3 id="name-state-naming-and-management">
@@ -3010,6 +3011,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Bennett, C.</span>, <span class="refAuthor">DiVincenzo, D.</span>, <span class="refAuthor">Smolin, J.</span>, and <span class="refAuthor">W. Wootters</span>, <span class="refTitle">"Mixed-state entanglement and quantum error correction"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 54, no. 5, pp. 3824-3851</span>, <span class="seriesInfo">DOI 10.1103/physreva.54.3824</span>, <time datetime="1996-11" class="refDate">November 1996</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.54.3824">https://doi.org/10.1103/physreva.54.3824</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="bugalho-dist-multipartite">[bugalho-dist-multipartite]</dt>
+        <dd>
+<span class="refAuthor">Bugalho, L.</span>, <span class="refAuthor">Coutinho, B.</span>, <span class="refAuthor">Monteiro, F.</span>, and <span class="refAuthor">Y. Omar</span>, <span class="refTitle">"Distributing Multipartite Entanglement over Noisy Quantum Networks"</span>, <span class="refContent">Verein zur Forderung des Open Access Publizierens in den Quantenwissenschaften</span>, <span class="seriesInfo">Quantum vol. 7, pp. 920</span>, <span class="seriesInfo">DOI 10.22331/q-2023-02-09-920</span>, <time datetime="2023-02" class="refDate">February 2023</time>, <span>&lt;<a href="https://doi.org/10.22331/q-2023-02-09-920">https://doi.org/10.22331/q-2023-02-09-920</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="choi-fat-tree">[choi-fat-tree]</dt>
         <dd>
 <span class="refAuthor">Choi, H.</span>, <span class="refAuthor">Davis, M.</span>, <span class="refAuthor">Iñesta, Á.</span>, and <span class="refAuthor">D. Englund</span>, <span class="refTitle">"Scalable Quantum Networks: Congestion-Free Hierarchical Entanglement Routing with Error Correction"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2306.09216</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2306.09216">https://doi.org/10.48550/ARXIV.2306.09216</a>&gt;</span>. </dd>
@@ -3025,6 +3030,14 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="drost">[drost]</dt>
         <dd>
 <span class="refAuthor">Drost, R.</span>, <span class="refAuthor">Moore, T.</span>, and <span class="refAuthor">M. Brodsky</span>, <span class="refTitle">"Switching Networks for Pairwise-Entanglement Distribution"</span>, <span class="refContent">Optica Publishing Group</span>, <span class="seriesInfo">Journal of Optical Communications and Networking vol. 8, no. 5, pp. 331</span>, <span class="seriesInfo">DOI 10.1364/jocn.8.000331</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://doi.org/10.1364/jocn.8.000331">https://doi.org/10.1364/jocn.8.000331</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="fan-dgs-dist">[fan-dgs-dist]</dt>
+        <dd>
+<span class="refAuthor">Fan, X.</span>, <span class="refAuthor">Zhan, C.</span>, <span class="refAuthor">Gupta, H.</span>, and <span class="refAuthor">C. Ramakrishnan</span>, <span class="refTitle">"Optimized Distribution of Entanglement Graph States in Quantum Networks"</span>, <span class="refContent">Institute of Electrical and Electronics Engineers (IEEE)</span>, <span class="seriesInfo">IEEE Transactions on Quantum Engineering vol. 6, pp. 1-17</span>, <span class="seriesInfo">DOI 10.1109/tqe.2025.3552006</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://doi.org/10.1109/tqe.2025.3552006">https://doi.org/10.1109/tqe.2025.3552006</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="fischer-dgs">[fischer-dgs]</dt>
+        <dd>
+<span class="refAuthor">Fischer, A.</span> and <span class="refAuthor">D. Towsley</span>, <span class="refTitle">"Distributing Graph States Across Quantum Networks"</span>, <span class="refContent">IEEE</span>, <span class="seriesInfo">2021 IEEE International Conference on Quantum Computing and Engineering (QCE) pp. 324-333</span>, <span class="seriesInfo">DOI 10.1109/qce52317.2021.00049</span>, <time datetime="2021-10" class="refDate">October 2021</time>, <span>&lt;<a href="https://doi.org/10.1109/qce52317.2021.00049">https://doi.org/10.1109/qce52317.2021.00049</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="hajdusek-qcomm">[hajdusek-qcomm]</dt>
         <dd>
@@ -3053,6 +3066,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="litinski-gosc">[litinski-gosc]</dt>
         <dd>
 <span class="refAuthor">Litinski, D.</span>, <span class="refTitle">"A Game of Surface Codes: Large-Scale Quantum Computing with Lattice Surgery"</span>, <span class="refContent">Verein zur Forderung des Open Access Publizierens in den Quantenwissenschaften</span>, <span class="seriesInfo">Quantum vol. 3, pp. 128</span>, <span class="seriesInfo">DOI 10.22331/q-2019-03-05-128</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://doi.org/10.22331/q-2019-03-05-128">https://doi.org/10.22331/q-2019-03-05-128</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="meignant-dgs">[meignant-dgs]</dt>
+        <dd>
+<span class="refAuthor">Meignant, C.</span>, <span class="refAuthor">Markham, D.</span>, and <span class="refAuthor">F. Grosshans</span>, <span class="refTitle">"Distributing graph states over arbitrary quantum networks"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 100, no. 5</span>, <span class="seriesInfo">DOI 10.1103/physreva.100.052333</span>, <time datetime="2019-11" class="refDate">November 2019</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.100.052333">https://doi.org/10.1103/physreva.100.052333</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="mori-psds">[mori-psds]</dt>
         <dd>
@@ -3137,8 +3154,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <div dir="auto" class="left"><span class="postal-code">252-0882</span></div>
 <div dir="auto" class="left"><span class="country-name">Japan</span></div>
 </address>
-<p id="appendix-A-1">Michal was involved in document development from the beginning.
-That was quite helpful.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">Michal was involved in document development and technical discussions from the beginning.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Andrew Todd</span></div>
 <div dir="auto" class="left"><span class="org">Keio University</span></div>
