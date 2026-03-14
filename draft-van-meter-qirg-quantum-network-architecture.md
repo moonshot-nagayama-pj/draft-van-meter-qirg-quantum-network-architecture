@@ -534,6 +534,24 @@ Pairs of photons entangled with each other can be made via a variety of physical
 
 As defined in Mori et al. (QCE 2024), a photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
+# Requirements
+
+## General Requirements
+
+### Functional Requirement
+
+### Interface Requirements
+
+### Physical Requirements
+
+### Environmental Requirements
+
+## Network Management Requirements
+
+### Fault Management
+
+### Configuration Management
+
 # Top Level Architecture
 
 <!--
@@ -1019,23 +1037,5 @@ From IDQ:
 # Behavioral Analysis
 
 # Physical Analysis
-
-# Requirements
-
-## General Requirements
-
-### Functional Requirement
-
-### Interface Requirements
-
-### Physical Requirements
-
-### Environmental Requirements
-
-## Network Management Requirements
-
-### Fault Management
-
-### Configuration Management
 
 --- back
