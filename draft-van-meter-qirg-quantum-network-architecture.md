@@ -58,8 +58,7 @@ contributor: # Same structure as author list, but goes into contributors
   code: 252-0882
   country: JP
   contribution: |
-    Michal was involved in document development from the beginning.
-    That was quite helpful.
+    Michal was involved in document development and technical discussions from the beginning.
 - ins: A. Todd
   name: Andrew Todd
   org: Keio University
@@ -122,6 +121,7 @@ informative:
   aboy-governance: DOI.10.1126/science.adw0018
   awschalom-roadmap: DOI.10.2172/1900586
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
+  bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   dally-towles:
       title: Principles and Practices of Interconnection Networks
@@ -137,11 +137,14 @@ informative:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
   drost: DOI.10.1364/JOCN.8.000331
+  fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
+  fischer-dgs: DOI.10.1109/QCE52317.2021.00049
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
   litinski-gosc: DOI.10.22331/q-2019-03-05-128
+  meignant-dgs: DOI.10.1103/PhysRevA.100.052333
   mori-psds: DOI.10.1109/QCE60285.2024.00218
   muralidharan-generations: DOI.10.1038/srep20463
   ramette-remote: DOI.10.1038/s41534-024-00855-4
@@ -547,6 +550,8 @@ Detectors may be either _single-photon detectors_, which click when _one or more
 
 # Requirements
 
+This section documents the requirements for all networks adhering to this architecture.
+
 ## General Requirements
 
 ### Functional Requirement
@@ -777,9 +782,8 @@ An RGSS typically distributes segments of the generated repeater graph state to 
 Unlike basic BSAs, an ABSA must be capable of performing measurements on single or multiple photons in dynamically selectable bases.
 The choice of measurement basis often depends on the outcomes of prior measurements within the network and the specific structure of the repeater graph state being utilized, implying more complex hardware and real-time classical control logic.
 
-**An optical switch (OSW)** is a device that can passively route photons from input optical fibers or paths to different output paths without performing measurements on them. <!-- ~\cite{mia-switch-design-paired-egress-bsa-pools}. -->
-OSWs, which can be based on technologies like nanomechanical systems or nanophotonic circuits, <!-- ~\cite{mia-switch-design-paired-egress-bsa-pools}, -->
-can be integrated as components within other node types (e.g., routers or complex end nodes) or can function as standalone elements in the network to dynamically reconfigure optical pathways.
+**An optical switch (OSW)** is a device that can passively route photons from input optical fibers or paths to different output paths without performing measurements on them {{koyama-24}}.
+OSWs, which can be based on technologies like nanomechanical systems or nanophotonic circuits, can be integrated as components within other node types (e.g., routers or complex end nodes) or can function as standalone elements in the network to dynamically reconfigure optical pathways.
 
 ## Repeater Nodes
 
@@ -793,7 +797,7 @@ This approach inherently demands more sophisticated hardware and advanced comput
 
 **A quantum router (RTR)** is a more complex and versatile node, possessing all capabilities of a quantum repeater and typically featuring three or more quantum network interfaces, enabling it to make sophisticated path selection decisions in complex topologies.
 Architecturally, an RTR may consist of multiple line cards and a quantum backplane, allowing it to run a full suite of network operation protocols.
-Beyond basic repeating functions like entanglement swapping, an RTR can govern network borders potentially interfacing between different repeater generations or technologies, participate in generating multipartite entangled states if the network provides such a servic, <!-- e~\cite{clement-graph-state,bugalhoDistributingMultipartiteEntanglement2023,fischerDistributingGraphStates2021,fanOptimizedDistributionEntanglement2025}, -->
+Beyond basic repeating functions like entanglement swapping, an RTR can govern network borders potentially interfacing between different repeater generations or technologies, participate in generating multipartite entangled states if the network provides such a service {{meignant-dgs}} {{bugalho-dist-multipartite}} {{fischer-dgs}} {{fan-dgs-dist}},
 and may act as a Responder in connection setups by rewriting or generating new RuleSets for different network domains.
 
 ## Composite Nodes
@@ -834,7 +838,7 @@ In a switched architecture, for example, photons may pass through paths such as:
 * MXIXM
 * MXXIXM
 
-(Does this also need to represent frequency conversion?)
+(Question: Does this notation also need to represent frequency conversion?)
 
 ## Point-to-point
 
@@ -900,6 +904,8 @@ Yes, the quantum plane includes some classical signals.
     - especially qubit-mode RuleSet notifications
 
 # Naming and Addressing
+
+(To be filled in.)
 
 ## State naming and management in RuleSets
 
