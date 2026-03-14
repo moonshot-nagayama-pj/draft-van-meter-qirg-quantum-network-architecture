@@ -142,6 +142,7 @@ informative:
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
   litinski-gosc: DOI.10.22331/q-2019-03-05-128
+  mori-psds: DOI.10.1109/QCE60285.2024.00218
   muralidharan-generations: DOI.10.1038/srep20463
   ramette-remote: DOI.10.1038/s41534-024-00855-4
   sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
@@ -394,6 +395,10 @@ A node comprises one or more quantum devices, and serves as a single locus of co
 
 Links are described in {{links}}.
 
+## Photonic Synchronization Domains
+
+A photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping {{mori-psds}}. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in {{I-D.draft-hajdusek-qirg-timing-physics}}.
+
 ## Direct and Indirect Multicomputer Architectures
 
 In multicomputer architectures, a _direct_ architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An _indirect_ architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect {{dally-towles}}.
@@ -520,7 +525,13 @@ The entanglement of a memory qubit with a photon is a technology-dependent proce
 
 ## Photon Sources
 
+Photons may be emitted by _sources_ of many types {{nist-singles}} .  Single photons may come from attenuated lasers, or be emitted by a variety of quantum devices, such as quantum dots, or by individual atoms.
+
+Photons may be unentangled, entangled with other photons, or entangled with quantum memories.
+
 ### Unentangled Single Photons
+
+Unentangled photons exhibit quantum properties.  They can carry information in any of the characteristics listed above, and may be put into a superposition of multiple basis states for e.g. quantum key distribution purposes.  In this document, unentangled individual photons are not used.
 
 ### Entangled Photon Pairs
 
@@ -528,11 +539,11 @@ Pairs of photons entangled with each other can be made via a variety of physical
 
 ### Memory-Emitted Photons
 
+Photons emitted by quantum memories, such as single atoms, may remain entangled to the memory, if the memory was in a superposition of basis states.
+
 ## Detectors
 
-## Photonic Synchronization Domains
-
-As defined in Mori et al. (QCE 2024), a photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in {{I-D.draft-hajdusek-qirg-timing-physics}}.
+Detectors may be either _single-photon detectors_, which click when _one or more_ photons hit the detector, or _number resolving detectors_, which can distinguish between one, two, or more photons hitting the detector within the same time window. In this document, detectors may be assumed to be single-photon detectors.
 
 # Top Level Architecture
 
