@@ -1406,7 +1406,9 @@ Table of Contents
    *A Repeater Graph State Source (RGSS)* is a specialized source that
    generates multipartite entangled photonic states, specifically
    tailored for all-photonic (memory-less) quantum repeater
-   architectures.  An RGSS typically distributes segments of the
+   architectures [azuma-rgs],
+   [hilaire-rgs-optimizing-gen-time],[buterakos-graph-generation],
+   [hilaire-logical-bsm].  An RGSS typically distributes segments of the
    generated repeater graph state to adjacent network nodes, where
    subsequent measurements on these photonic qubits are performed to
    establish long-distance entanglement without relying on quantum
@@ -1414,13 +1416,15 @@ Table of Contents
 
    *An advanced Bell state analyzer (ABSA)* represents a more
    sophisticated version of a BSA, particularly required in advanced
-   all-photonic repeater protocols based on repeater graph states.
-   Unlike basic BSAs, an ABSA must be capable of performing measurements
-   on single or multiple photons in dynamically selectable bases.  The
-   choice of measurement basis often depends on the outcomes of prior
-   measurements within the network and the specific structure of the
-   repeater graph state being utilized, implying more complex hardware
-   and real-time classical control logic.
+   all-photonic repeater protocols based on repeater graph
+   states[azuma-rgs],
+   [hilaire-rgs-optimizing-gen-time],[buterakos-graph-generation],
+   [hilaire-logical-bsm].  Unlike basic BSAs, an ABSA must be capable of
+   performing measurements on single or multiple photons in dynamically
+   selectable bases.  The choice of measurement basis often depends on
+   the outcomes of prior measurements within the network and the
+   specific structure of the repeater graph state being utilized,
+   implying more complex hardware and real-time classical control logic.
 
    *An optical switch (OSW)* is a device that can passively route
    photons from input optical fibers or paths to different output paths
@@ -1871,6 +1875,13 @@ Table of Contents
               DOI 10.2172/1900586, July 2022,
               <https://doi.org/10.2172/1900586>.
 
+   [azuma-rgs]
+              Azuma, K., Tamaki, K., and H. Lo, "All-photonic quantum
+              repeaters", Springer Science and Business Media LLC,
+              Nature Communications vol. 6, no. 1,
+              DOI 10.1038/ncomms7787, April 2015,
+              <https://doi.org/10.1038/ncomms7787>.
+
    [bennett-mixed]
               Bennett, C., DiVincenzo, D., Smolin, J., and W. Wootters,
               "Mixed-state entanglement and quantum error correction",
@@ -1892,6 +1903,13 @@ Table of Contents
               Publizierens in den Quantenwissenschaften, Quantum vol. 7,
               pp. 920, DOI 10.22331/q-2023-02-09-920, February 2023,
               <https://doi.org/10.22331/q-2023-02-09-920>.
+
+   [buterakos-graph-generation]
+              Buterakos, D., Barnes, E., and S. Economou, "Deterministic
+              Generation of All-Photonic Quantum Repeaters from Solid-
+              State Emitters", American Physical Society (APS), Physical
+              Review X vol. 7, no. 4, DOI 10.1103/physrevx.7.041023,
+              October 2017, <https://doi.org/10.1103/physrevx.7.041023>.
 
    [choi-fat-tree]
               Choi, H., Davis, M., Iñesta, Á., and D. Englund, "Scalable
@@ -2032,6 +2050,23 @@ Table of Contents
               (APS), Physical Review A vol. 69, no. 6,
               DOI 10.1103/physreva.69.062311, June 2004,
               <https://doi.org/10.1103/physreva.69.062311>.
+
+   [hilaire-logical-bsm]
+              Hilaire, P., Barnes, E., Economou, S., and F. Grosshans,
+              "Error-correcting entanglement swapping using a practical
+              logical photon encoding", American Physical Society (APS),
+              Physical Review A vol. 104, no. 5,
+              DOI 10.1103/physreva.104.052623, November 2021,
+              <https://doi.org/10.1103/physreva.104.052623>.
+
+   [hilaire-rgs-optimizing-gen-time]
+              Hilaire, P., Barnes, E., and S. Economou, "Resource
+              requirements for efficient quantum communication using
+              all-photonic graph states generated from a few matter
+              qubits", Verein zur Forderung des Open Access Publizierens
+              in den Quantenwissenschaften, Quantum vol. 5, pp. 397,
+              DOI 10.22331/q-2021-02-15-397, February 2021,
+              <https://doi.org/10.22331/q-2021-02-15-397>.
 
    [horsman-lattice-surgery]
               Horsman, D., Fowler, A., Devitt, S., and R. Meter,
