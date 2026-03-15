@@ -688,7 +688,7 @@ Bell pairs serve as the smallest unit of entanglement and the foundation for nea
 Restricting the service to Bell pair distribution simplifies the network's responsibilities.
 However, this approach shifts complexity to the applications, which must construct multipartite or fault-tolerant states themselves and manage the coordination overhead that entails.
 
-At the other end of the spectrum, networks may offer richer services such as multipartite entangled states {{ghz}}, {{dur-w-state}}, {{hein-multiparty}},
+At the other end of the spectrum, networks may offer richer services such as multipartite entangled states {{ghz}}, {{dur-w-state}}, {{hein-multiparty}}, {{hein-graph-entanglement}}
 or fault-tolerant state teleportation.
 While applications can, in theory, synthesize these states from Bell pairs, direct network-level support may offer efficiency gains and reduce sensitivity to noise by internalizing complex procedures like direct graph state generations or supporting the delivery of error-correcting code encoded logical qubits.
 
