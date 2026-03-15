@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 15 September 2026                               Keio University
-                                                           14 March 2026
+Expires: 16 September 2026                               Keio University
+                                                           15 March 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 September 2026.
+   This Internet-Draft will expire on 16 September 2026.
 
 Copyright Notice
 
@@ -1057,15 +1057,39 @@ Table of Contents
 
 11.1.1.  Functional Requirement
 
+   *  Operates on qubits.  (That is, qutrits, qudits, qunats and
+      continuous-variable systems are out of scope of this architecture,
+      except where physical or link layers present such physical
+      variables as qubits.)
+
+   *  Is independent of physical implementation of memories, photonic
+      data representations, etc.
+
+   *  Supports pairwise Bell pair creation between nodes with one or
+      more of the B, C or T timing classes above.
+
 11.1.2.  Interface Requirements
+
+   *  Supports one or more applications, such as the ones in [RFC9583],
+      with APIs consistent with the B, C, or T classes.
 
 11.1.3.  Physical Requirements
 
+   Physical requirements such as distance, wavelength, vibration, power,
+   etc. will be case-dependent.
+
 11.1.4.  Environmental Requirements
+
+   Physical requirements such as distance, wavelength, vibration, power,
+   etc. will be case-dependent.
 
 11.2.  Network Management Requirements
 
 11.2.1.  Fault Management
+
+   *  Supports isolation of hardware and software faults.
+
+   *  Supports monitoring and reporting of fidelity.
 
 11.2.2.  Configuration Management
 
