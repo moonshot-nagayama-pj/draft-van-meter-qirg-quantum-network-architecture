@@ -5,7 +5,6 @@ cat: info
 submissiontype: IRTF
 area: IRTF
 wg: QIRG
-keyword: Internet-Draft
 
 docname: draft-van-meter-qirg-quantum-network-architecture-latest
 pi: [toc, sortrefs, symrefs]
@@ -103,7 +102,6 @@ entity:
   rdquo: ”
 
 normative:
-  RFC2119:
 
 informative:
   RFC1122:
@@ -167,7 +165,6 @@ informative:
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
   I-D.draft-van-meter-qirg-quantum-connection-setup:
 ...
----
 
 --- abstract
 
