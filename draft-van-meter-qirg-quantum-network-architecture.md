@@ -121,6 +121,18 @@ informative:
       "Ph.D.": "Dissertation, Keio University"
     format:
       PDF: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
+  rdv-thesis:
+    target: https://arxiv.org/abs/quant-ph/0607065
+    title: Architecture of a Quantum Multicomputer Optimized for Shor's Factoring Algorithm
+    author:
+        ins: R. D. Van Meter III
+        name: Rodney Doyle Van Meter III
+        org: Keio University
+    date: 2006
+    seriesinfo:
+      "Ph.D.": "Dissertation, Keio University"
+    format:
+      PDF: https://arxiv.org/pdf/quant-ph/0607065
   nist-singles: DOI.10.6028/NIST.IR.8486r1
   aboy-governance: DOI.10.1126/science.adw0018
   awschalom-roadmap: DOI.10.2172/1900586
@@ -438,7 +450,7 @@ As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, en
 
 ## Multicomputer
 
-The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)).  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
+The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)) {{rdv-thesis}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
 
 The execution model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface).
 
