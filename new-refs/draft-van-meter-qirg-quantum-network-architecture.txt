@@ -1333,20 +1333,21 @@ Table of Contents
    *A sensor (SNSR) node* is a specialized end node designed to utilize
    entangled states, often shared with distant parties, for high-
    precision measurements of physical quantities, for clock
-   synchronization tasks, or for distributed sensing tasks [ge-linear].
-   These nodes typically feature limited quantum memory to hold working
-   qubits (e.g., one half of an entangled pair) and possess specific
-   quantum processing capabilities tailored for sensing protocols.  Such
-   capabilities include performing joint measurements, like Bell State
-   Measurements (BSMs), between their stored qubits and photons that
-   have interacted with the environment [huang-imaging-stars],
-   [gottesman-telescope].  While an SNSR node's internal processing is
-   specialized, certain sensing applications may also necessitate high-
-   rate entanglement generation from the network to achieve desired
-   performance.  For SNSR nodes, precise timing information is almost
-   invariably a critical component of the service they provide or
-   require, and their operation typically culminates in outputting
-   classical data that corresponds to the sensed phenomenon.
+   synchronization tasks, or for distributed sensing tasks [ge-linear],
+   [proctor-quantum-sensing], [degen-sensing], [giovannetti-metro],
+   [proctor-multiparm].  These nodes typically feature limited quantum
+   memory to hold working qubits (e.g., one half of an entangled pair)
+   and possess specific quantum processing capabilities tailored for
+   sensing protocols.  Such capabilities include performing joint
+   measurements, like Bell State Measurements (BSMs), between their
+   stored qubits and photons that have interacted with the environment
+   [huang-imaging-stars], [gottesman-telescope].  While an SNSR node's
+   internal processing is specialized, certain sensing applications may
+   also necessitate high-rate entanglement generation from the network
+   to achieve desired performance.  For SNSR nodes, precise timing
+   information is almost invariably a critical component of the service
+   they provide or require, and their operation typically culminates in
+   outputting classical data that corresponds to the sensed phenomenon.
 
    *A store (STOR) node* is a specialized end node whose primary
    function is to serve as a high-fidelity quantum data repository.  Its
