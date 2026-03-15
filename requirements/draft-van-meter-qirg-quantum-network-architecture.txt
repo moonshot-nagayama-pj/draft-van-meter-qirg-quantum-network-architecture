@@ -108,7 +108,7 @@ Table of Contents
      10.6.  Detectors
    11. Requirements
      11.1.  General Requirements
-       11.1.1.  Functional Requirement
+       11.1.1.  Functional Requirements
        11.1.2.  Interface Requirements
        11.1.3.  Physical Requirements
        11.1.4.  Environmental Requirements
@@ -1045,8 +1045,9 @@ Table of Contents
    Detectors may be either _single-photon detectors_, which click when
    _one or more_ photons hit the detector, or _number resolving
    detectors_, which can distinguish between one, two, or more photons
-   hitting the detector within the same time window.  In this document,
-   detectors may be assumed to be single-photon detectors.
+   hitting the detector within the same time window [nist-singles].  In
+   this document, detectors may be assumed to be single-photon
+   detectors.
 
 11.  Requirements
 
@@ -1055,23 +1056,41 @@ Table of Contents
 
 11.1.  General Requirements
 
-11.1.1.  Functional Requirement
+11.1.1.  Functional Requirements
 
-   *  Operates on qubits.  (That is, qutrits, qudits, qunats and
-      continuous-variable systems are out of scope of this architecture,
-      except where physical or link layers present such physical
-      variables as qubits.)
+   *  Operates on qubits.  (Qutrits, qudits, qunats and continuous-
+      variable systems are out of scope of this architecture, except
+      where physical or link layers present such physical variables as
+      qubits.)
 
    *  Is independent of physical implementation of memories, photonic
-      data representations, etc.
+      data representations, etc.  (Multipartite states created by the
+      network are not a requirement of the network.)
 
    *  Supports pairwise Bell pair creation between nodes with one or
       more of the B, C or T timing classes above.
+
+   *  The architecture must support deployments ranging from
+      multicomputer to wide area networks.
+
+   *  The architecture must support multiple photonic synchronization
+      domains, as either point-to-point or optically switched paths.
+      The architecture must support some form of buffering between PSDs.
+
+   *  The architecture must support entanglement swapping.  (Note that
+      single PSD deployments may not need entanglement swapping.)
+
+   *  The architecture must support evolution of single-photon,
+      unentangled, single-purpose quantum key distribution networks to
+      fully entangled, multipurpose networks.
 
 11.1.2.  Interface Requirements
 
    *  Supports one or more applications, such as the ones in [RFC9583],
       with APIs consistent with the B, C, or T classes.
+
+   *  The network must enable applications to match quantum states at
+      each end of the Bell pair by name.
 
 11.1.3.  Physical Requirements
 
@@ -1092,6 +1111,9 @@ Table of Contents
    *  Supports monitoring and reporting of fidelity.
 
 11.2.2.  Configuration Management
+
+   *  The architecture must support the use of both manual and automated
+      network configuration tools.
 
 12.  Top Level Architecture
 
@@ -1126,12 +1148,13 @@ Table of Contents
    manage the coordination overhead that entails.
 
    At the other end of the spectrum, networks may offer richer services
-   such as multipartite entangled states, or fault-tolerant state
-   teleportation.  While applications can, in theory, synthesize these
-   states from Bell pairs, direct network-level support may offer
-   efficiency gains and reduce sensitivity to noise by internalizing
-   complex procedures like direct graph state generations or supporting
-   the delivery of error-correcting code encoded logical qubits.
+   such as multipartite entangled states [ghz], [dur-w-state],
+   [hein-multiparty], or fault-tolerant state teleportation.  While
+   applications can, in theory, synthesize these states from Bell pairs,
+   direct network-level support may offer efficiency gains and reduce
+   sensitivity to noise by internalizing complex procedures like direct
+   graph state generations or supporting the delivery of error-
+   correcting code encoded logical qubits.
 
    In our architecture, we adopt Bell pair distribution as the core
    network service, as it allows for a well-scoped, foundational
@@ -1610,8 +1633,6 @@ Table of Contents
 
 21.  Naming and Addressing
 
-   (To be filled in.)
-
 21.1.  State naming and management in RuleSets
 
    (Incorporates naming material from Naphan's thesis.  Probably needs
@@ -1788,6 +1809,10 @@ Table of Contents
    confidentiality, integrity, and availability (the "CIA triad")
    assurance via cryptographic methods.
 
+   Security considerations for other network types are an open topic of
+   study and as such are not yet ready for specification and
+   standardization.
+
 25.  References
 
 25.1.  Normative References
@@ -1866,6 +1891,13 @@ Table of Contents
               DOI 10.1364/jocn.8.000331, April 2016,
               <https://doi.org/10.1364/jocn.8.000331>.
 
+   [dur-w-state]
+              Dür, W., Vidal, G., and J. Cirac, "Three qubits can be
+              entangled in two inequivalent ways", American Physical
+              Society (APS), Physical Review A vol. 62, no. 6,
+              DOI 10.1103/physreva.62.062314, November 2000,
+              <https://doi.org/10.1103/physreva.62.062314>.
+
    [fan-dgs-dist]
               Fan, X., Zhan, C., Gupta, H., and C. Ramakrishnan,
               "Optimized Distribution of Entanglement Graph States in
@@ -1882,10 +1914,22 @@ Table of Contents
               324-333, DOI 10.1109/qce52317.2021.00049, October 2021,
               <https://doi.org/10.1109/qce52317.2021.00049>.
 
+   [ghz]      Greenberger, D., Horne, M., and A. Zeilinger, "Going
+              Beyond Bell's Theorem", arXiv,  arXiv,
+              DOI 10.48550/ARXIV.0712.0921, 2007,
+              <https://doi.org/10.48550/ARXIV.0712.0921>.
+
    [hajdusek-qcomm]
               Hajdušek, M. and R. Van Meter, "Quantum Communications",
               arXiv, DOI 10.48550/ARXIV.2311.02367, 2023,
               <https://doi.org/10.48550/ARXIV.2311.02367>.
+
+   [hein-multiparty]
+              Hein, M., Eisert, J., and H. Briegel, "Multiparty
+              entanglement in graph states", American Physical Society
+              (APS), Physical Review A vol. 69, no. 6,
+              DOI 10.1103/physreva.69.062311, June 2004,
+              <https://doi.org/10.1103/physreva.69.062311>.
 
    [horsman-lattice-surgery]
               Horsman, D., Fowler, A., Devitt, S., and R. Meter,

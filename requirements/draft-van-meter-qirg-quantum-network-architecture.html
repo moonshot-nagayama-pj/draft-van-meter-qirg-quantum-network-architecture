@@ -1290,7 +1290,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-general-requirements" class="internal xref">General Requirements</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.1">
-                    <p id="section-toc.1-1.11.2.1.2.1.1"><a href="#section-11.1.1" class="auto internal xref">11.1.1</a>.  <a href="#name-functional-requirement" class="internal xref">Functional Requirement</a></p>
+                    <p id="section-toc.1-1.11.2.1.2.1.1"><a href="#section-11.1.1" class="auto internal xref">11.1.1</a>.  <a href="#name-functional-requirements" class="internal xref">Functional Requirements</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.2">
                     <p id="section-toc.1-1.11.2.1.2.2.1"><a href="#section-11.1.2" class="auto internal xref">11.1.2</a>.  <a href="#name-interface-requirements" class="internal xref">Interface Requirements</a></p>
@@ -2278,7 +2278,7 @@ A quantum optical link may define one mode per time window. During each window, 
         <h3 id="name-detectors">
 <a href="#section-10.6" class="section-number selfRef">10.6. </a><a href="#name-detectors" class="section-name selfRef">Detectors</a>
         </h3>
-<p id="section-10.6-1">Detectors may be either <em>single-photon detectors</em>, which click when <em>one or more</em> photons hit the detector, or <em>number resolving detectors</em>, which can distinguish between one, two, or more photons hitting the detector within the same time window. In this document, detectors may be assumed to be single-photon detectors.<a href="#section-10.6-1" class="pilcrow">¶</a></p>
+<p id="section-10.6-1">Detectors may be either <em>single-photon detectors</em>, which click when <em>one or more</em> photons hit the detector, or <em>number resolving detectors</em>, which can distinguish between one, two, or more photons hitting the detector within the same time window <span>[<a href="#nist-singles" class="cite xref">nist-singles</a>]</span>. In this document, detectors may be assumed to be single-photon detectors.<a href="#section-10.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2294,20 +2294,32 @@ A quantum optical link may define one mode per time window. During each window, 
         <h3 id="name-general-requirements">
 <a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-general-requirements" class="section-name selfRef">General Requirements</a>
         </h3>
-<div id="functional-requirement">
+<div id="functional-requirements">
 <section id="section-11.1.1">
-          <h4 id="name-functional-requirement">
-<a href="#section-11.1.1" class="section-number selfRef">11.1.1. </a><a href="#name-functional-requirement" class="section-name selfRef">Functional Requirement</a>
+          <h4 id="name-functional-requirements">
+<a href="#section-11.1.1" class="section-number selfRef">11.1.1. </a><a href="#name-functional-requirements" class="section-name selfRef">Functional Requirements</a>
           </h4>
 <ul class="normal">
 <li class="normal" id="section-11.1.1-1.1">
-              <p id="section-11.1.1-1.1.1">Operates on qubits. (That is, qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)<a href="#section-11.1.1-1.1.1" class="pilcrow">¶</a></p>
+              <p id="section-11.1.1-1.1.1">Operates on qubits. (Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)<a href="#section-11.1.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.1.1-1.2">
-              <p id="section-11.1.1-1.2.1">Is independent of physical implementation of memories, photonic data representations, etc.<a href="#section-11.1.1-1.2.1" class="pilcrow">¶</a></p>
+              <p id="section-11.1.1-1.2.1">Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)<a href="#section-11.1.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.1.1-1.3">
               <p id="section-11.1.1-1.3.1">Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.<a href="#section-11.1.1-1.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-11.1.1-1.4">
+              <p id="section-11.1.1-1.4.1">The architecture must support deployments ranging from multicomputer to wide area networks.<a href="#section-11.1.1-1.4.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-11.1.1-1.5">
+              <p id="section-11.1.1-1.5.1">The architecture must support multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.<a href="#section-11.1.1-1.5.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-11.1.1-1.6">
+              <p id="section-11.1.1-1.6.1">The architecture must support entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)<a href="#section-11.1.1-1.6.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-11.1.1-1.7">
+              <p id="section-11.1.1-1.7.1">The architecture must support evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.<a href="#section-11.1.1-1.7.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2320,6 +2332,9 @@ A quantum optical link may define one mode per time window. During each window, 
 <ul class="normal">
 <li class="normal" id="section-11.1.2-1.1">
               <p id="section-11.1.2-1.1.1">Supports one or more applications, such as the ones in <span>[<a href="#RFC9583" class="cite xref">RFC9583</a>]</span>, with APIs consistent with the B, C, or T classes.<a href="#section-11.1.2-1.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-11.1.2-1.2">
+              <p id="section-11.1.2-1.2.1">The network must enable applications to match quantum states at each end of the Bell pair by name.<a href="#section-11.1.2-1.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2366,7 +2381,12 @@ A quantum optical link may define one mode per time window. During each window, 
 <section id="section-11.2.2">
           <h4 id="name-configuration-management">
 <a href="#section-11.2.2" class="section-number selfRef">11.2.2. </a><a href="#name-configuration-management" class="section-name selfRef">Configuration Management</a>
-        </h4>
+          </h4>
+<ul class="normal">
+<li class="normal" id="section-11.2.2-1.1">
+              <p id="section-11.2.2-1.1.1">The architecture must support the use of both manual and automated network configuration tools.<a href="#section-11.2.2-1.1.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
 </section>
 </div>
 </section>
@@ -2400,7 +2420,7 @@ A minimalist design treats <em>Bell pairs</em> as the primary network-level serv
 Bell pairs serve as the smallest unit of entanglement and the foundation for nearly all quantum communication protocols.
 Restricting the service to Bell pair distribution simplifies the network's responsibilities.
 However, this approach shifts complexity to the applications, which must construct multipartite or fault-tolerant states themselves and manage the coordination overhead that entails.<a href="#section-13-2" class="pilcrow">¶</a></p>
-<p id="section-13-3">At the other end of the spectrum, networks may offer richer services such as multipartite entangled states, 
+<p id="section-13-3">At the other end of the spectrum, networks may offer richer services such as multipartite entangled states <span>[<a href="#ghz" class="cite xref">ghz</a>]</span>, <span>[<a href="#dur-w-state" class="cite xref">dur-w-state</a>]</span>, <span>[<a href="#hein-multiparty" class="cite xref">hein-multiparty</a>]</span>,
 or fault-tolerant state teleportation.
 While applications can, in theory, synthesize these states from Bell pairs, direct network-level support may offer efficiency gains and reduce sensitivity to noise by internalizing complex procedures like direct graph state generations or supporting the delivery of error-correcting code encoded logical qubits.<a href="#section-13-3" class="pilcrow">¶</a></p>
 <p id="section-13-4">In our architecture, we adopt Bell pair distribution as the core network service, as it allows for a well-scoped, foundational architectural framework.<a href="#section-13-4" class="pilcrow">¶</a></p>
@@ -2803,7 +2823,6 @@ and may act as a Responder in connection setups by rewriting or generating new R
       <h2 id="name-naming-and-addressing">
 <a href="#section-21" class="section-number selfRef">21. </a><a href="#name-naming-and-addressing" class="section-name selfRef">Naming and Addressing</a>
       </h2>
-<p id="section-21-1">(To be filled in.)<a href="#section-21-1" class="pilcrow">¶</a></p>
 <div id="state-naming-and-management-in-rulesets">
 <section id="section-21.1">
         <h3 id="name-state-naming-and-management">
@@ -2995,6 +3014,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <a href="#section-24" class="section-number selfRef">24. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-24-1">Quantum multicomputer systems are assumed to be constructed as isolated, centrally controlled systems with no need for confidentiality, integrity, and availability (the "CIA triad") assurance via cryptographic methods.<a href="#section-24-1" class="pilcrow">¶</a></p>
+<p id="section-24-2">Security considerations for other network types are an open topic of study and as such are not yet ready for specification and standardization.<a href="#section-24-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
@@ -3057,6 +3077,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Drost, R.</span>, <span class="refAuthor">Moore, T.</span>, and <span class="refAuthor">M. Brodsky</span>, <span class="refTitle">"Switching Networks for Pairwise-Entanglement Distribution"</span>, <span class="refContent">Optica Publishing Group</span>, <span class="seriesInfo">Journal of Optical Communications and Networking vol. 8, no. 5, pp. 331</span>, <span class="seriesInfo">DOI 10.1364/jocn.8.000331</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://doi.org/10.1364/jocn.8.000331">https://doi.org/10.1364/jocn.8.000331</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="dur-w-state">[dur-w-state]</dt>
+        <dd>
+<span class="refAuthor">Dür, W.</span>, <span class="refAuthor">Vidal, G.</span>, and <span class="refAuthor">J. Cirac</span>, <span class="refTitle">"Three qubits can be entangled in two inequivalent ways"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 62, no. 6</span>, <span class="seriesInfo">DOI 10.1103/physreva.62.062314</span>, <time datetime="2000-11" class="refDate">November 2000</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.62.062314">https://doi.org/10.1103/physreva.62.062314</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="fan-dgs-dist">[fan-dgs-dist]</dt>
         <dd>
 <span class="refAuthor">Fan, X.</span>, <span class="refAuthor">Zhan, C.</span>, <span class="refAuthor">Gupta, H.</span>, and <span class="refAuthor">C. Ramakrishnan</span>, <span class="refTitle">"Optimized Distribution of Entanglement Graph States in Quantum Networks"</span>, <span class="refContent">Institute of Electrical and Electronics Engineers (IEEE)</span>, <span class="seriesInfo">IEEE Transactions on Quantum Engineering vol. 6, pp. 1-17</span>, <span class="seriesInfo">DOI 10.1109/tqe.2025.3552006</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://doi.org/10.1109/tqe.2025.3552006">https://doi.org/10.1109/tqe.2025.3552006</a>&gt;</span>. </dd>
@@ -3065,9 +3089,17 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Fischer, A.</span> and <span class="refAuthor">D. Towsley</span>, <span class="refTitle">"Distributing Graph States Across Quantum Networks"</span>, <span class="refContent">IEEE</span>, <span class="seriesInfo">2021 IEEE International Conference on Quantum Computing and Engineering (QCE) pp. 324-333</span>, <span class="seriesInfo">DOI 10.1109/qce52317.2021.00049</span>, <time datetime="2021-10" class="refDate">October 2021</time>, <span>&lt;<a href="https://doi.org/10.1109/qce52317.2021.00049">https://doi.org/10.1109/qce52317.2021.00049</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="ghz">[ghz]</dt>
+        <dd>
+<span class="refAuthor">Greenberger, D.</span>, <span class="refAuthor">Horne, M.</span>, and <span class="refAuthor">A. Zeilinger</span>, <span class="refTitle">"Going Beyond Bell's Theorem"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo"> arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.0712.0921</span>, <time datetime="2007" class="refDate">2007</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.0712.0921">https://doi.org/10.48550/ARXIV.0712.0921</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="hajdusek-qcomm">[hajdusek-qcomm]</dt>
         <dd>
 <span class="refAuthor">Hajdušek, M.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Quantum Communications"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2311.02367</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2311.02367">https://doi.org/10.48550/ARXIV.2311.02367</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="hein-multiparty">[hein-multiparty]</dt>
+        <dd>
+<span class="refAuthor">Hein, M.</span>, <span class="refAuthor">Eisert, J.</span>, and <span class="refAuthor">H. Briegel</span>, <span class="refTitle">"Multiparty entanglement in graph states"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 69, no. 6</span>, <span class="seriesInfo">DOI 10.1103/physreva.69.062311</span>, <time datetime="2004-06" class="refDate">June 2004</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.69.062311">https://doi.org/10.1103/physreva.69.062311</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="horsman-lattice-surgery">[horsman-lattice-surgery]</dt>
         <dd>
