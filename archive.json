@@ -1,0 +1,181 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2026-03-15T00:50:50.253120+00:00",
+  "repo": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDORlsxL87KU77t",
+      "title": "Abstract and references 2603",
+      "url": "https://github.com/moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture/pull/1",
+      "state": "MERGED",
+      "author": "rdviii",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Still about two dozen website URLs still hanging around and some things I think will be deleted (at least for -00) not cleaned up yet.",
+      "createdAt": "2026-03-13T10:59:39Z",
+      "updatedAt": "2026-03-13T11:06:29Z",
+      "baseRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "e5c12e703db1c5fd9131ace3a1d91594a07f9128",
+      "headRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "headRefName": "abstract-and-references-2603",
+      "headRefOid": "dafe6b7341c69132e4de56571d997f5f3e6a2ba5",
+      "closedAt": "2026-03-13T11:06:29Z",
+      "mergedAt": "2026-03-13T11:06:29Z",
+      "mergedBy": "rdviii",
+      "mergeCommit": {
+        "oid": "d757c72f6d59d3c89145bc6d8478dba30efb16a6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDORlsxL87rCNGz",
+          "commit": {
+            "abbreviatedOid": "dafe6b7"
+          },
+          "author": "hhatpsi",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-03-13T11:04:26Z",
+          "updatedAt": "2026-03-13T11:04:26Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDORlsxL87KkcYd",
+      "title": "Requirements moved up above Architecture",
+      "url": "https://github.com/moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture/pull/2",
+      "state": "MERGED",
+      "author": "rdviii",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-03-14T08:24:00Z",
+      "updatedAt": "2026-03-14T08:46:42Z",
+      "baseRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "d757c72f6d59d3c89145bc6d8478dba30efb16a6",
+      "headRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "headRefName": "reqs-move",
+      "headRefOid": "17980c3fdd782ea0019e76baa85fee1e18b2b6cb",
+      "closedAt": "2026-03-14T08:46:42Z",
+      "mergedAt": "2026-03-14T08:46:42Z",
+      "mergedBy": "rdviii",
+      "mergeCommit": {
+        "oid": "64605ba270913d60e8ac4d93b633478aa02f9d1b"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDORlsxL87rWNj7",
+          "commit": {
+            "abbreviatedOid": "17980c3"
+          },
+          "author": "bobmeetsworld",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-03-14T08:41:43Z",
+          "updatedAt": "2026-03-14T08:41:43Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDORlsxL87KmbYx",
+      "title": "Move psds, delete Analysis, fill in some sections",
+      "url": "https://github.com/moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture/pull/3",
+      "state": "MERGED",
+      "author": "rdviii",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Deleting, at least for now, the analysis sections that Amin was sketching in. Put in some placeholder text in a few places. Moved photonic synchronization domains to architectural concepts, where it's a better fit. Cleaned up some references.",
+      "createdAt": "2026-03-14T12:43:03Z",
+      "updatedAt": "2026-03-14T12:51:59Z",
+      "baseRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "64605ba270913d60e8ac4d93b633478aa02f9d1b",
+      "headRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "headRefName": "move-psds",
+      "headRefOid": "0f6053066f7ddd6b1a19e89ea1fec87790cef282",
+      "closedAt": "2026-03-14T12:51:59Z",
+      "mergedAt": "2026-03-14T12:51:59Z",
+      "mergedBy": "rdviii",
+      "mergeCommit": {
+        "oid": "4d192fcdf87c441c55f106c6a8095cfef13d202d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDORlsxL87rXj_C",
+          "commit": {
+            "abbreviatedOid": "0f60530"
+          },
+          "author": "bobmeetsworld",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-03-14T12:51:06Z",
+          "updatedAt": "2026-03-14T12:51:06Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
+}
