@@ -123,6 +123,7 @@ informative:
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
+  degen-sensing: DOI.10.1103/RevModPhys.89.035002
   dally-towles:
       title: Principles and Practices of Interconnection Networks
       author:
@@ -140,7 +141,11 @@ informative:
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
+  ge-linear: DOI.10.1103/PhysRevLett.121.043604
   ghz: DOI.10.48550/arXiv.0712.0921
+  giovannetti-metro: DOI.10.1038/nphoton.2011.35
+  gottesman-telescope: DOI.10.1103/PhysRevLett.109.070503
+  ilo-okeke-clock: DOI.10.1038/s41534-018-0090-2
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
   hein-multiparty: DOI.10.1103/PhysRevA.69.062311
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
@@ -150,6 +155,8 @@ informative:
   meignant-dgs: DOI.10.1103/PhysRevA.100.052333
   mori-psds: DOI.10.1109/QCE60285.2024.00218
   muralidharan-generations: DOI.10.1038/srep20463
+  proctor-quantum-sensing: DOI.10.48550/arXiv.1702.04271
+  proctor-multiparm: DOI.10.1103/PhysRevLett.120.080501
   ramette-remote: DOI.10.1038/s41534-024-00855-4
   sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
   sane-jobs: DOI.10.48550/arXiv.2504.18298
@@ -695,8 +702,7 @@ Even in this basic model, distributed quantum computation occurs along the path 
 A proper service definition must account for this processing, as it directly affects fidelity, latency, and trust assumptions in the network.
 
 In addition to quantum state delivery, timing information is often a critical part of the service.
-Applications in distributed quantum <!-- sensing~\cite{degen-sensing,proctor-quantum-sensing,proctorMultiparameterEstimationNetworked2018,giovannetti-advances-in-metrology,ge-distributed-metrology,gottesman-longer-baseline-telescopes} and clock synchronization~\cite{Ilo-okeke-quantum-clock} -->
-sensing and clock synchronization
+Applications in distributed quantum sensing and clock synchronization {{degen-sensing}}, {{proctor-quantum-sensing}}, {{proctor-multiparm}}, {{giovannetti-metro}}, {{gottesman-telescope}}, {{ilo-okeke-clock}}
 require precise knowledge of when entanglement was established or when measurement events occurred.
 Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.
 
@@ -771,7 +777,7 @@ There are four major kinds of end nodes:
 Its core capability is to receive individual photons and perform measurements on them in at least two different bases.
 Lacking quantum memory, MEAS nodes are well-suited for applications like quantum key distribution (QKD) or as simple terminals in certain forms of secure delegated computation protocols, <!-- ~\cite{morimaeBlindQuantumComputation2013,fitzsimonsPrivateQuantumComputation2017} --> typically interacting with the network in a synchronous manner where measurement results directly yield classical data.
 
-**A sensor (SNSR) node** is a specialized end node designed to utilize entangled states, often shared with distant parties, for high-precision measurements of physical quantities, for clock synchronization tasks, or for distributed sensing tasks. <!-- ~\cite{proctorMultiparameterEstimationNetworked2018,degen-sensing,proctor-quantum-sensing,giovannetti-advances-in-metrology,ge-distributed-metrology}. -->
+**A sensor (SNSR) node** is a specialized end node designed to utilize entangled states, often shared with distant parties, for high-precision measurements of physical quantities, for clock synchronization tasks, or for distributed sensing tasks {{ge-linear}}. <!-- ~\cite{proctorMultiparameterEstimationNetworked2018,degen-sensing,proctor-quantum-sensing,giovannetti-advances-in-metrology,ge-distributed-metrology}. -->
 These nodes typically feature limited quantum memory to hold working qubits (e.g., one half of an entangled pair) and possess specific quantum processing capabilities tailored for sensing protocols.
 Such capabilities include performing joint measurements, like Bell State Measurements (BSMs), between their stored qubits and photons that have interacted with the environment. <!-- ~\cite{gottesman-longer-baseline-telescopes,huang-imaging-stars-with-qec}. -->
 While an SNSR node's internal processing is specialized, certain sensing applications may also necessitate high-rate entanglement generation from the network to achieve desired performance.
