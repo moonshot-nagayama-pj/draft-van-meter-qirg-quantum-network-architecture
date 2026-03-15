@@ -121,12 +121,30 @@ informative:
       "Ph.D.": "Dissertation, Keio University"
     format:
       PDF: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
+  rdv-thesis:
+    target: https://arxiv.org/abs/quant-ph/0607065
+    title: Architecture of a Quantum Multicomputer Optimized for Shor's Factoring Algorithm
+    author:
+        ins: R. D. Van Meter III
+        name: Rodney Doyle Van Meter III
+        org: Keio University
+    date: 2006
+    seriesinfo:
+      "Ph.D.": "Dissertation, Keio University"
+    format:
+      PDF: https://arxiv.org/pdf/quant-ph/0607065
   nist-singles: DOI.10.6028/NIST.IR.8486r1
   aboy-governance: DOI.10.1126/science.adw0018
+  ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
   awschalom-roadmap: DOI.10.2172/1900586
+  azuma-rgs: DOI.10.1038/ncomms7787
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
+  broadbent-bfk-protocol: DOI.10.1109/FOCS.2009.36
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
+  buterakos-graph-generation: DOI.10.1103/PhysRevX.7.041023
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
+  christandl-anon: DOI.10.1007/11593447_12
+  degen-sensing: DOI.10.1103/RevModPhys.89.035002
   dally-towles:
       title: Principles and Practices of Interconnection Networks
       author:
@@ -141,29 +159,59 @@ informative:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
   drost: DOI.10.1364/JOCN.8.000331
+  dulek-homomorphic: DOI.10.4086/toc.2018.v014a007
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
+  fittipaldi-sat: DOI.10.1109/QCE60285.2024.00222
+  fitzsimons-blind: DOI.10.1038/s41534-017-0025-3
+  ge-linear: DOI.10.1103/PhysRevLett.121.043604
   ghz: DOI.10.48550/arXiv.0712.0921
+  giovannetti-metro: DOI.10.1038/nphoton.2011.35
+  gottesman-telescope: DOI.10.1103/PhysRevLett.109.070503
+  ilo-okeke-clock: DOI.10.1038/s41534-018-0090-2
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
+  haldar-sat-dist: DOI.10.1103/PhysRevA.107.022615
   hein-multiparty: DOI.10.1103/PhysRevA.69.062311
   hein-graph-entanglement: DOI.10.3254/978-1-61499-018-5-115
+  hilaire-logical-bsm: DOI.10.1103/PhysRevA.104.052623
+  hilaire-rgs-optimizing-gen-time: DOI.10.22331/q-2021-02-15-397
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
+  huang-imaging-stars: DOI.10.1103/PhysRevLett.129.210502
+  khatri-spooky: DOI.10.1038/s41534-020-00327-5
+  kim-ft-million: DOI.10.1145/3620665.3640388
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
+  li-cosmic: DOI.10.1038/s41467-025-59778-z
   litinski-gosc: DOI.10.22331/q-2019-03-05-128
+  mahadev-homomorphic: DOI.10.1137/18M1231055
+  martinis-correlated: DOI.10.1038/s41534-021-00431-0
+  mayers-unconditional: DOI.10.48550/arXiv.quant-ph/9802025
   meignant-dgs: DOI.10.1103/PhysRevA.100.052333
   mori-psds: DOI.10.1109/QCE60285.2024.00218
+  morimae-blind: DOI.10.1103/PhysRevA.87.050301
   muralidharan-generations: DOI.10.1038/srep20463
+  proctor-quantum-sensing: DOI.10.48550/arXiv.1702.04271
+  proctor-multiparm: DOI.10.1103/PhysRevLett.120.080501
   ramette-remote: DOI.10.1038/s41534-024-00855-4
   sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
   sane-jobs: DOI.10.48550/arXiv.2504.18298
+  sane-phonons: DOI.10.1109/QCE57702.2023.00156
   schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
+  shapourian-qdc-infra: DOI.10.48550/arXiv.2501.05598
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
+  sutcliffe-dist-qec: DOI.10.1109/QCE65121.2025.00076
+  taherkhani-byz: DOI.10.1088/2058-9565/aa9bb1
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
   I-D.draft-van-meter-qirg-quantum-connection-setup:
+  vepsaelaeinen-ionizing: DOI.10.1038/s41586-020-2619-8
+  wu-mitigating: DOI.10.1103/4ctq-r6w6
+  xu-dist-qec: DOI.10.1103/PhysRevLett.129.240502
+  yin-1200km: DOI.10.1126/science.aan3211
+  yoder-tour-de-gross: DOI.10.48550/arXiv.2506.03094
+  zukowski-entanglement-swapping: DOI.10.1103/PhysRevA.65.032118
 ...
 
 --- abstract
@@ -431,7 +479,7 @@ As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, en
 
 ## Multicomputer
 
-The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)).  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
+The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)) {{rdv-thesis}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
 
 The execution model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface).
 
@@ -485,7 +533,7 @@ Distributed control and protocols for multiplexing and connection setup are nece
 
 ## Wide-Area Network (QWAN)
 
-Wide-area networks may involve client-server or peer-to-peer communication. One particular scenario of interest is a measurement-only (MEAS) client end node connecting to a centralized, supercomputer-scale quantum computer (perhaps, but not necessarily, a multicomputer) for the purposes of executing _blind quantum computation_.
+Wide-area networks may involve client-server or peer-to-peer communication. One particular scenario of interest is a measurement-only (MEAS) client end node connecting to a centralized, supercomputer-scale quantum computer (perhaps, but not necessarily, a multicomputer) for the purposes of executing _blind quantum computation_ {{fitzsimons-blind}}, {{morimae-blind}}.
 
 QWAN client-server communication very likely will suffer from the "incast" problem of excessive traffic concentrating near certain nodes. Management of this problem is beyond the scope of this document.
 
@@ -699,8 +747,7 @@ Even in this basic model, distributed quantum computation occurs along the path 
 A proper service definition must account for this processing, as it directly affects fidelity, latency, and trust assumptions in the network.
 
 In addition to quantum state delivery, timing information is often a critical part of the service.
-Applications in distributed quantum <!-- sensing~\cite{degen-sensing,proctor-quantum-sensing,proctorMultiparameterEstimationNetworked2018,giovannetti-advances-in-metrology,ge-distributed-metrology,gottesman-longer-baseline-telescopes} and clock synchronization~\cite{Ilo-okeke-quantum-clock} -->
-sensing and clock synchronization
+Applications in distributed quantum sensing and clock synchronization {{degen-sensing}}, {{proctor-quantum-sensing}}, {{proctor-multiparm}}, {{giovannetti-metro}}, {{gottesman-telescope}}, {{ilo-okeke-clock}}
 require precise knowledge of when entanglement was established or when measurement events occurred.
 Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.
 
@@ -767,45 +814,45 @@ The qNode specification provides additional details on the common roles and resp
 
 ## End Nodes
 
-End nodes represent hosts that wish to execute a quantum application such as quantum key distribution, secret sharing and blind quantum computation. <!-- ~\cite{broadbent-bfk-protocol,fitzsimonsPrivateQuantumComputation2017}. -->
+End nodes represent hosts that wish to execute a quantum application such as quantum key distribution, secret sharing and blind quantum computation {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}.
 The technological maturity required of an end node heavily depends on the desired application.
 There are four major kinds of end nodes:
 
 **A measurement (MEAS) node** is the most basic type of quantum end node, designed primarily for protocols that do not require quantum state storage.
 Its core capability is to receive individual photons and perform measurements on them in at least two different bases.
-Lacking quantum memory, MEAS nodes are well-suited for applications like quantum key distribution (QKD) or as simple terminals in certain forms of secure delegated computation protocols, <!-- ~\cite{morimaeBlindQuantumComputation2013,fitzsimonsPrivateQuantumComputation2017} --> typically interacting with the network in a synchronous manner where measurement results directly yield classical data.
+Lacking quantum memory, MEAS nodes are well-suited for applications like quantum key distribution (QKD) or as simple terminals in certain forms of secure delegated computation protocols {{morimae-blind}},{{fitzsimons-blind}}, typically interacting with the network in a synchronous manner where measurement results directly yield classical data.
 
-**A sensor (SNSR) node** is a specialized end node designed to utilize entangled states, often shared with distant parties, for high-precision measurements of physical quantities, for clock synchronization tasks, or for distributed sensing tasks. <!-- ~\cite{proctorMultiparameterEstimationNetworked2018,degen-sensing,proctor-quantum-sensing,giovannetti-advances-in-metrology,ge-distributed-metrology}. -->
+**A sensor (SNSR) node** is a specialized end node designed to utilize entangled states, often shared with distant parties, for high-precision measurements of physical quantities, for clock synchronization tasks, or for distributed sensing tasks {{ge-linear}}, {{proctor-quantum-sensing}}, {{degen-sensing}}, {{giovannetti-metro}}, {{proctor-multiparm}}.
 These nodes typically feature limited quantum memory to hold working qubits (e.g., one half of an entangled pair) and possess specific quantum processing capabilities tailored for sensing protocols.
-Such capabilities include performing joint measurements, like Bell State Measurements (BSMs), between their stored qubits and photons that have interacted with the environment. <!-- ~\cite{gottesman-longer-baseline-telescopes,huang-imaging-stars-with-qec}. -->
+Such capabilities include performing joint measurements, like Bell State Measurements (BSMs), between their stored qubits and photons that have interacted with the environment {{huang-imaging-stars}}, {{gottesman-telescope}}.
 While an SNSR node's internal processing is specialized, certain sensing applications may also necessitate high-rate entanglement generation from the network to achieve desired performance.
 For SNSR nodes, precise timing information is almost invariably a critical component of the service they provide or require, and their operation typically culminates in outputting classical data that corresponds to the sensed phenomenon.
 
 **A store (STOR) node** is a specialized end node whose primary function is to serve as a high-fidelity quantum data repository.
 Its core capabilities are the long-term storage of quantum states---often prepared and teleported from other locations---and the ability to teleport these states out on demand.
 While a STOR node does not require a universal gate set, it must support certain gates (e.g., Clifford gates) for active quantum error correction to preserve the stored quantum data.
-This includes using quantum error-correcting codes to protect against decoherence, along with mitigation strategies for correlated errors from events such as cosmic ray strikes. <!-- ~\cite{martinisSavingSuperconductingQuantum2021,saneFightFlightCosmic2023,xuDistributedQuantumError2022a,vepsalainenImpactIonizingRadiation2020a,wuMitigatingCosmicRaylike2025,liCosmicrayinducedCorrelatedErrors2025a}. -->
+This includes using quantum error-correcting codes to protect against decoherence, along with mitigation strategies for correlated errors from events such as cosmic ray strikes {{martinis-correlated}}, {{sane-phonons}}, {{xu-dist-qec}}, {{vepsaelaeinen-ionizing}}, {{wu-mitigating}}, {{li-cosmic}}.
 In a network context, STOR nodes may function as data servers, enabling asynchronous applications where valuable states are prepared and stored for later retrieval.
 
 **A computational (COMP) node** represents a full-fledged quantum processing endpoint within the network.
 Equipped with quantum memory and additional algorithmic qubits, it can store, manipulate, and perform complex computations on quantum states received from the network or generated locally.
-COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations. <!-- ~\cite{ambainisMultipartyQuantumCoin2004,taherkhaniResourceawareSystemArchitecture2017,mayersUnconditionalSecurityQuantum2004,christandlQuantumAnonymousTransmissions2005}, including distributed quantum algorithms, more general forms of blind quantum computation~\cite{broadbent-bfk-protocol,fitzsimonsPrivateQuantumComputation2017,mahadevClassicalHomomorphicEncryption2023,dulekQuantumHomomorphicEncryption2018}, and potentially fault-tolerant quantum computing~\cite{shapourianQuantumDataCenter2025,sutcliffeDistributedQuantumError2025,yoderTourGrossModular2025b,kimFaultTolerantMillionQubitScale2024}, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations. -->
+COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations {{ambainis-multiparty-coin}}, {{taherkhani-byz}}, {{mayers-unconditional}}, {{christandl-anon}}, {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}, {{mahadev-homomorphic}}, {{dulek-homomorphic}}, {{shapourian-qdc-infra}}, {{sutcliffe-dist-qec}}, {{yoder-tour-de-gross}}. {{kim-ft-million}}.
 
 ## Support Nodes
 
 **An entangled photon pair source (EPPS)** is a device dedicated to generating pairs of entangled photons, commonly through processes like Spontaneous Parametric Down-Conversion (SPDC).
 These entangled photons are then typically distributed over quantum channels to be captured or measured at link endpoints, forming the initial resource for entanglement-based protocols.
-EPPS nodes can be deployed in various scenarios, including terrestrial fiber links or free-space satellite-to-ground communication. <!-- ~\cite{khatriSpookyActionGlobal2021,fittipaldi-sattelite-quisp,haldarGlobalTimeDistribution2023,yinSatellitebasedEntanglementDistribution2017}. -->
+EPPS nodes can be deployed in various scenarios, including terrestrial fiber links or free-space satellite-to-ground communication {{fittipaldi-sat}}, {{haldar-sat-dist}}, {{khatri-spooky}}, {{yin-1200km}}.
 
 **A Bell state analyzer (BSA)** is a crucial component for performing projective measurements on two incoming photons, ideally projecting their combined state into one of the four Bell states.
-BSAs are fundamental for realizing photonic entanglement swapping, <!-- ~\cite{zukowski-entanglement-swap}, -->
+BSAs are fundamental for realizing photonic entanglement swapping{{zukowski-entanglement-swapping}},
 a primary process that creates link-level entanglement, used particularly to convert memory-photon entanglement into memory-memory entanglement between distant quantum memories.
 The efficiency and complexity of a BSA depend on the optical implementation and the specific photonic qubit encoding used.
 
-**A Repeater Graph State Source (RGSS)** is a specialized source that generates multipartite entangled photonic states, specifically tailored for all-photonic (memory-less) quantum repeater architectures. <!-- ~\cite{azuma-rgs,hilaire-rgs-optimizing-gen-time,buterakos-graph-generation,hilaire-logical-bsm}. -->
+**A Repeater Graph State Source (RGSS)** is a specialized source that generates multipartite entangled photonic states, specifically tailored for all-photonic (memory-less) quantum repeater architectures {{azuma-rgs}}, {{hilaire-rgs-optimizing-gen-time}},{{buterakos-graph-generation}}, {{hilaire-logical-bsm}}.
 An RGSS typically distributes segments of the generated repeater graph state to adjacent network nodes, where subsequent measurements on these photonic qubits are performed to establish long-distance entanglement without relying on quantum memories.
 
-**An advanced Bell state analyzer (ABSA)** represents a more sophisticated version of a BSA, particularly required in advanced all-photonic repeater protocols based on repeater graph states. <!-- ~\cite{azuma-rgs,hilaire-rgs-optimizing-gen-time,buterakos-graph-generation,hilaire-logical-bsm}. -->
+**An advanced Bell state analyzer (ABSA)** represents a more sophisticated version of a BSA, particularly required in advanced all-photonic repeater protocols based on repeater graph states{{azuma-rgs}}, {{hilaire-rgs-optimizing-gen-time}},{{buterakos-graph-generation}}, {{hilaire-logical-bsm}}.
 Unlike basic BSAs, an ABSA must be capable of performing measurements on single or multiple photons in dynamically selectable bases.
 The choice of measurement basis often depends on the outcomes of prior measurements within the network and the specific structure of the repeater graph state being utilized, implying more complex hardware and real-time classical control logic.
 
