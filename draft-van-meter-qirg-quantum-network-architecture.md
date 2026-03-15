@@ -157,6 +157,7 @@ informative:
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
+  fitzsimons-blind: DOI.10.1038/s41534-017-0025-3
   ge-linear: DOI.10.1103/PhysRevLett.121.043604
   ghz: DOI.10.48550/arXiv.0712.0921
   giovannetti-metro: DOI.10.1038/nphoton.2011.35
@@ -166,23 +167,31 @@ informative:
   hein-multiparty: DOI.10.1103/PhysRevA.69.062311
   hein-graph-entanglement: DOI.10.3254/978-1-61499-018-5-115
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
+  huang-imaging-stars: DOI.10.1103/PhysRevLett.129.210502
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
+  li-cosmic: DOI.10.1038/s41467-025-59778-z
   litinski-gosc: DOI.10.22331/q-2019-03-05-128
+  martinis-correlated: DOI.10.1038/s41534-021-00431-0
   meignant-dgs: DOI.10.1103/PhysRevA.100.052333
   mori-psds: DOI.10.1109/QCE60285.2024.00218
+  morimae-blind: DOI.10.1103/PhysRevA.87.050301
   muralidharan-generations: DOI.10.1038/srep20463
   proctor-quantum-sensing: DOI.10.48550/arXiv.1702.04271
   proctor-multiparm: DOI.10.1103/PhysRevLett.120.080501
   ramette-remote: DOI.10.1038/s41534-024-00855-4
   sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
   sane-jobs: DOI.10.48550/arXiv.2504.18298
+  sane-phonons: DOI.10.1109/QCE57702.2023.00156
   schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
   I-D.draft-van-meter-qirg-quantum-connection-setup:
+  vepsaelaeinen-ionizing: DOI.10.1038/s41586-020-2619-8
+  wu-mitigating: DOI.10.1103/4ctq-r6w6
+  xu-dist-qec: DOI.10.1103/PhysRevLett.129.240502
 ...
 
 --- abstract
@@ -504,7 +513,7 @@ Distributed control and protocols for multiplexing and connection setup are nece
 
 ## Wide-Area Network (QWAN)
 
-Wide-area networks may involve client-server or peer-to-peer communication. One particular scenario of interest is a measurement-only (MEAS) client end node connecting to a centralized, supercomputer-scale quantum computer (perhaps, but not necessarily, a multicomputer) for the purposes of executing _blind quantum computation_.
+Wide-area networks may involve client-server or peer-to-peer communication. One particular scenario of interest is a measurement-only (MEAS) client end node connecting to a centralized, supercomputer-scale quantum computer (perhaps, but not necessarily, a multicomputer) for the purposes of executing _blind quantum computation_ {{fitzsimons-blind}}, {{morimae-blind}}.
 
 QWAN client-server communication very likely will suffer from the "incast" problem of excessive traffic concentrating near certain nodes. Management of this problem is beyond the scope of this document.
 
@@ -795,14 +804,14 @@ Lacking quantum memory, MEAS nodes are well-suited for applications like quantum
 
 **A sensor (SNSR) node** is a specialized end node designed to utilize entangled states, often shared with distant parties, for high-precision measurements of physical quantities, for clock synchronization tasks, or for distributed sensing tasks {{ge-linear}}. <!-- ~\cite{proctorMultiparameterEstimationNetworked2018,degen-sensing,proctor-quantum-sensing,giovannetti-advances-in-metrology,ge-distributed-metrology}. -->
 These nodes typically feature limited quantum memory to hold working qubits (e.g., one half of an entangled pair) and possess specific quantum processing capabilities tailored for sensing protocols.
-Such capabilities include performing joint measurements, like Bell State Measurements (BSMs), between their stored qubits and photons that have interacted with the environment. <!-- ~\cite{gottesman-longer-baseline-telescopes,huang-imaging-stars-with-qec}. -->
+Such capabilities include performing joint measurements, like Bell State Measurements (BSMs), between their stored qubits and photons that have interacted with the environment {{huang-imaging-stars}}, {{gottesman-telescope}}. <!-- ~\cite{gottesman-longer-baseline-telescopes,huang-imaging-stars-with-qec}. -->
 While an SNSR node's internal processing is specialized, certain sensing applications may also necessitate high-rate entanglement generation from the network to achieve desired performance.
 For SNSR nodes, precise timing information is almost invariably a critical component of the service they provide or require, and their operation typically culminates in outputting classical data that corresponds to the sensed phenomenon.
 
 **A store (STOR) node** is a specialized end node whose primary function is to serve as a high-fidelity quantum data repository.
 Its core capabilities are the long-term storage of quantum states---often prepared and teleported from other locations---and the ability to teleport these states out on demand.
 While a STOR node does not require a universal gate set, it must support certain gates (e.g., Clifford gates) for active quantum error correction to preserve the stored quantum data.
-This includes using quantum error-correcting codes to protect against decoherence, along with mitigation strategies for correlated errors from events such as cosmic ray strikes. <!-- ~\cite{martinisSavingSuperconductingQuantum2021,saneFightFlightCosmic2023,xuDistributedQuantumError2022a,vepsalainenImpactIonizingRadiation2020a,wuMitigatingCosmicRaylike2025,liCosmicrayinducedCorrelatedErrors2025a}. -->
+This includes using quantum error-correcting codes to protect against decoherence, along with mitigation strategies for correlated errors from events such as cosmic ray strikes {{martinis-correlated}}, {{sane-phonons}}, {{xu-dist-qec}}, {{vepsaelaeinen-ionizing}}, {{wu-mitigating}}, {{li-cosmic}}.
 In a network context, STOR nodes may function as data servers, enabling asynchronous applications where valuable states are prepared and stored for later retrieval.
 
 **A computational (COMP) node** represents a full-fledged quantum processing endpoint within the network.
