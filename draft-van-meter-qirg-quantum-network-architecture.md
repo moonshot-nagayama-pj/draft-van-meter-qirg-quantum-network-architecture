@@ -556,15 +556,28 @@ This section documents the requirements for all networks adhering to this archit
 
 ### Functional Requirement
 
+* Operates on qubits. (That is, qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)
+* Is independent of physical implementation of memories, photonic data representations, etc.
+* Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.
+
 ### Interface Requirements
+
+* Supports one or more applications, such as the ones in {{RFC983}}, with APIs consistent with the B, C, or T classes.
 
 ### Physical Requirements
 
+Physical requirements such as distance, wavelength, vibration, power, etc. will be case-dependent.
+
 ### Environmental Requirements
+
+Physical requirements such as distance, wavelength, vibration, power, etc. will be case-dependent.
 
 ## Network Management Requirements
 
 ### Fault Management
+
+* Supports isolation of hardware and software faults.
+* Supports monitoring and reporting of fidelity.
 
 ### Configuration Management
 
