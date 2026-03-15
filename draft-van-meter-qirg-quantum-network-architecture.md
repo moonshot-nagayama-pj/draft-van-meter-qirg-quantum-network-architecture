@@ -96,6 +96,12 @@ contributor: # Same structure as author list, but goes into contributors
   contribution: |
       Technical and managerial discussions.
 
+# bugfix for umlaut and quotes in title & author list
+entity:
+  uuml: ü
+  ldquo: “
+  rdquo: ”
+
 normative:
   RFC2119:
 
@@ -143,6 +149,7 @@ informative:
   ghz: DOI.10.48550/arXiv.0712.0921
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
   hein-multiparty: DOI.10.1103/PhysRevA.69.062311
+  hein-graph-entanglement: DOI.10.3254/978-1-61499-018-5-115
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
