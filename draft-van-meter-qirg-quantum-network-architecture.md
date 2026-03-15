@@ -562,7 +562,7 @@ This section documents the requirements for all networks adhering to this archit
 
 ### Interface Requirements
 
-* Supports one or more applications, such as the ones in {{RFC983}}, with APIs consistent with the B, C, or T classes.
+* Supports one or more applications, such as the ones in {{RFC9583}}, with APIs consistent with the B, C, or T classes.
 
 ### Physical Requirements
 
