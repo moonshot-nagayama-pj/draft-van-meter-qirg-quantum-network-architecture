@@ -137,9 +137,11 @@ informative:
   aboy-governance: DOI.10.1126/science.adw0018
   ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
   awschalom-roadmap: DOI.10.2172/1900586
+  azuma-rgs: DOI.10.1038/ncomms7787
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
   broadbent-bfk-protocol: DOI.10.1109/FOCS.2009.36
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
+  buterakos-graph-generation: DOI.10.1103/PhysRevX.7.041023
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   christandl-anon: DOI.10.1007/11593447_12
   degen-sensing: DOI.10.1103/RevModPhys.89.035002
@@ -172,6 +174,8 @@ informative:
   haldar-sat-dist: DOI.10.1103/PhysRevA.107.022615
   hein-multiparty: DOI.10.1103/PhysRevA.69.062311
   hein-graph-entanglement: DOI.10.3254/978-1-61499-018-5-115
+  hilaire-logical-bsm: DOI.10.1103/PhysRevA.104.052623
+  hilaire-rgs-optimizing-gen-time: DOI.10.22331/q-2021-02-15-397
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   huang-imaging-stars: DOI.10.1103/PhysRevLett.129.210502
   khatri-spooky: DOI.10.1038/s41534-020-00327-5
@@ -845,10 +849,10 @@ BSAs are fundamental for realizing photonic entanglement swapping{{zukowski-enta
 a primary process that creates link-level entanglement, used particularly to convert memory-photon entanglement into memory-memory entanglement between distant quantum memories.
 The efficiency and complexity of a BSA depend on the optical implementation and the specific photonic qubit encoding used.
 
-**A Repeater Graph State Source (RGSS)** is a specialized source that generates multipartite entangled photonic states, specifically tailored for all-photonic (memory-less) quantum repeater architectures. <!-- ~\cite{azuma-rgs,hilaire-rgs-optimizing-gen-time,buterakos-graph-generation,hilaire-logical-bsm}. -->
+**A Repeater Graph State Source (RGSS)** is a specialized source that generates multipartite entangled photonic states, specifically tailored for all-photonic (memory-less) quantum repeater architectures {{azuma-rgs}}, {{hilaire-rgs-optimizing-gen-time}},{{buterakos-graph-generation}}, {{hilaire-logical-bsm}}.
 An RGSS typically distributes segments of the generated repeater graph state to adjacent network nodes, where subsequent measurements on these photonic qubits are performed to establish long-distance entanglement without relying on quantum memories.
 
-**An advanced Bell state analyzer (ABSA)** represents a more sophisticated version of a BSA, particularly required in advanced all-photonic repeater protocols based on repeater graph states. <!-- ~\cite{azuma-rgs,hilaire-rgs-optimizing-gen-time,buterakos-graph-generation,hilaire-logical-bsm}. -->
+**An advanced Bell state analyzer (ABSA)** represents a more sophisticated version of a BSA, particularly required in advanced all-photonic repeater protocols based on repeater graph states{{azuma-rgs}}, {{hilaire-rgs-optimizing-gen-time}},{{buterakos-graph-generation}}, {{hilaire-logical-bsm}}.
 Unlike basic BSAs, an ABSA must be capable of performing measurements on single or multiple photons in dynamically selectable bases.
 The choice of measurement basis often depends on the outcomes of prior measurements within the network and the specific structure of the repeater graph state being utilized, implying more complex hardware and real-time classical control logic.
 
