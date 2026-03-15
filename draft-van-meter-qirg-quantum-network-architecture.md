@@ -137,9 +137,13 @@ informative:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
   drost: DOI.10.1364/JOCN.8.000331
+  dur-w-state: DOI.10.1103/PhysRevA.62.062314
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
+  ghz: DOI.10.48550/arXiv.0712.0921
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
+  hein-multiparty: DOI.10.1103/PhysRevA.69.062311
+  hein-graph-entanglement: DOI.10.3254/978-1-61499-018-5-115
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
@@ -546,7 +550,7 @@ Photons emitted by quantum memories, such as single atoms, may remain entangled 
 
 ## Detectors
 
-Detectors may be either _single-photon detectors_, which click when _one or more_ photons hit the detector, or _number resolving detectors_, which can distinguish between one, two, or more photons hitting the detector within the same time window. In this document, detectors may be assumed to be single-photon detectors.
+Detectors may be either _single-photon detectors_, which click when _one or more_ photons hit the detector, or _number resolving detectors_, which can distinguish between one, two, or more photons hitting the detector within the same time window {{nist-singles}}. In this document, detectors may be assumed to be single-photon detectors.
 
 # Requirements
 
@@ -554,15 +558,20 @@ This section documents the requirements for all networks adhering to this archit
 
 ## General Requirements
 
-### Functional Requirement
+### Functional Requirements
 
-* Operates on qubits. (That is, qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)
-* Is independent of physical implementation of memories, photonic data representations, etc.
+* Operates on qubits. (Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)
+* Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)
 * Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.
+* The architecture must support deployments ranging from multicomputer to wide area networks.
+* The architecture must support multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
+* The architecture must support entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
+* The architecture must support evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.
 
 ### Interface Requirements
 
 * Supports one or more applications, such as the ones in {{RFC9583}}, with APIs consistent with the B, C, or T classes.
+* The network must enable applications to match quantum states at each end of the Bell pair by name.
 
 ### Physical Requirements
 
@@ -580,6 +589,8 @@ Physical requirements such as distance, wavelength, vibration, power, etc. will 
 * Supports monitoring and reporting of fidelity.
 
 ### Configuration Management
+
+* The architecture must support the use of both manual and automated network configuration tools.
 
 # Top Level Architecture
 
@@ -671,7 +682,7 @@ Bell pairs serve as the smallest unit of entanglement and the foundation for nea
 Restricting the service to Bell pair distribution simplifies the network's responsibilities.
 However, this approach shifts complexity to the applications, which must construct multipartite or fault-tolerant states themselves and manage the coordination overhead that entails.
 
-At the other end of the spectrum, networks may offer richer services such as multipartite entangled states, <!-- (e.g., GHZ, W-states~\cite{durThreeQubitsCan2000}, graph states~\cite{hein-graph-state-pra,hein-graph-state-arxiv}) -->
+At the other end of the spectrum, networks may offer richer services such as multipartite entangled states {{ghz}}, {{dur-w-state}}, {{hein-multiparty}}, {{hein-graph-entanglement}},
 or fault-tolerant state teleportation.
 While applications can, in theory, synthesize these states from Bell pairs, direct network-level support may offer efficiency gains and reduce sensitivity to noise by internalizing complex procedures like direct graph state generations or supporting the delivery of error-correcting code encoded logical qubits.
 
@@ -918,8 +929,6 @@ Yes, the quantum plane includes some classical signals.
 
 # Naming and Addressing
 
-(To be filled in.)
-
 ## State naming and management in RuleSets
 
 (Incorporates naming material from Naphan's thesis. Probably needs updating to account for testbed realities.)
@@ -1020,5 +1029,7 @@ The API used by classical software to interface with the quantum depends on whic
 # Security Considerations
 
 Quantum multicomputer systems are assumed to be constructed as isolated, centrally controlled systems with no need for confidentiality, integrity, and availability (the "CIA triad") assurance via cryptographic methods.
+
+Security considerations for other network types are an open topic of study and as such are not yet ready for specification and standardization.
 
 --- back
