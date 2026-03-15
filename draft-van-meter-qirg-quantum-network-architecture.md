@@ -805,17 +805,17 @@ The qNode specification provides additional details on the common roles and resp
 
 ## End Nodes
 
-End nodes represent hosts that wish to execute a quantum application such as quantum key distribution, secret sharing and blind quantum computation. <!-- ~\cite{broadbent-bfk-protocol,fitzsimonsPrivateQuantumComputation2017}. -->
+End nodes represent hosts that wish to execute a quantum application such as quantum key distribution, secret sharing and blind quantum computation {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}.
 The technological maturity required of an end node heavily depends on the desired application.
 There are four major kinds of end nodes:
 
 **A measurement (MEAS) node** is the most basic type of quantum end node, designed primarily for protocols that do not require quantum state storage.
 Its core capability is to receive individual photons and perform measurements on them in at least two different bases.
-Lacking quantum memory, MEAS nodes are well-suited for applications like quantum key distribution (QKD) or as simple terminals in certain forms of secure delegated computation protocols, <!-- ~\cite{morimaeBlindQuantumComputation2013,fitzsimonsPrivateQuantumComputation2017} --> typically interacting with the network in a synchronous manner where measurement results directly yield classical data.
+Lacking quantum memory, MEAS nodes are well-suited for applications like quantum key distribution (QKD) or as simple terminals in certain forms of secure delegated computation protocols {{morimae-blind}},{{fitzsimons-blind}}, typically interacting with the network in a synchronous manner where measurement results directly yield classical data.
 
 **A sensor (SNSR) node** is a specialized end node designed to utilize entangled states, often shared with distant parties, for high-precision measurements of physical quantities, for clock synchronization tasks, or for distributed sensing tasks {{ge-linear}}. <!-- ~\cite{proctorMultiparameterEstimationNetworked2018,degen-sensing,proctor-quantum-sensing,giovannetti-advances-in-metrology,ge-distributed-metrology}. -->
 These nodes typically feature limited quantum memory to hold working qubits (e.g., one half of an entangled pair) and possess specific quantum processing capabilities tailored for sensing protocols.
-Such capabilities include performing joint measurements, like Bell State Measurements (BSMs), between their stored qubits and photons that have interacted with the environment {{huang-imaging-stars}}, {{gottesman-telescope}}. <!-- ~\cite{gottesman-longer-baseline-telescopes,huang-imaging-stars-with-qec}. -->
+Such capabilities include performing joint measurements, like Bell State Measurements (BSMs), between their stored qubits and photons that have interacted with the environment {{huang-imaging-stars}}, {{gottesman-telescope}}.
 While an SNSR node's internal processing is specialized, certain sensing applications may also necessitate high-rate entanglement generation from the network to achieve desired performance.
 For SNSR nodes, precise timing information is almost invariably a critical component of the service they provide or require, and their operation typically culminates in outputting classical data that corresponds to the sensed phenomenon.
 
@@ -827,7 +827,7 @@ In a network context, STOR nodes may function as data servers, enabling asynchro
 
 **A computational (COMP) node** represents a full-fledged quantum processing endpoint within the network.
 Equipped with quantum memory and additional algorithmic qubits, it can store, manipulate, and perform complex computations on quantum states received from the network or generated locally.
-COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations {{ambainis-multiparty-coin}}, {{taherkhani-byz}}, {{mayers-unconditional}}, {{christandl-anon}}, {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}, {{mahadev-homomorphic}}, {{dulek-homomorphic}}, {{shapourian-qdc-infra}}, {{sutcliffe-dist-qec}}, {{yoder-tour-de-gross}}. {{kim-ft-million}}.  <!-- ~\cite{ambainisMultipartyQuantumCoin2004,taherkhaniResourceawareSystemArchitecture2017,mayersUnconditionalSecurityQuantum2004,christandlQuantumAnonymousTransmissions2005}, including distributed quantum algorithms, more general forms of blind quantum computation~\cite{,fitzsimonsPrivateQuantumComputation2017,mahadevClassicalHomomorphicEncryption2023,dulekQuantumHomomorphicEncryption2018}, and potentially fault-tolerant quantum computing~\cite{shapourianQuantumDataCenter2025,sutcliffeDistributedQuantumError2025,yoderTourGrossModular2025b,kimFaultTolerantMillionQubitScale2024}, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations. -->
+COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations {{ambainis-multiparty-coin}}, {{taherkhani-byz}}, {{mayers-unconditional}}, {{christandl-anon}}, {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}, {{mahadev-homomorphic}}, {{dulek-homomorphic}}, {{shapourian-qdc-infra}}, {{sutcliffe-dist-qec}}, {{yoder-tour-de-gross}}. {{kim-ft-million}}.
 
 ## Support Nodes
 
