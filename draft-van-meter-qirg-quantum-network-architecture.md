@@ -161,6 +161,7 @@ informative:
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
+  fittipaldi-sat: DOI.10.1109/QCE60285.2024.00222
   fitzsimons-blind: DOI.10.1038/s41534-017-0025-3
   ge-linear: DOI.10.1103/PhysRevLett.121.043604
   ghz: DOI.10.48550/arXiv.0712.0921
@@ -168,10 +169,12 @@ informative:
   gottesman-telescope: DOI.10.1103/PhysRevLett.109.070503
   ilo-okeke-clock: DOI.10.1038/s41534-018-0090-2
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
+  haldar-sat-dist: DOI.10.1103/PhysRevA.107.022615
   hein-multiparty: DOI.10.1103/PhysRevA.69.062311
   hein-graph-entanglement: DOI.10.3254/978-1-61499-018-5-115
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   huang-imaging-stars: DOI.10.1103/PhysRevLett.129.210502
+  khatri-spooky: DOI.10.1038/s41534-020-00327-5
   kim-ft-million: DOI.10.1145/3620665.3640388
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
@@ -202,7 +205,9 @@ informative:
   vepsaelaeinen-ionizing: DOI.10.1038/s41586-020-2619-8
   wu-mitigating: DOI.10.1103/4ctq-r6w6
   xu-dist-qec: DOI.10.1103/PhysRevLett.129.240502
+  yin-1200km: DOI.10.1126/science.aan3211
   yoder-tour-de-gross: DOI.10.48550/arXiv.2506.03094
+  zukowski-entanglement-swapping: DOI.10.1103/PhysRevA.65.032118
 ...
 
 --- abstract
@@ -833,10 +838,10 @@ COMP nodes support a wide range of advanced quantum network applications, includ
 
 **An entangled photon pair source (EPPS)** is a device dedicated to generating pairs of entangled photons, commonly through processes like Spontaneous Parametric Down-Conversion (SPDC).
 These entangled photons are then typically distributed over quantum channels to be captured or measured at link endpoints, forming the initial resource for entanglement-based protocols.
-EPPS nodes can be deployed in various scenarios, including terrestrial fiber links or free-space satellite-to-ground communication. <!-- ~\cite{khatriSpookyActionGlobal2021,fittipaldi-sattelite-quisp,haldarGlobalTimeDistribution2023,yinSatellitebasedEntanglementDistribution2017}. -->
+EPPS nodes can be deployed in various scenarios, including terrestrial fiber links or free-space satellite-to-ground communication {{fittipaldi-sat}}, {{haldar-sat-dist}}, {{khatri-spooky}}, {{yin-1200km}}.
 
 **A Bell state analyzer (BSA)** is a crucial component for performing projective measurements on two incoming photons, ideally projecting their combined state into one of the four Bell states.
-BSAs are fundamental for realizing photonic entanglement swapping, <!-- ~\cite{zukowski-entanglement-swap}, -->
+BSAs are fundamental for realizing photonic entanglement swapping{{zukowski-entanglement-swapping}},
 a primary process that creates link-level entanglement, used particularly to convert memory-photon entanglement into memory-memory entanglement between distant quantum memories.
 The efficiency and complexity of a BSA depend on the optical implementation and the specific photonic qubit encoding used.
 
