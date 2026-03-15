@@ -926,7 +926,7 @@ Table of Contents
    only (MEAS) client end node connecting to a centralized,
    supercomputer-scale quantum computer (perhaps, but not necessarily, a
    multicomputer) for the purposes of executing _blind quantum
-   computation_.
+   computation_ [fitzsimons-blind], [morimae-blind].
 
    QWAN client-server communication very likely will suffer from the
    "incast" problem of excessive traffic concentrating near certain
@@ -1338,13 +1338,14 @@ Table of Contents
    quantum processing capabilities tailored for sensing protocols.  Such
    capabilities include performing joint measurements, like Bell State
    Measurements (BSMs), between their stored qubits and photons that
-   have interacted with the environment.  While an SNSR node's internal
-   processing is specialized, certain sensing applications may also
-   necessitate high-rate entanglement generation from the network to
-   achieve desired performance.  For SNSR nodes, precise timing
-   information is almost invariably a critical component of the service
-   they provide or require, and their operation typically culminates in
-   outputting classical data that corresponds to the sensed phenomenon.
+   have interacted with the environment [huang-imaging-stars],
+   [gottesman-telescope].  While an SNSR node's internal processing is
+   specialized, certain sensing applications may also necessitate high-
+   rate entanglement generation from the network to achieve desired
+   performance.  For SNSR nodes, precise timing information is almost
+   invariably a critical component of the service they provide or
+   require, and their operation typically culminates in outputting
+   classical data that corresponds to the sensed phenomenon.
 
    *A store (STOR) node* is a specialized end node whose primary
    function is to serve as a high-fidelity quantum data repository.  Its
@@ -1356,9 +1357,11 @@ Table of Contents
    stored quantum data.  This includes using quantum error-correcting
    codes to protect against decoherence, along with mitigation
    strategies for correlated errors from events such as cosmic ray
-   strikes.  In a network context, STOR nodes may function as data
-   servers, enabling asynchronous applications where valuable states are
-   prepared and stored for later retrieval.
+   strikes [martinis-correlated], [sane-phonons], [xu-dist-qec],
+   [vepsaelaeinen-ionizing], [wu-mitigating], [li-cosmic].  In a network
+   context, STOR nodes may function as data servers, enabling
+   asynchronous applications where valuable states are prepared and
+   stored for later retrieval.
 
    *A computational (COMP) node* represents a full-fledged quantum
    processing endpoint within the network.  Equipped with quantum memory
@@ -1923,6 +1926,14 @@ Table of Contents
               324-333, DOI 10.1109/qce52317.2021.00049, October 2021,
               <https://doi.org/10.1109/qce52317.2021.00049>.
 
+   [fitzsimons-blind]
+              Fitzsimons, J., "Private quantum computation: an
+              introduction to blind quantum computing and related
+              protocols", Springer Science and Business Media LLC, npj
+              Quantum Information vol. 3, no. 1,
+              DOI 10.1038/s41534-017-0025-3, June 2017,
+              <https://doi.org/10.1038/s41534-017-0025-3>.
+
    [ge-linear]
               Ge, W., Jacobs, K., Eldredge, Z., Gorshkov, A., and M.
               Foss-Feig, "Distributed Quantum Metrology with Linear
@@ -1976,6 +1987,13 @@ Table of Contents
               123011, DOI 10.1088/1367-2630/14/12/123011, December 2012,
               <https://doi.org/10.1088/1367-2630/14/12/123011>.
 
+   [huang-imaging-stars]
+              Huang, Z., Brennen, G., and Y. Ouyang, "Imaging Stars with
+              Quantum Error Correction", American Physical Society
+              (APS), Physical Review Letters vol. 129, no. 21,
+              DOI 10.1103/physrevlett.129.210502, November 2022,
+              <https://doi.org/10.1103/physrevlett.129.210502>.
+
    [I-D.draft-hajdusek-qirg-timing-physics]
               Hajdusek, M. and R. Van Meter, "Timing Regimes in Quantum
               Networks and their Physical Underpinnings", Work in
@@ -2014,6 +2032,16 @@ Table of Contents
               surgery", arXiv, DOI 10.48550/ARXIV.2406.18764, 2024,
               <https://doi.org/10.48550/ARXIV.2406.18764>.
 
+   [li-cosmic]
+              Li, X., Wang, J., Jiang, Y., Xue, G., Cai, X., Zhou, J.,
+              Gong, M., Liu, Z., Zheng, S., Ma, D., Chen, M., Sun, W.,
+              Yang, S., Yan, F., Jin, Y., Zhao, S., Ding, X., and H. Yu,
+              "Cosmic-ray-induced correlated errors in superconducting
+              qubit array", Springer Science and Business Media LLC,
+              Nature Communications vol. 16, no. 1,
+              DOI 10.1038/s41467-025-59778-z, May 2025,
+              <https://doi.org/10.1038/s41467-025-59778-z>.
+
    [litinski-gosc]
               Litinski, D., "A Game of Surface Codes: Large-Scale
               Quantum Computing with Lattice Surgery", Verein zur
@@ -2021,6 +2049,14 @@ Table of Contents
               Quantenwissenschaften, Quantum vol. 3, pp. 128,
               DOI 10.22331/q-2019-03-05-128, March 2019,
               <https://doi.org/10.22331/q-2019-03-05-128>.
+
+   [martinis-correlated]
+              Martinis, J., "Saving superconducting quantum processors
+              from decay and correlated errors generated by gamma and
+              cosmic rays", Springer Science and Business Media LLC, npj
+              Quantum Information vol. 7, no. 1,
+              DOI 10.1038/s41534-021-00431-0, June 2021,
+              <https://doi.org/10.1038/s41534-021-00431-0>.
 
    [meignant-dgs]
               Meignant, C., Markham, D., and F. Grosshans, "Distributing
@@ -2037,6 +2073,13 @@ Table of Contents
               Quantum Computing and Engineering (QCE) pp. 1890-1896,
               DOI 10.1109/qce60285.2024.00218, September 2024,
               <https://doi.org/10.1109/qce60285.2024.00218>.
+
+   [morimae-blind]
+              Morimae, T. and K. Fujii, "Blind quantum computation
+              protocol in which Alice only makes measurements", American
+              Physical Society (APS), Physical Review A vol. 87, no. 5,
+              DOI 10.1103/physreva.87.050301, May 2013,
+              <https://doi.org/10.1103/physreva.87.050301>.
 
    [muralidharan-generations]
               Muralidharan, S., Li, L., Kim, J., Lütkenhaus, N., Lukin,
@@ -2123,6 +2166,14 @@ Table of Contents
               DOI 10.48550/ARXIV.2504.18298, 2025,
               <https://doi.org/10.48550/ARXIV.2504.18298>.
 
+   [sane-phonons]
+              Sane, B., Meter, R., and M. Hajdusek, "Fight or Flight:
+              Cosmic Ray-Induced Phonons and the Quantum Surface
+              Code<sup>*</sup>", IEEE, 2023 IEEE International
+              Conference on Quantum Computing and Engineering (QCE) pp.
+              1378-1388, DOI 10.1109/qce57702.2023.00156, September
+              2023, <https://doi.org/10.1109/qce57702.2023.00156>.
+
    [schoute-shortcuts]
               Schoute, E., Mancinska, L., Islam, T., Kerenidis, I., and
               S. Wehner, "Shortcuts to quantum network routing", arXiv,
@@ -2156,6 +2207,35 @@ Table of Contents
               Engineering (QCE) pp. 341-352,
               DOI 10.1109/qce53715.2022.00055, September 2022,
               <https://doi.org/10.1109/qce53715.2022.00055>.
+
+   [vepsaelaeinen-ionizing]
+              Vepsäläinen, A., Karamlou, A., Orrell, J., Dogra, A.,
+              Loer, B., Vasconcelos, F., Kim, D., Melville, A.,
+              Niedzielski, B., Yoder, J., Gustavsson, S., Formaggio, J.,
+              VanDevender, B., and W. Oliver, "Impact of ionizing
+              radiation on superconducting qubit coherence", Springer
+              Science and Business Media LLC, Nature vol. 584, no. 7822,
+              pp. 551-556, DOI 10.1038/s41586-020-2619-8, August 2020,
+              <https://doi.org/10.1038/s41586-020-2619-8>.
+
+   [wu-mitigating]
+              Wu, X., Joshi, Y., Yan, H., Andersson, G., Anferov, A.,
+              Conner, C., Karimi, B., King, A., Li, S., Malc, H.,
+              Miller, J., Mishra, H., Qiao, H., Ryu, M., Xing, S., Shi,
+              J., and A. Cleland, "Mitigating cosmic-ray-like correlated
+              events with a modular quantum processor", American
+              Physical Society (APS), Physical Review Applied vol. 24,
+              no. 4, DOI 10.1103/4ctq-r6w6, October 2025,
+              <https://doi.org/10.1103/4ctq-r6w6>.
+
+   [xu-dist-qec]
+              Xu, Q., Seif, A., Yan, H., Mannucci, N., Sane, B., Van
+              Meter, R., Cleland, A., and L. Jiang, "Distributed Quantum
+              Error Correction for Chip-Level Catastrophic Errors",
+              American Physical Society (APS), Physical Review
+              Letters vol. 129, no. 24,
+              DOI 10.1103/physrevlett.129.240502, December 2022,
+              <https://doi.org/10.1103/physrevlett.129.240502>.
 
 Contributors
 
