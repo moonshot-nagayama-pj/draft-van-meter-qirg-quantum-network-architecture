@@ -5,7 +5,6 @@ cat: info
 submissiontype: IRTF
 area: IRTF
 wg: QIRG
-keyword: Internet-Draft
 
 docname: draft-van-meter-qirg-quantum-network-architecture-latest
 pi: [toc, sortrefs, symrefs]
@@ -96,8 +95,13 @@ contributor: # Same structure as author list, but goes into contributors
   contribution: |
       Technical and managerial discussions.
 
+# bugfix for umlaut and quotes in title & author list
+entity:
+  uuml: ü
+  ldquo: “
+  rdquo: ”
+
 normative:
-  RFC2119:
 
 informative:
   RFC1122:
@@ -148,6 +152,7 @@ informative:
   ilo-okeke-clock: DOI.10.1038/s41534-018-0090-2
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
   hein-multiparty: DOI.10.1103/PhysRevA.69.062311
+  hein-graph-entanglement: DOI.10.3254/978-1-61499-018-5-115
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
@@ -167,7 +172,6 @@ informative:
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
   I-D.draft-van-meter-qirg-quantum-connection-setup:
 ...
----
 
 --- abstract
 
@@ -688,7 +692,7 @@ Bell pairs serve as the smallest unit of entanglement and the foundation for nea
 Restricting the service to Bell pair distribution simplifies the network's responsibilities.
 However, this approach shifts complexity to the applications, which must construct multipartite or fault-tolerant states themselves and manage the coordination overhead that entails.
 
-At the other end of the spectrum, networks may offer richer services such as multipartite entangled states {{ghz}}, {{dur-w-state}}, {{hein-multiparty}},
+At the other end of the spectrum, networks may offer richer services such as multipartite entangled states {{ghz}}, {{dur-w-state}}, {{hein-multiparty}}, {{hein-graph-entanglement}}
 or fault-tolerant state teleportation.
 While applications can, in theory, synthesize these states from Bell pairs, direct network-level support may offer efficiency gains and reduce sensitivity to noise by internalizing complex procedures like direct graph state generations or supporting the delivery of error-correcting code encoded logical qubits.
 
