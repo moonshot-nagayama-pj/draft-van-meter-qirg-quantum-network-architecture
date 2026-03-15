@@ -378,7 +378,7 @@ T Class applications impose the strictest timing constraints, requiring the enta
 It must wait until the network provides both the confirmation of creation (_Heralded_) and the specific state information (_Correct_).
 Execution only resumes once the exact state is known or corrected.
 
-**Examples:** Execution of circuits involving non-Clifford gates. While non-Clifford operations _can_ theoretically be corrected posthoc (similar to Class C), doing so often requires consuming _additional_ entangled states to fix the error.
+**Examples:** Execution of circuits involving non-Clifford gates. While non-Clifford operations _can_ theoretically be corrected post hoc (similar to Class C), doing so often requires consuming _additional_ entangled states to fix the error.
 Since consuming extra resources is more costly than waiting, these operations default to Class T to ensure the state is correct before proceeding.
 
 # Architectural Concepts
