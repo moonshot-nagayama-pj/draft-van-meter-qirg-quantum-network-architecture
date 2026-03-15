@@ -1968,7 +1968,7 @@ If the network link is deterministic, the specific wait for heralding is removed
 <p id="section-7.2.6-2"><strong>Execution Flow:</strong> The application <strong>completely stalls</strong>.
 It must wait until the network provides both the confirmation of creation (<em>Heralded</em>) and the specific state information (<em>Correct</em>).
 Execution only resumes once the exact state is known or corrected.<a href="#section-7.2.6-2" class="pilcrow">¶</a></p>
-<p id="section-7.2.6-3"><strong>Examples:</strong> Execution of circuits involving non-Clifford gates. While non-Clifford operations <em>can</em> theoretically be corrected posthoc (similar to Class C), doing so often requires consuming <em>additional</em> entangled states to fix the error.
+<p id="section-7.2.6-3"><strong>Examples:</strong> Execution of circuits involving non-Clifford gates. While non-Clifford operations <em>can</em> theoretically be corrected post hoc (similar to Class C), doing so often requires consuming <em>additional</em> entangled states to fix the error.
 Since consuming extra resources is more costly than waiting, these operations default to Class T to ensure the state is correct before proceeding.<a href="#section-7.2.6-3" class="pilcrow">¶</a></p>
 </section>
 </div>
