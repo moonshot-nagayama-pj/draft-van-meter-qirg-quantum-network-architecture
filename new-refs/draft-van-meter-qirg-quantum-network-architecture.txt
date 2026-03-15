@@ -1389,17 +1389,19 @@ Table of Contents
    captured or measured at link endpoints, forming the initial resource
    for entanglement-based protocols.  EPPS nodes can be deployed in
    various scenarios, including terrestrial fiber links or free-space
-   satellite-to-ground communication.
+   satellite-to-ground communication [fittipaldi-sat],
+   [haldar-sat-dist], [khatri-spooky], [yin-1200km].
 
    *A Bell state analyzer (BSA)* is a crucial component for performing
    projective measurements on two incoming photons, ideally projecting
    their combined state into one of the four Bell states.  BSAs are
-   fundamental for realizing photonic entanglement swapping, a primary
-   process that creates link-level entanglement, used particularly to
-   convert memory-photon entanglement into memory-memory entanglement
-   between distant quantum memories.  The efficiency and complexity of a
-   BSA depend on the optical implementation and the specific photonic
-   qubit encoding used.
+   fundamental for realizing photonic entanglement
+   swapping[zukowski-entanglement-swapping], a primary process that
+   creates link-level entanglement, used particularly to convert memory-
+   photon entanglement into memory-memory entanglement between distant
+   quantum memories.  The efficiency and complexity of a BSA depend on
+   the optical implementation and the specific photonic qubit encoding
+   used.
 
    *A Repeater Graph State Source (RGSS)* is a specialized source that
    generates multipartite entangled photonic states, specifically
@@ -1959,6 +1961,15 @@ Table of Contents
               324-333, DOI 10.1109/qce52317.2021.00049, October 2021,
               <https://doi.org/10.1109/qce52317.2021.00049>.
 
+   [fittipaldi-sat]
+              Fittipaldi, P., Teramoto, K., Benchasattabuse, N.,
+              Hajdušek, M., Van Meter, R., and F. Grosshans,
+              "Entanglement Swapping in Orbit: a Satellite Quantum Link
+              Case Study", IEEE, 2024 IEEE International Conference on
+              Quantum Computing and Engineering (QCE) pp. 1924-1930,
+              DOI 10.1109/qce60285.2024.00222, September 2024,
+              <https://doi.org/10.1109/qce60285.2024.00222>.
+
    [fitzsimons-blind]
               Fitzsimons, J., "Private quantum computation: an
               introduction to blind quantum computing and related
@@ -1998,6 +2009,15 @@ Table of Contents
               Hajdušek, M. and R. Van Meter, "Quantum Communications",
               arXiv, DOI 10.48550/ARXIV.2311.02367, 2023,
               <https://doi.org/10.48550/ARXIV.2311.02367>.
+
+   [haldar-sat-dist]
+              Haldar, S., Agullo, I., Brady, A., Lamas-Linares, A.,
+              Proctor, W., and J. Troupe, "Towards global time
+              distribution via satellite-based sources of entangled
+              photons", American Physical Society (APS), Physical Review
+              A vol. 107, no. 2, DOI 10.1103/physreva.107.022615,
+              February 2023,
+              <https://doi.org/10.1103/physreva.107.022615>.
 
    [hein-graph-entanglement]
               , , , , , and , "Entanglement in graph states and its
@@ -2049,6 +2069,15 @@ Table of Contents
               Quantum Information vol. 4, no. 1,
               DOI 10.1038/s41534-018-0090-2, August 2018,
               <https://doi.org/10.1038/s41534-018-0090-2>.
+
+   [khatri-spooky]
+              Khatri, S., Brady, A., Desporte, R., Bart, M., and J.
+              Dowling, "Spooky action at a global distance: analysis of
+              space-based entanglement distribution for the quantum
+              internet", Springer Science and Business Media LLC, npj
+              Quantum Information vol. 7, no. 1,
+              DOI 10.1038/s41534-020-00327-5, January 2021,
+              <https://doi.org/10.1038/s41534-020-00327-5>.
 
    [kim-ft-million]
               Kim, J., Min, D., Cho, J., Jeong, H., Byun, I., Choi, J.,
@@ -2316,12 +2345,32 @@ Table of Contents
               DOI 10.1103/physrevlett.129.240502, December 2022,
               <https://doi.org/10.1103/physrevlett.129.240502>.
 
+   [yin-1200km]
+              Yin, J., Cao, Y., Li, Y., Liao, S., Zhang, L., Ren, J.,
+              Cai, W., Liu, W., Li, B., Dai, H., Li, G., Lu, Q., Gong,
+              Y., Xu, Y., Li, S., Li, F., Yin, Y., Jiang, Z., Li, M.,
+              Jia, J., Ren, G., He, D., Zhou, Y., Zhang, X., Wang, N.,
+              Chang, X., Zhu, Z., Liu, N., Chen, Y., Lu, C., Shu, R.,
+              Peng, C., Wang, J., and J. Pan, "Satellite-based
+              entanglement distribution over 1200 kilometers", American
+              Association for the Advancement of Science (AAAS),
+              Science vol. 356, no. 6343, pp. 1140-1144,
+              DOI 10.1126/science.aan3211, June 2017,
+              <https://doi.org/10.1126/science.aan3211>.
+
    [yoder-tour-de-gross]
               Yoder, T., Schoute, E., Rall, P., Pritchett, E., Gambetta,
               J., Cross, A., Carroll, M., and M. Beverland, "Tour de
               gross: A modular quantum computer based on bivariate
               bicycle codes", arXiv, DOI 10.48550/ARXIV.2506.03094,
               2025, <https://doi.org/10.48550/ARXIV.2506.03094>.
+
+   [zukowski-entanglement-swapping]
+              Kaszlikowski, D., Kwek, L., Chen, J., Żukowski, M., and C.
+              Oh, "Clauser-Horne inequality for three-state systems",
+              American Physical Society (APS), Physical Review A vol.
+              65, no. 3, DOI 10.1103/physreva.65.032118, February 2002,
+              <https://doi.org/10.1103/physreva.65.032118>.
 
 Contributors
 
