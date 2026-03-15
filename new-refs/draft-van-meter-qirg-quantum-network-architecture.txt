@@ -1315,9 +1315,9 @@ Table of Contents
 
    End nodes represent hosts that wish to execute a quantum application
    such as quantum key distribution, secret sharing and blind quantum
-   computation.  The technological maturity required of an end node
-   heavily depends on the desired application.  There are four major
-   kinds of end nodes:
+   computation [broadbent-bfk-protocol], [fitzsimons-blind].  The
+   technological maturity required of an end node heavily depends on the
+   desired application.  There are four major kinds of end nodes:
 
    *A measurement (MEAS) node* is the most basic type of quantum end
    node, designed primarily for protocols that do not require quantum
@@ -1325,9 +1325,10 @@ Table of Contents
    and perform measurements on them in at least two different bases.
    Lacking quantum memory, MEAS nodes are well-suited for applications
    like quantum key distribution (QKD) or as simple terminals in certain
-   forms of secure delegated computation protocols, typically
-   interacting with the network in a synchronous manner where
-   measurement results directly yield classical data.
+   forms of secure delegated computation protocols
+   [morimae-blind],[fitzsimons-blind], typically interacting with the
+   network in a synchronous manner where measurement results directly
+   yield classical data.
 
    *A sensor (SNSR) node* is a specialized end node designed to utilize
    entangled states, often shared with distant parties, for high-
