@@ -135,10 +135,13 @@ informative:
       PDF: https://arxiv.org/pdf/quant-ph/0607065
   nist-singles: DOI.10.6028/NIST.IR.8486r1
   aboy-governance: DOI.10.1126/science.adw0018
+  ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
   awschalom-roadmap: DOI.10.2172/1900586
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
+  broadbent-bfk-protocol: DOI.10.1109/FOCS.2009.36
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
+  christandl-anon: DOI.10.1007/11593447_12
   degen-sensing: DOI.10.1103/RevModPhys.89.035002
   dally-towles:
       title: Principles and Practices of Interconnection Networks
@@ -154,6 +157,7 @@ informative:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
   drost: DOI.10.1364/JOCN.8.000331
+  dulek-homomorphic: DOI.10.4086/toc.2018.v014a007
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
@@ -168,11 +172,14 @@ informative:
   hein-graph-entanglement: DOI.10.3254/978-1-61499-018-5-115
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   huang-imaging-stars: DOI.10.1103/PhysRevLett.129.210502
+  kim-ft-million: DOI.10.1145/3620665.3640388
   koyama-24: DOI.10.1109/QCE60285.2024.00219
   leone-remote: DOI.10.48550/arxiv.2406.18764
   li-cosmic: DOI.10.1038/s41467-025-59778-z
   litinski-gosc: DOI.10.22331/q-2019-03-05-128
+  mahadev-homomorphic: DOI.10.1137/18M1231055
   martinis-correlated: DOI.10.1038/s41534-021-00431-0
+  mayers-unconditional: DOI.10.48550/arXiv.quant-ph/9802025
   meignant-dgs: DOI.10.1103/PhysRevA.100.052333
   mori-psds: DOI.10.1109/QCE60285.2024.00218
   morimae-blind: DOI.10.1103/PhysRevA.87.050301
@@ -184,7 +191,10 @@ informative:
   sane-jobs: DOI.10.48550/arXiv.2504.18298
   sane-phonons: DOI.10.1109/QCE57702.2023.00156
   schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
+  shapourian-qdc-infra: DOI.10.48550/arXiv.2501.05598
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
+  sutcliffe-dist-qec: DOI.10.1109/QCE65121.2025.00076
+  taherkhani-byz: DOI.10.1088/2058-9565/aa9bb1
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
@@ -192,6 +202,7 @@ informative:
   vepsaelaeinen-ionizing: DOI.10.1038/s41586-020-2619-8
   wu-mitigating: DOI.10.1103/4ctq-r6w6
   xu-dist-qec: DOI.10.1103/PhysRevLett.129.240502
+  yoder-tour-de-gross: DOI.10.48550/arXiv.2506.03094
 ...
 
 --- abstract
@@ -816,7 +827,7 @@ In a network context, STOR nodes may function as data servers, enabling asynchro
 
 **A computational (COMP) node** represents a full-fledged quantum processing endpoint within the network.
 Equipped with quantum memory and additional algorithmic qubits, it can store, manipulate, and perform complex computations on quantum states received from the network or generated locally.
-COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations. <!-- ~\cite{ambainisMultipartyQuantumCoin2004,taherkhaniResourceawareSystemArchitecture2017,mayersUnconditionalSecurityQuantum2004,christandlQuantumAnonymousTransmissions2005}, including distributed quantum algorithms, more general forms of blind quantum computation~\cite{broadbent-bfk-protocol,fitzsimonsPrivateQuantumComputation2017,mahadevClassicalHomomorphicEncryption2023,dulekQuantumHomomorphicEncryption2018}, and potentially fault-tolerant quantum computing~\cite{shapourianQuantumDataCenter2025,sutcliffeDistributedQuantumError2025,yoderTourGrossModular2025b,kimFaultTolerantMillionQubitScale2024}, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations. -->
+COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations {{ambainis-multiparty-coin}}, {{taherkhani-byz}}, {{mayers-unconditional}}, {{christandl-anon}}, {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}, {{mahadev-homomorphic}}, {{dulek-homomorphic}}, {{shapourian-qdc-infra}}, {{sutcliffe-dist-qec}}, {{yoder-tour-de-gross}}. {{kim-ft-million}}.  <!-- ~\cite{ambainisMultipartyQuantumCoin2004,taherkhaniResourceawareSystemArchitecture2017,mayersUnconditionalSecurityQuantum2004,christandlQuantumAnonymousTransmissions2005}, including distributed quantum algorithms, more general forms of blind quantum computation~\cite{,fitzsimonsPrivateQuantumComputation2017,mahadevClassicalHomomorphicEncryption2023,dulekQuantumHomomorphicEncryption2018}, and potentially fault-tolerant quantum computing~\cite{shapourianQuantumDataCenter2025,sutcliffeDistributedQuantumError2025,yoderTourGrossModular2025b,kimFaultTolerantMillionQubitScale2024}, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations. -->
 
 ## Support Nodes
 
