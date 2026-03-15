@@ -1149,12 +1149,12 @@ Table of Contents
 
    At the other end of the spectrum, networks may offer richer services
    such as multipartite entangled states [ghz], [dur-w-state],
-   [hein-multiparty], or fault-tolerant state teleportation.  While
-   applications can, in theory, synthesize these states from Bell pairs,
-   direct network-level support may offer efficiency gains and reduce
-   sensitivity to noise by internalizing complex procedures like direct
-   graph state generations or supporting the delivery of error-
-   correcting code encoded logical qubits.
+   [hein-multiparty], [hein-graph-entanglement] or fault-tolerant state
+   teleportation.  While applications can, in theory, synthesize these
+   states from Bell pairs, direct network-level support may offer
+   efficiency gains and reduce sensitivity to noise by internalizing
+   complex procedures like direct graph state generations or supporting
+   the delivery of error-correcting code encoded logical qubits.
 
    In our architecture, we adopt Bell pair distribution as the core
    network service, as it allows for a well-scoped, foundational
