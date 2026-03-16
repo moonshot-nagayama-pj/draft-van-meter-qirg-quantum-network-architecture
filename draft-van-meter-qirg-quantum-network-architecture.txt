@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 16 September 2026                               Keio University
-                                                           15 March 2026
+Expires: 17 September 2026                               Keio University
+                                                           16 March 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 September 2026.
+   This Internet-Draft will expire on 17 September 2026.
 
 Copyright Notice
 
@@ -2473,6 +2473,7 @@ Authors' Addresses
    5322 Endo, Fujisawa, Kanagawa
    252-0882
    Japan
+   Email: whit3z@sfc.wide.ad.jp
 
 
    Amin Taherkhani
@@ -2480,3 +2481,4 @@ Authors' Addresses
    5322 Endo, Fujisawa, Kanagawa
    252-0882
    Japan
+   Email: amin@sfc.wide.ad.jp
