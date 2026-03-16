@@ -41,6 +41,7 @@ author:
   region: Kanagawa
   code: 252-0882
   country: JP
+  email: whit3z@sfc.wide.ad.jp
 - ins: A. Taherkhani
   name: Amin Taherkhani
   org: Keio University
@@ -48,6 +49,7 @@ author:
   region: Kanagawa
   code: 252-0882
   country: JP
+  email: amin@sfc.wide.ad.jp
 contributor: # Same structure as author list, but goes into contributors
 - ins: M. Hajdusek
   name: Michal Hajdusek
