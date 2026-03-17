@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-03-15T00:50:50.253120+00:00",
+  "timestamp": "2026-03-17T00:43:05.209905+00:00",
   "repo": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
   "labels": [
     {
@@ -173,6 +173,132 @@
           "body": "",
           "createdAt": "2026-03-14T12:51:06Z",
           "updatedAt": "2026-03-14T12:51:06Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDORlsxL87Kr47e",
+      "title": "Requirements",
+      "url": "https://github.com/moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture/pull/4",
+      "state": "MERGED",
+      "author": "rdviii",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "lunch time!",
+      "createdAt": "2026-03-15T04:28:07Z",
+      "updatedAt": "2026-03-15T04:38:40Z",
+      "baseRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "92da6670ee1edd52e84955a1573ec31d096fa49c",
+      "headRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "headRefName": "requirements",
+      "headRefOid": "9dbda4b5ab9bdbc693c7a4c415bd0dccdf624674",
+      "closedAt": "2026-03-15T04:38:40Z",
+      "mergedAt": "2026-03-15T04:38:40Z",
+      "mergedBy": "rdviii",
+      "mergeCommit": {
+        "oid": "6bef63dc20b53cab3d46f10f4211fe6ebd64ba7d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDORlsxL87ra4Hm",
+          "commit": {
+            "abbreviatedOid": "9dbda4b"
+          },
+          "author": "hhatpsi",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-03-15T04:35:24Z",
+          "updatedAt": "2026-03-15T04:35:24Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDORlsxL87KsH9R",
+      "title": "Quote fix",
+      "url": "https://github.com/moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture/pull/5",
+      "state": "MERGED",
+      "author": "rdviii",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes umlaut in name and odd quote marks in title. Thanks, Carsten!",
+      "createdAt": "2026-03-15T05:34:23Z",
+      "updatedAt": "2026-03-15T05:41:47Z",
+      "baseRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "6bef63dc20b53cab3d46f10f4211fe6ebd64ba7d",
+      "headRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "headRefName": "quote-fix",
+      "headRefOid": "8d7137d501ec22fa2a76e33d5b3ede049f7ce870",
+      "closedAt": "2026-03-15T05:41:47Z",
+      "mergedAt": "2026-03-15T05:41:47Z",
+      "mergedBy": "rdviii",
+      "mergeCommit": {
+        "oid": "8d12272e890a032b3ee9653c0891f1be03cadeae"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDORlsxL87rbA4n",
+          "commit": {
+            "abbreviatedOid": "8d7137d"
+          },
+          "author": "bobmeetsworld",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-03-15T05:40:54Z",
+          "updatedAt": "2026-03-15T05:40:54Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDORlsxL87KtrDm",
+      "title": "Add a ridiculously large number of references",
+      "url": "https://github.com/moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture/pull/6",
+      "state": "MERGED",
+      "author": "rdviii",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Almost all just reinstating ones from earlier docs/drafts that hadn't yet been kramdownified.",
+      "createdAt": "2026-03-15T11:23:48Z",
+      "updatedAt": "2026-03-15T12:05:29Z",
+      "baseRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "8d12272e890a032b3ee9653c0891f1be03cadeae",
+      "headRepository": "moonshot-nagayama-pj/draft-van-meter-qirg-quantum-network-architecture",
+      "headRefName": "new-refs",
+      "headRefOid": "7b109c2e1f2e9e2dae45d7599e419247ec6059f4",
+      "closedAt": "2026-03-15T12:05:29Z",
+      "mergedAt": "2026-03-15T12:05:29Z",
+      "mergedBy": "rdviii",
+      "mergeCommit": {
+        "oid": "c70b21d646c38694ae0336044b26e04a6d209237"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDORlsxL87rcblG",
+          "commit": {
+            "abbreviatedOid": "7b109c2"
+          },
+          "author": "hhatpsi",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-03-15T12:04:28Z",
+          "updatedAt": "2026-03-15T12:04:28Z",
           "comments": []
         }
       ]
