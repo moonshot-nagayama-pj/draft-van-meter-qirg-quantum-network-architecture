@@ -108,7 +108,12 @@ normative:
 informative:
   RFC1122:
   RFC1123:
+  RFC1958:
+  RFC5218:
+  RFC6250:
+  RFC6852:
   RFC9340:
+  RFC9413:
   RFC9583:
   I-D.draft-hajdusek-qirg-timing-physics:
   res-mgmt-het:
@@ -609,6 +614,11 @@ Detectors may be either _single-photon detectors_, which click when _one or more
 
 This section documents the requirements for all networks adhering to this architecture.
 
+## Normative Requirements
+
+* The architecture must support an open development process {{RFC6852}}.
+* The architecture must support the creation of robust, extensible, maintainable protocols in keeping with best current practice {{RFC9413}} {{RFC6250}} {{RFC1958}} {{RFC5218}}.
+
 ## General Requirements
 
 ### Functional Requirements
@@ -838,7 +848,7 @@ In a network context, STOR nodes may function as data servers, enabling asynchro
 
 **A computational (COMP) node** represents a full-fledged quantum processing endpoint within the network.
 Equipped with quantum memory and additional algorithmic qubits, it can store, manipulate, and perform complex computations on quantum states received from the network or generated locally.
-COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations {{ambainis-multiparty-coin}}, {{taherkhani-byz}}, {{mayers-unconditional}}, {{christandl-anon}}, {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}, {{mahadev-homomorphic}}, {{dulek-homomorphic}}, {{shapourian-qdc-infra}}, {{sutcliffe-dist-qec}}, {{yoder-tour-de-gross}}. {{kim-ft-million}}.
+COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations {{ambainis-multiparty-coin}}, {{taherkhani-byz}}, {{mayers-unconditional}}, {{christandl-anon}}, {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}, {{mahadev-homomorphic}}, {{dulek-homomorphic}}, {{shapourian-qdc-infra}}, {{sutcliffe-dist-qec}}, {{yoder-tour-de-gross}}, {{kim-ft-million}}.
 
 ## Support Nodes
 
@@ -860,6 +870,8 @@ The choice of measurement basis often depends on the outcomes of prior measureme
 
 **An optical switch (OSW)** is a device that can passively route photons from input optical fibers or paths to different output paths without performing measurements on them {{koyama-24}}.
 OSWs, which can be based on technologies like nanomechanical systems or nanophotonic circuits, can be integrated as components within other node types (e.g., routers or complex end nodes) or can function as standalone elements in the network to dynamically reconfigure optical pathways.
+
+An OSW node contains at least one switch device, which comprises at least once switch point.
 
 ## Repeater Nodes
 
