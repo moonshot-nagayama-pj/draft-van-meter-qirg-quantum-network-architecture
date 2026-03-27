@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 27 September 2026                               Keio University
-                                                           26 March 2026
+Expires: 28 September 2026                               Keio University
+                                                           27 March 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 September 2026.
+   This Internet-Draft will expire on 28 September 2026.
 
 Copyright Notice
 
@@ -147,13 +147,14 @@ Table of Contents
    21. Naming and Addressing
      21.1.  State naming and management in RuleSets
    22. Example Networks
-     22.1.  Fully Connected
-     22.2.  Q-Fly Multicomputer
-     22.3.  Optically Switched Fat Tree
-     22.4.  Repeater Fat Tree
-     22.5.  2-D Grid Multicomputer
-     22.6.  Ring
-     22.7.  QLAN
+     22.1.  Fully Connected Point-to-Point
+     22.2.  Single Optical Switch
+     22.3.  Q-Fly Multicomputer
+     22.4.  Optically Switched Fat Tree
+     22.5.  Repeater Fat Tree
+     22.6.  2-D Grid Multicomputer
+     22.7.  Ring
+     22.8.  QLAN
    23. APIs for Network Service ("Quantum Sockets")
    24. Security Considerations
    25. References
@@ -1727,18 +1728,42 @@ Table of Contents
    described, followed by analysis of the path characteristics of the
    shortest path and network diameter.
 
-22.1.  Fully Connected
+22.1.  Fully Connected Point-to-Point
+
+   Small networks may use nodes with multiple interfaces and provide a
+   direct link between each pair of nodes, making a _direct_ network.
+   Assuming sufficient node-internal capabilities, such a network
+   provides lowest loss (giving the fastest individual links) and the
+   highest aggregate bandwidth, and is inherently nonblocking.  However,
+   with n-1 links per node and O(n^2) links in the network, its
+   scalability is poor.  It will always provide the highest performance,
+   but not necessarily highest price/performance ratio.
+
+   If links are midpoint interference-based, an issue in design is
+   packaging of the BSAs and detectors.
+
+   PSD: Each link is a separate PSD.
+
+   All paths: MIM
+
+22.2.  Single Optical Switch
 
    A number of the early quantum multicomputer proposals assumed a
-   single, large optical switch.
+   single, large optical switch.  Such a network is _indirect_.
 
-   Shortest paths:
+   PSD: Although the entire network is a single PSD, each pairing is
+   adjusted independently.
 
-22.2.  Q-Fly Multicomputer
+   All paths: MXIXM
+
+22.3.  Q-Fly Multicomputer
 
    An _indirect_ interconnect.  A multi-group, BSA-centric architecture.
    All nodes are part of the same PSD.  The Q-Fly architecture is
    described in Sakuma et al. [sakuma-q-fly].
+
+   PSD: Although the entire network is a single PSD, each pairing is
+   adjusted independently.
 
    For DPFD topologies:
 
@@ -1776,7 +1801,7 @@ Table of Contents
 
       -  non-shortest path: MXXXIXM or longer
 
-22.3.  Optically Switched Fat Tree
+22.4.  Optically Switched Fat Tree
 
    An _indirect_ interconnect.  Several parameters are needed to
    describe the full topology of a fat tree, which can also be called a
@@ -1796,11 +1821,16 @@ Table of Contents
    multiple links to several switches at higher levels of the tree, in a
    configuration that is also know as a _folded Clos_ network.
 
-22.4.  Repeater Fat Tree
+   PSD: Although the entire network is a single PSD, each pairing is
+   adjusted independently.
+
+22.5.  Repeater Fat Tree
 
    The repeater fat tree is described in [choi-fat-tree].
 
-22.5.  2-D Grid Multicomputer
+   PSD: Each link is a separate PSD.
+
+22.6.  2-D Grid Multicomputer
 
    A _direct_ interconnect.  A 2-D grid of nodes, where nodes with
    memory and certain computational capabilities (canonically COMP
@@ -1808,7 +1838,9 @@ Table of Contents
    Each node must act as a memory buffer and repeater to enable
    communication between non-neighboring nodes.
 
-22.6.  Ring
+   PSD: Each link is a separate PSD.
+
+22.7.  Ring
 
    A _direct_ interconnect.  All nodes in a ring have exactly two
    neighbors.  Each node must act as a memory buffer and repeater to
@@ -1816,7 +1848,9 @@ Table of Contents
 
    A ring is described in (something from Simon's group).
 
-22.7.  QLAN
+   PSD: Each link is a separate PSD.
+
+22.8.  QLAN
 
    A quantum local area network will have:
 
@@ -1825,6 +1859,10 @@ Table of Contents
    *  distributed multiplexing
 
    *  distributed routing
+
+   PSD: If the QLAN does not include optical switches, but uses
+   repeaters, each link is a separate PSD.  If the QLAN includes optical
+   switches, the PSDs may have irregular boundaries.
 
 23.  APIs for Network Service ("Quantum Sockets")
 
