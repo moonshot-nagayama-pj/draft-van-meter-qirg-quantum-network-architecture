@@ -1021,15 +1021,29 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 
 While a full taxonomy of networks is neither desirable nor possible here, we present a few network examples using point-to-point links or switched architectures.  In this section, the topology is briefly described, followed by analysis of the path characteristics of the shortest path and network diameter.
 
-## Fully Connected
+## Fully Connected Point-to-Point
 
-A number of the early quantum multicomputer proposals assumed a single, large optical switch.
+Small networks may use nodes with multiple interfaces and provide a direct link between each pair of nodes, making a _direct_ network.  Assuming sufficient node-internal capabilities, such a network provides lowest loss (giving the fastest individual links) and the highest aggregate bandwidth, and is inherently nonblocking.  However, with n-1 links per node and O(n^2) links in the network, its scalability is poor.  It will always provide the highest performance, but not necessarily highest price/performance ratio.
 
-Shortest paths:
+If links are midpoint interference-based, an issue in design is packaging of the BSAs and detectors.
+
+PSD: Each link is a separate PSD.
+
+All paths: MIM
+
+## Single Optical Switch
+
+A number of the early quantum multicomputer proposals assumed a single, large optical switch.  Such a network is _indirect_.
+
+PSD: Although the entire network is a single PSD, each pairing is adjusted independently.
+
+All paths: MXIXM
 
 ## Q-Fly Multicomputer
 
 An _indirect_ interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in Sakuma et al. {{sakuma-q-fly}}.
+
+PSD: Although the entire network is a single PSD, each pairing is adjusted independently.
 
 For DPFD topologies:
 
@@ -1064,19 +1078,27 @@ An _indirect_ interconnect. Several parameters are needed to describe the full t
 
 This simplest description assumes homogeneous hardware, where all switches have the same number of ports and all links are the same bandwidth.  Leiserson's original fat tree proposed single links of increasing bandwidth at higher levels of the tree, giving the network its name; this approach provides no redundancy or path diversity, and achieving higher transfer rates is impractical in some technologies, including quantum.  Consequently, most fat tree deployments use multiple links to several switches at higher levels of the tree, in a configuration that is also know as a _folded Clos_ network.
 
+PSD: Although the entire network is a single PSD, each pairing is adjusted independently.
+
 ## Repeater Fat Tree
 
 The repeater fat tree is described in {{choi-fat-tree}}.
 
+PSD: Each link is a separate PSD.
+
 ## 2-D Grid Multicomputer
 
 A _direct_ interconnect. A 2-D grid of nodes, where nodes with memory and certain computational capabilities (canonically COMP nodes) have up to four interfaces connecting to neighboring nodes. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.
+
+PSD: Each link is a separate PSD.
 
 ## Ring
 
 A _direct_ interconnect. All nodes in a ring have exactly two neighbors. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.
 
 A ring is described in (something from Simon's group).
+
+PSD: Each link is a separate PSD.
 
 ## QLAN
 
@@ -1085,6 +1107,8 @@ A quantum local area network will have:
 * irregular topology, possibly of heterogeneous link types
 * distributed multiplexing
 * distributed routing
+
+PSD: If the QLAN does not include optical switches, but uses repeaters, each link is a separate PSD. If the QLAN includes optical switches, the PSDs may have irregular boundaries.
 
 # APIs for Network Service ("Quantum Sockets")
 
