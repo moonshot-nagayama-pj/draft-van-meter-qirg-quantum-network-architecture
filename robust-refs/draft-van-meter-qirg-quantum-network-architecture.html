@@ -1673,7 +1673,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
               <p id="section-5-2.4.2.3.1">Entanglement swapping<a href="#section-5-2.4.2.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-5-2.4.2.4">
-              <p id="section-5-2.4.2.4.1">Quantum key distribution: BB84, E91, BBM92<a href="#section-5-2.4.2.4.1" class="pilcrow">¶</a></p>
+              <p id="section-5-2.4.2.4.1">Quantum key distribution <span>[<a href="#BB84" class="cite xref">BB84</a>]</span>, <span>[<a href="#E91" class="cite xref">E91</a>]</span>, <span>[<a href="#BBM92" class="cite xref">BBM92</a>]</span><a href="#section-5-2.4.2.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-5-2.4.2.5">
               <p id="section-5-2.4.2.5.1">"Generations" of quantum repeaters<a href="#section-5-2.4.2.5.1" class="pilcrow">¶</a></p>
@@ -2020,6 +2020,7 @@ Since consuming extra resources is more costly than waiting, these operations de
 <a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-photonic-synchronization-do" class="section-name selfRef">Photonic Synchronization Domains</a>
         </h3>
 <p id="section-8.4-1">A photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping <span>[<a href="#mori-psds" class="cite xref">mori-psds</a>]</span>. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
+<p id="section-8.4-2">Note that the most common operational mode uses only pairs of photons, not multi-photon operations; the definition of PSD does not imply that all channels must be synchronized with each other and used in a single operation.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="direct-and-indirect-multicomputer-architectures">
@@ -3100,6 +3101,14 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Azuma, K.</span>, <span class="refAuthor">Tamaki, K.</span>, and <span class="refAuthor">H. Lo</span>, <span class="refTitle">"All-photonic quantum repeaters"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">Nature Communications vol. 6, no. 1</span>, <span class="seriesInfo">DOI 10.1038/ncomms7787</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://doi.org/10.1038/ncomms7787">https://doi.org/10.1038/ncomms7787</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="BB84">[BB84]</dt>
+        <dd>
+<span class="refAuthor">Bennett, C.</span> and <span class="refAuthor">G. Brassard</span>, <span class="refTitle">"Quantum cryptography: Public key distribution and coin tossing"</span>, <span class="refContent">Elsevier BV</span>, <span class="seriesInfo">Theoretical Computer Science vol. 560, pp. 7-11</span>, <span class="seriesInfo">DOI 10.1016/j.tcs.2014.05.025</span>, <time datetime="2014-12" class="refDate">December 2014</time>, <span>&lt;<a href="https://doi.org/10.1016/j.tcs.2014.05.025">https://doi.org/10.1016/j.tcs.2014.05.025</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="BBM92">[BBM92]</dt>
+        <dd>
+<span class="refAuthor">Bennett, C.</span>, <span class="refAuthor">Brassard, G.</span>, and <span class="refAuthor">N. Mermin</span>, <span class="refTitle">"Quantum cryptography without Bell’s theorem"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review Letters vol. 68, no. 5, pp. 557-559</span>, <span class="seriesInfo">DOI 10.1103/physrevlett.68.557</span>, <time datetime="1992-02" class="refDate">February 1992</time>, <span>&lt;<a href="https://doi.org/10.1103/physrevlett.68.557">https://doi.org/10.1103/physrevlett.68.557</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="bennett-mixed">[bennett-mixed]</dt>
         <dd>
 <span class="refAuthor">Bennett, C.</span>, <span class="refAuthor">DiVincenzo, D.</span>, <span class="refAuthor">Smolin, J.</span>, and <span class="refAuthor">W. Wootters</span>, <span class="refTitle">"Mixed-state entanglement and quantum error correction"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 54, no. 5, pp. 3824-3851</span>, <span class="seriesInfo">DOI 10.1103/physreva.54.3824</span>, <time datetime="1996-11" class="refDate">November 1996</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.54.3824">https://doi.org/10.1103/physreva.54.3824</a>&gt;</span>. </dd>
@@ -3147,6 +3156,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="dur-w-state">[dur-w-state]</dt>
         <dd>
 <span class="refAuthor">Dür, W.</span>, <span class="refAuthor">Vidal, G.</span>, and <span class="refAuthor">J. Cirac</span>, <span class="refTitle">"Three qubits can be entangled in two inequivalent ways"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 62, no. 6</span>, <span class="seriesInfo">DOI 10.1103/physreva.62.062314</span>, <time datetime="2000-11" class="refDate">November 2000</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.62.062314">https://doi.org/10.1103/physreva.62.062314</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="E91">[E91]</dt>
+        <dd>
+<span class="refAuthor">Ekert, A.</span>, <span class="refTitle">"Quantum cryptography based on Bell’s theorem"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review Letters vol. 67, no. 6, pp. 661-663</span>, <span class="seriesInfo">DOI 10.1103/physrevlett.67.661</span>, <time datetime="1991-08" class="refDate">August 1991</time>, <span>&lt;<a href="https://doi.org/10.1103/physrevlett.67.661">https://doi.org/10.1103/physrevlett.67.661</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="fan-dgs-dist">[fan-dgs-dist]</dt>
         <dd>
