@@ -145,6 +145,8 @@ informative:
   ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
   awschalom-roadmap: DOI.10.2172/1900586
   azuma-rgs: DOI.10.1038/ncomms7787
+  BB84: DOI.10.1016/j.tcs.2014.05.025
+  BBM92: DOI.10.1103/PhysRevLett.68.557
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
   broadbent-bfk-protocol: DOI.10.1109/FOCS.2009.36
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
@@ -168,6 +170,7 @@ informative:
   drost: DOI.10.1364/JOCN.8.000331
   dulek-homomorphic: DOI.10.4086/toc.2018.v014a007
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
+  E91: DOI.10.1103/PhysRevLett.67.661
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
   fittipaldi-sat: DOI.10.1109/QCE60285.2024.00222
@@ -301,7 +304,7 @@ This document assumes basic knowledge of the underlying technology and goals of 
     - Teleportation
     - Purification
     - Entanglement swapping
-    - Quantum key distribution: BB84, E91, BBM92
+    - Quantum key distribution {{BB84}}, {{E91}}, {{BBM92}}
     - "Generations" of quantum repeaters
     - (Repeater graph states may be helpful, but are not used in the current architecture)
 
@@ -463,6 +466,8 @@ Links are described in {{links}}.
 ## Photonic Synchronization Domains
 
 A photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping {{mori-psds}}. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in {{I-D.draft-hajdusek-qirg-timing-physics}}.
+
+Note that the most common operational mode uses only pairs of photons, not multi-photon operations; the definition of PSD does not imply that all channels must be synchronized with each other and used in a single operation.
 
 ## Direct and Indirect Multicomputer Architectures
 
