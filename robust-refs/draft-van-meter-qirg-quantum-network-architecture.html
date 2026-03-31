@@ -1052,7 +1052,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Van Meter, et al.</td>
-<td class="center">Expires 28 September 2026</td>
+<td class="center">Expires 2 October 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1065,12 +1065,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-van-meter-qirg-quantum-network-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-03-27" class="published">27 March 2026</time>
+<time datetime="2026-03-31" class="published">31 March 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-09-28">28 September 2026</time></dd>
+<dd class="expires"><time datetime="2026-10-02">2 October 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1123,7 +1123,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 28 September 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 October 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2727,6 +2727,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <a href="#section-19" class="section-number selfRef">19. </a><a href="#name-resource-management-multipl" class="section-name selfRef">Resource Management: Multiplexing and Routing</a>
       </h2>
 <p id="section-19-1">Both link usage time slots and memory can be shared among multiple connections and therefore must be actively managed via a multiplexing system.  This task is particularly challenging in switched networks.<a href="#section-19-1" class="pilcrow">¶</a></p>
+<p id="section-19-2">The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS <span>[<a href="#I-D.draft-kaws-qirg-advent" class="cite xref">I-D.draft-kaws-qirg-advent</a>]</span>.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput <span>[<a href="#van-meter-sys-design" class="cite xref">van-meter-sys-design</a>]</span>.  A number of approaches have been proposed <span>[<a href="#abane-routing" class="cite xref">abane-routing</a>]</span>.<a href="#section-19-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="classical-communication">
@@ -3085,6 +3086,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <a href="#section-25.2" class="section-number selfRef">25.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="abane-routing">[abane-routing]</dt>
+        <dd>
+<span class="refAuthor">Abane, A.</span>, <span class="refAuthor">Cubeddu, M.</span>, <span class="refAuthor">Mai, V.</span>, and <span class="refAuthor">A. Battou</span>, <span class="refTitle">"Entanglement Routing in Quantum Networks: A Comprehensive Survey"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2408.01234</span>, <time datetime="2024" class="refDate">2024</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2408.01234">https://doi.org/10.48550/ARXIV.2408.01234</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="aboy-governance">[aboy-governance]</dt>
         <dd>
 <span class="refAuthor">Aboy, M.</span>, <span class="refAuthor">Gasser, U.</span>, <span class="refAuthor">Cohen, I.</span>, and <span class="refAuthor">M. Kop</span>, <span class="refTitle">"Quantum technology governance: A standards-first approach"</span>, <span class="refContent">American Association for the Advancement of Science (AAAS)</span>, <span class="seriesInfo">Science vol. 389, no. 6760, pp. 575-578</span>, <span class="seriesInfo">DOI 10.1126/science.adw0018</span>, <time datetime="2025-08" class="refDate">August 2025</time>, <span>&lt;<a href="https://doi.org/10.1126/science.adw0018">https://doi.org/10.1126/science.adw0018</a>&gt;</span>. </dd>
@@ -3228,6 +3233,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="I-D.draft-hajdusek-qirg-timing-physics">[I-D.draft-hajdusek-qirg-timing-physics]</dt>
         <dd>
 <span class="refAuthor">Hajdusek, M.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Timing Regimes in Quantum Networks and their Physical Underpinnings"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-hajdusek-qirg-timing-physics-01</span>, <time datetime="2026-03-18" class="refDate">18 March 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-hajdusek-qirg-timing-physics-01">https://datatracker.ietf.org/doc/html/draft-hajdusek-qirg-timing-physics-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.draft-kaws-qirg-advent">[I-D.draft-kaws-qirg-advent]</dt>
+        <dd>
+<span class="refAuthor">Kompella, K.</span>, <span class="refAuthor">Aelmans, M.</span>, <span class="refAuthor">Wehner, S.</span>, <span class="refAuthor">Sirbu, C.</span>, and <span class="refAuthor">A. Dahlberg</span>, <span class="refTitle">"Advertising Entanglement Capabilities in Quantum Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-kaws-qirg-advent-03</span>, <time datetime="2019-03-27" class="refDate">27 March 2019</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-kaws-qirg-advent-03">https://datatracker.ietf.org/doc/html/draft-kaws-qirg-advent-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.draft-van-meter-qirg-quantum-connection-setup">[I-D.draft-van-meter-qirg-quantum-connection-setup]</dt>
         <dd>
@@ -3392,6 +3401,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="van-meter-qi-arch">[van-meter-qi-arch]</dt>
         <dd>
 <span class="refAuthor">Van Meter, R.</span>, <span class="refAuthor">Satoh, R.</span>, <span class="refAuthor">Benchasattabuse, N.</span>, <span class="refAuthor">Teramoto, K.</span>, <span class="refAuthor">Matsuo, T.</span>, <span class="refAuthor">Hajdusek, M.</span>, <span class="refAuthor">Satoh, T.</span>, <span class="refAuthor">Nagayama, S.</span>, and <span class="refAuthor">S. Suzuki</span>, <span class="refTitle">"A Quantum Internet Architecture"</span>, <span class="refContent">IEEE</span>, <span class="seriesInfo">2022 IEEE International Conference on Quantum Computing and Engineering (QCE) pp. 341-352</span>, <span class="seriesInfo">DOI 10.1109/qce53715.2022.00055</span>, <time datetime="2022-09" class="refDate">September 2022</time>, <span>&lt;<a href="https://doi.org/10.1109/qce53715.2022.00055">https://doi.org/10.1109/qce53715.2022.00055</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="van-meter-sys-design">[van-meter-sys-design]</dt>
+        <dd>
+<span class="refAuthor">Van Meter, R.</span>, <span class="refAuthor">Ladd, T.</span>, <span class="refAuthor">Munro, W.</span>, and <span class="refAuthor">K. Nemoto</span>, <span class="refTitle">"System Design for a Long-Line Quantum Repeater"</span>, <span class="refContent">Institute of Electrical and Electronics Engineers (IEEE)</span>, <span class="seriesInfo">IEEE/ACM Transactions on Networking vol. 17, no. 3, pp. 1002-1013</span>, <span class="seriesInfo">DOI 10.1109/tnet.2008.927260</span>, <time datetime="2009-06" class="refDate">June 2009</time>, <span>&lt;<a href="https://doi.org/10.1109/tnet.2008.927260">https://doi.org/10.1109/tnet.2008.927260</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="vepsaelaeinen-ionizing">[vepsaelaeinen-ionizing]</dt>
         <dd>

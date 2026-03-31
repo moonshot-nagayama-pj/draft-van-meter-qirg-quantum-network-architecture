@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 28 September 2026                               Keio University
-                                                           27 March 2026
+Expires: 2 October 2026                                  Keio University
+                                                           31 March 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 September 2026.
+   This Internet-Draft will expire on 2 October 2026.
 
 Copyright Notice
 
@@ -1609,6 +1609,15 @@ Table of Contents
    connections and therefore must be actively managed via a multiplexing
    system.  This task is particularly challenging in switched networks.
 
+   The discovery of the physical topology can be based on link state
+   protocols, such as direct adaptation of OSPF or IS-IS
+   [I-D.draft-kaws-qirg-advent].  These protocols use a unitless link
+   cost.  It is known that, at least for certain physical systems,
+   selecting a link cost corresponding to "seconds per Bell pair of a
+   given fidelity" produces good correlation between low path cost and
+   high throughput [van-meter-sys-design].  A number of approaches have
+   been proposed [abane-routing].
+
 20.  Classical Communication
 
    A quantum network depends on classical communication; indeed, almost
@@ -1901,6 +1910,12 @@ Table of Contents
 
 25.2.  Informative References
 
+   [abane-routing]
+              Abane, A., Cubeddu, M., Mai, V., and A. Battou,
+              "Entanglement Routing in Quantum Networks: A Comprehensive
+              Survey", arXiv, DOI 10.48550/ARXIV.2408.01234, 2024,
+              <https://doi.org/10.48550/ARXIV.2408.01234>.
+
    [aboy-governance]
               Aboy, M., Gasser, U., Cohen, I., and M. Kop, "Quantum
               technology governance: A standards-first approach",
@@ -2164,6 +2179,14 @@ Table of Contents
               physics-01, 18 March 2026,
               <https://datatracker.ietf.org/doc/html/draft-hajdusek-
               qirg-timing-physics-01>.
+
+   [I-D.draft-kaws-qirg-advent]
+              Kompella, K., Aelmans, M., Wehner, S., Sirbu, C., and A.
+              Dahlberg, "Advertising Entanglement Capabilities in
+              Quantum Networks", Work in Progress, Internet-Draft,
+              draft-kaws-qirg-advent-03, 27 March 2019,
+              <https://datatracker.ietf.org/doc/html/draft-kaws-qirg-
+              advent-03>.
 
    [I-D.draft-van-meter-qirg-quantum-connection-setup]
               Van Meter, R. and T. Matsuo, "Connection Setup in a
@@ -2446,6 +2469,14 @@ Table of Contents
               Engineering (QCE) pp. 341-352,
               DOI 10.1109/qce53715.2022.00055, September 2022,
               <https://doi.org/10.1109/qce53715.2022.00055>.
+
+   [van-meter-sys-design]
+              Van Meter, R., Ladd, T., Munro, W., and K. Nemoto, "System
+              Design for a Long-Line Quantum Repeater", Institute of
+              Electrical and Electronics Engineers (IEEE), IEEE/ACM
+              Transactions on Networking vol. 17, no. 3, pp. 1002-1013,
+              DOI 10.1109/tnet.2008.927260, June 2009,
+              <https://doi.org/10.1109/tnet.2008.927260>.
 
    [vepsaelaeinen-ionizing]
               Vepsäläinen, A., Karamlou, A., Orrell, J., Dogra, A.,
