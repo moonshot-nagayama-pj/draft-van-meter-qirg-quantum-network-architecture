@@ -116,6 +116,7 @@ informative:
   RFC9413:
   RFC9583:
   I-D.draft-hajdusek-qirg-timing-physics:
+  I-D.draft-kaws-qirg-advent:
   res-mgmt-het:
     target: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
     title: Resource Management in Heterogeneous Quantum Repeater Networks
@@ -215,6 +216,7 @@ informative:
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
+  van-meter-sys-design: DOI.10.1109/TNET.2008.927260
   I-D.draft-van-meter-qirg-quantum-connection-setup:
   vepsaelaeinen-ionizing: DOI.10.1038/s41586-020-2619-8
   wu-mitigating: DOI.10.1103/4ctq-r6w6
@@ -958,6 +960,8 @@ Connections are unaware of the shared use of resources and of other connections.
 # Resource Management: Multiplexing and Routing
 
 Both link usage time slots and memory can be shared among multiple connections and therefore must be actively managed via a multiplexing system.  This task is particularly challenging in switched networks.
+
+The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS {{I-D.draft-kaws-qirg-advent}}.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput {{van-meter-sys-design}}.
 
 # Classical Communication
 
