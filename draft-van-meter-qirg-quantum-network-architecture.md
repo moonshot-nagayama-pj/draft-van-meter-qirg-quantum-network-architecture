@@ -142,6 +142,7 @@ informative:
     format:
       PDF: https://arxiv.org/pdf/quant-ph/0607065
   nist-singles: DOI.10.6028/NIST.IR.8486r1
+  abane-routing: DOI.10.48550/arXiv.2408.01234
   aboy-governance: DOI.10.1126/science.adw0018
   ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
   awschalom-roadmap: DOI.10.2172/1900586
@@ -961,7 +962,7 @@ Connections are unaware of the shared use of resources and of other connections.
 
 Both link usage time slots and memory can be shared among multiple connections and therefore must be actively managed via a multiplexing system.  This task is particularly challenging in switched networks.
 
-The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS {{I-D.draft-kaws-qirg-advent}}.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput {{van-meter-sys-design}}.
+The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS {{I-D.draft-kaws-qirg-advent}}.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput {{van-meter-sys-design}}.  A number of approaches have been proposed {{abane-routing}}.
 
 # Classical Communication
 
