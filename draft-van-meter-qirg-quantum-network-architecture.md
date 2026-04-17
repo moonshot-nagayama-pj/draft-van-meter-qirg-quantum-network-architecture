@@ -146,6 +146,7 @@ informative:
   aboy-governance: DOI.10.1126/science.adw0018
   ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
   awschalom-roadmap: DOI.10.2172/1900586
+  azuma-rmp: DOI.10.1103/RevModPhys.95.045006
   azuma-rgs: DOI.10.1038/ncomms7787
   BB84: DOI.10.1016/j.tcs.2014.05.025
   BBM92: DOI.10.1103/PhysRevLett.68.557
@@ -174,6 +175,7 @@ informative:
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
   E91: DOI.10.1103/PhysRevLett.67.661
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
+  farhadi-sdn: DOI.10.1016/j.comnet.2015.02.014
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
   fittipaldi-sat: DOI.10.1109/QCE60285.2024.00222
   fitzsimons-blind: DOI.10.1038/s41534-017-0025-3
@@ -199,6 +201,17 @@ informative:
   mahadev-homomorphic: DOI.10.1137/18M1231055
   martinis-correlated: DOI.10.1038/s41534-021-00431-0
   mayers-unconditional: DOI.10.48550/arXiv.quant-ph/9802025
+  mccanne-bpf:
+      title: "The BSD packet filter: a new architecture for user-level packet capture"
+      author:
+      -
+        ins: S. McCanne
+        name: Steven McCanne
+      -
+        ins: V. Jacobson
+        name: Van Jacobson
+      date: 1993-01-25
+      rc: "USENIX'93: Proceedings of the USENIX Winter 1993 Conference Proceedings on USENIX Winter 1993 Conference Proceedings"
   meignant-dgs: DOI.10.1103/PhysRevA.100.052333
   mori-psds: DOI.10.1109/QCE60285.2024.00218
   morimae-blind: DOI.10.1103/PhysRevA.87.050301
@@ -308,7 +321,7 @@ This document assumes basic knowledge of the underlying technology and goals of 
     - Purification
     - Entanglement swapping
     - Quantum key distribution {{BB84}}, {{E91}}, {{BBM92}}
-    - "Generations" of quantum repeaters
+    - "Generations" of quantum repeaters {{muralidharan-generations}}, {{azuma-rmp}}
     - (Repeater graph states may be helpful, but are not used in the current architecture)
 
 Because terms such as _fidelity_ have varying definitions, they will be defined in this set of documents (where? Timing Regimes?).
@@ -515,7 +528,7 @@ Many aspects of compilation and job execution are beyond the scope of this set o
 * Applications consist of both classical computation and quantum computation; within a node, the classical portion of the program delegates certain computational tasks to the quantum processor (sometimes called a QPU), similar to a classical [coprocessor](https://en.wikipedia.org/wiki/Coprocessor) such as a [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit).
 * Classical data related to quantum operations (principally measurement results and event notifications that trigger further actions) is sent peer-to-peer, not back to the centralized controller, during execution.
 * Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a [socket](https://en.wikipedia.org/wiki/Network_socket) in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.
-* The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking). A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF): it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
+* The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking) {{farhadi-sdn}}. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) {{mccanne-bpf}} : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
 * In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.
 * In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)
 * Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.
