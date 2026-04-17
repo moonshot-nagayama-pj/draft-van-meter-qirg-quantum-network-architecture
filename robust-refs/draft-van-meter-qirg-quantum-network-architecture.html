@@ -1048,11 +1048,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">QNA</td>
-<td class="right">March 2026</td>
+<td class="right">April 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Van Meter, et al.</td>
-<td class="center">Expires 2 October 2026</td>
+<td class="center">Expires 19 October 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1065,12 +1065,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-van-meter-qirg-quantum-network-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-03-31" class="published">31 March 2026</time>
+<time datetime="2026-04-17" class="published">17 April 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-10-02">2 October 2026</time></dd>
+<dd class="expires"><time datetime="2026-10-19">19 October 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1123,7 +1123,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 October 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 October 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1676,7 +1676,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
               <p id="section-5-2.4.2.4.1">Quantum key distribution <span>[<a href="#BB84" class="cite xref">BB84</a>]</span>, <span>[<a href="#E91" class="cite xref">E91</a>]</span>, <span>[<a href="#BBM92" class="cite xref">BBM92</a>]</span><a href="#section-5-2.4.2.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-5-2.4.2.5">
-              <p id="section-5-2.4.2.5.1">"Generations" of quantum repeaters<a href="#section-5-2.4.2.5.1" class="pilcrow">¶</a></p>
+              <p id="section-5-2.4.2.5.1">"Generations" of quantum repeaters <span>[<a href="#muralidharan-generations" class="cite xref">muralidharan-generations</a>]</span>, <span>[<a href="#azuma-rmp" class="cite xref">azuma-rmp</a>]</span><a href="#section-5-2.4.2.5.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-5-2.4.2.6">
               <p id="section-5-2.4.2.6.1">(Repeater graph states may be helpful, but are not used in the current architecture)<a href="#section-5-2.4.2.6.1" class="pilcrow">¶</a></p>
@@ -2106,7 +2106,7 @@ Since consuming extra resources is more costly than waiting, these operations de
             <p id="section-9.1-6.6.1">Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a <a href="https://en.wikipedia.org/wiki/Network_socket">socket</a> in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.<a href="#section-9.1-6.6.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-6.7">
-            <p id="section-9.1-6.7.1">The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by <a href="https://en.wikipedia.org/wiki/Software-defined_networking">software-defined networking (SDN)</a>. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF): it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.<a href="#section-9.1-6.7.1" class="pilcrow">¶</a></p>
+            <p id="section-9.1-6.7.1">The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by <a href="https://en.wikipedia.org/wiki/Software-defined_networking">software-defined networking (SDN)</a> <span>[<a href="#farhadi-sdn" class="cite xref">farhadi-sdn</a>]</span>. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) <span>[<a href="#mccanne-bpf" class="cite xref">mccanne-bpf</a>]</span> : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.<a href="#section-9.1-6.7.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-6.8">
             <p id="section-9.1-6.8.1">In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.<a href="#section-9.1-6.8.1" class="pilcrow">¶</a></p>
@@ -3106,6 +3106,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Azuma, K.</span>, <span class="refAuthor">Tamaki, K.</span>, and <span class="refAuthor">H. Lo</span>, <span class="refTitle">"All-photonic quantum repeaters"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">Nature Communications vol. 6, no. 1</span>, <span class="seriesInfo">DOI 10.1038/ncomms7787</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://doi.org/10.1038/ncomms7787">https://doi.org/10.1038/ncomms7787</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="azuma-rmp">[azuma-rmp]</dt>
+        <dd>
+<span class="refAuthor">Azuma, K.</span>, <span class="refAuthor">Economou, S.</span>, <span class="refAuthor">Elkouss, D.</span>, <span class="refAuthor">Hilaire, P.</span>, <span class="refAuthor">Jiang, L.</span>, <span class="refAuthor">Lo, H.</span>, and <span class="refAuthor">I. Tzitrin</span>, <span class="refTitle">"Quantum repeaters: From quantum networks to the quantum internet"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Reviews of Modern Physics vol. 95, no. 4</span>, <span class="seriesInfo">DOI 10.1103/revmodphys.95.045006</span>, <time datetime="2023-12" class="refDate">December 2023</time>, <span>&lt;<a href="https://doi.org/10.1103/revmodphys.95.045006">https://doi.org/10.1103/revmodphys.95.045006</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="BB84">[BB84]</dt>
         <dd>
 <span class="refAuthor">Bennett, C.</span> and <span class="refAuthor">G. Brassard</span>, <span class="refTitle">"Quantum cryptography: Public key distribution and coin tossing"</span>, <span class="refContent">Elsevier BV</span>, <span class="seriesInfo">Theoretical Computer Science vol. 560, pp. 7-11</span>, <span class="seriesInfo">DOI 10.1016/j.tcs.2014.05.025</span>, <time datetime="2014-12" class="refDate">December 2014</time>, <span>&lt;<a href="https://doi.org/10.1016/j.tcs.2014.05.025">https://doi.org/10.1016/j.tcs.2014.05.025</a>&gt;</span>. </dd>
@@ -3169,6 +3173,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="fan-dgs-dist">[fan-dgs-dist]</dt>
         <dd>
 <span class="refAuthor">Fan, X.</span>, <span class="refAuthor">Zhan, C.</span>, <span class="refAuthor">Gupta, H.</span>, and <span class="refAuthor">C. Ramakrishnan</span>, <span class="refTitle">"Optimized Distribution of Entanglement Graph States in Quantum Networks"</span>, <span class="refContent">Institute of Electrical and Electronics Engineers (IEEE)</span>, <span class="seriesInfo">IEEE Transactions on Quantum Engineering vol. 6, pp. 1-17</span>, <span class="seriesInfo">DOI 10.1109/tqe.2025.3552006</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://doi.org/10.1109/tqe.2025.3552006">https://doi.org/10.1109/tqe.2025.3552006</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="farhadi-sdn">[farhadi-sdn]</dt>
+        <dd>
+<span class="refAuthor">Farhady, H.</span>, <span class="refAuthor">Lee, H.</span>, and <span class="refAuthor">A. Nakao</span>, <span class="refTitle">"Software-Defined Networking: A survey"</span>, <span class="refContent">Elsevier BV</span>, <span class="seriesInfo">Computer Networks vol. 81, pp. 79-95</span>, <span class="seriesInfo">DOI 10.1016/j.comnet.2015.02.014</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://doi.org/10.1016/j.comnet.2015.02.014">https://doi.org/10.1016/j.comnet.2015.02.014</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="fischer-dgs">[fischer-dgs]</dt>
         <dd>
@@ -3281,6 +3289,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="mayers-unconditional">[mayers-unconditional]</dt>
         <dd>
 <span class="refAuthor">Mayers, D.</span>, <span class="refTitle">"Unconditional security in Quantum Cryptography"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo"> arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.QUANT-PH/9802025</span>, <time datetime="1998" class="refDate">1998</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.QUANT-PH/9802025">https://doi.org/10.48550/ARXIV.QUANT-PH/9802025</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="mccanne-bpf">[mccanne-bpf]</dt>
+        <dd>
+<span class="refAuthor">McCanne, S.</span> and <span class="refAuthor">V. Jacobson</span>, <span class="refTitle">"The BSD packet filter: a new architecture for user-level packet capture"</span>, <span class="refContent">USENIX'93: Proceedings of the USENIX Winter 1993 Conference Proceedings on USENIX Winter 1993 Conference Proceedings</span>, <time datetime="1993-01-25" class="refDate">25 January 1993</time>. </dd>
 <dd class="break"></dd>
 <dt id="meignant-dgs">[meignant-dgs]</dt>
         <dd>

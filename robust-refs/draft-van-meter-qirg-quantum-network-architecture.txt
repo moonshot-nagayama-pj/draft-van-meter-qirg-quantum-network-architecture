@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 2 October 2026                                  Keio University
-                                                           31 March 2026
+Expires: 19 October 2026                                 Keio University
+                                                           17 April 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 October 2026.
+   This Internet-Draft will expire on 19 October 2026.
 
 Copyright Notice
 
@@ -313,7 +313,8 @@ Table of Contents
 
       -  Quantum key distribution [BB84], [E91], [BBM92]
 
-      -  "Generations" of quantum repeaters
+      -  "Generations" of quantum repeaters [muralidharan-generations],
+         [azuma-rmp]
 
       -  (Repeater graph states may be helpful, but are not used in the
          current architecture)
@@ -817,10 +818,11 @@ Table of Contents
    *  The creation of sequences of end-to-end entangled states, roughly
       equivalent to TCP, is the responsibility of RuleSets, inspired by
       software-defined networking (SDN) (https://en.wikipedia.org/wiki/
-      Software-defined_networking).  A RuleSet can also be viewed as
-      something like a Berkeley Packet Filter (BPF): it's a small
-      program that handled actions that the application could do, but
-      the application can't achieve the low, reliable latency to do it.
+      Software-defined_networking) [farhadi-sdn].  A RuleSet can also be
+      viewed as something like a Berkeley Packet Filter (BPF)
+      [mccanne-bpf] : it's a small program that handled actions that the
+      application could do, but the application can't achieve the low,
+      reliable latency to do it.
 
    *  In principle, all nodes are running the same program, distributed
       to all nodes.  Since the compiled application circuits are often
@@ -1953,6 +1955,14 @@ Table of Contents
               DOI 10.1038/ncomms7787, April 2015,
               <https://doi.org/10.1038/ncomms7787>.
 
+   [azuma-rmp]
+              Azuma, K., Economou, S., Elkouss, D., Hilaire, P., Jiang,
+              L., Lo, H., and I. Tzitrin, "Quantum repeaters: From
+              quantum networks to the quantum internet", American
+              Physical Society (APS), Reviews of Modern Physics vol. 95,
+              no. 4, DOI 10.1103/revmodphys.95.045006, December 2023,
+              <https://doi.org/10.1103/revmodphys.95.045006>.
+
    [BB84]     Bennett, C. and G. Brassard, "Quantum cryptography: Public
               key distribution and coin tossing", Elsevier BV,
               Theoretical Computer Science vol. 560, pp. 7-11,
@@ -2060,6 +2070,12 @@ Table of Contents
               Engineering vol. 6, pp. 1-17,
               DOI 10.1109/tqe.2025.3552006, 2025,
               <https://doi.org/10.1109/tqe.2025.3552006>.
+
+   [farhadi-sdn]
+              Farhady, H., Lee, H., and A. Nakao, "Software-Defined
+              Networking: A survey", Elsevier BV, Computer Networks vol.
+              81, pp. 79-95, DOI 10.1016/j.comnet.2015.02.014, April
+              2015, <https://doi.org/10.1016/j.comnet.2015.02.014>.
 
    [fischer-dgs]
               Fischer, A. and D. Towsley, "Distributing Graph States
@@ -2274,6 +2290,13 @@ Table of Contents
               Cryptography", arXiv,  arXiv, DOI 10.48550/ARXIV.QUANT-
               PH/9802025, 1998,
               <https://doi.org/10.48550/ARXIV.QUANT-PH/9802025>.
+
+   [mccanne-bpf]
+              McCanne, S. and V. Jacobson, "The BSD packet filter: a new
+              architecture for user-level packet capture", USENIX'93:
+              Proceedings of the USENIX Winter 1993 Conference
+              Proceedings on USENIX Winter 1993 Conference Proceedings,
+              25 January 1993.
 
    [meignant-dgs]
               Meignant, C., Markham, D., and F. Grosshans, "Distributing
