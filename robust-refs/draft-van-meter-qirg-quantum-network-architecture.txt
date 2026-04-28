@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 19 October 2026                                 Keio University
-                                                           17 April 2026
+Expires: 30 October 2026                                 Keio University
+                                                           28 April 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 October 2026.
+   This Internet-Draft will expire on 30 October 2026.
 
 Copyright Notice
 
@@ -926,7 +926,7 @@ Table of Contents
    vary on a per-link basis.
 
    Distributed control and protocols for multiplexing and connection
-   setup are necessary.
+   setup are necessary [aparicio-spie].
 
 9.4.  Wide-Area Network (QWAN)
 
@@ -1932,6 +1932,12 @@ Table of Contents
               19th IEEE Annual Conference on Computational Complexity,
               2004. pp. 250-259, DOI 10.1109/ccc.2004.1313848, November
               2004, <https://doi.org/10.1109/ccc.2004.1313848>.
+
+   [aparicio-spie]
+              Aparicio, L. and R. Van Meter, "Multiplexing schemes for
+              quantum repeater networks", SPIE, SPIE Proceedings,
+              DOI 10.1117/12.893272, September 2011,
+              <https://doi.org/10.1117/12.893272>.
 
    [awschalom-roadmap]
               , Awschalom, D., Bernien, H., Brown, R., Clerk, A.,
