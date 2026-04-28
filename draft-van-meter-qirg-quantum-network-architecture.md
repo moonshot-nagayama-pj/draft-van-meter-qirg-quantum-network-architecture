@@ -145,6 +145,7 @@ informative:
   abane-routing: DOI.10.48550/arXiv.2408.01234
   aboy-governance: DOI.10.1126/science.adw0018
   ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
+  aparicio-spie: DOI.10.1117/12.893272
   awschalom-roadmap: DOI.10.2172/1900586
   azuma-rmp: DOI.10.1103/RevModPhys.95.045006
   azuma-rgs: DOI.10.1038/ncomms7787
@@ -557,7 +558,7 @@ A QLAN will be deployed within a building or across a campus. It may connect qua
 
 A QLAN will have a less regular topology than a multicomputer or QDCN. Distance, latency, fidelity, and success probability will all vary on a per-link basis.
 
-Distributed control and protocols for multiplexing and connection setup are necessary.
+Distributed control and protocols for multiplexing and connection setup are necessary {{aparicio-spie}}.
 
 ## Wide-Area Network (QWAN)
 
