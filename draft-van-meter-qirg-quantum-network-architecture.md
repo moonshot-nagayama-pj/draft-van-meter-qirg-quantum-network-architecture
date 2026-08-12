@@ -223,6 +223,7 @@ informative:
   sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
   sane-jobs: DOI.10.48550/arXiv.2504.18298
   sane-phonons: DOI.10.1109/QCE57702.2023.00156
+  satoh-attacking: DOI.10.1109/TQE.2021.3094983
   schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
   shapourian-qdc-infra: DOI.10.48550/arXiv.2501.05598
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
@@ -276,9 +277,10 @@ This section describes goals and non-goals for this document itself, rather than
 
 ## Non-Goals
 
+* Specification of physical links
 * Internetworking
 
-# Relationship to Documents by Other Organizations
+# Relationship to Documents by QIRG and Other Organizations
 
 Other organizations, including national laboratories and standards development organizations, are developing documents describing quantum networks and quantum computing technology. These are mostly _pre-standardization_ documents, not yet on any formal standardization track. To the extent possible, this document conforms to their terminology. However, as this document describes a specific quantum network architecture, it does not attempt to conform to specific design decisions made in other contexts.  See an August 2025 Science Policy Forum {{aboy-governance}} for additional discussion of some standardization efforts and their value.
 
@@ -1143,6 +1145,6 @@ The API used by classical software to interface with the quantum depends on whic
 
 Quantum multicomputer systems are assumed to be constructed as isolated, centrally controlled systems with no need for confidentiality, integrity, and availability (the "CIA triad") assurance via cryptographic methods.
 
-Security considerations for other network types are an open topic of study and as such are not yet ready for specification and standardization.
+Security considerations for other network types are an open topic of study and as such are not yet ready for specification and standardization {{satoh-attacking}}.
 
 --- back
