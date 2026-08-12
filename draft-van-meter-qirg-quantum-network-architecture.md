@@ -228,9 +228,10 @@ informative:
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
   sutcliffe-dist-qec: DOI.10.1109/QCE65121.2025.00076
   taherkhani-byz: DOI.10.1088/2058-9565/aa9bb1
+  van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
+  van-meter-path-sel: DOI.10.1007/s13119-013-0026-2
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
-  van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
   van-meter-sys-design: DOI.10.1109/TNET.2008.927260
   I-D.draft-van-meter-qirg-quantum-connection-setup:
   vepsaelaeinen-ionizing: DOI.10.1038/s41586-020-2619-8
@@ -976,7 +977,7 @@ Connections are unaware of the shared use of resources and of other connections.
 
 Both link usage time slots and memory can be shared among multiple connections and therefore must be actively managed via a multiplexing system.  This task is particularly challenging in switched networks.
 
-The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS {{I-D.draft-kaws-qirg-advent}}.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput {{van-meter-sys-design}}.  A number of approaches have been proposed {{abane-routing}}.
+The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS {{I-D.draft-kaws-qirg-advent}}.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput {{van-meter-sys-design}}, {{van-meter-path-sel}}.  A number of approaches have been proposed {{abane-routing}}.
 
 # Classical Communication
 
