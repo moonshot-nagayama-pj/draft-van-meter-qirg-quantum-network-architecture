@@ -2723,7 +2723,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <a href="#section-19" class="section-number selfRef">19. </a><a href="#name-resource-management-multipl" class="section-name selfRef">Resource Management: Multiplexing and Routing</a>
       </h2>
 <p id="section-19-1">Both link usage time slots and memory can be shared among multiple connections and therefore must be actively managed via a multiplexing system.  This task is particularly challenging in switched networks.<a href="#section-19-1" class="pilcrow">¶</a></p>
-<p id="section-19-2">The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS <span>[<a href="#I-D.draft-kaws-qirg-advent" class="cite xref">I-D.draft-kaws-qirg-advent</a>]</span>.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput <span>[<a href="#van-meter-sys-design" class="cite xref">van-meter-sys-design</a>]</span>.  A number of approaches have been proposed <span>[<a href="#abane-routing" class="cite xref">abane-routing</a>]</span>.<a href="#section-19-2" class="pilcrow">¶</a></p>
+<p id="section-19-2">The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS <span>[<a href="#I-D.draft-kaws-qirg-advent" class="cite xref">I-D.draft-kaws-qirg-advent</a>]</span>.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput <span>[<a href="#van-meter-sys-design" class="cite xref">van-meter-sys-design</a>]</span>, <span>[<a href="#van-meter-path-sel" class="cite xref">van-meter-path-sel</a>]</span>.  A number of approaches have been proposed <span>[<a href="#abane-routing" class="cite xref">abane-routing</a>]</span>.<a href="#section-19-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="classical-communication">
@@ -3405,6 +3405,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="van-meter-opt-timing">[van-meter-opt-timing]</dt>
         <dd>
 <span class="refAuthor">Van Meter, R.</span>, <span class="refAuthor">Satoh, T.</span>, <span class="refAuthor">Nagayama, S.</span>, <span class="refAuthor">Matsuo, T.</span>, and <span class="refAuthor">S. Suzuki</span>, <span class="refTitle">"Optimizing Timing of High-Success-Probability Quantum Repeaters"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.1701.04586</span>, <time datetime="2017" class="refDate">2017</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.1701.04586">https://doi.org/10.48550/ARXIV.1701.04586</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="van-meter-path-sel">[van-meter-path-sel]</dt>
+        <dd>
+<span class="refAuthor">Van Meter, R.</span>, <span class="refAuthor">Satoh, T.</span>, <span class="refAuthor">Ladd, T.</span>, <span class="refAuthor">Munro, W.</span>, and <span class="refAuthor">K. Nemoto</span>, <span class="refTitle">"Path selection for quantum repeater networks"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">Networking Science vol. 3, no. 1-4, pp. 82-95</span>, <span class="seriesInfo">DOI 10.1007/s13119-013-0026-2</span>, <time datetime="2013-12" class="refDate">December 2013</time>, <span>&lt;<a href="https://doi.org/10.1007/s13119-013-0026-2">https://doi.org/10.1007/s13119-013-0026-2</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="van-meter-q-net-book">[van-meter-q-net-book]</dt>
         <dd>

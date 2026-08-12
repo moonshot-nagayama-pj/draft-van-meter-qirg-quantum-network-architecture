@@ -1617,8 +1617,8 @@ Table of Contents
    cost.  It is known that, at least for certain physical systems,
    selecting a link cost corresponding to "seconds per Bell pair of a
    given fidelity" produces good correlation between low path cost and
-   high throughput [van-meter-sys-design].  A number of approaches have
-   been proposed [abane-routing].
+   high throughput [van-meter-sys-design], [van-meter-path-sel].  A
+   number of approaches have been proposed [abane-routing].
 
 20.  Classical Communication
 
@@ -2483,6 +2483,14 @@ Table of Contents
               Suzuki, "Optimizing Timing of High-Success-Probability
               Quantum Repeaters", arXiv, DOI 10.48550/ARXIV.1701.04586,
               2017, <https://doi.org/10.48550/ARXIV.1701.04586>.
+
+   [van-meter-path-sel]
+              Van Meter, R., Satoh, T., Ladd, T., Munro, W., and K.
+              Nemoto, "Path selection for quantum repeater networks",
+              Springer Science and Business Media LLC, Networking
+              Science vol. 3, no. 1-4, pp. 82-95,
+              DOI 10.1007/s13119-013-0026-2, December 2013,
+              <https://doi.org/10.1007/s13119-013-0026-2>.
 
    [van-meter-q-net-book]
               Van Meter, R., "Quantum Networking", Wiley,
