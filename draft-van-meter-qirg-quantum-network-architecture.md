@@ -108,9 +108,15 @@ normative:
 informative:
   RFC1122:
   RFC1123:
+  RFC1958:
+  RFC5218:
+  RFC6250:
+  RFC6852:
   RFC9340:
+  RFC9413:
   RFC9583:
   I-D.draft-hajdusek-qirg-timing-physics:
+  I-D.draft-kaws-qirg-advent:
   res-mgmt-het:
     target: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
     title: Resource Management in Heterogeneous Quantum Repeater Networks
@@ -136,10 +142,15 @@ informative:
     format:
       PDF: https://arxiv.org/pdf/quant-ph/0607065
   nist-singles: DOI.10.6028/NIST.IR.8486r1
+  abane-routing: DOI.10.48550/arXiv.2408.01234
   aboy-governance: DOI.10.1126/science.adw0018
   ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
+  aparicio-spie: DOI.10.1117/12.893272
   awschalom-roadmap: DOI.10.2172/1900586
+  azuma-rmp: DOI.10.1103/RevModPhys.95.045006
   azuma-rgs: DOI.10.1038/ncomms7787
+  BB84: DOI.10.1016/j.tcs.2014.05.025
+  BBM92: DOI.10.1103/PhysRevLett.68.557
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
   broadbent-bfk-protocol: DOI.10.1109/FOCS.2009.36
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
@@ -163,7 +174,9 @@ informative:
   drost: DOI.10.1364/JOCN.8.000331
   dulek-homomorphic: DOI.10.4086/toc.2018.v014a007
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
+  E91: DOI.10.1103/PhysRevLett.67.661
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
+  farhadi-sdn: DOI.10.1016/j.comnet.2015.02.014
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
   fittipaldi-sat: DOI.10.1109/QCE60285.2024.00222
   fitzsimons-blind: DOI.10.1038/s41534-017-0025-3
@@ -189,6 +202,17 @@ informative:
   mahadev-homomorphic: DOI.10.1137/18M1231055
   martinis-correlated: DOI.10.1038/s41534-021-00431-0
   mayers-unconditional: DOI.10.48550/arXiv.quant-ph/9802025
+  mccanne-bpf:
+      title: "The BSD packet filter: a new architecture for user-level packet capture"
+      author:
+      -
+        ins: S. McCanne
+        name: Steven McCanne
+      -
+        ins: V. Jacobson
+        name: Van Jacobson
+      date: 1993-01-25
+      rc: "USENIX'93: Proceedings of the USENIX Winter 1993 Conference Proceedings on USENIX Winter 1993 Conference Proceedings"
   meignant-dgs: DOI.10.1103/PhysRevA.100.052333
   mori-psds: DOI.10.1109/QCE60285.2024.00218
   morimae-blind: DOI.10.1103/PhysRevA.87.050301
@@ -207,6 +231,7 @@ informative:
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
   van-meter-q-net-book: DOI.10.1002/9781118648919
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
+  van-meter-sys-design: DOI.10.1109/TNET.2008.927260
   I-D.draft-van-meter-qirg-quantum-connection-setup:
   vepsaelaeinen-ionizing: DOI.10.1038/s41586-020-2619-8
   wu-mitigating: DOI.10.1103/4ctq-r6w6
@@ -296,8 +321,8 @@ This document assumes basic knowledge of the underlying technology and goals of 
     - Teleportation
     - Purification
     - Entanglement swapping
-    - Quantum key distribution: BB84, E91, BBM92
-    - "Generations" of quantum repeaters
+    - Quantum key distribution {{BB84}}, {{E91}}, {{BBM92}}
+    - "Generations" of quantum repeaters {{muralidharan-generations}}, {{azuma-rmp}}
     - (Repeater graph states may be helpful, but are not used in the current architecture)
 
 Because terms such as _fidelity_ have varying definitions, they will be defined in this set of documents (where? Timing Regimes?).
@@ -459,6 +484,8 @@ Links are described in {{links}}.
 
 A photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping {{mori-psds}}. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
+Note that the most common operational mode uses only pairs of photons, not multi-photon operations; the definition of PSD does not imply that all channels must be synchronized with each other and used in a single operation.
+
 ## Direct and Indirect Multicomputer Architectures
 
 In multicomputer architectures, a _direct_ architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An _indirect_ architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect {{dally-towles}}.
@@ -502,7 +529,7 @@ Many aspects of compilation and job execution are beyond the scope of this set o
 * Applications consist of both classical computation and quantum computation; within a node, the classical portion of the program delegates certain computational tasks to the quantum processor (sometimes called a QPU), similar to a classical [coprocessor](https://en.wikipedia.org/wiki/Coprocessor) such as a [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit).
 * Classical data related to quantum operations (principally measurement results and event notifications that trigger further actions) is sent peer-to-peer, not back to the centralized controller, during execution.
 * Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a [socket](https://en.wikipedia.org/wiki/Network_socket) in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.
-* The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking). A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF): it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
+* The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking) {{farhadi-sdn}}. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) {{mccanne-bpf}} : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
 * In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.
 * In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)
 * Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.
@@ -531,7 +558,7 @@ A QLAN will be deployed within a building or across a campus. It may connect qua
 
 A QLAN will have a less regular topology than a multicomputer or QDCN. Distance, latency, fidelity, and success probability will all vary on a per-link basis.
 
-Distributed control and protocols for multiplexing and connection setup are necessary.
+Distributed control and protocols for multiplexing and connection setup are necessary {{aparicio-spie}}.
 
 ## Wide-Area Network (QWAN)
 
@@ -608,6 +635,11 @@ Detectors may be either _single-photon detectors_, which click when _one or more
 # Requirements
 
 This section documents the requirements for all networks adhering to this architecture.
+
+## Normative Requirements
+
+* The architecture must support an open development process {{RFC6852}}.
+* The architecture must support the creation of robust, extensible, maintainable protocols in keeping with best current practice {{RFC9413}} {{RFC6250}} {{RFC1958}} {{RFC5218}}.
 
 ## General Requirements
 
@@ -838,7 +870,7 @@ In a network context, STOR nodes may function as data servers, enabling asynchro
 
 **A computational (COMP) node** represents a full-fledged quantum processing endpoint within the network.
 Equipped with quantum memory and additional algorithmic qubits, it can store, manipulate, and perform complex computations on quantum states received from the network or generated locally.
-COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations {{ambainis-multiparty-coin}}, {{taherkhani-byz}}, {{mayers-unconditional}}, {{christandl-anon}}, {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}, {{mahadev-homomorphic}}, {{dulek-homomorphic}}, {{shapourian-qdc-infra}}, {{sutcliffe-dist-qec}}, {{yoder-tour-de-gross}}. {{kim-ft-million}}.
+COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations {{ambainis-multiparty-coin}}, {{taherkhani-byz}}, {{mayers-unconditional}}, {{christandl-anon}}, {{broadbent-bfk-protocol}}, {{fitzsimons-blind}}, {{mahadev-homomorphic}}, {{dulek-homomorphic}}, {{shapourian-qdc-infra}}, {{sutcliffe-dist-qec}}, {{yoder-tour-de-gross}}, {{kim-ft-million}}.
 
 ## Support Nodes
 
@@ -860,6 +892,8 @@ The choice of measurement basis often depends on the outcomes of prior measureme
 
 **An optical switch (OSW)** is a device that can passively route photons from input optical fibers or paths to different output paths without performing measurements on them {{koyama-24}}.
 OSWs, which can be based on technologies like nanomechanical systems or nanophotonic circuits, can be integrated as components within other node types (e.g., routers or complex end nodes) or can function as standalone elements in the network to dynamically reconfigure optical pathways.
+
+An OSW node contains at least one switch device, which comprises at least once switch point.
 
 ## Repeater Nodes
 
@@ -942,6 +976,8 @@ Connections are unaware of the shared use of resources and of other connections.
 
 Both link usage time slots and memory can be shared among multiple connections and therefore must be actively managed via a multiplexing system.  This task is particularly challenging in switched networks.
 
+The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS {{I-D.draft-kaws-qirg-advent}}.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput {{van-meter-sys-design}}.  A number of approaches have been proposed {{abane-routing}}.
+
 # Classical Communication
 
 A quantum network depends on classical communication; indeed, almost all of the behavior is governed by, initiated by, or managed and reported via classical messages and signals. These messages and signals have several key roles, described in the following subsections. See the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}} for an outline of the physics driving these requirements.
@@ -1009,15 +1045,29 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 
 While a full taxonomy of networks is neither desirable nor possible here, we present a few network examples using point-to-point links or switched architectures.  In this section, the topology is briefly described, followed by analysis of the path characteristics of the shortest path and network diameter.
 
-## Fully Connected
+## Fully Connected Point-to-Point
 
-A number of the early quantum multicomputer proposals assumed a single, large optical switch.
+Small networks may use nodes with multiple interfaces and provide a direct link between each pair of nodes, making a _direct_ network.  Assuming sufficient node-internal capabilities, such a network provides lowest loss (giving the fastest individual links) and the highest aggregate bandwidth, and is inherently nonblocking.  However, with n-1 links per node and O(n^2) links in the network, its scalability is poor.  It will always provide the highest performance, but not necessarily highest price/performance ratio.
 
-Shortest paths:
+If links are midpoint interference-based, an issue in design is packaging of the BSAs and detectors.
+
+PSD: Each link is a separate PSD.
+
+All paths: MIM
+
+## Single Optical Switch
+
+A number of the early quantum multicomputer proposals assumed a single, large optical switch.  Such a network is _indirect_.
+
+PSD: Although the entire network is a single PSD, each pairing is adjusted independently.
+
+All paths: MXIXM
 
 ## Q-Fly Multicomputer
 
 An _indirect_ interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in Sakuma et al. {{sakuma-q-fly}}.
+
+PSD: Although the entire network is a single PSD, each pairing is adjusted independently.
 
 For DPFD topologies:
 
@@ -1052,19 +1102,27 @@ An _indirect_ interconnect. Several parameters are needed to describe the full t
 
 This simplest description assumes homogeneous hardware, where all switches have the same number of ports and all links are the same bandwidth.  Leiserson's original fat tree proposed single links of increasing bandwidth at higher levels of the tree, giving the network its name; this approach provides no redundancy or path diversity, and achieving higher transfer rates is impractical in some technologies, including quantum.  Consequently, most fat tree deployments use multiple links to several switches at higher levels of the tree, in a configuration that is also know as a _folded Clos_ network.
 
+PSD: Although the entire network is a single PSD, each pairing is adjusted independently.
+
 ## Repeater Fat Tree
 
 The repeater fat tree is described in {{choi-fat-tree}}.
 
+PSD: Each link is a separate PSD.
+
 ## 2-D Grid Multicomputer
 
 A _direct_ interconnect. A 2-D grid of nodes, where nodes with memory and certain computational capabilities (canonically COMP nodes) have up to four interfaces connecting to neighboring nodes. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.
+
+PSD: Each link is a separate PSD.
 
 ## Ring
 
 A _direct_ interconnect. All nodes in a ring have exactly two neighbors. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.
 
 A ring is described in (something from Simon's group).
+
+PSD: Each link is a separate PSD.
 
 ## QLAN
 
@@ -1073,6 +1131,8 @@ A quantum local area network will have:
 * irregular topology, possibly of heterogeneous link types
 * distributed multiplexing
 * distributed routing
+
+PSD: If the QLAN does not include optical switches, but uses repeaters, each link is a separate PSD. If the QLAN includes optical switches, the PSDs may have irregular boundaries.
 
 # APIs for Network Service ("Quantum Sockets")
 
