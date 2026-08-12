@@ -223,6 +223,7 @@ informative:
   sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
   sane-jobs: DOI.10.48550/arXiv.2504.18298
   sane-phonons: DOI.10.1109/QCE57702.2023.00156
+  satoh-attacking: DOI.10.1109/TQE.2021.3094983
   schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
   shapourian-qdc-infra: DOI.10.48550/arXiv.2501.05598
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
@@ -276,9 +277,10 @@ This section describes goals and non-goals for this document itself, rather than
 
 ## Non-Goals
 
+* Specification of physical links
 * Internetworking
 
-# Relationship to Documents by Other Organizations
+# Relationship to Documents by QIRG and Other Organizations
 
 Other organizations, including national laboratories and standards development organizations, are developing documents describing quantum networks and quantum computing technology. These are mostly _pre-standardization_ documents, not yet on any formal standardization track. To the extent possible, this document conforms to their terminology. However, as this document describes a specific quantum network architecture, it does not attempt to conform to specific design decisions made in other contexts.  See an August 2025 Science Policy Forum {{aboy-governance}} for additional discussion of some standardization efforts and their value.
 
@@ -342,9 +344,11 @@ In this document, we use the abbreviations and other related technical terms lis
 | Term | Description |
 | ---- | ----------- |
 | BSA | Bell state analyzer, generally optical and incorporating one or more beamsplitters and either two or four single-photon detectors |
+| CRQC | cryptographically relevant quantum computer |
 | device | manipulates photons in some fashion; a component of a node |
 | FASQ | fault-tolerant application-scale quantum |
 | fidelity | measures how close a quantum state is to the state we have tried to create. Varies between 0 and 1, with unit fidelity indicating the actual state is the same as the desired state. It expresses the probability that the state will behave exactly the same as our desired state. (adapted from RFC 9340) |
+| FTQC | fault-tolerant quantum computer |
 | group switch | In the Q-Fly architecture, the set of devices that connect the end nodes to the pool of BSAs, and the group to other groups |
 | NISQ | near-term intermediate-scale quantum |
 | node | a self-contained subsystem with a clear boundary that is visible to other such nodes as a single entity on one or more planes |
@@ -378,7 +382,7 @@ For a discussion of some inherently distributed applications of quantum networks
 
 ## Entangled States Consumption Patterns
 
-(Adapted and extended from unpublished text in {{van-meter-opt-timing}}.)
+The text in this section is adapted and extended from unpublished text in {{van-meter-opt-timing}}.
 
 Distinct from the classification of quantum repeater generations by Muralidharan et al. {{muralidharan-generations}}, one can categorize distributed quantum systems by how applications interface with the network; specifically, the timing at which network interface qubits are freed after attempting entangled state generation.
 
@@ -392,8 +396,7 @@ The lifecycle of an entanglement request, from initiation to full state knowledg
 
 1. **Attempt:** The entangled states are requested.
 For memory-based links, this corresponds to the quantum memory emitting a photon and transmitting it through the link.
-1. **Heralded:** The entangled states are physically established, but the specific states are unknown.
-The node has received confirmations that photons arrived at the BSA and the BSM succeeded, but the Pauli frame information is not yet available.
+1. **Heralded:** The entangled states are physically established, but the specific states are unknown.  The node has received confirmations that photons arrived at the BSA and the BSM succeeded, but the Pauli frame information is not yet available.  Without this information, an entangled state will be _fully mixed_, with a fidelity of 0.25 for a two-qubit state.
 1. **Correct:** The classical message regarding the Pauli frame arrives.
 The node now knows the exact entangled state created and can apply corrections (or software frame updates) to align with the expected state.
 
@@ -477,15 +480,17 @@ Control of devices is usually done with respect to some physical characteristic 
 
 A node comprises one or more quantum devices, and serves as a single locus of control for network protocols.  The classes of nodes are described later in this document.
 
+A _logical node_ provides a single communication and control point for the services of a particular node type or a composite node type, but may comprise a set of physical devices rather than a single device, and may be physically packaged in more than one box.
+
 ## Quantum Links
 
 Links are described in {{links}}.
 
 ## Photonic Synchronization Domains
 
-A photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping {{mori-psds}}. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in {{I-D.draft-hajdusek-qirg-timing-physics}}.
+A photonic synchronization domain (PSD) is the range of devices and channels (fiber or free space) over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping {{mori-psds}}. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap in their wavepackets, as specified in {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
-Note that the most common operational mode uses only pairs of photons, not multi-photon operations; the definition of PSD does not imply that all channels must be synchronized with each other and used in a single operation.
+Note that the most common operational mode uses only pairs of photons, one from each of two nodes, not multi-photon operations; the definition of PSD does not imply that all channels in a network must be synchronized with each other and used in a single operation.
 
 ## Direct and Indirect Multicomputer Architectures
 
@@ -509,7 +514,9 @@ As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, en
 
 ## Multicomputer
 
-The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)) {{rdv-thesis}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
+The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)) {{rdv-thesis}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
+
+A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
 
 The execution model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface).
 
@@ -1143,6 +1150,6 @@ The API used by classical software to interface with the quantum depends on whic
 
 Quantum multicomputer systems are assumed to be constructed as isolated, centrally controlled systems with no need for confidentiality, integrity, and availability (the "CIA triad") assurance via cryptographic methods.
 
-Security considerations for other network types are an open topic of study and as such are not yet ready for specification and standardization.
+Security considerations for other network types are an open topic of study and as such are not yet ready for specification and standardization {{satoh-attacking}}.
 
 --- back
