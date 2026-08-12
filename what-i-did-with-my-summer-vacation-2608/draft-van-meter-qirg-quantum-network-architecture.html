@@ -1721,6 +1721,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
             <td class="text-left" rowspan="1" colspan="1">Bell state analyzer, generally optical and incorporating one or more beamsplitters and either two or four single-photon detectors</td>
           </tr>
           <tr>
+            <td class="text-left" rowspan="1" colspan="1">CRQC</td>
+            <td class="text-left" rowspan="1" colspan="1">cryptographically relevant quantum computer</td>
+          </tr>
+          <tr>
             <td class="text-left" rowspan="1" colspan="1">device</td>
             <td class="text-left" rowspan="1" colspan="1">manipulates photons in some fashion; a component of a node</td>
           </tr>
@@ -1731,6 +1735,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           <tr>
             <td class="text-left" rowspan="1" colspan="1">fidelity</td>
             <td class="text-left" rowspan="1" colspan="1">measures how close a quantum state is to the state we have tried to create. Varies between 0 and 1, with unit fidelity indicating the actual state is the same as the desired state. It expresses the probability that the state will behave exactly the same as our desired state. (adapted from RFC 9340)</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">FTQC</td>
+            <td class="text-left" rowspan="1" colspan="1">fault-tolerant quantum computer</td>
           </tr>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">group switch</td>
@@ -1836,7 +1844,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-entangled-states-consumptio">
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-entangled-states-consumptio" class="section-name selfRef">Entangled States Consumption Patterns</a>
         </h3>
-<p id="section-7.2-1">(Adapted and extended from unpublished text in <span>[<a href="#van-meter-opt-timing" class="cite xref">van-meter-opt-timing</a>]</span>.)<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.2-1">The text in this section is adapted and extended from unpublished text in <span>[<a href="#van-meter-opt-timing" class="cite xref">van-meter-opt-timing</a>]</span>.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 <p id="section-7.2-2">Distinct from the classification of quantum repeater generations by Muralidharan et al. <span>[<a href="#muralidharan-generations" class="cite xref">muralidharan-generations</a>]</span>, one can categorize distributed quantum systems by how applications interface with the network; specifically, the timing at which network interface qubits are freed after attempting entangled state generation.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
 <p id="section-7.2-3">In the early days of quantum information research, Bennett et al. recognized <span>[<a href="#bennett-mixed" class="cite xref">bennett-mixed</a>]</span> that the component qubits of an entangled state may be held at different times in different locations, termed <em>time-separated Bell pairs</em>.
 Based on this principle, we can describe the timeline of information availability between two nodes.
@@ -1853,8 +1861,7 @@ This model assumes entangled states are requested dynamically during execution, 
 For memory-based links, this corresponds to the quantum memory emitting a photon and transmitting it through the link.<a href="#section-7.2.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li id="section-7.2.1-2.2">
-              <p id="section-7.2.1-2.2.1"><strong>Heralded:</strong> The entangled states are physically established, but the specific states are unknown.
-The node has received confirmations that photons arrived at the BSA and the BSM succeeded, but the Pauli frame information is not yet available.<a href="#section-7.2.1-2.2.1" class="pilcrow">¶</a></p>
+              <p id="section-7.2.1-2.2.1"><strong>Heralded:</strong> The entangled states are physically established, but the specific states are unknown.  The node has received confirmations that photons arrived at the BSA and the BSM succeeded, but the Pauli frame information is not yet available.  Without this information, an entangled state will be <em>fully mixed</em>, with a fidelity of 0.25 for a two-qubit state.<a href="#section-7.2.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
             <li id="section-7.2.1-2.3">
               <p id="section-7.2.1-2.3.1"><strong>Correct:</strong> The classical message regarding the Pauli frame arrives.
@@ -2003,6 +2010,7 @@ Since consuming extra resources is more costly than waiting, these operations de
 <a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-quantum-nodes" class="section-name selfRef">Quantum Nodes</a>
         </h3>
 <p id="section-8.2-1">A node comprises one or more quantum devices, and serves as a single locus of control for network protocols.  The classes of nodes are described later in this document.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-2">A <em>logical node</em> provides a single communication and control point for the services of a particular node type or a composite node type, but may comprise a set of physical devices rather than a single device, and may be physically packaged in more than one box.<a href="#section-8.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="quantum-links">
@@ -2018,8 +2026,8 @@ Since consuming extra resources is more costly than waiting, these operations de
         <h3 id="name-photonic-synchronization-do">
 <a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-photonic-synchronization-do" class="section-name selfRef">Photonic Synchronization Domains</a>
         </h3>
-<p id="section-8.4-1">A photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping <span>[<a href="#mori-psds" class="cite xref">mori-psds</a>]</span>. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
-<p id="section-8.4-2">Note that the most common operational mode uses only pairs of photons, not multi-photon operations; the definition of PSD does not imply that all channels must be synchronized with each other and used in a single operation.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
+<p id="section-8.4-1">A photonic synchronization domain (PSD) is the range of devices and channels (fiber or free space) over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping <span>[<a href="#mori-psds" class="cite xref">mori-psds</a>]</span>. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap in their wavepackets, as specified in <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
+<p id="section-8.4-2">Note that the most common operational mode uses only pairs of photons, one from each of two nodes, not multi-photon operations; the definition of PSD does not imply that all channels in a network must be synchronized with each other and used in a single operation.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="direct-and-indirect-multicomputer-architectures">
@@ -2061,96 +2069,97 @@ Since consuming extra resources is more costly than waiting, these operations de
         <h3 id="name-multicomputer">
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-multicomputer" class="section-name selfRef">Multicomputer</a>
         </h3>
-<p id="section-9.1-1">The first deployment of production-level, distant quantum entanglement is likely to be in a <em>quantum multicomputer</em>, based on the same principles as classical distributed-memory supercomputers from the <a href="https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube">Caltech Cosmic Cube</a> to <a href="https://en.wikipedia.org/wiki/Fugaku_(supercomputer)">Fugaku</a> <span>[<a href="#rdv-thesis" class="cite xref">rdv-thesis</a>]</span>.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture <span>[<a href="#choi-fat-tree" class="cite xref">choi-fat-tree</a>]</span> has been proposed. Because the current technology roadmaps favor this type of deployment, where design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
-<p id="section-9.1-2">The execution model is expected to be much like the classical supercomputing <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">Message Passing Interface (MPI)</a>.<a href="#section-9.1-2" class="pilcrow">¶</a></p>
-<p id="section-9.1-3">General hardware environment:<a href="#section-9.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.1-1">The first deployment of production-level, distant quantum entanglement is likely to be in a <em>quantum multicomputer</em>, based on the same principles as classical distributed-memory supercomputers from the <a href="https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube">Caltech Cosmic Cube</a> to <a href="https://en.wikipedia.org/wiki/Fugaku_(supercomputer)">Fugaku</a> <span>[<a href="#rdv-thesis" class="cite xref">rdv-thesis</a>]</span>.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture <span>[<a href="#choi-fat-tree" class="cite xref">choi-fat-tree</a>]</span> has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.1-2">A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.<a href="#section-9.1-2" class="pilcrow">¶</a></p>
+<p id="section-9.1-3">The execution model is expected to be much like the classical supercomputing <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">Message Passing Interface (MPI)</a>.<a href="#section-9.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.1-4">General hardware environment:<a href="#section-9.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-9.1-4.1">
-            <p id="section-9.1-4.1.1">A multicomputer consists of a set of quantum nodes that are connected via quantum optical channels. The system may be either a direct (point-to-point, end node-to-end node) or an indirect (switched) design.<a href="#section-9.1-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-9.1-5.1">
+            <p id="section-9.1-5.1.1">A multicomputer consists of a set of quantum nodes that are connected via quantum optical channels. The system may be either a direct (point-to-point, end node-to-end node) or an indirect (switched) design.<a href="#section-9.1-5.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-4.2">
-            <p id="section-9.1-4.2.1">Every quantum node has a set of quantum devices and a classical controller.<a href="#section-9.1-4.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-5.2">
+            <p id="section-9.1-5.2.1">Every quantum node has a set of quantum devices and a classical controller.<a href="#section-9.1-5.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-4.3">
-            <p id="section-9.1-4.3.1">End nodes are generally computational nodes, but measurement-only, sensor, and specialized memory storage nodes may be included.<a href="#section-9.1-4.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-5.3">
+            <p id="section-9.1-5.3.1">End nodes are generally computational nodes, but measurement-only, sensor, and specialized memory storage nodes may be included.<a href="#section-9.1-5.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-4.4">
-            <p id="section-9.1-4.4.1">End nodes are capable of running application programs as well as executing the minimum operations to build end-to-end entangled states.<a href="#section-9.1-4.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-5.4">
+            <p id="section-9.1-5.4.1">End nodes are capable of running application programs as well as executing the minimum operations to build end-to-end entangled states.<a href="#section-9.1-5.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-4.5">
-            <p id="section-9.1-4.5.1">End nodes may be built using multi-level hardware interconnects; when gates between physically distant qubits are mediated by first creating shared entangled states, the creation of those entangled states is the responsibility of the network subsystem.<a href="#section-9.1-4.5.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-5.5">
+            <p id="section-9.1-5.5.1">End nodes may be built using multi-level hardware interconnects; when gates between physically distant qubits are mediated by first creating shared entangled states, the creation of those entangled states is the responsibility of the network subsystem.<a href="#section-9.1-5.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-4.6">
-            <p id="section-9.1-4.6.1">Multicomputer interconnects are closed systems, with no need for cryptographic security mechanisms.<a href="#section-9.1-4.6.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-5.6">
+            <p id="section-9.1-5.6.1">Multicomputer interconnects are closed systems, with no need for cryptographic security mechanisms.<a href="#section-9.1-5.6.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-9.1-5">Many aspects of compilation and job execution are beyond the scope of this set of specifications, but some points will affect the network node definitions and interfaces, so it is important to present them here to establish a basis for design decisions:<a href="#section-9.1-5" class="pilcrow">¶</a></p>
+<p id="section-9.1-6">Many aspects of compilation and job execution are beyond the scope of this set of specifications, but some points will affect the network node definitions and interfaces, so it is important to present them here to establish a basis for design decisions:<a href="#section-9.1-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-9.1-6.1">
-            <p id="section-9.1-6.1.1">The general purpose of a multicomputer system is to execute application programs that exceed the capabilities of a single quantum node. The subdivision of the application into smaller quantum programs and the assignment of those sub-programs to nodes in the network is beyond the scope of this specification, and may be either automatically done by the compiler or manually done by the programmer.<a href="#section-9.1-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-9.1-7.1">
+            <p id="section-9.1-7.1.1">The general purpose of a multicomputer system is to execute application programs that exceed the capabilities of a single quantum node. The subdivision of the application into smaller quantum programs and the assignment of those sub-programs to nodes in the network is beyond the scope of this specification, and may be either automatically done by the compiler or manually done by the programmer.<a href="#section-9.1-7.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.2">
-            <p id="section-9.1-6.2.1">Programs are centrally compiled and distributed to nodes.  (Note that, technically, this is different from classical MPI, where a <em>command</em> is sent to worker nodes, but the mapping of that command to an executable program and versioning and distribution of programs are outside the scope of MPI. It is, however, a convenient assumption and common practice to ensure the same program is executed at all worker nodes.)<a href="#section-9.1-6.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.2">
+            <p id="section-9.1-7.2.1">Programs are centrally compiled and distributed to nodes.  (Note that, technically, this is different from classical MPI, where a <em>command</em> is sent to worker nodes, but the mapping of that command to an executable program and versioning and distribution of programs are outside the scope of MPI. It is, however, a convenient assumption and common practice to ensure the same program is executed at all worker nodes.)<a href="#section-9.1-7.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.3">
-            <p id="section-9.1-6.3.1">Execution is coordinated by a job controller: every node executes the same program, but with different parameters (e.g., which portion of the problem to work on).<a href="#section-9.1-6.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.3">
+            <p id="section-9.1-7.3.1">Execution is coordinated by a job controller: every node executes the same program, but with different parameters (e.g., which portion of the problem to work on).<a href="#section-9.1-7.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.4">
-            <p id="section-9.1-6.4.1">Applications consist of both classical computation and quantum computation; within a node, the classical portion of the program delegates certain computational tasks to the quantum processor (sometimes called a QPU), similar to a classical <a href="https://en.wikipedia.org/wiki/Coprocessor">coprocessor</a> such as a <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a>.<a href="#section-9.1-6.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.4">
+            <p id="section-9.1-7.4.1">Applications consist of both classical computation and quantum computation; within a node, the classical portion of the program delegates certain computational tasks to the quantum processor (sometimes called a QPU), similar to a classical <a href="https://en.wikipedia.org/wiki/Coprocessor">coprocessor</a> such as a <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a>.<a href="#section-9.1-7.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.5">
-            <p id="section-9.1-6.5.1">Classical data related to quantum operations (principally measurement results and event notifications that trigger further actions) is sent peer-to-peer, not back to the centralized controller, during execution.<a href="#section-9.1-6.5.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.5">
+            <p id="section-9.1-7.5.1">Classical data related to quantum operations (principally measurement results and event notifications that trigger further actions) is sent peer-to-peer, not back to the centralized controller, during execution.<a href="#section-9.1-7.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.6">
-            <p id="section-9.1-6.6.1">Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a <a href="https://en.wikipedia.org/wiki/Network_socket">socket</a> in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.<a href="#section-9.1-6.6.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.6">
+            <p id="section-9.1-7.6.1">Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a <a href="https://en.wikipedia.org/wiki/Network_socket">socket</a> in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.<a href="#section-9.1-7.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.7">
-            <p id="section-9.1-6.7.1">The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by <a href="https://en.wikipedia.org/wiki/Software-defined_networking">software-defined networking (SDN)</a> <span>[<a href="#farhadi-sdn" class="cite xref">farhadi-sdn</a>]</span>. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) <span>[<a href="#mccanne-bpf" class="cite xref">mccanne-bpf</a>]</span> : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.<a href="#section-9.1-6.7.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.7">
+            <p id="section-9.1-7.7.1">The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by <a href="https://en.wikipedia.org/wiki/Software-defined_networking">software-defined networking (SDN)</a> <span>[<a href="#farhadi-sdn" class="cite xref">farhadi-sdn</a>]</span>. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) <span>[<a href="#mccanne-bpf" class="cite xref">mccanne-bpf</a>]</span> : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.<a href="#section-9.1-7.7.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.8">
-            <p id="section-9.1-6.8.1">In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.<a href="#section-9.1-6.8.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.8">
+            <p id="section-9.1-7.8.1">In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.<a href="#section-9.1-7.8.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.9">
-            <p id="section-9.1-6.9.1">In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)<a href="#section-9.1-6.9.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.9">
+            <p id="section-9.1-7.9.1">In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)<a href="#section-9.1-7.9.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.10">
-            <p id="section-9.1-6.10.1">Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.<a href="#section-9.1-6.10.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.10">
+            <p id="section-9.1-7.10.1">Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.<a href="#section-9.1-7.10.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.11">
-            <p id="section-9.1-6.11.1">Compilation and execution may achieve application goals via teledata, telegate or measurement of multiqubit Pauli operators transparently; the network is unaware of this distinction. Management of application-level variables and their movement from node to node, if any, is the responsibility of the compiler and is beyond the scope of this specification.<a href="#section-9.1-6.11.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.11">
+            <p id="section-9.1-7.11.1">Compilation and execution may achieve application goals via teledata, telegate or measurement of multiqubit Pauli operators transparently; the network is unaware of this distinction. Management of application-level variables and their movement from node to node, if any, is the responsibility of the compiler and is beyond the scope of this specification.<a href="#section-9.1-7.11.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-6.12">
-            <p id="section-9.1-6.12.1">The resources in a multicomputer may be partitioned to run multiple jobs <span>[<a href="#sane-jobs" class="cite xref">sane-jobs</a>]</span>, but this is beyond the scope of the current specifications.<a href="#section-9.1-6.12.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-7.12">
+            <p id="section-9.1-7.12.1">The resources in a multicomputer may be partitioned to run multiple jobs <span>[<a href="#sane-jobs" class="cite xref">sane-jobs</a>]</span>, but this is beyond the scope of the current specifications.<a href="#section-9.1-7.12.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-9.1-7">The realities of quantum hardware result in a few important differences from classical multicomputers:<a href="#section-9.1-7" class="pilcrow">¶</a></p>
+<p id="section-9.1-8">The realities of quantum hardware result in a few important differences from classical multicomputers:<a href="#section-9.1-8" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-9.1-8.1">
-            <p id="section-9.1-8.1.1">Multicomputer interconnects may be either optically switched or composed entirely of point-to-point links. In switched networks, depending on optical hardware as well as photonic qubit representation, reconfiguring the switch or switches may be an extremely high-latency operation.<a href="#section-9.1-8.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-9.1-9.1">
+            <p id="section-9.1-9.1.1">Multicomputer interconnects may be either optically switched or composed entirely of point-to-point links. In switched networks, depending on optical hardware as well as photonic qubit representation, reconfiguring the switch or switches may be an extremely high-latency operation.<a href="#section-9.1-9.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-8.2">
-            <p id="section-9.1-8.2.1">Application execution at end nodes proceeds in phases tied to specific communication patterns. Even with a fixed sequence of application-level operations, the execution time of a phase can be variable because entanglement generation is probabilistic. Local gates can also be probabilistic under some circumstances, but for many node hardware types, fast local gate execution means the impact of variable gate execution time will be small.<a href="#section-9.1-8.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-9.2">
+            <p id="section-9.1-9.2.1">Application execution at end nodes proceeds in phases tied to specific communication patterns. Even with a fixed sequence of application-level operations, the execution time of a phase can be variable because entanglement generation is probabilistic. Local gates can also be probabilistic under some circumstances, but for many node hardware types, fast local gate execution means the impact of variable gate execution time will be small.<a href="#section-9.1-9.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-8.3">
-            <p id="section-9.1-8.3.1">In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase must be done at the direction of the job controller.<a href="#section-9.1-8.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-9.3">
+            <p id="section-9.1-9.3.1">In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase must be done at the direction of the job controller.<a href="#section-9.1-9.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-8.4">
-            <p id="section-9.1-8.4.1">Because execution is centrally coordinated, the network system is not required to provide multiplexing. (This is a substantial difference from data center networks, QLANs and QWANs.)<a href="#section-9.1-8.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-9.4">
+            <p id="section-9.1-9.4.1">Because execution is centrally coordinated, the network system is not required to provide multiplexing. (This is a substantial difference from data center networks, QLANs and QWANs.)<a href="#section-9.1-9.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-8.5">
-            <p id="section-9.1-8.5.1">The compiler may include multihop communication within a phase using hop-by-hop teleportation without reconfiguring any switches; this is beyond the scope of this architecture.<a href="#section-9.1-8.5.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-9.5">
+            <p id="section-9.1-9.5.1">The compiler may include multihop communication within a phase using hop-by-hop teleportation without reconfiguring any switches; this is beyond the scope of this architecture.<a href="#section-9.1-9.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-8.6">
-            <p id="section-9.1-8.6.1">Execution of the quantum portion of the node program generally involves hard real-time actions, both unconditional and conditioned on prior quantum measurement results. This generally requires compilation of the quantum program to very low-level actions to be executed by FPGAs or ASICs.<a href="#section-9.1-8.6.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-9.6">
+            <p id="section-9.1-9.6.1">Execution of the quantum portion of the node program generally involves hard real-time actions, both unconditional and conditioned on prior quantum measurement results. This generally requires compilation of the quantum program to very low-level actions to be executed by FPGAs or ASICs.<a href="#section-9.1-9.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-8.7">
-            <p id="section-9.1-8.7.1">Systems may be partially or completely emulated, decoupling development of different subsystems. e.g., an EPPS plus a MEAS together can emulate a COMP node that emits single photons.<a href="#section-9.1-8.7.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-9.7">
+            <p id="section-9.1-9.7.1">Systems may be partially or completely emulated, decoupling development of different subsystems. e.g., an EPPS plus a MEAS together can emulate a COMP node that emits single photons.<a href="#section-9.1-9.7.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-8.8">
-            <p id="section-9.1-8.8.1">Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).<a href="#section-9.1-8.8.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-9.8">
+            <p id="section-9.1-9.8.1">Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).<a href="#section-9.1-9.8.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-9.1-8.9">
-            <p id="section-9.1-8.9.1">Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery <span>[<a href="#ramette-remote" class="cite xref">ramette-remote</a>]</span>, <span>[<a href="#leone-remote" class="cite xref">leone-remote</a>]</span>, or <span>[<a href="#sinclair-ft-interconnect" class="cite xref">sinclair-ft-interconnect</a>]</span>.<a href="#section-9.1-8.9.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-9.1-9.9">
+            <p id="section-9.1-9.9.1">Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery <span>[<a href="#ramette-remote" class="cite xref">ramette-remote</a>]</span>, <span>[<a href="#leone-remote" class="cite xref">leone-remote</a>]</span>, or <span>[<a href="#sinclair-ft-interconnect" class="cite xref">sinclair-ft-interconnect</a>]</span>.<a href="#section-9.1-9.9.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>

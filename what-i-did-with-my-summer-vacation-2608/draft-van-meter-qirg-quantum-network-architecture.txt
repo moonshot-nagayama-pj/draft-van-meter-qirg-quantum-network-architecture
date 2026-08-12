@@ -346,6 +346,8 @@ Table of Contents
    |                 | incorporating one or more beamsplitters and    |
    |                 | either two or four single-photon detectors     |
    +-----------------+------------------------------------------------+
+   | CRQC            | cryptographically relevant quantum computer    |
+   +-----------------+------------------------------------------------+
    | device          | manipulates photons in some fashion; a         |
    |                 | component of a node                            |
    +-----------------+------------------------------------------------+
@@ -358,6 +360,8 @@ Table of Contents
    |                 | It expresses the probability that the state    |
    |                 | will behave exactly the same as our desired    |
    |                 | state. (adapted from RFC 9340)                 |
+   +-----------------+------------------------------------------------+
+   | FTQC            | fault-tolerant quantum computer                |
    +-----------------+------------------------------------------------+
    | group switch    | In the Q-Fly architecture, the set of devices  |
    |                 | that connect the end nodes to the pool of      |
@@ -473,8 +477,8 @@ Table of Contents
 
 7.2.  Entangled States Consumption Patterns
 
-   (Adapted and extended from unpublished text in
-   [van-meter-opt-timing].)
+   The text in this section is adapted and extended from unpublished
+   text in [van-meter-opt-timing].
 
    Distinct from the classification of quantum repeater generations by
    Muralidharan et al. [muralidharan-generations], one can categorize
@@ -504,6 +508,8 @@ Table of Contents
        the specific states are unknown.  The node has received
        confirmations that photons arrived at the BSA and the BSM
        succeeded, but the Pauli frame information is not yet available.
+       Without this information, an entangled state will be _fully
+       mixed_, with a fidelity of 0.25 for a two-qubit state.
 
    3.  *Correct:* The classical message regarding the Pauli frame
        arrives.  The node now knows the exact entangled state created
@@ -663,6 +669,11 @@ Table of Contents
    locus of control for network protocols.  The classes of nodes are
    described later in this document.
 
+   A _logical node_ provides a single communication and control point
+   for the services of a particular node type or a composite node type,
+   but may comprise a set of physical devices rather than a single
+   device, and may be physically packaged in more than one box.
+
 8.3.  Quantum Links
 
    Links are described in Section 17.
@@ -670,16 +681,17 @@ Table of Contents
 8.4.  Photonic Synchronization Domains
 
    A photonic synchronization domain (PSD) is the range of devices and
-   fibers over which photons must be controlled with high precision in
-   order to effect e.g. photonic entanglement swapping [mori-psds].  The
-   primary concern of a PSD is getting photons to arrive at
-   beamsplitters "simultaneously", with sufficient overlap, as specified
-   in [I-D.draft-hajdusek-qirg-timing-physics].
+   channels (fiber or free space) over which photons must be controlled
+   with high precision in order to effect e.g. photonic entanglement
+   swapping [mori-psds].  The primary concern of a PSD is getting
+   photons to arrive at beamsplitters "simultaneously", with sufficient
+   overlap in their wavepackets, as specified in
+   [I-D.draft-hajdusek-qirg-timing-physics].
 
    Note that the most common operational mode uses only pairs of
-   photons, not multi-photon operations; the definition of PSD does not
-   imply that all channels must be synchronized with each other and used
-   in a single operation.
+   photons, one from each of two nodes, not multi-photon operations; the
+   definition of PSD does not imply that all channels in a network must
+   be synchronized with each other and used in a single operation.
 
 8.5.  Direct and Indirect Multicomputer Architectures
 
@@ -740,9 +752,19 @@ Table of Contents
    below).  Quantum repeaters with memory are less likely to be deployed
    in multicomputers, though one such architecture [choi-fat-tree] has
    been proposed.  Because the current technology roadmaps favor this
-   type of deployment, where design choices are in conflict or unclear,
-   multicomputer designs are given priority over wide-area networks in
-   this set of specifications.
+   type of deployment, where network design choices are in conflict or
+   unclear, multicomputer designs are given priority over wide-area
+   networks in this set of specifications.
+
+   A multicomputer may be a noisy, intermediate-scale quantum (NISQ)
+   system without quantum error correction, or may be a fault-tolerant
+   system.  Fault-tolerant systems are variously described as fault-
+   tolerant quantum computers (FTQC), fault-tolerant application-scale
+   quantum (FASQ) systems, or cryptographically relevant quantum
+   computers (CRQC).  FTQCs require the network to generate many more
+   entangled states with tight timing requirements to allow distributed
+   quantum error correction or the creation of fully error-corrected
+   entangled states for application use.
 
    The execution model is expected to be much like the classical
    supercomputing Message Passing Interface (MPI)
