@@ -11,23 +11,24 @@
 <meta content="
        This quantum network architecture defines a set of planes providing different views of the network, supporting different responsibilities and modes of operation; a set of device, node and link types; some network topologies, deployment scenarios and their relationship to applications; and key design decisions as a result of corresponding requirements. 
     " name="description">
-<meta content="xml2rfc 3.31.0" name="generator">
+<meta content="xml2rfc 3.34.0" name="generator">
 <meta content="network architecture" name="keyword">
 <meta content="quantum repeater" name="keyword">
 <meta content="draft-van-meter-qirg-quantum-network-architecture-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.31.0
-    Python 3.12.12
-    ConfigArgParse 1.7
+  xml2rfc 3.34.0
+    Python 3.14.5
+    ConfigArgParse 1.7.5
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
-    lxml 6.0.2
-    platformdirs 4.5.1
+    lxml 6.1.1
+    natsort 8.4.0
+    platformdirs 4.11.0
     pycountry 24.6.1
     PyYAML 6.0.3
-    requests 2.32.5
-    wcwidth 0.3.0
+    requests 2.33.1
+    wcwidth 0.8.2
 -->
 <link href="draft-van-meter-qirg-quantum-network-architecture.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -63,7 +64,6 @@
   src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: italic;
@@ -112,7 +112,6 @@
   src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: normal;
@@ -177,7 +176,6 @@
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 }
 
 @font-face {
@@ -294,16 +292,19 @@ h1, h2, h3, h4, h5, h6 {
   font-size-adjust: 0.5;
   color: var(--title-color);
 }
-h1#title {
-  font-size: 32px;
-  line-height: 40px;
-  clear: both;
-}
-h1#title, h1#rfcnum {
-  margin: 1.5em 0 0.2em;
-}
-h1#rfcnum + h1#title {
-  margin: 0.2em 0;
+h1 {
+  &#title {
+    font-size: 32px;
+    line-height: 40px;
+    clear: both;
+    margin: 1.5em 0 0.2em;
+  }
+  &#rfcnum {
+    margin: 1.5em 0 0.2em;
+    & + h1#title {
+      margin: 0.2em 0;
+    }
+  }
 }
 
 h1, h2, h3 {
@@ -323,10 +324,10 @@ h4, h5, h6 {
 #abstract+p {
   font-size: 18px;
   line-height: 24px;
-}
-#abstract+p code, #abstract+p samp, #abstract+p tt {
-  font-size: 16px;
-  line-height: 0;
+  & code, & samp, & tt {
+    font-size: 16px;
+    line-height: 0;
+  }
 }
 
 p {
@@ -337,59 +338,59 @@ p {
 div {
   margin: 0;
 }
-.alignRight.art-text {
-  background-color: var(--highlight-color);
-  border: 1px solid var(--line-color);
-  border-radius: 3px;
-  padding: 0.5em 1em 0;
-  margin-bottom: 0.5em;
-}
-.alignRight.art-text pre {
-  padding: 0;
-  width: auto;
-}
 .alignRight {
   margin: 1em 0;
-}
-.alignRight > *:first-child {
-  border: none;
-  margin: 0;
-  float: right;
-  clear: both;
-}
-.alignRight > *:nth-child(2) {
-  clear: both;
-  display: block;
-  border: none;
+  &.art-text {
+    background-color: var(--highlight-color);
+    border: 1px solid var(--line-color);
+    border-radius: 3px;
+    padding: 0.5em 1em 0;
+    margin-bottom: 0.5em;
+    & pre {
+      padding: 0;
+      width: auto;
+    }
+  }
+  & > *:first-child {
+    border: none;
+    margin: 0;
+    float: right;
+    clear: both;
+  }
+  & > *:nth-child(2) {
+    clear: both;
+    display: block;
+    border: none;
+  }
 }
 svg {
   display: block;
-}
-/* font-family isn't space-separated, but =~ will have to do */
-svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
-  font-family: var(--font-mono);
-}
-.alignCenter.art-text {
-  background-color: var(--highlight-color);
-  border: 1px solid var(--line-color);
-  border-radius: 3px;
-  padding: 0.5em 1em 0;
-  margin-bottom: 0.5em;
-}
-.alignCenter.art-text pre {
-  padding: 0;
-  width: auto;
+  /* font-family isn't space-separated, but =~ will have to do */
+  &[font-family~="monospace" i], & [font-family~="monospace" i] {
+    font-family: var(--font-mono);
+  }
 }
 .alignCenter {
   margin: 1em 0;
-}
-.alignCenter > *:first-child {
-  border: none;
-  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
-     support flexbox yet.
-  */
-  display: table;
-  margin: 0 auto;
+  &.art-text {
+    background-color: var(--highlight-color);
+    border: 1px solid var(--line-color);
+    border-radius: 3px;
+    padding: 0.5em 1em 0;
+    margin-bottom: 0.5em;
+    & pre {
+      padding: 0;
+      width: auto;
+    }
+  }
+  & > *:first-child {
+    border: none;
+    /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+       support flexbox yet.
+    */
+    display: table;
+    margin: 0 auto;
+  }
 }
 
 /* lists */
@@ -427,26 +428,25 @@ dl {
     --indent: 5ch;
     & > dt {
       min-width: calc(var(--indent) - 2ch);
+      float: none;
     }
-  }
-  &.olPercent > dt {
-    float: none;
   }
 
   dl > dd > & {
     margin-top: 0.5em;
     margin-bottom: 0;
   }
-}
-dl:not(.dlNewline) > dt {
-  float: left;
-  margin-right: 2ch;
-  min-width: 8ch;
-}
-dl > dd {
-  margin-bottom: .8em;
-  margin-left: var(--indent) !important; /* stupid element overrides */
-  min-height: 2ex;
+
+  &:not(.dlNewline) > dt {
+    float: left;
+    margin-right: 2ch;
+    min-width: 8ch;
+  }
+  & > dd {
+    margin-bottom: .8em;
+    margin-left: var(--indent) !important; /* stupid element overrides */
+    min-height: 2ex;
+  }
 }
 :is(dl.compact, .dlCompact) > dd {
   margin-bottom: 0;
@@ -462,20 +462,22 @@ dl > dd {
 }
 
 /* links */
-a, a[href].selfRef:hover {
+a {
   text-decoration: none;
+  &[href] {
+    color: var(--link-color);
+    &:hover { text-decoration: underline; }
+    &.selfRef {
+      color: var(--text-color);
+      &:hover {
+        text-decoration: none;
+        background-color: var(--highlight-color);
+      }
+    }
+  }
 }
-a[href] {
-  color: var(--link-color);
-}
-a[href].selfRef, .iref + a[href].internal {
+.iref + a[href].internal {
   color: var(--text-color);
-}
-a[href]:hover {
-  text-decoration: underline;
-}
-a[href].selfRef:hover {
-  background-color: var(--highlight-color);
 }
 a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
   white-space: nowrap;
@@ -511,9 +513,9 @@ img {
 figure {
   margin: 0.5em 0;
   padding: 0;
-}
-figure blockquote {
-  margin: 0.8em 0.4em 0.4em;
+  & blockquote {
+    margin: 0.8em 0.4em 0.4em;
+  }
 }
 figcaption, caption {
   font-style: italic;
@@ -523,17 +525,19 @@ figcaption, caption {
 }
 @media screen {
   /* Auto-collapse boilerplate. */
-  :is(#status-of-memo, #copyright) p {
-    margin: -2px 0;
-    max-height: 0;
-    transition: max-height 2s ease, margin 0.5s ease 0.5s;
-    overflow: hidden;
-  }
-  :is(#status-of-memo, #copyright):hover p,
-  :is(#status-of-memo, #copyright) h2:target ~ p {
-    margin: 0.5em 0;
-    max-height: 500px;
-    overflow: auto;
+  :is(#status-of-memo, #copyright) {
+    & p {
+      margin: -2px 0;
+      max-height: 0;
+      transition: max-height 2s ease, margin 0.5s ease 0.5s;
+      overflow: hidden;
+    }
+    &:hover p,
+    & h2:target ~ p {
+      margin: 0.5em 0;
+      max-height: 500px;
+      overflow: auto;
+    }
   }
   pre, svg {
     display: inline-block;
@@ -583,25 +587,17 @@ table {
   max-width: 100%;
   margin: 0 0 1em;
   border-collapse: collapse;
-}
-table.right {
-  margin-left: auto;
-}
-table.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-table.left {
-  margin-right: auto;
-}
-table .text-left {
-  text-align: left;
-}
-table .text-center {
-  text-align: center;
-}
-table .text-right {
-  text-align: right;
+  &.right { margin-left: auto; }
+  &.center { margin-left: auto; margin-right: auto; }
+  &.left { margin-right: auto; }
+  & .text-left { text-align: left; }
+  & .text-center { text-align: center; }
+  & .text-right { text-align: right; }
+  & caption {
+    margin: 0;
+    padding: 3px 0 3px 1em;
+  }
+  & p { margin: 0; }
 }
 
 thead, tbody {
@@ -621,13 +617,6 @@ th {
 :is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
   background-color: var(--highlight-color);
 }
-table caption {
-  margin: 0;
-  padding: 3px 0 3px 1em;
-}
-table p {
-  margin: 0;
-}
 
 /* pilcrow */
 a.pilcrow {
@@ -638,18 +627,16 @@ a.pilcrow {
     color: var(--pilcrow-weak);
     &:hover { text-decoration: none; }
   }
-}
-@media not print {
-  :hover > a.pilcrow, a.pilcrow:focus {
-    opacity: 1;
+  @media not print {
+    :hover > &, &:focus {
+      opacity: 1;
+    }
+    &[href]:hover {
+      color: var(--pilcrow-strong);
+      background-color: transparent;
+    }
   }
-  a.pilcrow[href]:hover {
-    color: var(--pilcrow-strong);
-    background-color: transparent;
-  }
-}
-@media print {
-  a.pilcrow {
+  @media print {
     display: none;
   }
 }
@@ -708,9 +695,9 @@ sub, sup {
   font-size: 0.9em;
   font-style: italic;
   margin-top: 2em;
-}
-.docInfo .prepared {
-  float: right;
+  & .prepared {
+    float: right;
+  }
 }
 
 /* table of contents */
@@ -800,23 +787,27 @@ hr.addr {
   max-width: calc(100% - 16px);
 }
 @media (min-width: 500px) {
-  #authors-addresses > section {
-    column-count: 2;
-    column-gap: 20px;
-  }
-  #authors-addresses > section > h2 {
-    column-span: all;
-  }
-  /* hack for break-inside: avoid-column */
-  #authors-addresses address {
-    display: inline-block;
-    break-inside: avoid-column;
+  #authors-addresses {
+    & > section {
+      column-count: 2;
+      column-gap: 20px;
+    }
+    & > section > h2 {
+      column-span: all;
+    }
+    /* hack for break-inside: avoid-column */
+    & address {
+      display: inline-block;
+      break-inside: avoid-column;
+    }
   }
 }
 
 /* Comments */
-.rfcEditorRemove p:first-of-type {
-  font-style: italic;
+.rfcEditorRemove {
+  & p:first-of-type {
+    font-style: italic;
+  }
 }
 .cref {
   background-color: rgba(249, 232, 105, 0.3);
@@ -827,19 +818,21 @@ hr.addr {
 }
 
 @media screen {
-  #toc nav {
-    font-family: var(--font-title);
-    font-weight: 360;
-    & > ul { margin-bottom: 2em; }
-    & ul {
-      margin: 0 0 0 4px;
-      & :is(p, li) {
-        margin: 2px 0;
+  #toc {
+    & nav {
+      font-family: var(--font-title);
+      font-weight: 360;
+      & > ul { margin-bottom: 2em; }
+      & ul {
+        margin: 0 0 0 4px;
+        & :is(p, li) {
+          margin: 2px 0;
+        }
       }
     }
-  }
-  #toc a.toplink {
-    float: right;
+    & a.toplink {
+      float: right;
+    }
   }
 }
 @media not screen {
@@ -860,54 +853,54 @@ hr.addr {
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
-  }
-  #toc h2 {
-    margin: 0;
-    padding: 2px 0 2px 6px;
-    padding-right: 1em;
-    font-size: 18px;
-    line-height: 24px;
-    min-width: 190px;
-    text-align: right;
-    background-color: #444;
-    color: white;
-    cursor: pointer;
-    &::before { /* css hamburger */
-      float: right;
-      position: relative;
-      width: 1em;
-      height: 1px;
-      left: -164px;
-      margin: 8px 0 0 0;
-      background: white none repeat scroll 0 0;
-      box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
-      content: "";
+    & h2 {
+      margin: 0;
+      padding: 2px 0 2px 6px;
+      padding-right: 1em;
+      font-size: 18px;
+      line-height: 24px;
+      min-width: 190px;
+      text-align: right;
+      background-color: #444;
+      color: white;
+      cursor: pointer;
+      &::before { /* css hamburger */
+        float: right;
+        position: relative;
+        width: 1em;
+        height: 1px;
+        left: -164px;
+        margin: 8px 0 0 0;
+        background: white none repeat scroll 0 0;
+        box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+        content: "";
+      }
     }
-  }
-  #toc nav {
-    display: none;
-    background-color: var(--background-color);
-    padding: 0.5em 1em 1em;
-    overflow: auto;
-    overscroll-behavior: contain;
-    height: calc(100vh - 48px);
-    border-left: 1px solid #ddd;
-  }
-  #toc.active {
-    opacity: 1;
-    & nav { display: block; }
-  }
-  /* Make the collapsed ToC header render white on gray also when it's a link */
-  #toc h2 a,
-  #toc h2 a:is(:link, :focus, :hover),
-  #toc a.toplink,
-  #toc a.toplink:hover {
-    color: white;
-    background-color: #444;
-    text-decoration: none;
-  }
-  #toc a.toplink {
-    margin: 2px 0.5em 0;
+    & nav {
+      display: none;
+      background-color: var(--background-color);
+      padding: 0.5em 1em 1em;
+      overflow: auto;
+      overscroll-behavior: contain;
+      height: calc(100vh - 48px);
+      border-left: 1px solid #ddd;
+    }
+    &.active {
+      opacity: 1;
+      & nav { display: block; }
+    }
+    /* Make the collapsed ToC header render white on gray also when it's a link */
+    & h2 a,
+    & h2 a:is(:link, :focus, :hover),
+    & a.toplink,
+    & a.toplink:hover {
+      color: white;
+      background-color: #444;
+      text-decoration: none;
+    }
+    & a.toplink {
+      margin: 2px 0.5em 0;
+    }
   }
 }
 
@@ -926,26 +919,26 @@ hr.addr {
     margin: 0;
     padding: 0;
     z-index: 1;
-  }
-  #toc h2 {
-    margin: 0;
-    padding: 0.25em 1em 1em 0;
-  }
-  #toc nav {
-    display: block;
-    height: calc(90vh - 84px);
-    bottom: 0;
-    padding: 0.5em 0 2em;
-    overflow: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
+    & h2 {
+      margin: 0;
+      padding: 0.25em 1em 1em 0;
+    }
+    & nav {
+      display: block;
+      height: calc(90vh - 84px);
+      bottom: 0;
+      padding: 0.5em 0 2em;
+      overflow: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+    }
+    & a.toplink {
+      margin: 8px 0.5em 0;
+    }
   }
   img { /* future proofing */
     max-width: 100%;
     height: auto;
-  }
-  #toc a.toplink {
-    margin: 8px 0.5em 0;
   }
 }
 
@@ -961,12 +954,13 @@ hr.addr {
   #n-copyright-notice {
     border-bottom: none;
   }
-  #toc, #n-introduction {
-    page-break-before: always;
-  }
   #toc {
+    page-break-before: always;
     border-top: none;
     padding-top: 0;
+  }
+  #n-introduction {
+    page-break-before: always;
   }
   figure, pre, .vcard {
     page-break-inside: avoid;
@@ -1028,17 +1022,19 @@ hr.addr {
 }
 
 /* SVG Trick: a prefix match works because only black and white are allowed */
-svg :is([stroke="black"], [stroke^="#000"]) {
-  stroke: var(--text-color);
-}
-svg :is([stroke="white"], [stroke^="#fff"]) {
-  stroke: var(--background-color);
-}
-svg :is([fill="black"], [fill^="#000"], :not([fill])) {
-  fill: var(--text-color);
-}
-svg :is([fill="white"], [fill^="#fff"]) {
-  fill: var(--background-color);
+svg {
+  & :is([stroke="black"], [stroke^="#000"]) {
+    stroke: var(--text-color);
+  }
+  & :is([stroke="white"], [stroke^="#fff"]) {
+    stroke: var(--background-color);
+  }
+  & :is([fill="black"], [fill^="#000"], :not([fill])) {
+    fill: var(--text-color);
+  }
+  & :is([fill="white"], [fill^="#fff"]) {
+    fill: var(--background-color);
+  }
 }
 </style>
 
@@ -1048,11 +1044,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">QNA</td>
-<td class="right">March 2026</td>
+<td class="right">August 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Van Meter, et al.</td>
-<td class="center">Expires 17 September 2026</td>
+<td class="center">Expires 13 February 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1065,12 +1061,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-van-meter-qirg-quantum-network-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-03-16" class="published">16 March 2026</time>
+<time datetime="2026-08-12" class="published">12 August 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-09-17">17 September 2026</time></dd>
+<dd class="expires"><time datetime="2027-02-13">13 February 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1123,7 +1119,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 September 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 13 February 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1287,30 +1283,33 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-requirements" class="internal xref">Requirements</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
-                <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-general-requirements" class="internal xref">General Requirements</a></p>
+                <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-normative-requirements" class="internal xref">Normative Requirements</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-general-requirements" class="internal xref">General Requirements</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.1">
-                    <p id="section-toc.1-1.11.2.1.2.1.1"><a href="#section-11.1.1" class="auto internal xref">11.1.1</a>.  <a href="#name-functional-requirements" class="internal xref">Functional Requirements</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.1">
+                    <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#section-11.2.1" class="auto internal xref">11.2.1</a>.  <a href="#name-functional-requirements" class="internal xref">Functional Requirements</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.2">
-                    <p id="section-toc.1-1.11.2.1.2.2.1"><a href="#section-11.1.2" class="auto internal xref">11.1.2</a>.  <a href="#name-interface-requirements" class="internal xref">Interface Requirements</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.2">
+                    <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#section-11.2.2" class="auto internal xref">11.2.2</a>.  <a href="#name-interface-requirements" class="internal xref">Interface Requirements</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.3">
-                    <p id="section-toc.1-1.11.2.1.2.3.1"><a href="#section-11.1.3" class="auto internal xref">11.1.3</a>.  <a href="#name-physical-requirements" class="internal xref">Physical Requirements</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.3">
+                    <p id="section-toc.1-1.11.2.2.2.3.1"><a href="#section-11.2.3" class="auto internal xref">11.2.3</a>.  <a href="#name-physical-requirements" class="internal xref">Physical Requirements</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.4">
-                    <p id="section-toc.1-1.11.2.1.2.4.1"><a href="#section-11.1.4" class="auto internal xref">11.1.4</a>.  <a href="#name-environmental-requirements" class="internal xref">Environmental Requirements</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.4">
+                    <p id="section-toc.1-1.11.2.2.2.4.1"><a href="#section-11.2.4" class="auto internal xref">11.2.4</a>.  <a href="#name-environmental-requirements" class="internal xref">Environmental Requirements</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
-                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-network-management-requirem" class="internal xref">Network Management Requirements</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3">
+                <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="auto internal xref">11.3</a>.  <a href="#name-network-management-requirem" class="internal xref">Network Management Requirements</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.1">
-                    <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#section-11.2.1" class="auto internal xref">11.2.1</a>.  <a href="#name-fault-management" class="internal xref">Fault Management</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3.2.1">
+                    <p id="section-toc.1-1.11.2.3.2.1.1"><a href="#section-11.3.1" class="auto internal xref">11.3.1</a>.  <a href="#name-fault-management" class="internal xref">Fault Management</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.2">
-                    <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#section-11.2.2" class="auto internal xref">11.2.2</a>.  <a href="#name-configuration-management" class="internal xref">Configuration Management</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3.2.2">
+                    <p id="section-toc.1-1.11.2.3.2.2.1"><a href="#section-11.3.2" class="auto internal xref">11.3.2</a>.  <a href="#name-configuration-management" class="internal xref">Configuration Management</a></p>
 </li>
                 </ul>
 </li>
@@ -1422,25 +1421,28 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.22.1"><a href="#section-22" class="auto internal xref">22</a>. <a href="#name-example-networks" class="internal xref">Example Networks</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.1">
-                <p id="section-toc.1-1.22.2.1.1"><a href="#section-22.1" class="auto internal xref">22.1</a>.  <a href="#name-fully-connected" class="internal xref">Fully Connected</a></p>
+                <p id="section-toc.1-1.22.2.1.1"><a href="#section-22.1" class="auto internal xref">22.1</a>.  <a href="#name-fully-connected-point-to-po" class="internal xref">Fully Connected Point-to-Point</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.2">
-                <p id="section-toc.1-1.22.2.2.1"><a href="#section-22.2" class="auto internal xref">22.2</a>.  <a href="#name-q-fly-multicomputer" class="internal xref">Q-Fly Multicomputer</a></p>
+                <p id="section-toc.1-1.22.2.2.1"><a href="#section-22.2" class="auto internal xref">22.2</a>.  <a href="#name-single-optical-switch" class="internal xref">Single Optical Switch</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3">
-                <p id="section-toc.1-1.22.2.3.1"><a href="#section-22.3" class="auto internal xref">22.3</a>.  <a href="#name-optically-switched-fat-tree" class="internal xref">Optically Switched Fat Tree</a></p>
+                <p id="section-toc.1-1.22.2.3.1"><a href="#section-22.3" class="auto internal xref">22.3</a>.  <a href="#name-q-fly-multicomputer" class="internal xref">Q-Fly Multicomputer</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.4">
-                <p id="section-toc.1-1.22.2.4.1"><a href="#section-22.4" class="auto internal xref">22.4</a>.  <a href="#name-repeater-fat-tree" class="internal xref">Repeater Fat Tree</a></p>
+                <p id="section-toc.1-1.22.2.4.1"><a href="#section-22.4" class="auto internal xref">22.4</a>.  <a href="#name-optically-switched-fat-tree" class="internal xref">Optically Switched Fat Tree</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.5">
-                <p id="section-toc.1-1.22.2.5.1"><a href="#section-22.5" class="auto internal xref">22.5</a>.  <a href="#name-2-d-grid-multicomputer" class="internal xref">2-D Grid Multicomputer</a></p>
+                <p id="section-toc.1-1.22.2.5.1"><a href="#section-22.5" class="auto internal xref">22.5</a>.  <a href="#name-repeater-fat-tree" class="internal xref">Repeater Fat Tree</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.6">
-                <p id="section-toc.1-1.22.2.6.1"><a href="#section-22.6" class="auto internal xref">22.6</a>.  <a href="#name-ring" class="internal xref">Ring</a></p>
+                <p id="section-toc.1-1.22.2.6.1"><a href="#section-22.6" class="auto internal xref">22.6</a>.  <a href="#name-2-d-grid-multicomputer" class="internal xref">2-D Grid Multicomputer</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.7">
-                <p id="section-toc.1-1.22.2.7.1"><a href="#section-22.7" class="auto internal xref">22.7</a>.  <a href="#name-qlan" class="internal xref">QLAN</a></p>
+                <p id="section-toc.1-1.22.2.7.1"><a href="#section-22.7" class="auto internal xref">22.7</a>.  <a href="#name-ring" class="internal xref">Ring</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.8">
+                <p id="section-toc.1-1.22.2.8.1"><a href="#section-22.8" class="auto internal xref">22.8</a>.  <a href="#name-qlan" class="internal xref">QLAN</a></p>
 </li>
             </ul>
 </li>
@@ -1667,10 +1669,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
               <p id="section-5-2.4.2.3.1">Entanglement swapping<a href="#section-5-2.4.2.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-5-2.4.2.4">
-              <p id="section-5-2.4.2.4.1">Quantum key distribution: BB84, E91, BBM92<a href="#section-5-2.4.2.4.1" class="pilcrow">¶</a></p>
+              <p id="section-5-2.4.2.4.1">Quantum key distribution <span>[<a href="#BB84" class="cite xref">BB84</a>]</span>, <span>[<a href="#E91" class="cite xref">E91</a>]</span>, <span>[<a href="#BBM92" class="cite xref">BBM92</a>]</span><a href="#section-5-2.4.2.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-5-2.4.2.5">
-              <p id="section-5-2.4.2.5.1">"Generations" of quantum repeaters<a href="#section-5-2.4.2.5.1" class="pilcrow">¶</a></p>
+              <p id="section-5-2.4.2.5.1">"Generations" of quantum repeaters <span>[<a href="#muralidharan-generations" class="cite xref">muralidharan-generations</a>]</span>, <span>[<a href="#azuma-rmp" class="cite xref">azuma-rmp</a>]</span><a href="#section-5-2.4.2.5.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-5-2.4.2.6">
               <p id="section-5-2.4.2.6.1">(Repeater graph states may be helpful, but are not used in the current architecture)<a href="#section-5-2.4.2.6.1" class="pilcrow">¶</a></p>
@@ -2014,6 +2016,7 @@ Since consuming extra resources is more costly than waiting, these operations de
 <a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-photonic-synchronization-do" class="section-name selfRef">Photonic Synchronization Domains</a>
         </h3>
 <p id="section-8.4-1">A photonic synchronization domain (PSD) is the range of devices and fibers over which photons must be controlled with high precision in order to effect e.g. photonic entanglement swapping <span>[<a href="#mori-psds" class="cite xref">mori-psds</a>]</span>. The primary concern of a PSD is getting photons to arrive at beamsplitters "simultaneously", with sufficient overlap, as specified in <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
+<p id="section-8.4-2">Note that the most common operational mode uses only pairs of photons, not multi-photon operations; the definition of PSD does not imply that all channels must be synchronized with each other and used in a single operation.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="direct-and-indirect-multicomputer-architectures">
@@ -2099,7 +2102,7 @@ Since consuming extra resources is more costly than waiting, these operations de
             <p id="section-9.1-6.6.1">Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a <a href="https://en.wikipedia.org/wiki/Network_socket">socket</a> in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.<a href="#section-9.1-6.6.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-6.7">
-            <p id="section-9.1-6.7.1">The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by <a href="https://en.wikipedia.org/wiki/Software-defined_networking">software-defined networking (SDN)</a>. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF): it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.<a href="#section-9.1-6.7.1" class="pilcrow">¶</a></p>
+            <p id="section-9.1-6.7.1">The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by <a href="https://en.wikipedia.org/wiki/Software-defined_networking">software-defined networking (SDN)</a> <span>[<a href="#farhadi-sdn" class="cite xref">farhadi-sdn</a>]</span>. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) <span>[<a href="#mccanne-bpf" class="cite xref">mccanne-bpf</a>]</span> : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.<a href="#section-9.1-6.7.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-6.8">
             <p id="section-9.1-6.8.1">In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.<a href="#section-9.1-6.8.1" class="pilcrow">¶</a></p>
@@ -2164,7 +2167,7 @@ Since consuming extra resources is more costly than waiting, these operations de
         </h3>
 <p id="section-9.3-1">A QLAN will be deployed within a building or across a campus. It may connect quantum computers (including but not necessarily multicomputers) and sensors. A sensor, for example, may be connected to a computer with substantial memory for e.g. shadow tomography, learning from few measurements and related protocols.<a href="#section-9.3-1" class="pilcrow">¶</a></p>
 <p id="section-9.3-2">A QLAN will have a less regular topology than a multicomputer or QDCN. Distance, latency, fidelity, and success probability will all vary on a per-link basis.<a href="#section-9.3-2" class="pilcrow">¶</a></p>
-<p id="section-9.3-3">Distributed control and protocols for multiplexing and connection setup are necessary.<a href="#section-9.3-3" class="pilcrow">¶</a></p>
+<p id="section-9.3-3">Distributed control and protocols for multiplexing and connection setup are necessary <span>[<a href="#aparicio-spie" class="cite xref">aparicio-spie</a>]</span>.<a href="#section-9.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="wide-area-network-qwan">
@@ -2289,102 +2292,117 @@ A quantum optical link may define one mode per time window. During each window, 
 <a href="#section-11" class="section-number selfRef">11. </a><a href="#name-requirements" class="section-name selfRef">Requirements</a>
       </h2>
 <p id="section-11-1">This section documents the requirements for all networks adhering to this architecture.<a href="#section-11-1" class="pilcrow">¶</a></p>
-<div id="general-requirements">
+<div id="normative-requirements">
 <section id="section-11.1">
+        <h3 id="name-normative-requirements">
+<a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-normative-requirements" class="section-name selfRef">Normative Requirements</a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="section-11.1-1.1">
+            <p id="section-11.1-1.1.1">The architecture must support an open development process <span>[<a href="#RFC6852" class="cite xref">RFC6852</a>]</span>.<a href="#section-11.1-1.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-11.1-1.2">
+            <p id="section-11.1-1.2.1">The architecture must support the creation of robust, extensible, maintainable protocols in keeping with best current practice <span>[<a href="#RFC9413" class="cite xref">RFC9413</a>]</span> <span>[<a href="#RFC6250" class="cite xref">RFC6250</a>]</span> <span>[<a href="#RFC1958" class="cite xref">RFC1958</a>]</span> <span>[<a href="#RFC5218" class="cite xref">RFC5218</a>]</span>.<a href="#section-11.1-1.2.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+</section>
+</div>
+<div id="general-requirements">
+<section id="section-11.2">
         <h3 id="name-general-requirements">
-<a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-general-requirements" class="section-name selfRef">General Requirements</a>
+<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-general-requirements" class="section-name selfRef">General Requirements</a>
         </h3>
 <div id="functional-requirements">
-<section id="section-11.1.1">
+<section id="section-11.2.1">
           <h4 id="name-functional-requirements">
-<a href="#section-11.1.1" class="section-number selfRef">11.1.1. </a><a href="#name-functional-requirements" class="section-name selfRef">Functional Requirements</a>
+<a href="#section-11.2.1" class="section-number selfRef">11.2.1. </a><a href="#name-functional-requirements" class="section-name selfRef">Functional Requirements</a>
           </h4>
 <ul class="normal">
-<li class="normal" id="section-11.1.1-1.1">
-              <p id="section-11.1.1-1.1.1">Operates on qubits. (Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)<a href="#section-11.1.1-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-11.2.1-1.1">
+              <p id="section-11.2.1-1.1.1">Operates on qubits. (Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)<a href="#section-11.2.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.1.1-1.2">
-              <p id="section-11.1.1-1.2.1">Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)<a href="#section-11.1.1-1.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-11.2.1-1.2">
+              <p id="section-11.2.1-1.2.1">Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)<a href="#section-11.2.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.1.1-1.3">
-              <p id="section-11.1.1-1.3.1">Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.<a href="#section-11.1.1-1.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-11.2.1-1.3">
+              <p id="section-11.2.1-1.3.1">Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.<a href="#section-11.2.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.1.1-1.4">
-              <p id="section-11.1.1-1.4.1">The architecture must support deployments ranging from multicomputer to wide area networks.<a href="#section-11.1.1-1.4.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-11.2.1-1.4">
+              <p id="section-11.2.1-1.4.1">The architecture must support deployments ranging from multicomputer to wide area networks.<a href="#section-11.2.1-1.4.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.1.1-1.5">
-              <p id="section-11.1.1-1.5.1">The architecture must support multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.<a href="#section-11.1.1-1.5.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-11.2.1-1.5">
+              <p id="section-11.2.1-1.5.1">The architecture must support multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.<a href="#section-11.2.1-1.5.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.1.1-1.6">
-              <p id="section-11.1.1-1.6.1">The architecture must support entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)<a href="#section-11.1.1-1.6.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-11.2.1-1.6">
+              <p id="section-11.2.1-1.6.1">The architecture must support entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)<a href="#section-11.2.1-1.6.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.1.1-1.7">
-              <p id="section-11.1.1-1.7.1">The architecture must support evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.<a href="#section-11.1.1-1.7.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-11.2.1-1.7">
+              <p id="section-11.2.1-1.7.1">The architecture must support evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.<a href="#section-11.2.1-1.7.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
 </div>
 <div id="interface-requirements">
-<section id="section-11.1.2">
+<section id="section-11.2.2">
           <h4 id="name-interface-requirements">
-<a href="#section-11.1.2" class="section-number selfRef">11.1.2. </a><a href="#name-interface-requirements" class="section-name selfRef">Interface Requirements</a>
+<a href="#section-11.2.2" class="section-number selfRef">11.2.2. </a><a href="#name-interface-requirements" class="section-name selfRef">Interface Requirements</a>
           </h4>
 <ul class="normal">
-<li class="normal" id="section-11.1.2-1.1">
-              <p id="section-11.1.2-1.1.1">Supports one or more applications, such as the ones in <span>[<a href="#RFC9583" class="cite xref">RFC9583</a>]</span>, with APIs consistent with the B, C, or T classes.<a href="#section-11.1.2-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-11.2.2-1.1">
+              <p id="section-11.2.2-1.1.1">Supports one or more applications, such as the ones in <span>[<a href="#RFC9583" class="cite xref">RFC9583</a>]</span>, with APIs consistent with the B, C, or T classes.<a href="#section-11.2.2-1.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.1.2-1.2">
-              <p id="section-11.1.2-1.2.1">The network must enable applications to match quantum states at each end of the Bell pair by name.<a href="#section-11.1.2-1.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-11.2.2-1.2">
+              <p id="section-11.2.2-1.2.1">The network must enable applications to match quantum states at each end of the Bell pair by name.<a href="#section-11.2.2-1.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
 </div>
 <div id="physical-requirements">
-<section id="section-11.1.3">
+<section id="section-11.2.3">
           <h4 id="name-physical-requirements">
-<a href="#section-11.1.3" class="section-number selfRef">11.1.3. </a><a href="#name-physical-requirements" class="section-name selfRef">Physical Requirements</a>
+<a href="#section-11.2.3" class="section-number selfRef">11.2.3. </a><a href="#name-physical-requirements" class="section-name selfRef">Physical Requirements</a>
           </h4>
-<p id="section-11.1.3-1">Physical requirements such as distance, wavelength, vibration, power, etc. will be case-dependent.<a href="#section-11.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-11.2.3-1">Physical requirements such as distance, wavelength, vibration, power, etc. will be case-dependent.<a href="#section-11.2.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="environmental-requirements">
-<section id="section-11.1.4">
+<section id="section-11.2.4">
           <h4 id="name-environmental-requirements">
-<a href="#section-11.1.4" class="section-number selfRef">11.1.4. </a><a href="#name-environmental-requirements" class="section-name selfRef">Environmental Requirements</a>
+<a href="#section-11.2.4" class="section-number selfRef">11.2.4. </a><a href="#name-environmental-requirements" class="section-name selfRef">Environmental Requirements</a>
           </h4>
-<p id="section-11.1.4-1">Physical requirements such as distance, wavelength, vibration, power, etc. will be case-dependent.<a href="#section-11.1.4-1" class="pilcrow">¶</a></p>
+<p id="section-11.2.4-1">Physical requirements such as distance, wavelength, vibration, power, etc. will be case-dependent.<a href="#section-11.2.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="network-management-requirements">
-<section id="section-11.2">
+<section id="section-11.3">
         <h3 id="name-network-management-requirem">
-<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-network-management-requirem" class="section-name selfRef">Network Management Requirements</a>
+<a href="#section-11.3" class="section-number selfRef">11.3. </a><a href="#name-network-management-requirem" class="section-name selfRef">Network Management Requirements</a>
         </h3>
 <div id="fault-management">
-<section id="section-11.2.1">
+<section id="section-11.3.1">
           <h4 id="name-fault-management">
-<a href="#section-11.2.1" class="section-number selfRef">11.2.1. </a><a href="#name-fault-management" class="section-name selfRef">Fault Management</a>
+<a href="#section-11.3.1" class="section-number selfRef">11.3.1. </a><a href="#name-fault-management" class="section-name selfRef">Fault Management</a>
           </h4>
 <ul class="normal">
-<li class="normal" id="section-11.2.1-1.1">
-              <p id="section-11.2.1-1.1.1">Supports isolation of hardware and software faults.<a href="#section-11.2.1-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-11.3.1-1.1">
+              <p id="section-11.3.1-1.1.1">Supports isolation of hardware and software faults.<a href="#section-11.3.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.2.1-1.2">
-              <p id="section-11.2.1-1.2.1">Supports monitoring and reporting of fidelity.<a href="#section-11.2.1-1.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-11.3.1-1.2">
+              <p id="section-11.3.1-1.2.1">Supports monitoring and reporting of fidelity.<a href="#section-11.3.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
 </div>
 <div id="configuration-management">
-<section id="section-11.2.2">
+<section id="section-11.3.2">
           <h4 id="name-configuration-management">
-<a href="#section-11.2.2" class="section-number selfRef">11.2.2. </a><a href="#name-configuration-management" class="section-name selfRef">Configuration Management</a>
+<a href="#section-11.3.2" class="section-number selfRef">11.3.2. </a><a href="#name-configuration-management" class="section-name selfRef">Configuration Management</a>
           </h4>
 <ul class="normal">
-<li class="normal" id="section-11.2.2-1.1">
-              <p id="section-11.2.2-1.1.1">The architecture must support the use of both manual and automated network configuration tools.<a href="#section-11.2.2-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-11.3.2-1.1">
+              <p id="section-11.3.2-1.1.1">The architecture must support the use of both manual and automated network configuration tools.<a href="#section-11.3.2-1.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2539,7 +2557,7 @@ This includes using quantum error-correcting codes to protect against decoherenc
 In a network context, STOR nodes may function as data servers, enabling asynchronous applications where valuable states are prepared and stored for later retrieval.<a href="#section-16.1-4" class="pilcrow">¶</a></p>
 <p id="section-16.1-5"><strong>A computational (COMP) node</strong> represents a full-fledged quantum processing endpoint within the network.
 Equipped with quantum memory and additional algorithmic qubits, it can store, manipulate, and perform complex computations on quantum states received from the network or generated locally.
-COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations <span>[<a href="#ambainis-multiparty-coin" class="cite xref">ambainis-multiparty-coin</a>]</span>, <span>[<a href="#taherkhani-byz" class="cite xref">taherkhani-byz</a>]</span>, <span>[<a href="#mayers-unconditional" class="cite xref">mayers-unconditional</a>]</span>, <span>[<a href="#christandl-anon" class="cite xref">christandl-anon</a>]</span>, <span>[<a href="#broadbent-bfk-protocol" class="cite xref">broadbent-bfk-protocol</a>]</span>, <span>[<a href="#fitzsimons-blind" class="cite xref">fitzsimons-blind</a>]</span>, <span>[<a href="#mahadev-homomorphic" class="cite xref">mahadev-homomorphic</a>]</span>, <span>[<a href="#dulek-homomorphic" class="cite xref">dulek-homomorphic</a>]</span>, <span>[<a href="#shapourian-qdc-infra" class="cite xref">shapourian-qdc-infra</a>]</span>, <span>[<a href="#sutcliffe-dist-qec" class="cite xref">sutcliffe-dist-qec</a>]</span>, <span>[<a href="#yoder-tour-de-gross" class="cite xref">yoder-tour-de-gross</a>]</span>. <span>[<a href="#kim-ft-million" class="cite xref">kim-ft-million</a>]</span>.<a href="#section-16.1-5" class="pilcrow">¶</a></p>
+COMP nodes support a wide range of advanced quantum network applications, including distributed quantum algorithms, more general forms of blind quantum computation, and potentially fault-tolerant quantum computing, often requiring asynchronous interfaces to coordinate their local quantum workloads with network operations <span>[<a href="#ambainis-multiparty-coin" class="cite xref">ambainis-multiparty-coin</a>]</span>, <span>[<a href="#taherkhani-byz" class="cite xref">taherkhani-byz</a>]</span>, <span>[<a href="#mayers-unconditional" class="cite xref">mayers-unconditional</a>]</span>, <span>[<a href="#christandl-anon" class="cite xref">christandl-anon</a>]</span>, <span>[<a href="#broadbent-bfk-protocol" class="cite xref">broadbent-bfk-protocol</a>]</span>, <span>[<a href="#fitzsimons-blind" class="cite xref">fitzsimons-blind</a>]</span>, <span>[<a href="#mahadev-homomorphic" class="cite xref">mahadev-homomorphic</a>]</span>, <span>[<a href="#dulek-homomorphic" class="cite xref">dulek-homomorphic</a>]</span>, <span>[<a href="#shapourian-qdc-infra" class="cite xref">shapourian-qdc-infra</a>]</span>, <span>[<a href="#sutcliffe-dist-qec" class="cite xref">sutcliffe-dist-qec</a>]</span>, <span>[<a href="#yoder-tour-de-gross" class="cite xref">yoder-tour-de-gross</a>]</span>, <span>[<a href="#kim-ft-million" class="cite xref">kim-ft-million</a>]</span>.<a href="#section-16.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="support-nodes">
@@ -2561,6 +2579,7 @@ Unlike basic BSAs, an ABSA must be capable of performing measurements on single 
 The choice of measurement basis often depends on the outcomes of prior measurements within the network and the specific structure of the repeater graph state being utilized, implying more complex hardware and real-time classical control logic.<a href="#section-16.2-4" class="pilcrow">¶</a></p>
 <p id="section-16.2-5"><strong>An optical switch (OSW)</strong> is a device that can passively route photons from input optical fibers or paths to different output paths without performing measurements on them <span>[<a href="#koyama-24" class="cite xref">koyama-24</a>]</span>.
 OSWs, which can be based on technologies like nanomechanical systems or nanophotonic circuits, can be integrated as components within other node types (e.g., routers or complex end nodes) or can function as standalone elements in the network to dynamically reconfigure optical pathways.<a href="#section-16.2-5" class="pilcrow">¶</a></p>
+<p id="section-16.2-6">An OSW node contains at least one switch device, which comprises at least once switch point.<a href="#section-16.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="repeater-nodes">
@@ -2704,6 +2723,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <a href="#section-19" class="section-number selfRef">19. </a><a href="#name-resource-management-multipl" class="section-name selfRef">Resource Management: Multiplexing and Routing</a>
       </h2>
 <p id="section-19-1">Both link usage time slots and memory can be shared among multiple connections and therefore must be actively managed via a multiplexing system.  This task is particularly challenging in switched networks.<a href="#section-19-1" class="pilcrow">¶</a></p>
+<p id="section-19-2">The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS <span>[<a href="#I-D.draft-kaws-qirg-advent" class="cite xref">I-D.draft-kaws-qirg-advent</a>]</span>.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput <span>[<a href="#van-meter-sys-design" class="cite xref">van-meter-sys-design</a>]</span>.  A number of approaches have been proposed <span>[<a href="#abane-routing" class="cite xref">abane-routing</a>]</span>.<a href="#section-19-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="classical-communication">
@@ -2853,83 +2873,96 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <a href="#section-22" class="section-number selfRef">22. </a><a href="#name-example-networks" class="section-name selfRef">Example Networks</a>
       </h2>
 <p id="section-22-1">While a full taxonomy of networks is neither desirable nor possible here, we present a few network examples using point-to-point links or switched architectures.  In this section, the topology is briefly described, followed by analysis of the path characteristics of the shortest path and network diameter.<a href="#section-22-1" class="pilcrow">¶</a></p>
-<div id="fully-connected">
+<div id="fully-connected-point-to-point">
 <section id="section-22.1">
-        <h3 id="name-fully-connected">
-<a href="#section-22.1" class="section-number selfRef">22.1. </a><a href="#name-fully-connected" class="section-name selfRef">Fully Connected</a>
+        <h3 id="name-fully-connected-point-to-po">
+<a href="#section-22.1" class="section-number selfRef">22.1. </a><a href="#name-fully-connected-point-to-po" class="section-name selfRef">Fully Connected Point-to-Point</a>
         </h3>
-<p id="section-22.1-1">A number of the early quantum multicomputer proposals assumed a single, large optical switch.<a href="#section-22.1-1" class="pilcrow">¶</a></p>
-<p id="section-22.1-2">Shortest paths:<a href="#section-22.1-2" class="pilcrow">¶</a></p>
+<p id="section-22.1-1">Small networks may use nodes with multiple interfaces and provide a direct link between each pair of nodes, making a <em>direct</em> network.  Assuming sufficient node-internal capabilities, such a network provides lowest loss (giving the fastest individual links) and the highest aggregate bandwidth, and is inherently nonblocking.  However, with n-1 links per node and O(n^2) links in the network, its scalability is poor.  It will always provide the highest performance, but not necessarily highest price/performance ratio.<a href="#section-22.1-1" class="pilcrow">¶</a></p>
+<p id="section-22.1-2">If links are midpoint interference-based, an issue in design is packaging of the BSAs and detectors.<a href="#section-22.1-2" class="pilcrow">¶</a></p>
+<p id="section-22.1-3">PSD: Each link is a separate PSD.<a href="#section-22.1-3" class="pilcrow">¶</a></p>
+<p id="section-22.1-4">All paths: MIM<a href="#section-22.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="single-optical-switch">
+<section id="section-22.2">
+        <h3 id="name-single-optical-switch">
+<a href="#section-22.2" class="section-number selfRef">22.2. </a><a href="#name-single-optical-switch" class="section-name selfRef">Single Optical Switch</a>
+        </h3>
+<p id="section-22.2-1">A number of the early quantum multicomputer proposals assumed a single, large optical switch.  Such a network is <em>indirect</em>.<a href="#section-22.2-1" class="pilcrow">¶</a></p>
+<p id="section-22.2-2">PSD: Although the entire network is a single PSD, each pairing is adjusted independently.<a href="#section-22.2-2" class="pilcrow">¶</a></p>
+<p id="section-22.2-3">All paths: MXIXM<a href="#section-22.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="q-fly-multicomputer">
-<section id="section-22.2">
+<section id="section-22.3">
         <h3 id="name-q-fly-multicomputer">
-<a href="#section-22.2" class="section-number selfRef">22.2. </a><a href="#name-q-fly-multicomputer" class="section-name selfRef">Q-Fly Multicomputer</a>
+<a href="#section-22.3" class="section-number selfRef">22.3. </a><a href="#name-q-fly-multicomputer" class="section-name selfRef">Q-Fly Multicomputer</a>
         </h3>
-<p id="section-22.2-1">An <em>indirect</em> interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in Sakuma et al. <span>[<a href="#sakuma-q-fly" class="cite xref">sakuma-q-fly</a>]</span>.<a href="#section-22.2-1" class="pilcrow">¶</a></p>
-<p id="section-22.2-2">For DPFD topologies:<a href="#section-22.2-2" class="pilcrow">¶</a></p>
+<p id="section-22.3-1">An <em>indirect</em> interconnect. A multi-group, BSA-centric architecture.  All nodes are part of the same PSD.  The Q-Fly architecture is described in Sakuma et al. <span>[<a href="#sakuma-q-fly" class="cite xref">sakuma-q-fly</a>]</span>.<a href="#section-22.3-1" class="pilcrow">¶</a></p>
+<p id="section-22.3-2">PSD: Although the entire network is a single PSD, each pairing is adjusted independently.<a href="#section-22.3-2" class="pilcrow">¶</a></p>
+<p id="section-22.3-3">For DPFD topologies:<a href="#section-22.3-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-22.2-3.1">
-            <p id="section-22.2-3.1.1">Shortest paths<a href="#section-22.2-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-22.3-4.1">
+            <p id="section-22.3-4.1.1">Shortest paths<a href="#section-22.3-4.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-22.2-3.1.2.1">
-                <p id="section-22.2-3.1.2.1.1">intra-group: MIXM<a href="#section-22.2-3.1.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-22.3-4.1.2.1">
+                <p id="section-22.3-4.1.2.1.1">intra-group: MIXM<a href="#section-22.3-4.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-22.2-3.1.2.2">
-                <p id="section-22.2-3.1.2.2.1">inter-group (network diameter): MXXIM<a href="#section-22.2-3.1.2.2.1" class="pilcrow">¶</a></p>
+              <li class="normal" id="section-22.3-4.1.2.2">
+                <p id="section-22.3-4.1.2.2.1">inter-group (network diameter): MXXIM<a href="#section-22.3-4.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="normal" id="section-22.2-3.2">
-            <p id="section-22.2-3.2.1">Longer paths:<a href="#section-22.2-3.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-22.3-4.2">
+            <p id="section-22.3-4.2.1">Longer paths:<a href="#section-22.3-4.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-22.2-3.2.2.1">
-                <p id="section-22.2-3.2.2.1.1">non-shortest path: MXXIXM or longer<a href="#section-22.2-3.2.2.1.1" class="pilcrow">¶</a></p>
-</li>
-            </ul>
-</li>
-        </ul>
-<p id="section-22.2-4">For DPHD topologies:<a href="#section-22.2-4" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-22.2-5.1">
-            <p id="section-22.2-5.1.1">Shortest paths<a href="#section-22.2-5.1.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-22.2-5.1.2.1">
-                <p id="section-22.2-5.1.2.1.1">intra-group: MXIXM<a href="#section-22.2-5.1.2.1.1" class="pilcrow">¶</a></p>
-</li>
-              <li class="normal" id="section-22.2-5.1.2.2">
-                <p id="section-22.2-5.1.2.2.1">inter-group (network diameter): MXXIXM<a href="#section-22.2-5.1.2.2.1" class="pilcrow">¶</a></p>
-</li>
-            </ul>
-</li>
-          <li class="normal" id="section-22.2-5.2">
-            <p id="section-22.2-5.2.1">Longer paths:<a href="#section-22.2-5.2.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-22.2-5.2.2.1">
-                <p id="section-22.2-5.2.2.1.1">non-shortest path: MXXXIXM or longer<a href="#section-22.2-5.2.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-22.3-4.2.2.1">
+                <p id="section-22.3-4.2.2.1.1">non-shortest path: MXXIXM or longer<a href="#section-22.3-4.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
         </ul>
-<p id="section-22.2-6">For SPHD topologies:<a href="#section-22.2-6" class="pilcrow">¶</a></p>
+<p id="section-22.3-5">For DPHD topologies:<a href="#section-22.3-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-22.2-7.1">
-            <p id="section-22.2-7.1.1">Shortest paths<a href="#section-22.2-7.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-22.3-6.1">
+            <p id="section-22.3-6.1.1">Shortest paths<a href="#section-22.3-6.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-22.2-7.1.2.1">
-                <p id="section-22.2-7.1.2.1.1">intra-group: MXIXM<a href="#section-22.2-7.1.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-22.3-6.1.2.1">
+                <p id="section-22.3-6.1.2.1.1">intra-group: MXIXM<a href="#section-22.3-6.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-22.2-7.1.2.2">
-                <p id="section-22.2-7.1.2.2.1">inter-group (network diameter): MXXIXM<a href="#section-22.2-7.1.2.2.1" class="pilcrow">¶</a></p>
+              <li class="normal" id="section-22.3-6.1.2.2">
+                <p id="section-22.3-6.1.2.2.1">inter-group (network diameter): MXXIXM<a href="#section-22.3-6.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="normal" id="section-22.2-7.2">
-            <p id="section-22.2-7.2.1">Longer paths:<a href="#section-22.2-7.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-22.3-6.2">
+            <p id="section-22.3-6.2.1">Longer paths:<a href="#section-22.3-6.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-22.2-7.2.2.1">
-                <p id="section-22.2-7.2.2.1.1">non-shortest path: MXXXIXM or longer<a href="#section-22.2-7.2.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-22.3-6.2.2.1">
+                <p id="section-22.3-6.2.2.1.1">non-shortest path: MXXXIXM or longer<a href="#section-22.3-6.2.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
+</li>
+        </ul>
+<p id="section-22.3-7">For SPHD topologies:<a href="#section-22.3-7" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-22.3-8.1">
+            <p id="section-22.3-8.1.1">Shortest paths<a href="#section-22.3-8.1.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-22.3-8.1.2.1">
+                <p id="section-22.3-8.1.2.1.1">intra-group: MXIXM<a href="#section-22.3-8.1.2.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-22.3-8.1.2.2">
+                <p id="section-22.3-8.1.2.2.1">inter-group (network diameter): MXXIXM<a href="#section-22.3-8.1.2.2.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
+</li>
+          <li class="normal" id="section-22.3-8.2">
+            <p id="section-22.3-8.2.1">Longer paths:<a href="#section-22.3-8.2.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-22.3-8.2.2.1">
+                <p id="section-22.3-8.2.2.1.1">non-shortest path: MXXXIXM or longer<a href="#section-22.3-8.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
@@ -2937,64 +2970,69 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 </section>
 </div>
 <div id="optically-switched-fat-tree">
-<section id="section-22.3">
+<section id="section-22.4">
         <h3 id="name-optically-switched-fat-tree">
-<a href="#section-22.3" class="section-number selfRef">22.3. </a><a href="#name-optically-switched-fat-tree" class="section-name selfRef">Optically Switched Fat Tree</a>
+<a href="#section-22.4" class="section-number selfRef">22.4. </a><a href="#name-optically-switched-fat-tree" class="section-name selfRef">Optically Switched Fat Tree</a>
         </h3>
-<p id="section-22.3-1">An <em>indirect</em> interconnect. Several parameters are needed to describe the full topology of a fat tree, which can also be called a <em>k</em>-ary <em>n</em>-tree:<a href="#section-22.3-1" class="pilcrow">¶</a></p>
+<p id="section-22.4-1">An <em>indirect</em> interconnect. Several parameters are needed to describe the full topology of a fat tree, which can also be called a <em>k</em>-ary <em>n</em>-tree:<a href="#section-22.4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-22.3-2.1">
-            <p id="section-22.3-2.1.1"><em>k</em> is the switch radix<a href="#section-22.3-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-22.4-2.1">
+            <p id="section-22.4-2.1.1"><em>k</em> is the switch radix<a href="#section-22.4-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-22.3-2.2">
-            <p id="section-22.3-2.2.1"><em>n</em> is the tree depth<a href="#section-22.3-2.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-22.4-2.2">
+            <p id="section-22.4-2.2.1"><em>n</em> is the tree depth<a href="#section-22.4-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-22.3-3">This simplest description assumes homogeneous hardware, where all switches have the same number of ports and all links are the same bandwidth.  Leiserson's original fat tree proposed single links of increasing bandwidth at higher levels of the tree, giving the network its name; this approach provides no redundancy or path diversity, and achieving higher transfer rates is impractical in some technologies, including quantum.  Consequently, most fat tree deployments use multiple links to several switches at higher levels of the tree, in a configuration that is also know as a <em>folded Clos</em> network.<a href="#section-22.3-3" class="pilcrow">¶</a></p>
+<p id="section-22.4-3">This simplest description assumes homogeneous hardware, where all switches have the same number of ports and all links are the same bandwidth.  Leiserson's original fat tree proposed single links of increasing bandwidth at higher levels of the tree, giving the network its name; this approach provides no redundancy or path diversity, and achieving higher transfer rates is impractical in some technologies, including quantum.  Consequently, most fat tree deployments use multiple links to several switches at higher levels of the tree, in a configuration that is also know as a <em>folded Clos</em> network.<a href="#section-22.4-3" class="pilcrow">¶</a></p>
+<p id="section-22.4-4">PSD: Although the entire network is a single PSD, each pairing is adjusted independently.<a href="#section-22.4-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="repeater-fat-tree">
-<section id="section-22.4">
+<section id="section-22.5">
         <h3 id="name-repeater-fat-tree">
-<a href="#section-22.4" class="section-number selfRef">22.4. </a><a href="#name-repeater-fat-tree" class="section-name selfRef">Repeater Fat Tree</a>
+<a href="#section-22.5" class="section-number selfRef">22.5. </a><a href="#name-repeater-fat-tree" class="section-name selfRef">Repeater Fat Tree</a>
         </h3>
-<p id="section-22.4-1">The repeater fat tree is described in <span>[<a href="#choi-fat-tree" class="cite xref">choi-fat-tree</a>]</span>.<a href="#section-22.4-1" class="pilcrow">¶</a></p>
+<p id="section-22.5-1">The repeater fat tree is described in <span>[<a href="#choi-fat-tree" class="cite xref">choi-fat-tree</a>]</span>.<a href="#section-22.5-1" class="pilcrow">¶</a></p>
+<p id="section-22.5-2">PSD: Each link is a separate PSD.<a href="#section-22.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="d-grid-multicomputer">
-<section id="section-22.5">
+<section id="section-22.6">
         <h3 id="name-2-d-grid-multicomputer">
-<a href="#section-22.5" class="section-number selfRef">22.5. </a><a href="#name-2-d-grid-multicomputer" class="section-name selfRef">2-D Grid Multicomputer</a>
+<a href="#section-22.6" class="section-number selfRef">22.6. </a><a href="#name-2-d-grid-multicomputer" class="section-name selfRef">2-D Grid Multicomputer</a>
         </h3>
-<p id="section-22.5-1">A <em>direct</em> interconnect. A 2-D grid of nodes, where nodes with memory and certain computational capabilities (canonically COMP nodes) have up to four interfaces connecting to neighboring nodes. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.<a href="#section-22.5-1" class="pilcrow">¶</a></p>
+<p id="section-22.6-1">A <em>direct</em> interconnect. A 2-D grid of nodes, where nodes with memory and certain computational capabilities (canonically COMP nodes) have up to four interfaces connecting to neighboring nodes. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.<a href="#section-22.6-1" class="pilcrow">¶</a></p>
+<p id="section-22.6-2">PSD: Each link is a separate PSD.<a href="#section-22.6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ring">
-<section id="section-22.6">
+<section id="section-22.7">
         <h3 id="name-ring">
-<a href="#section-22.6" class="section-number selfRef">22.6. </a><a href="#name-ring" class="section-name selfRef">Ring</a>
+<a href="#section-22.7" class="section-number selfRef">22.7. </a><a href="#name-ring" class="section-name selfRef">Ring</a>
         </h3>
-<p id="section-22.6-1">A <em>direct</em> interconnect. All nodes in a ring have exactly two neighbors. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.<a href="#section-22.6-1" class="pilcrow">¶</a></p>
-<p id="section-22.6-2">A ring is described in (something from Simon's group).<a href="#section-22.6-2" class="pilcrow">¶</a></p>
+<p id="section-22.7-1">A <em>direct</em> interconnect. All nodes in a ring have exactly two neighbors. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.<a href="#section-22.7-1" class="pilcrow">¶</a></p>
+<p id="section-22.7-2">A ring is described in (something from Simon's group).<a href="#section-22.7-2" class="pilcrow">¶</a></p>
+<p id="section-22.7-3">PSD: Each link is a separate PSD.<a href="#section-22.7-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="qlan">
-<section id="section-22.7">
+<section id="section-22.8">
         <h3 id="name-qlan">
-<a href="#section-22.7" class="section-number selfRef">22.7. </a><a href="#name-qlan" class="section-name selfRef">QLAN</a>
+<a href="#section-22.8" class="section-number selfRef">22.8. </a><a href="#name-qlan" class="section-name selfRef">QLAN</a>
         </h3>
-<p id="section-22.7-1">A quantum local area network will have:<a href="#section-22.7-1" class="pilcrow">¶</a></p>
+<p id="section-22.8-1">A quantum local area network will have:<a href="#section-22.8-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-22.7-2.1">
-            <p id="section-22.7-2.1.1">irregular topology, possibly of heterogeneous link types<a href="#section-22.7-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-22.8-2.1">
+            <p id="section-22.8-2.1.1">irregular topology, possibly of heterogeneous link types<a href="#section-22.8-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-22.7-2.2">
-            <p id="section-22.7-2.2.1">distributed multiplexing<a href="#section-22.7-2.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-22.8-2.2">
+            <p id="section-22.8-2.2.1">distributed multiplexing<a href="#section-22.8-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-22.7-2.3">
-            <p id="section-22.7-2.3.1">distributed routing<a href="#section-22.7-2.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-22.8-2.3">
+            <p id="section-22.8-2.3.1">distributed routing<a href="#section-22.8-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
+<p id="section-22.8-3">PSD: If the QLAN does not include optical switches, but uses repeaters, each link is a separate PSD. If the QLAN includes optical switches, the PSDs may have irregular boundaries.<a href="#section-22.8-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3044,6 +3082,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <a href="#section-25.2" class="section-number selfRef">25.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="abane-routing">[abane-routing]</dt>
+        <dd>
+<span class="refAuthor">Abane, A.</span>, <span class="refAuthor">Cubeddu, M.</span>, <span class="refAuthor">Mai, V.</span>, and <span class="refAuthor">A. Battou</span>, <span class="refTitle">"Entanglement Routing in Quantum Networks: A Comprehensive Survey"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2408.01234</span>, <time datetime="2024" class="refDate">2024</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2408.01234">https://doi.org/10.48550/ARXIV.2408.01234</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="aboy-governance">[aboy-governance]</dt>
         <dd>
 <span class="refAuthor">Aboy, M.</span>, <span class="refAuthor">Gasser, U.</span>, <span class="refAuthor">Cohen, I.</span>, and <span class="refAuthor">M. Kop</span>, <span class="refTitle">"Quantum technology governance: A standards-first approach"</span>, <span class="refContent">American Association for the Advancement of Science (AAAS)</span>, <span class="seriesInfo">Science vol. 389, no. 6760, pp. 575-578</span>, <span class="seriesInfo">DOI 10.1126/science.adw0018</span>, <time datetime="2025-08" class="refDate">August 2025</time>, <span>&lt;<a href="https://doi.org/10.1126/science.adw0018">https://doi.org/10.1126/science.adw0018</a>&gt;</span>. </dd>
@@ -3052,6 +3094,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Ambainis, A.</span>, <span class="refAuthor">Buhrman, H.</span>, <span class="refAuthor">Dodis, Y.</span>, and <span class="refAuthor">H. Rohrig</span>, <span class="refTitle">"Multiparty quantum coin flipping"</span>, <span class="refContent">IEEE</span>, <span class="seriesInfo">Proceedings. 19th IEEE Annual Conference on Computational Complexity, 2004. pp. 250-259</span>, <span class="seriesInfo">DOI 10.1109/ccc.2004.1313848</span>, <time datetime="2004-11" class="refDate">November 2004</time>, <span>&lt;<a href="https://doi.org/10.1109/ccc.2004.1313848">https://doi.org/10.1109/ccc.2004.1313848</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="aparicio-spie">[aparicio-spie]</dt>
+        <dd>
+<span class="refAuthor">Aparicio, L.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Multiplexing schemes for quantum repeater networks"</span>, <span class="refContent">SPIE</span>, <span class="seriesInfo">SPIE Proceedings</span>, <span class="seriesInfo">DOI 10.1117/12.893272</span>, <time datetime="2011-09" class="refDate">September 2011</time>, <span>&lt;<a href="https://doi.org/10.1117/12.893272">https://doi.org/10.1117/12.893272</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="awschalom-roadmap">[awschalom-roadmap]</dt>
         <dd>
 <span class="refAuthor">Awschalom, D.</span>, <span class="refAuthor">Bernien, H.</span>, <span class="refAuthor">Brown, R.</span>, <span class="refAuthor">Clerk, A.</span>, <span class="refAuthor">Chitambar, E.</span>, <span class="refAuthor">Dibos, A.</span>, <span class="refAuthor">Dionne, J.</span>, <span class="refAuthor">Eriksson, M.</span>, <span class="refAuthor">Fefferman, B.</span>, <span class="refAuthor">Fuchs, G.</span>, <span class="refAuthor">Gambetta, J.</span>, <span class="refAuthor">Goldschmidt, E.</span>, <span class="refAuthor">Guha, S.</span>, <span class="refAuthor">Heremans, F.</span>, <span class="refAuthor">Irwin, K.</span>, <span class="refAuthor">Jayich, A.</span>, <span class="refAuthor">Jiang, L.</span>, <span class="refAuthor">Karsch, J.</span>, <span class="refAuthor">Kasevich, M.</span>, <span class="refAuthor">Kolkowitz, S.</span>, <span class="refAuthor">Kwiat, P.</span>, <span class="refAuthor">Ladd, T.</span>, <span class="refAuthor">Lowell, J.</span>, <span class="refAuthor">Maslov, D.</span>, <span class="refAuthor">Mason, N.</span>, <span class="refAuthor">Matsuura, A.</span>, <span class="refAuthor">McDermott, R.</span>, <span class="refAuthor">van Meter, R.</span>, <span class="refAuthor">Miller, A.</span>, <span class="refAuthor">Orcutt, J.</span>, <span class="refAuthor">Saffman, M.</span>, <span class="refAuthor">Schleier-Smith, M.</span>, <span class="refAuthor">Singh, M.</span>, <span class="refAuthor">Smith, P.</span>, <span class="refAuthor">Suchara, M.</span>, <span class="refAuthor">Toudeh-Fallah, F.</span>, <span class="refAuthor">Turlington, M.</span>, <span class="refAuthor">Woods, B.</span>, and <span class="refAuthor">T. Zhong</span>, <span class="refTitle">"A Roadmap for Quantum Interconnects"</span>, <span class="refContent">Office of Scientific and Technical Information (OSTI)</span>, <span class="seriesInfo">DOI 10.2172/1900586</span>, <time datetime="2022-07" class="refDate">July 2022</time>, <span>&lt;<a href="https://doi.org/10.2172/1900586">https://doi.org/10.2172/1900586</a>&gt;</span>. </dd>
@@ -3059,6 +3105,18 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="azuma-rgs">[azuma-rgs]</dt>
         <dd>
 <span class="refAuthor">Azuma, K.</span>, <span class="refAuthor">Tamaki, K.</span>, and <span class="refAuthor">H. Lo</span>, <span class="refTitle">"All-photonic quantum repeaters"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">Nature Communications vol. 6, no. 1</span>, <span class="seriesInfo">DOI 10.1038/ncomms7787</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://doi.org/10.1038/ncomms7787">https://doi.org/10.1038/ncomms7787</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="azuma-rmp">[azuma-rmp]</dt>
+        <dd>
+<span class="refAuthor">Azuma, K.</span>, <span class="refAuthor">Economou, S.</span>, <span class="refAuthor">Elkouss, D.</span>, <span class="refAuthor">Hilaire, P.</span>, <span class="refAuthor">Jiang, L.</span>, <span class="refAuthor">Lo, H.</span>, and <span class="refAuthor">I. Tzitrin</span>, <span class="refTitle">"Quantum repeaters: From quantum networks to the quantum internet"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Reviews of Modern Physics vol. 95, no. 4</span>, <span class="seriesInfo">DOI 10.1103/revmodphys.95.045006</span>, <time datetime="2023-12" class="refDate">December 2023</time>, <span>&lt;<a href="https://doi.org/10.1103/revmodphys.95.045006">https://doi.org/10.1103/revmodphys.95.045006</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="BB84">[BB84]</dt>
+        <dd>
+<span class="refAuthor">Bennett, C.</span> and <span class="refAuthor">G. Brassard</span>, <span class="refTitle">"Quantum cryptography: Public key distribution and coin tossing"</span>, <span class="refContent">Elsevier BV</span>, <span class="seriesInfo">Theoretical Computer Science vol. 560, pp. 7-11</span>, <span class="seriesInfo">DOI 10.1016/j.tcs.2014.05.025</span>, <time datetime="2014-12" class="refDate">December 2014</time>, <span>&lt;<a href="https://doi.org/10.1016/j.tcs.2014.05.025">https://doi.org/10.1016/j.tcs.2014.05.025</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="BBM92">[BBM92]</dt>
+        <dd>
+<span class="refAuthor">Bennett, C.</span>, <span class="refAuthor">Brassard, G.</span>, and <span class="refAuthor">N. Mermin</span>, <span class="refTitle">"Quantum cryptography without Bell’s theorem"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review Letters vol. 68, no. 5, pp. 557-559</span>, <span class="seriesInfo">DOI 10.1103/physrevlett.68.557</span>, <time datetime="1992-02" class="refDate">February 1992</time>, <span>&lt;<a href="https://doi.org/10.1103/physrevlett.68.557">https://doi.org/10.1103/physrevlett.68.557</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="bennett-mixed">[bennett-mixed]</dt>
         <dd>
@@ -3094,7 +3152,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dd class="break"></dd>
 <dt id="divincenzo-criteria">[divincenzo-criteria]</dt>
         <dd>
-<span class="refAuthor">DiVincenzo, D.</span>, <span class="refTitle">"The Physical Implementation of Quantum Computation"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo"> arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.QUANT-PH/0002077</span>, <time datetime="2000" class="refDate">2000</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.QUANT-PH/0002077">https://doi.org/10.48550/ARXIV.QUANT-PH/0002077</a>&gt;</span>. </dd>
+<span class="refAuthor">DiVincenzo, D.</span> and <span class="refAuthor">IBM</span>, <span class="refTitle">"The Physical Implementation of Quantum Computation"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo"> arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.QUANT-PH/0002077</span>, <time datetime="2000" class="refDate">2000</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.QUANT-PH/0002077">https://doi.org/10.48550/ARXIV.QUANT-PH/0002077</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="drost">[drost]</dt>
         <dd>
@@ -3108,9 +3166,17 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Dür, W.</span>, <span class="refAuthor">Vidal, G.</span>, and <span class="refAuthor">J. Cirac</span>, <span class="refTitle">"Three qubits can be entangled in two inequivalent ways"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 62, no. 6</span>, <span class="seriesInfo">DOI 10.1103/physreva.62.062314</span>, <time datetime="2000-11" class="refDate">November 2000</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.62.062314">https://doi.org/10.1103/physreva.62.062314</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="E91">[E91]</dt>
+        <dd>
+<span class="refAuthor">Ekert, A.</span>, <span class="refTitle">"Quantum cryptography based on Bell’s theorem"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review Letters vol. 67, no. 6, pp. 661-663</span>, <span class="seriesInfo">DOI 10.1103/physrevlett.67.661</span>, <time datetime="1991-08" class="refDate">August 1991</time>, <span>&lt;<a href="https://doi.org/10.1103/physrevlett.67.661">https://doi.org/10.1103/physrevlett.67.661</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="fan-dgs-dist">[fan-dgs-dist]</dt>
         <dd>
 <span class="refAuthor">Fan, X.</span>, <span class="refAuthor">Zhan, C.</span>, <span class="refAuthor">Gupta, H.</span>, and <span class="refAuthor">C. Ramakrishnan</span>, <span class="refTitle">"Optimized Distribution of Entanglement Graph States in Quantum Networks"</span>, <span class="refContent">Institute of Electrical and Electronics Engineers (IEEE)</span>, <span class="seriesInfo">IEEE Transactions on Quantum Engineering vol. 6, pp. 1-17</span>, <span class="seriesInfo">DOI 10.1109/tqe.2025.3552006</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://doi.org/10.1109/tqe.2025.3552006">https://doi.org/10.1109/tqe.2025.3552006</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="farhadi-sdn">[farhadi-sdn]</dt>
+        <dd>
+<span class="refAuthor">Farhady, H.</span>, <span class="refAuthor">Lee, H.</span>, and <span class="refAuthor">A. Nakao</span>, <span class="refTitle">"Software-Defined Networking: A survey"</span>, <span class="refContent">Elsevier BV</span>, <span class="seriesInfo">Computer Networks vol. 81, pp. 79-95</span>, <span class="seriesInfo">DOI 10.1016/j.comnet.2015.02.014</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://doi.org/10.1016/j.comnet.2015.02.014">https://doi.org/10.1016/j.comnet.2015.02.014</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="fischer-dgs">[fischer-dgs]</dt>
         <dd>
@@ -3150,7 +3216,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dd class="break"></dd>
 <dt id="hein-graph-entanglement">[hein-graph-entanglement]</dt>
         <dd>
-<span class="refTitle">"Entanglement in graph states and its applications"</span>, <span class="refContent">IOS Press</span>, <span class="seriesInfo">Proceedings of the International School of Physics “Enrico Fermi” vol. 162, pp. 115–218</span>, <span class="seriesInfo">DOI 10.3254/978-1-61499-018-5-115</span>, <time datetime="2006" class="refDate">2006</time>, <span>&lt;<a href="https://doi.org/10.3254/978-1-61499-018-5-115">https://doi.org/10.3254/978-1-61499-018-5-115</a>&gt;</span>. </dd>
+<span class="refAuthor">Hein, M.</span>, <span class="refAuthor">Dür, W.</span>, <span class="refAuthor">Eisert, J.</span>, <span class="refAuthor">Raussendorf, R.</span>, <span class="refAuthor">Van den Nest, M.</span>, and <span class="refAuthor">H. Briegel</span>, <span class="refTitle">"Entanglement in graph states and its applications"</span>, <span class="refContent">IOS Press</span>, <span class="seriesInfo">Proceedings of the International School of Physics “Enrico Fermi” vol. 162, pp. 115–218</span>, <span class="seriesInfo">DOI 10.3254/978-1-61499-018-5-115</span>, <time datetime="2006" class="refDate">2006</time>, <span>&lt;<a href="https://doi.org/10.3254/978-1-61499-018-5-115">https://doi.org/10.3254/978-1-61499-018-5-115</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="hein-multiparty">[hein-multiparty]</dt>
         <dd>
@@ -3174,7 +3240,11 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dd class="break"></dd>
 <dt id="I-D.draft-hajdusek-qirg-timing-physics">[I-D.draft-hajdusek-qirg-timing-physics]</dt>
         <dd>
-<span class="refAuthor">Hajdusek, M.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Timing Regimes in Quantum Networks and their Physical Underpinnings"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-hajdusek-qirg-timing-physics-00</span>, <time datetime="2026-03-02" class="refDate">2 March 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-hajdusek-qirg-timing-physics-00">https://datatracker.ietf.org/doc/html/draft-hajdusek-qirg-timing-physics-00</a>&gt;</span>. </dd>
+<span class="refAuthor">Hajdusek, M.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Timing Regimes in Quantum Networks and their Physical Underpinnings"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-hajdusek-qirg-timing-physics-01</span>, <time datetime="2026-03-18" class="refDate">18 March 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-hajdusek-qirg-timing-physics-01">https://datatracker.ietf.org/doc/html/draft-hajdusek-qirg-timing-physics-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.draft-kaws-qirg-advent">[I-D.draft-kaws-qirg-advent]</dt>
+        <dd>
+<span class="refAuthor">Kompella, K.</span>, <span class="refAuthor">Aelmans, M.</span>, <span class="refAuthor">Wehner, S.</span>, <span class="refAuthor">Sirbu, C.</span>, and <span class="refAuthor">A. Dahlberg</span>, <span class="refTitle">"Advertising Entanglement Capabilities in Quantum Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-kaws-qirg-advent-03</span>, <time datetime="2019-03-27" class="refDate">27 March 2019</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-kaws-qirg-advent-03">https://datatracker.ietf.org/doc/html/draft-kaws-qirg-advent-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.draft-van-meter-qirg-quantum-connection-setup">[I-D.draft-van-meter-qirg-quantum-connection-setup]</dt>
         <dd>
@@ -3219,6 +3289,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="mayers-unconditional">[mayers-unconditional]</dt>
         <dd>
 <span class="refAuthor">Mayers, D.</span>, <span class="refTitle">"Unconditional security in Quantum Cryptography"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo"> arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.QUANT-PH/9802025</span>, <time datetime="1998" class="refDate">1998</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.QUANT-PH/9802025">https://doi.org/10.48550/ARXIV.QUANT-PH/9802025</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="mccanne-bpf">[mccanne-bpf]</dt>
+        <dd>
+<span class="refAuthor">McCanne, S.</span> and <span class="refAuthor">V. Jacobson</span>, <span class="refTitle">"The BSD packet filter: a new architecture for user-level packet capture"</span>, <span class="refContent">USENIX'93: Proceedings of the USENIX Winter 1993 Conference Proceedings on USENIX Winter 1993 Conference Proceedings</span>, <time datetime="1993-01-25" class="refDate">25 January 1993</time>. </dd>
 <dd class="break"></dd>
 <dt id="meignant-dgs">[meignant-dgs]</dt>
         <dd>
@@ -3268,9 +3342,29 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Braden, R., Ed.</span>, <span class="refTitle">"Requirements for Internet Hosts - Application and Support"</span>, <span class="seriesInfo">STD 3</span>, <span class="seriesInfo">RFC 1123</span>, <span class="seriesInfo">DOI 10.17487/RFC1123</span>, <time datetime="1989-10" class="refDate">October 1989</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc1123">https://www.rfc-editor.org/rfc/rfc1123</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC1958">[RFC1958]</dt>
+        <dd>
+<span class="refAuthor">Carpenter, B., Ed.</span>, <span class="refTitle">"Architectural Principles of the Internet"</span>, <span class="seriesInfo">RFC 1958</span>, <span class="seriesInfo">DOI 10.17487/RFC1958</span>, <time datetime="1996-06" class="refDate">June 1996</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc1958">https://www.rfc-editor.org/rfc/rfc1958</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5218">[RFC5218]</dt>
+        <dd>
+<span class="refAuthor">Thaler, D.</span> and <span class="refAuthor">B. Aboba</span>, <span class="refTitle">"What Makes for a Successful Protocol?"</span>, <span class="seriesInfo">RFC 5218</span>, <span class="seriesInfo">DOI 10.17487/RFC5218</span>, <time datetime="2008-07" class="refDate">July 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5218">https://www.rfc-editor.org/rfc/rfc5218</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6250">[RFC6250]</dt>
+        <dd>
+<span class="refAuthor">Thaler, D.</span>, <span class="refTitle">"Evolution of the IP Model"</span>, <span class="seriesInfo">RFC 6250</span>, <span class="seriesInfo">DOI 10.17487/RFC6250</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6250">https://www.rfc-editor.org/rfc/rfc6250</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6852">[RFC6852]</dt>
+        <dd>
+<span class="refAuthor">Housley, R.</span>, <span class="refAuthor">Mills, S.</span>, <span class="refAuthor">Jaffe, J.</span>, <span class="refAuthor">Aboba, B.</span>, and <span class="refAuthor">L. St.Amour</span>, <span class="refTitle">"Affirmation of the Modern Paradigm for Standards"</span>, <span class="seriesInfo">RFC 6852</span>, <span class="seriesInfo">DOI 10.17487/RFC6852</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6852">https://www.rfc-editor.org/rfc/rfc6852</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC9340">[RFC9340]</dt>
         <dd>
 <span class="refAuthor">Kozlowski, W.</span>, <span class="refAuthor">Wehner, S.</span>, <span class="refAuthor">Van Meter, R.</span>, <span class="refAuthor">Rijsman, B.</span>, <span class="refAuthor">Cacciapuoti, A. S.</span>, <span class="refAuthor">Caleffi, M.</span>, and <span class="refAuthor">S. Nagayama</span>, <span class="refTitle">"Architectural Principles for a Quantum Internet"</span>, <span class="seriesInfo">RFC 9340</span>, <span class="seriesInfo">DOI 10.17487/RFC9340</span>, <time datetime="2023-03" class="refDate">March 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9340">https://www.rfc-editor.org/rfc/rfc9340</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9413">[RFC9413]</dt>
+        <dd>
+<span class="refAuthor">Thomson, M.</span> and <span class="refAuthor">D. Schinazi</span>, <span class="refTitle">"Maintaining Robust Protocols"</span>, <span class="seriesInfo">RFC 9413</span>, <span class="seriesInfo">DOI 10.17487/RFC9413</span>, <time datetime="2023-06" class="refDate">June 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9413">https://www.rfc-editor.org/rfc/rfc9413</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9583">[RFC9583]</dt>
         <dd>
@@ -3319,6 +3413,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="van-meter-qi-arch">[van-meter-qi-arch]</dt>
         <dd>
 <span class="refAuthor">Van Meter, R.</span>, <span class="refAuthor">Satoh, R.</span>, <span class="refAuthor">Benchasattabuse, N.</span>, <span class="refAuthor">Teramoto, K.</span>, <span class="refAuthor">Matsuo, T.</span>, <span class="refAuthor">Hajdusek, M.</span>, <span class="refAuthor">Satoh, T.</span>, <span class="refAuthor">Nagayama, S.</span>, and <span class="refAuthor">S. Suzuki</span>, <span class="refTitle">"A Quantum Internet Architecture"</span>, <span class="refContent">IEEE</span>, <span class="seriesInfo">2022 IEEE International Conference on Quantum Computing and Engineering (QCE) pp. 341-352</span>, <span class="seriesInfo">DOI 10.1109/qce53715.2022.00055</span>, <time datetime="2022-09" class="refDate">September 2022</time>, <span>&lt;<a href="https://doi.org/10.1109/qce53715.2022.00055">https://doi.org/10.1109/qce53715.2022.00055</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="van-meter-sys-design">[van-meter-sys-design]</dt>
+        <dd>
+<span class="refAuthor">Van Meter, R.</span>, <span class="refAuthor">Ladd, T.</span>, <span class="refAuthor">Munro, W.</span>, and <span class="refAuthor">K. Nemoto</span>, <span class="refTitle">"System Design for a Long-Line Quantum Repeater"</span>, <span class="refContent">Institute of Electrical and Electronics Engineers (IEEE)</span>, <span class="seriesInfo">IEEE/ACM Transactions on Networking vol. 17, no. 3, pp. 1002-1013</span>, <span class="seriesInfo">DOI 10.1109/tnet.2008.927260</span>, <time datetime="2009-06" class="refDate">June 2009</time>, <span>&lt;<a href="https://doi.org/10.1109/tnet.2008.927260">https://doi.org/10.1109/tnet.2008.927260</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="vepsaelaeinen-ionizing">[vepsaelaeinen-ionizing]</dt>
         <dd>

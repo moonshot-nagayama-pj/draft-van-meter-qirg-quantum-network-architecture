@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 17 September 2026                               Keio University
-                                                           16 March 2026
+Expires: 13 February 2027                                Keio University
+                                                          12 August 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 September 2026.
+   This Internet-Draft will expire on 13 February 2027.
 
 Copyright Notice
 
@@ -107,14 +107,15 @@ Table of Contents
        10.5.3.  Memory-Emitted Photons
      10.6.  Detectors
    11. Requirements
-     11.1.  General Requirements
-       11.1.1.  Functional Requirements
-       11.1.2.  Interface Requirements
-       11.1.3.  Physical Requirements
-       11.1.4.  Environmental Requirements
-     11.2.  Network Management Requirements
-       11.2.1.  Fault Management
-       11.2.2.  Configuration Management
+     11.1.  Normative Requirements
+     11.2.  General Requirements
+       11.2.1.  Functional Requirements
+       11.2.2.  Interface Requirements
+       11.2.3.  Physical Requirements
+       11.2.4.  Environmental Requirements
+     11.3.  Network Management Requirements
+       11.3.1.  Fault Management
+       11.3.2.  Configuration Management
    12. Top Level Architecture
      12.1.  Deterministic Classical Control of Quantum States
    13. Communication Service
@@ -146,13 +147,14 @@ Table of Contents
    21. Naming and Addressing
      21.1.  State naming and management in RuleSets
    22. Example Networks
-     22.1.  Fully Connected
-     22.2.  Q-Fly Multicomputer
-     22.3.  Optically Switched Fat Tree
-     22.4.  Repeater Fat Tree
-     22.5.  2-D Grid Multicomputer
-     22.6.  Ring
-     22.7.  QLAN
+     22.1.  Fully Connected Point-to-Point
+     22.2.  Single Optical Switch
+     22.3.  Q-Fly Multicomputer
+     22.4.  Optically Switched Fat Tree
+     22.5.  Repeater Fat Tree
+     22.6.  2-D Grid Multicomputer
+     22.7.  Ring
+     22.8.  QLAN
    23. APIs for Network Service ("Quantum Sockets")
    24. Security Considerations
    25. References
@@ -309,9 +311,10 @@ Table of Contents
 
       -  Entanglement swapping
 
-      -  Quantum key distribution: BB84, E91, BBM92
+      -  Quantum key distribution [BB84], [E91], [BBM92]
 
-      -  "Generations" of quantum repeaters
+      -  "Generations" of quantum repeaters [muralidharan-generations],
+         [azuma-rmp]
 
       -  (Repeater graph states may be helpful, but are not used in the
          current architecture)
@@ -671,6 +674,11 @@ Table of Contents
    beamsplitters "simultaneously", with sufficient overlap, as specified
    in [I-D.draft-hajdusek-qirg-timing-physics].
 
+   Note that the most common operational mode uses only pairs of
+   photons, not multi-photon operations; the definition of PSD does not
+   imply that all channels must be synchronized with each other and used
+   in a single operation.
+
 8.5.  Direct and Indirect Multicomputer Architectures
 
    In multicomputer architectures, a _direct_ architecture features
@@ -810,10 +818,11 @@ Table of Contents
    *  The creation of sequences of end-to-end entangled states, roughly
       equivalent to TCP, is the responsibility of RuleSets, inspired by
       software-defined networking (SDN) (https://en.wikipedia.org/wiki/
-      Software-defined_networking).  A RuleSet can also be viewed as
-      something like a Berkeley Packet Filter (BPF): it's a small
-      program that handled actions that the application could do, but
-      the application can't achieve the low, reliable latency to do it.
+      Software-defined_networking) [farhadi-sdn].  A RuleSet can also be
+      viewed as something like a Berkeley Packet Filter (BPF)
+      [mccanne-bpf] : it's a small program that handled actions that the
+      application could do, but the application can't achieve the low,
+      reliable latency to do it.
 
    *  In principle, all nodes are running the same program, distributed
       to all nodes.  Since the compiled application circuits are often
@@ -917,7 +926,7 @@ Table of Contents
    vary on a per-link basis.
 
    Distributed control and protocols for multiplexing and connection
-   setup are necessary.
+   setup are necessary [aparicio-spie].
 
 9.4.  Wide-Area Network (QWAN)
 
@@ -1054,9 +1063,18 @@ Table of Contents
    This section documents the requirements for all networks adhering to
    this architecture.
 
-11.1.  General Requirements
+11.1.  Normative Requirements
 
-11.1.1.  Functional Requirements
+   *  The architecture must support an open development process
+      [RFC6852].
+
+   *  The architecture must support the creation of robust, extensible,
+      maintainable protocols in keeping with best current practice
+      [RFC9413] [RFC6250] [RFC1958] [RFC5218].
+
+11.2.  General Requirements
+
+11.2.1.  Functional Requirements
 
    *  Operates on qubits.  (Qutrits, qudits, qunats and continuous-
       variable systems are out of scope of this architecture, except
@@ -1084,7 +1102,7 @@ Table of Contents
       unentangled, single-purpose quantum key distribution networks to
       fully entangled, multipurpose networks.
 
-11.1.2.  Interface Requirements
+11.2.2.  Interface Requirements
 
    *  Supports one or more applications, such as the ones in [RFC9583],
       with APIs consistent with the B, C, or T classes.
@@ -1092,25 +1110,25 @@ Table of Contents
    *  The network must enable applications to match quantum states at
       each end of the Bell pair by name.
 
-11.1.3.  Physical Requirements
+11.2.3.  Physical Requirements
 
    Physical requirements such as distance, wavelength, vibration, power,
    etc. will be case-dependent.
 
-11.1.4.  Environmental Requirements
+11.2.4.  Environmental Requirements
 
    Physical requirements such as distance, wavelength, vibration, power,
    etc. will be case-dependent.
 
-11.2.  Network Management Requirements
+11.3.  Network Management Requirements
 
-11.2.1.  Fault Management
+11.3.1.  Fault Management
 
    *  Supports isolation of hardware and software faults.
 
    *  Supports monitoring and reporting of fidelity.
 
-11.2.2.  Configuration Management
+11.3.2.  Configuration Management
 
    *  The architecture must support the use of both manual and automated
       network configuration tools.
@@ -1268,8 +1286,8 @@ Table of Contents
    often described in terms of a layered protocol stack such as the
    7-layer OSI model (https://en.wikipedia.org/wiki/OSI_model), although
    the Internet can be more accurately described as a three-, four-, or
-   five-layer model (https://en.wikipedia.org/wiki/Internet_protocol_sui
-   te#Layering_evolution_and_representations_in_the_literature),
+   five-layer model (https://en.wikipedia.org/wiki/
+   Internet_protocol_suite#Layering_evolution_and_representations_in_the_literature),
    depending in part on whether a distinction is made between the
    physical and link layers and in part on how the application layer is
    subdivided.
@@ -1377,7 +1395,7 @@ Table of Contents
    with network operations [ambainis-multiparty-coin], [taherkhani-byz],
    [mayers-unconditional], [christandl-anon], [broadbent-bfk-protocol],
    [fitzsimons-blind], [mahadev-homomorphic], [dulek-homomorphic],
-   [shapourian-qdc-infra], [sutcliffe-dist-qec], [yoder-tour-de-gross].
+   [shapourian-qdc-infra], [sutcliffe-dist-qec], [yoder-tour-de-gross],
    [kim-ft-million].
 
 16.2.  Support Nodes
@@ -1433,6 +1451,9 @@ Table of Contents
    circuits, can be integrated as components within other node types
    (e.g., routers or complex end nodes) or can function as standalone
    elements in the network to dynamically reconfigure optical pathways.
+
+   An OSW node contains at least one switch device, which comprises at
+   least once switch point.
 
 16.3.  Repeater Nodes
 
@@ -1590,6 +1611,15 @@ Table of Contents
    connections and therefore must be actively managed via a multiplexing
    system.  This task is particularly challenging in switched networks.
 
+   The discovery of the physical topology can be based on link state
+   protocols, such as direct adaptation of OSPF or IS-IS
+   [I-D.draft-kaws-qirg-advent].  These protocols use a unitless link
+   cost.  It is known that, at least for certain physical systems,
+   selecting a link cost corresponding to "seconds per Bell pair of a
+   given fidelity" produces good correlation between low path cost and
+   high throughput [van-meter-sys-design].  A number of approaches have
+   been proposed [abane-routing].
+
 20.  Classical Communication
 
    A quantum network depends on classical communication; indeed, almost
@@ -1714,18 +1744,42 @@ Table of Contents
    described, followed by analysis of the path characteristics of the
    shortest path and network diameter.
 
-22.1.  Fully Connected
+22.1.  Fully Connected Point-to-Point
+
+   Small networks may use nodes with multiple interfaces and provide a
+   direct link between each pair of nodes, making a _direct_ network.
+   Assuming sufficient node-internal capabilities, such a network
+   provides lowest loss (giving the fastest individual links) and the
+   highest aggregate bandwidth, and is inherently nonblocking.  However,
+   with n-1 links per node and O(n^2) links in the network, its
+   scalability is poor.  It will always provide the highest performance,
+   but not necessarily highest price/performance ratio.
+
+   If links are midpoint interference-based, an issue in design is
+   packaging of the BSAs and detectors.
+
+   PSD: Each link is a separate PSD.
+
+   All paths: MIM
+
+22.2.  Single Optical Switch
 
    A number of the early quantum multicomputer proposals assumed a
-   single, large optical switch.
+   single, large optical switch.  Such a network is _indirect_.
 
-   Shortest paths:
+   PSD: Although the entire network is a single PSD, each pairing is
+   adjusted independently.
 
-22.2.  Q-Fly Multicomputer
+   All paths: MXIXM
+
+22.3.  Q-Fly Multicomputer
 
    An _indirect_ interconnect.  A multi-group, BSA-centric architecture.
    All nodes are part of the same PSD.  The Q-Fly architecture is
    described in Sakuma et al. [sakuma-q-fly].
+
+   PSD: Although the entire network is a single PSD, each pairing is
+   adjusted independently.
 
    For DPFD topologies:
 
@@ -1763,7 +1817,7 @@ Table of Contents
 
       -  non-shortest path: MXXXIXM or longer
 
-22.3.  Optically Switched Fat Tree
+22.4.  Optically Switched Fat Tree
 
    An _indirect_ interconnect.  Several parameters are needed to
    describe the full topology of a fat tree, which can also be called a
@@ -1783,11 +1837,16 @@ Table of Contents
    multiple links to several switches at higher levels of the tree, in a
    configuration that is also know as a _folded Clos_ network.
 
-22.4.  Repeater Fat Tree
+   PSD: Although the entire network is a single PSD, each pairing is
+   adjusted independently.
+
+22.5.  Repeater Fat Tree
 
    The repeater fat tree is described in [choi-fat-tree].
 
-22.5.  2-D Grid Multicomputer
+   PSD: Each link is a separate PSD.
+
+22.6.  2-D Grid Multicomputer
 
    A _direct_ interconnect.  A 2-D grid of nodes, where nodes with
    memory and certain computational capabilities (canonically COMP
@@ -1795,7 +1854,9 @@ Table of Contents
    Each node must act as a memory buffer and repeater to enable
    communication between non-neighboring nodes.
 
-22.6.  Ring
+   PSD: Each link is a separate PSD.
+
+22.7.  Ring
 
    A _direct_ interconnect.  All nodes in a ring have exactly two
    neighbors.  Each node must act as a memory buffer and repeater to
@@ -1803,7 +1864,9 @@ Table of Contents
 
    A ring is described in (something from Simon's group).
 
-22.7.  QLAN
+   PSD: Each link is a separate PSD.
+
+22.8.  QLAN
 
    A quantum local area network will have:
 
@@ -1812,6 +1875,10 @@ Table of Contents
    *  distributed multiplexing
 
    *  distributed routing
+
+   PSD: If the QLAN does not include optical switches, but uses
+   repeaters, each link is a separate PSD.  If the QLAN includes optical
+   switches, the PSDs may have irregular boundaries.
 
 23.  APIs for Network Service ("Quantum Sockets")
 
@@ -1845,6 +1912,12 @@ Table of Contents
 
 25.2.  Informative References
 
+   [abane-routing]
+              Abane, A., Cubeddu, M., Mai, V., and A. Battou,
+              "Entanglement Routing in Quantum Networks: A Comprehensive
+              Survey", arXiv, DOI 10.48550/ARXIV.2408.01234, 2024,
+              <https://doi.org/10.48550/ARXIV.2408.01234>.
+
    [aboy-governance]
               Aboy, M., Gasser, U., Cohen, I., and M. Kop, "Quantum
               technology governance: A standards-first approach",
@@ -1859,6 +1932,12 @@ Table of Contents
               19th IEEE Annual Conference on Computational Complexity,
               2004. pp. 250-259, DOI 10.1109/ccc.2004.1313848, November
               2004, <https://doi.org/10.1109/ccc.2004.1313848>.
+
+   [aparicio-spie]
+              Aparicio, L. and R. Van Meter, "Multiplexing schemes for
+              quantum repeater networks", SPIE, SPIE Proceedings,
+              DOI 10.1117/12.893272, September 2011,
+              <https://doi.org/10.1117/12.893272>.
 
    [awschalom-roadmap]
               , Awschalom, D., Bernien, H., Brown, R., Clerk, A.,
@@ -1881,6 +1960,26 @@ Table of Contents
               Nature Communications vol. 6, no. 1,
               DOI 10.1038/ncomms7787, April 2015,
               <https://doi.org/10.1038/ncomms7787>.
+
+   [azuma-rmp]
+              Azuma, K., Economou, S., Elkouss, D., Hilaire, P., Jiang,
+              L., Lo, H., and I. Tzitrin, "Quantum repeaters: From
+              quantum networks to the quantum internet", American
+              Physical Society (APS), Reviews of Modern Physics vol. 95,
+              no. 4, DOI 10.1103/revmodphys.95.045006, December 2023,
+              <https://doi.org/10.1103/revmodphys.95.045006>.
+
+   [BB84]     Bennett, C. and G. Brassard, "Quantum cryptography: Public
+              key distribution and coin tossing", Elsevier BV,
+              Theoretical Computer Science vol. 560, pp. 7-11,
+              DOI 10.1016/j.tcs.2014.05.025, December 2014,
+              <https://doi.org/10.1016/j.tcs.2014.05.025>.
+
+   [BBM92]    Bennett, C., Brassard, G., and N. Mermin, "Quantum
+              cryptography without Bell’s theorem", American Physical
+              Society (APS), Physical Review Letters vol. 68, no. 5, pp.
+              557-559, DOI 10.1103/physrevlett.68.557, February 1992,
+              <https://doi.org/10.1103/physrevlett.68.557>.
 
    [bennett-mixed]
               Bennett, C., DiVincenzo, D., Smolin, J., and W. Wootters,
@@ -1938,7 +2037,7 @@ Table of Contents
               <https://doi.org/10.1103/revmodphys.89.035002>.
 
    [divincenzo-criteria]
-              DiVincenzo, D. and , "The Physical Implementation of
+              DiVincenzo, D. and IBM, "The Physical Implementation of
               Quantum Computation", arXiv,  arXiv, DOI 
               10.48550/ARXIV.QUANT-PH/0002077, 2000,
               <https://doi.org/10.48550/ARXIV.QUANT-PH/0002077>.
@@ -1963,6 +2062,12 @@ Table of Contents
               DOI 10.1103/physreva.62.062314, November 2000,
               <https://doi.org/10.1103/physreva.62.062314>.
 
+   [E91]      Ekert, A., "Quantum cryptography based on Bell’s theorem",
+              American Physical Society (APS), Physical Review
+              Letters vol. 67, no. 6, pp. 661-663,
+              DOI 10.1103/physrevlett.67.661, August 1991,
+              <https://doi.org/10.1103/physrevlett.67.661>.
+
    [fan-dgs-dist]
               Fan, X., Zhan, C., Gupta, H., and C. Ramakrishnan,
               "Optimized Distribution of Entanglement Graph States in
@@ -1971,6 +2076,12 @@ Table of Contents
               Engineering vol. 6, pp. 1-17,
               DOI 10.1109/tqe.2025.3552006, 2025,
               <https://doi.org/10.1109/tqe.2025.3552006>.
+
+   [farhadi-sdn]
+              Farhady, H., Lee, H., and A. Nakao, "Software-Defined
+              Networking: A survey", Elsevier BV, Computer Networks vol.
+              81, pp. 79-95, DOI 10.1016/j.comnet.2015.02.014, April
+              2015, <https://doi.org/10.1016/j.comnet.2015.02.014>.
 
    [fischer-dgs]
               Fischer, A. and D. Towsley, "Distributing Graph States
@@ -2038,10 +2149,11 @@ Table of Contents
               <https://doi.org/10.1103/physreva.107.022615>.
 
    [hein-graph-entanglement]
-              , , , , , and , "Entanglement in graph states and its
-              applications", IOS Press, Proceedings of the International
-              School of Physics “Enrico Fermi” vol. 162, pp. 115–218,
-              DOI 10.3254/978-1-61499-018-5-115, 2006,
+              Hein, M., Dür, W., Eisert, J., Raussendorf, R., Van den
+              Nest, M., and H. Briegel, "Entanglement in graph states
+              and its applications", IOS Press, Proceedings of the
+              International School of Physics “Enrico Fermi” vol. 162,
+              pp. 115–218, DOI 10.3254/978-1-61499-018-5-115, 2006,
               <https://doi.org/10.3254/978-1-61499-018-5-115>.
 
    [hein-multiparty]
@@ -2086,9 +2198,17 @@ Table of Contents
               Hajdusek, M. and R. Van Meter, "Timing Regimes in Quantum
               Networks and their Physical Underpinnings", Work in
               Progress, Internet-Draft, draft-hajdusek-qirg-timing-
-              physics-00, 2 March 2026,
+              physics-01, 18 March 2026,
               <https://datatracker.ietf.org/doc/html/draft-hajdusek-
-              qirg-timing-physics-00>.
+              qirg-timing-physics-01>.
+
+   [I-D.draft-kaws-qirg-advent]
+              Kompella, K., Aelmans, M., Wehner, S., Sirbu, C., and A.
+              Dahlberg, "Advertising Entanglement Capabilities in
+              Quantum Networks", Work in Progress, Internet-Draft,
+              draft-kaws-qirg-advent-03, 27 March 2019,
+              <https://datatracker.ietf.org/doc/html/draft-kaws-qirg-
+              advent-03>.
 
    [I-D.draft-van-meter-qirg-quantum-connection-setup]
               Van Meter, R. and T. Matsuo, "Connection Setup in a
@@ -2177,6 +2297,13 @@ Table of Contents
               PH/9802025, 1998,
               <https://doi.org/10.48550/ARXIV.QUANT-PH/9802025>.
 
+   [mccanne-bpf]
+              McCanne, S. and V. Jacobson, "The BSD packet filter: a new
+              architecture for user-level packet capture", USENIX'93:
+              Proceedings of the USENIX Winter 1993 Conference
+              Proceedings on USENIX Winter 1993 Conference Proceedings,
+              25 January 1993.
+
    [meignant-dgs]
               Meignant, C., Markham, D., and F. Grosshans, "Distributing
               graph states over arbitrary quantum networks", American
@@ -2258,11 +2385,32 @@ Table of Contents
               DOI 10.17487/RFC1123, October 1989,
               <https://www.rfc-editor.org/rfc/rfc1123>.
 
+   [RFC1958]  Carpenter, B., Ed., "Architectural Principles of the
+              Internet", RFC 1958, DOI 10.17487/RFC1958, June 1996,
+              <https://www.rfc-editor.org/rfc/rfc1958>.
+
+   [RFC5218]  Thaler, D. and B. Aboba, "What Makes for a Successful
+              Protocol?", RFC 5218, DOI 10.17487/RFC5218, July 2008,
+              <https://www.rfc-editor.org/rfc/rfc5218>.
+
+   [RFC6250]  Thaler, D., "Evolution of the IP Model", RFC 6250,
+              DOI 10.17487/RFC6250, May 2011,
+              <https://www.rfc-editor.org/rfc/rfc6250>.
+
+   [RFC6852]  Housley, R., Mills, S., Jaffe, J., Aboba, B., and L.
+              St.Amour, "Affirmation of the Modern Paradigm for
+              Standards", RFC 6852, DOI 10.17487/RFC6852, January 2013,
+              <https://www.rfc-editor.org/rfc/rfc6852>.
+
    [RFC9340]  Kozlowski, W., Wehner, S., Van Meter, R., Rijsman, B.,
               Cacciapuoti, A. S., Caleffi, M., and S. Nagayama,
               "Architectural Principles for a Quantum Internet",
               RFC 9340, DOI 10.17487/RFC9340, March 2023,
               <https://www.rfc-editor.org/rfc/rfc9340>.
+
+   [RFC9413]  Thomson, M. and D. Schinazi, "Maintaining Robust
+              Protocols", RFC 9413, DOI 10.17487/RFC9413, June 2023,
+              <https://www.rfc-editor.org/rfc/rfc9413>.
 
    [RFC9583]  Wang, C., Rahman, A., Li, R., Aelmans, M., and K.
               Chakraborty, "Application Scenarios for the Quantum
@@ -2350,6 +2498,14 @@ Table of Contents
               Engineering (QCE) pp. 341-352,
               DOI 10.1109/qce53715.2022.00055, September 2022,
               <https://doi.org/10.1109/qce53715.2022.00055>.
+
+   [van-meter-sys-design]
+              Van Meter, R., Ladd, T., Munro, W., and K. Nemoto, "System
+              Design for a Long-Line Quantum Repeater", Institute of
+              Electrical and Electronics Engineers (IEEE), IEEE/ACM
+              Transactions on Networking vol. 17, no. 3, pp. 1002-1013,
+              DOI 10.1109/tnet.2008.927260, June 2009,
+              <https://doi.org/10.1109/tnet.2008.927260>.
 
    [vepsaelaeinen-ionizing]
               Vepsäläinen, A., Karamlou, A., Orrell, J., Dogra, A.,
