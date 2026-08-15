@@ -1669,7 +1669,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
               <p id="section-5-2.4.2.2.1">Purification<a href="#section-5-2.4.2.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-5-2.4.2.3">
-              <p id="section-5-2.4.2.3.1">Entanglement swapping<a href="#section-5-2.4.2.3.1" class="pilcrow">¶</a></p>
+              <p id="section-5-2.4.2.3.1">Entanglement swapping <span>[<a href="#zukowski-entanglement-swapping" class="cite xref">zukowski-entanglement-swapping</a>]</span><a href="#section-5-2.4.2.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-5-2.4.2.4">
               <p id="section-5-2.4.2.4.1">Quantum key distribution <span>[<a href="#BB84" class="cite xref">BB84</a>]</span>, <span>[<a href="#E91" class="cite xref">E91</a>]</span>, <span>[<a href="#BBM92" class="cite xref">BBM92</a>]</span><a href="#section-5-2.4.2.4.1" class="pilcrow">¶</a></p>
@@ -1683,7 +1683,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           </ul>
 </li>
       </ul>
-<p id="section-5-3">Because terms such as <em>fidelity</em> have varying definitions, they will be defined in this set of documents (where? Timing Regimes?).<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">Because terms such as <em>fidelity</em> have varying definitions, they will be defined in this set of documents.<a href="#section-5-3" class="pilcrow">¶</a></p>
 <p id="section-5-4">Readers needing additional background are referred to:<a href="#section-5-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5-5.1">
@@ -1802,23 +1802,25 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           </tr>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">teledata</td>
-            <td class="text-left" rowspan="1" colspan="1">application execution via teleporting data from node to node, then executing gates locally.  May be done remotely, mediated by Bell pairs.</td>
+            <td class="text-left" rowspan="1" colspan="1">application execution via teleporting data from node to node, then executing gates locally.  May be done remotely, mediated by Bell pairs. <span>[<a href="#van-meter-dist-arith" class="cite xref">van-meter-dist-arith</a>]</span>
+</td>
           </tr>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">telegate</td>
-            <td class="text-left" rowspan="1" colspan="1">application execution via remote gates (as defined by Eisert et al.).  May be done remotely, mediated by Bell pairs.</td>
+            <td class="text-left" rowspan="1" colspan="1">application execution via remote gates (as defined by Eisert et al. <span>[<a href="#eisert-remote-gate" class="cite xref">eisert-remote-gate</a>]</span>).  May be done remotely, mediated by Bell pairs. <span>[<a href="#van-meter-dist-arith" class="cite xref">van-meter-dist-arith</a>]</span>
+</td>
           </tr>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">time bin</td>
-            <td class="text-left" rowspan="1" colspan="1">compare to window and time slot</td>
+            <td class="text-left" rowspan="1" colspan="1">a method of qubit encoding using photons; compare to window and time slot</td>
           </tr>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">time slot</td>
-            <td class="text-left" rowspan="1" colspan="1">compare to window and time bin</td>
+            <td class="text-left" rowspan="1" colspan="1">a fully specified time and place where a photon may be detected; compare to window and time bin</td>
           </tr>
           <tr>
-            <td class="text-left" rowspan="1" colspan="1">window</td>
-            <td class="text-left" rowspan="1" colspan="1">compare to time bin and time slot</td>
+            <td class="text-left" rowspan="1" colspan="1">time window</td>
+            <td class="text-left" rowspan="1" colspan="1">the time interval where a detector is enabled; compare to time bin and time slot</td>
           </tr>
         </tbody>
       </table>
@@ -2213,13 +2215,14 @@ Since consuming extra resources is more costly than waiting, these operations de
         <h3 id="name-photons-wave-packets-and-op">
 <a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-photons-wave-packets-and-op" class="section-name selfRef">Photons, Wave Packets and Optical Modes</a>
         </h3>
-<p id="section-10.2-1">Optical mode (link-layer view).<a href="#section-10.2-1" class="pilcrow">¶</a></p>
-<p id="section-10.2-2">An optical mode is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon or is empty.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
-<p id="section-10.2-3">The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.<a href="#section-10.2-3" class="pilcrow">¶</a></p>
-<p id="section-10.2-4">In quantum networking, link capacity and state must be described in terms of modes (slots), not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful.<a href="#section-10.2-4" class="pilcrow">¶</a></p>
-<p id="section-10.2-5">Technical note: In idealized models, distinct modes correspond to orthogonal field solutions, ensuring perfect distinguishability.<a href="#section-10.2-5" class="pilcrow">¶</a></p>
-<p id="section-10.2-6">Short example:
-A quantum optical link may define one mode per time window. During each window, the receiver monitors the mode. A detection event indicates that the mode was occupied by at least one photon; the absence of a detection indicates that the same mode was empty. Both outcomes correspond to distinct physical states of the link.<a href="#section-10.2-6" class="pilcrow">¶</a></p>
+<p id="section-10.2-1">Loosely, a photon is a quantum of light. More detailed analysis of a photon requires understanding <em>wave packets</em> and <em>optical modes</em>.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.2-2">A wave packet is the non-zero amplitude of the electrical and magnetic fields, and generally corresponds to a single excitation of the electrical field, i.e. a single photon.  The length of the wave packet is determined by the physics of the photon emission process, possibly modified by dispersion in the channel, and in turn determines the minimum length of a time slot in the link design.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
+<p id="section-10.2-3">An <em>optical mode</em> is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon wave packet or is empty.<a href="#section-10.2-3" class="pilcrow">¶</a></p>
+<p id="section-10.2-4">The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.<a href="#section-10.2-4" class="pilcrow">¶</a></p>
+<p id="section-10.2-5">In quantum networking, link capacity and state must be described in terms of modes (slots), not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful.<a href="#section-10.2-5" class="pilcrow">¶</a></p>
+<p id="section-10.2-6">Technical note: In idealized models, distinct modes correspond to orthogonal solutions of the field equations, ensuring perfect distinguishability.<a href="#section-10.2-6" class="pilcrow">¶</a></p>
+<p id="section-10.2-7">Short example:
+A quantum optical link may define one mode per time window. During each window, the receiver monitors the mode. A detection event indicates that the mode was occupied by at least one photon; the absence of a detection indicates that the same mode was empty. Both outcomes correspond to distinct physical states of the link.<a href="#section-10.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="photonic-qubits">
@@ -2260,7 +2263,7 @@ A quantum optical link may define one mode per time window. During each window, 
         <h3 id="name-photon-sources">
 <a href="#section-10.5" class="section-number selfRef">10.5. </a><a href="#name-photon-sources" class="section-name selfRef">Photon Sources</a>
         </h3>
-<p id="section-10.5-1">Photons may be emitted by <em>sources</em> of many types <span>[<a href="#nist-singles" class="cite xref">nist-singles</a>]</span> .  Single photons may come from attenuated lasers, or be emitted by a variety of quantum devices, such as quantum dots, or by individual atoms.<a href="#section-10.5-1" class="pilcrow">¶</a></p>
+<p id="section-10.5-1">Photons may be emitted by <em>sources</em> of many types <span>[<a href="#nist-singles" class="cite xref">nist-singles</a>]</span>.  Single photons may come from attenuated lasers, or be emitted by a variety of quantum devices, such as quantum dots, or by individual atoms.<a href="#section-10.5-1" class="pilcrow">¶</a></p>
 <p id="section-10.5-2">Photons may be unentangled, entangled with other photons, or entangled with quantum memories.<a href="#section-10.5-2" class="pilcrow">¶</a></p>
 <div id="unentangled-single-photons">
 <section id="section-10.5.1">
@@ -2489,7 +2492,7 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
 <a href="#section-14.1" class="section-number selfRef">14.1. </a><a href="#name-quantum" class="section-name selfRef">Quantum</a>
         </h3>
 <p id="section-14.1-1">The quantum signals and in-channel, hardware-dependent, real-time classical signals for timing and synchronization of photon wave packets.  A node with a quantum plane incorporates one or more quantum devices.  The quantum devices may be local or remote.<a href="#section-14.1-1" class="pilcrow">¶</a></p>
-<p id="section-14.1-2">The quantum plane functionality executes the functions described as "Interferometric Stabilization" and "Wave Packet Overlap" and subject to the constraints in "Detector Timing Windows" in the Timing Regimes document.<a href="#section-14.1-2" class="pilcrow">¶</a></p>
+<p id="section-14.1-2">The quantum plane functionality executes the functions described as "Interferometric Stabilization" and "Wave Packet Overlap" and subject to the constraints in "Detector Timing Windows" in the Timing Regimes document <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-14.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="data">
@@ -2500,7 +2503,7 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
 <p id="section-14.2-1">When operating in qubit mode, the Data Plane consists of classical messages that convey events for RuleSet operation and the communication ports and software that generate and consume such messages.<a href="#section-14.2-1" class="pilcrow">¶</a></p>
 <p id="section-14.2-2">When operating in device mode, the Data Plane consists of RPCs for controlling individual devices.<a href="#section-14.2-2" class="pilcrow">¶</a></p>
 <p id="section-14.2-3">Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation. If this is done, security and privacy concerns must be addressed.<a href="#section-14.2-3" class="pilcrow">¶</a></p>
-<p id="section-14.2-4">The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document.<a href="#section-14.2-4" class="pilcrow">¶</a></p>
+<p id="section-14.2-4">The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-14.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="control">
@@ -2510,7 +2513,7 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
         </h3>
 <p id="section-14.3-1">The classical control plane is responsible for establishing and managing connections and testing sessions.  Routing and multiplexing messages are included in the control plane.<a href="#section-14.3-1" class="pilcrow">¶</a></p>
 <p id="section-14.3-2">Control plane functions may share data with management plane functions, e.g. sharing parameter adjustment values and timings. If this is done, security and privacy concerns must be addressed.<a href="#section-14.3-2" class="pilcrow">¶</a></p>
-<p id="section-14.3-3">The control plane functionality executes the functions described as "Measurement basis selection", "Optical switch control" and some tasks in "Host-side Application-level Tasks" in the Timing Regimes document.<a href="#section-14.3-3" class="pilcrow">¶</a></p>
+<p id="section-14.3-3">The control plane functionality executes the functions described as "Measurement basis selection", "Optical switch control" and some tasks in "Host-side Application-level Tasks" in the Timing Regimes document <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-14.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="management">
@@ -2519,7 +2522,7 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
 <a href="#section-14.4" class="section-number selfRef">14.4. </a><a href="#name-management" class="section-name selfRef">Management</a>
         </h3>
 <p id="section-14.4-1">While connection-specific changes to configuration, such as switching and necessary, immediate changes to e.g. polarization and optical delay may appear as control plane functions, slow-rate monitoring and adjustment of parameters such as timing or polarization due to drift in temperature, voltage or other parameters is the responsibility of the management plane. The management plane may receive useful data on the health and fidelity of links as a result of data plane and control plane operations.<a href="#section-14.4-1" class="pilcrow">¶</a></p>
-<p id="section-14.4-2">The management plane functionality executes the functions described as "Background Tasks" in the Timing Regimes document.<a href="#section-14.4-2" class="pilcrow">¶</a></p>
+<p id="section-14.4-2">The management plane functionality executes the functions described as "Background Tasks" in the Timing Regimes document <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-14.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3023,8 +3026,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <a href="#section-22.7" class="section-number selfRef">22.7. </a><a href="#name-ring" class="section-name selfRef">Ring</a>
         </h3>
 <p id="section-22.7-1">A <em>direct</em> interconnect. All nodes in a ring have exactly two neighbors. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.<a href="#section-22.7-1" class="pilcrow">¶</a></p>
-<p id="section-22.7-2">A ring is described in (something from Simon's group).<a href="#section-22.7-2" class="pilcrow">¶</a></p>
-<p id="section-22.7-3">PSD: Each link is a separate PSD.<a href="#section-22.7-3" class="pilcrow">¶</a></p>
+<p id="section-22.7-2">PSD: Each link is a separate PSD.<a href="#section-22.7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="qlan">
@@ -3181,6 +3183,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="E91">[E91]</dt>
         <dd>
 <span class="refAuthor">Ekert, A.</span>, <span class="refTitle">"Quantum cryptography based on Bell’s theorem"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review Letters vol. 67, no. 6, pp. 661-663</span>, <span class="seriesInfo">DOI 10.1103/physrevlett.67.661</span>, <time datetime="1991-08" class="refDate">August 1991</time>, <span>&lt;<a href="https://doi.org/10.1103/physrevlett.67.661">https://doi.org/10.1103/physrevlett.67.661</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="eisert-remote-gate">[eisert-remote-gate]</dt>
+        <dd>
+<span class="refAuthor">Eisert, J.</span>, <span class="refAuthor">Jacobs, K.</span>, <span class="refAuthor">Papadopoulos, P.</span>, and <span class="refAuthor">M. Plenio</span>, <span class="refTitle">"Optimal local implementation of nonlocal quantum gates"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 62, no. 5</span>, <span class="seriesInfo">DOI 10.1103/physreva.62.052317</span>, <time datetime="2000-10" class="refDate">October 2000</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.62.052317">https://doi.org/10.1103/physreva.62.052317</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="fan-dgs-dist">[fan-dgs-dist]</dt>
         <dd>
@@ -3417,6 +3423,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="taherkhani-byz">[taherkhani-byz]</dt>
         <dd>
 <span class="refAuthor">Taherkhani, M.</span>, <span class="refAuthor">Navi, K.</span>, and <span class="refAuthor">R. Meter</span>, <span class="refTitle">"Resource-aware system architecture model for implementation of quantum aided Byzantine agreement on quantum repeater networks"</span>, <span class="refContent">IOP Publishing</span>, <span class="seriesInfo">Quantum Science and Technology vol. 3, no. 1, pp. 014011</span>, <span class="seriesInfo">DOI 10.1088/2058-9565/aa9bb1</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://doi.org/10.1088/2058-9565/aa9bb1">https://doi.org/10.1088/2058-9565/aa9bb1</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="van-meter-dist-arith">[van-meter-dist-arith]</dt>
+        <dd>
+<span class="refAuthor">Meter, R.</span>, <span class="refAuthor">Munro, W.</span>, <span class="refAuthor">Nemoto, K.</span>, and <span class="refAuthor">K. Itoh</span>, <span class="refTitle">"Arithmetic on a distributed-memory quantum multicomputer"</span>, <span class="refContent">Association for Computing Machinery (ACM)</span>, <span class="seriesInfo">ACM Journal on Emerging Technologies in Computing Systems vol. 3, no. 4, pp. 1-23</span>, <span class="seriesInfo">DOI 10.1145/1324177.1324179</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://doi.org/10.1145/1324177.1324179">https://doi.org/10.1145/1324177.1324179</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="van-meter-opt-timing">[van-meter-opt-timing]</dt>
         <dd>

@@ -311,7 +311,7 @@ Table of Contents
 
       -  Purification
 
-      -  Entanglement swapping
+      -  Entanglement swapping [zukowski-entanglement-swapping]
 
       -  Quantum key distribution [BB84], [E91], [BBM92]
 
@@ -322,7 +322,7 @@ Table of Contents
          current architecture)
 
    Because terms such as _fidelity_ have varying definitions, they will
-   be defined in this set of documents (where?  Timing Regimes?).
+   be defined in this set of documents.
 
    Readers needing additional background are referred to:
 
@@ -440,17 +440,22 @@ Table of Contents
    | teledata        | application execution via teleporting data     |
    |                 | from node to node, then executing gates        |
    |                 | locally.  May be done remotely, mediated by    |
-   |                 | Bell pairs.                                    |
+   |                 | Bell pairs. [van-meter-dist-arith]             |
    +-----------------+------------------------------------------------+
    | telegate        | application execution via remote gates (as     |
-   |                 | defined by Eisert et al.).  May be done        |
-   |                 | remotely, mediated by Bell pairs.              |
+   |                 | defined by Eisert et al.                       |
+   |                 | [eisert-remote-gate]).  May be done remotely,  |
+   |                 | mediated by Bell pairs. [van-meter-dist-arith] |
    +-----------------+------------------------------------------------+
-   | time bin        | compare to window and time slot                |
+   | time bin        | a method of qubit encoding using photons;      |
+   |                 | compare to window and time slot                |
    +-----------------+------------------------------------------------+
-   | time slot       | compare to window and time bin                 |
+   | time slot       | a fully specified time and place where a       |
+   |                 | photon may be detected; compare to window and  |
+   |                 | time bin                                       |
    +-----------------+------------------------------------------------+
-   | window          | compare to time bin and time slot              |
+   | time window     | the time interval where a detector is enabled; |
+   |                 | compare to time bin and time slot              |
    +-----------------+------------------------------------------------+
 
                                  Table 1
@@ -985,12 +990,21 @@ Table of Contents
 
 10.2.  Photons, Wave Packets and Optical Modes
 
-   Optical mode (link-layer view).
+   Loosely, a photon is a quantum of light.  More detailed analysis of a
+   photon requires understanding _wave packets_ and _optical modes_.
 
-   An optical mode is a well-defined slot of a physical link, specified
-   by path, time window, frequency, polarization, or similar parameters,
-   such that the receiver can be configured to monitor that slot and
-   determine whether it is occupied by at least one photon or is empty.
+   A wave packet is the non-zero amplitude of the electrical and
+   magnetic fields, and generally corresponds to a single excitation of
+   the electrical field, i.e. a single photon.  The length of the wave
+   packet is determined by the physics of the photon emission process,
+   possibly modified by dispersion in the channel, and in turn
+   determines the minimum length of a time slot in the link design.
+
+   An _optical mode_ is a well-defined slot of a physical link,
+   specified by path, time window, frequency, polarization, or similar
+   parameters, such that the receiver can be configured to monitor that
+   slot and determine whether it is occupied by at least one photon wave
+   packet or is empty.
 
    The mode exists regardless of whether a photon is present; a photon
    is an excitation of the mode, not the mode itself.
@@ -1001,7 +1015,8 @@ Table of Contents
    physically and operationally meaningful.
 
    Technical note: In idealized models, distinct modes correspond to
-   orthogonal field solutions, ensuring perfect distinguishability.
+   orthogonal solutions of the field equations, ensuring perfect
+   distinguishability.
 
    Short example: A quantum optical link may define one mode per time
    window.  During each window, the receiver monitors the mode.  A
@@ -1046,7 +1061,7 @@ Table of Contents
 
 10.5.  Photon Sources
 
-   Photons may be emitted by _sources_ of many types [nist-singles] .
+   Photons may be emitted by _sources_ of many types [nist-singles].
    Single photons may come from attenuated lasers, or be emitted by a
    variety of quantum devices, such as quantum dots, or by individual
    atoms.
@@ -1258,7 +1273,7 @@ Table of Contents
    The quantum plane functionality executes the functions described as
    "Interferometric Stabilization" and "Wave Packet Overlap" and subject
    to the constraints in "Detector Timing Windows" in the Timing Regimes
-   document.
+   document [I-D.draft-hajdusek-qirg-timing-physics].
 
 14.2.  Data
 
@@ -1275,7 +1290,8 @@ Table of Contents
    this is done, security and privacy concerns must be addressed.
 
    The control plane functionality executes the functions described as
-   "Pre-configured Event-driven Tasks" in the Timing Regimes document.
+   "Pre-configured Event-driven Tasks" in the Timing Regimes document
+   [I-D.draft-hajdusek-qirg-timing-physics].
 
 14.3.  Control
 
@@ -1290,7 +1306,7 @@ Table of Contents
    The control plane functionality executes the functions described as
    "Measurement basis selection", "Optical switch control" and some
    tasks in "Host-side Application-level Tasks" in the Timing Regimes
-   document.
+   document [I-D.draft-hajdusek-qirg-timing-physics].
 
 14.4.  Management
 
@@ -1304,7 +1320,8 @@ Table of Contents
    control plane operations.
 
    The management plane functionality executes the functions described
-   as "Background Tasks" in the Timing Regimes document.
+   as "Background Tasks" in the Timing Regimes document
+   [I-D.draft-hajdusek-qirg-timing-physics].
 
 15.  Protocol Layers
 
@@ -1888,8 +1905,6 @@ Table of Contents
    neighbors.  Each node must act as a memory buffer and repeater to
    enable communication between non-neighboring nodes.
 
-   A ring is described in (something from Simon's group).
-
    PSD: Each link is a separate PSD.
 
 22.8.  QLAN
@@ -2093,6 +2108,13 @@ Table of Contents
               Letters vol. 67, no. 6, pp. 661-663,
               DOI 10.1103/physrevlett.67.661, August 1991,
               <https://doi.org/10.1103/physrevlett.67.661>.
+
+   [eisert-remote-gate]
+              Eisert, J., Jacobs, K., Papadopoulos, P., and M. Plenio,
+              "Optimal local implementation of nonlocal quantum gates",
+              American Physical Society (APS), Physical Review A vol.
+              62, no. 5, DOI 10.1103/physreva.62.052317, October 2000,
+              <https://doi.org/10.1103/physreva.62.052317>.
 
    [fan-dgs-dist]
               Fan, X., Zhan, C., Gupta, H., and C. Ramakrishnan,
@@ -2511,6 +2533,14 @@ Table of Contents
               IOP Publishing, Quantum Science and Technology vol. 3, no.
               1, pp. 014011, DOI 10.1088/2058-9565/aa9bb1, December
               2017, <https://doi.org/10.1088/2058-9565/aa9bb1>.
+
+   [van-meter-dist-arith]
+              Meter, R., Munro, W., Nemoto, K., and K. Itoh, "Arithmetic
+              on a distributed-memory quantum multicomputer",
+              Association for Computing Machinery (ACM), ACM Journal on
+              Emerging Technologies in Computing Systems vol. 3, no. 4,
+              pp. 1-23, DOI 10.1145/1324177.1324179, January 2008,
+              <https://doi.org/10.1145/1324177.1324179>.
 
    [van-meter-opt-timing]
               Van Meter, R., Satoh, T., Nagayama, S., Matsuo, T., and S.
