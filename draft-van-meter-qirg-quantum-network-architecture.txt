@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 13 February 2027                                Keio University
-                                                          12 August 2026
+Expires: 16 February 2027                                Keio University
+                                                          15 August 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 February 2027.
+   This Internet-Draft will expire on 16 February 2027.
 
 Copyright Notice
 
@@ -969,7 +969,9 @@ Table of Contents
 10.  Quantum Optical Building Blocks
 
    This section informally describes the physical building blocks and
-   concepts used in the physical layer of a quantum network.
+   concepts used in the physical layer of a quantum network.  These
+   definitions will use equations defined in
+   [I-D.draft-hajdusek-qirg-timing-physics].
 
 10.1.  Qubits
 
