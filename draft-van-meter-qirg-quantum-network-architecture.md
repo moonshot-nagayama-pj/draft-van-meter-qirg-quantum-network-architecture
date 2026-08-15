@@ -576,7 +576,7 @@ QWAN client-server communication very likely will suffer from the "incast" probl
 
 # Quantum Optical Building Blocks
 
-This section informally describes the physical building blocks and concepts used in the physical layer of a quantum network.
+This section informally describes the physical building blocks and concepts used in the physical layer of a quantum network.  These definitions will use equations defined in {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
 ## Qubits
 
