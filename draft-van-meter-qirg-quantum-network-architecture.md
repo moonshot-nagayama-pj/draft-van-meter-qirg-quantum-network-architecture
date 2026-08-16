@@ -193,6 +193,7 @@ informative:
   hilaire-rgs-optimizing-gen-time: DOI.10.22331/q-2021-02-15-397
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   huang-imaging-stars: DOI.10.1103/PhysRevLett.129.210502
+  humphreys-deterministic-link: DOI.10.1038/s41586-018-0200-5
   khatri-spooky: DOI.10.1038/s41534-020-00327-5
   kim-ft-million: DOI.10.1145/3620665.3640388
   koyama-24: DOI.10.1109/QCE60285.2024.00219
@@ -926,7 +927,7 @@ A node may also aggregate the functions of more than one node, in a form known a
 
 ## The Link Service
 
-A link provides Bell pairs across a single PSD.  Each Bell pair is named via an identifier. This service may be either real time or batched.
+A link provides Bell pairs across a single PSD.  Each Bell pair is named via an identifier. This service may be either real time or batched.  Generally, the physical link entanglement generation mechanism is probabilistic but heralded.  Although it is possible to use repeated trials to present a near-deterministic service {{humphreys-deterministic-link}}, in this architecture we choose instead to expose the asynchronous creation of Bell pairs with timestamps.
 
 ## Photonic Path Description
 
