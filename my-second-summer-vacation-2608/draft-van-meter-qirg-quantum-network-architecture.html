@@ -17,18 +17,18 @@
 <meta content="draft-van-meter-qirg-quantum-network-architecture-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.34.0
-    Python 3.14.5
+    Python 3.14.7
     ConfigArgParse 1.7.5
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.11.0
+    platformdirs 4.11.7
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.8.2
+    wcwidth 0.8.3
 -->
 <link href="draft-van-meter-qirg-quantum-network-architecture.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1044,11 +1044,11 @@ svg {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">QNA</td>
-<td class="right">August 2026</td>
+<td class="right">September 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Van Meter, et al.</td>
-<td class="center">Expires 17 February 2027</td>
+<td class="center">Expires 8 March 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1061,12 +1061,12 @@ svg {
 <dd class="internet-draft">draft-van-meter-qirg-quantum-network-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-08-16" class="published">16 August 2026</time>
+<time datetime="2026-09-04" class="published">4 September 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-02-17">17 February 2027</time></dd>
+<dd class="expires"><time datetime="2027-03-08">8 March 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1119,7 +1119,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 February 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 March 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1345,6 +1345,20 @@ svg {
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
             <p id="section-toc.1-1.15.1"><a href="#section-15" class="auto internal xref">15</a>. <a href="#name-protocol-layers" class="internal xref">Protocol Layers</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.1">
+                <p id="section-toc.1-1.15.2.1.1"><a href="#section-15.1" class="auto internal xref">15.1</a>.  <a href="#name-physical-layer" class="internal xref">Physical Layer</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.2">
+                <p id="section-toc.1-1.15.2.2.1"><a href="#section-15.2" class="auto internal xref">15.2</a>.  <a href="#name-link-layer" class="internal xref">Link Layer</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.3">
+                <p id="section-toc.1-1.15.2.3.1"><a href="#section-15.3" class="auto internal xref">15.3</a>.  <a href="#name-network-layer-rulesets" class="internal xref">Network Layer: RuleSets</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.4">
+                <p id="section-toc.1-1.15.2.4.1"><a href="#section-15.4" class="auto internal xref">15.4</a>.  <a href="#name-application-layer" class="internal xref">Application Layer</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
             <p id="section-toc.1-1.16.1"><a href="#section-16" class="auto internal xref">16</a>. <a href="#name-nodes-and-node-types" class="internal xref">Nodes and Node Types</a></p>
@@ -2010,7 +2024,7 @@ Since consuming extra resources is more costly than waiting, these operations de
 <a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-quantum-nodes" class="section-name selfRef">Quantum Nodes</a>
         </h3>
 <p id="section-8.2-1">A node comprises one or more quantum devices, and serves as a single locus of control for network protocols.  The classes of nodes are described later in this document.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
-<p id="section-8.2-2">A <em>logical node</em> provides a single communication and control point for the services of a particular node type or a composite node type, but may comprise a set of physical devices rather than a single device, and may be physically packaged in more than one box.<a href="#section-8.2-2" class="pilcrow">¶</a></p>
+<p id="section-8.2-2">A <em>logical node</em> or <em>composite node</em> provides a single communication and control point for the services of a particular node type or a composite node type, but may comprise a set of physical devices rather than a single device, and may be physically packaged in more than one box.<a href="#section-8.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="quantum-links">
@@ -2071,7 +2085,7 @@ Since consuming extra resources is more costly than waiting, these operations de
         </h3>
 <p id="section-9.1-1">The first deployment of production-level, distant quantum entanglement is likely to be in a <em>quantum multicomputer</em>, based on the same principles as classical distributed-memory supercomputers from the <a href="https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube">Caltech Cosmic Cube</a> to <a href="https://en.wikipedia.org/wiki/Fugaku_(supercomputer)">Fugaku</a> <span>[<a href="#rdv-thesis" class="cite xref">rdv-thesis</a>]</span>.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture <span>[<a href="#choi-fat-tree" class="cite xref">choi-fat-tree</a>]</span> has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
 <p id="section-9.1-2">A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.<a href="#section-9.1-2" class="pilcrow">¶</a></p>
-<p id="section-9.1-3">The execution model is expected to be much like the classical supercomputing <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">Message Passing Interface (MPI)</a>.<a href="#section-9.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.1-3">The execution model is expected to be much like the classical supercomputing <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">Message Passing Interface (MPI)</a>, in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed <span>[<a href="#haener-qmpi" class="cite xref">haener-qmpi</a>]</span>, but here we mean this in the broader sense.)<a href="#section-9.1-3" class="pilcrow">¶</a></p>
 <p id="section-9.1-4">General hardware environment:<a href="#section-9.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-9.1-5.1">
@@ -2532,8 +2546,87 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
 <p id="section-15-1">This document describes a network architecture. Network designs are often described in terms of a layered protocol stack such as the 7-layer <a href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a>, although the Internet can be more accurately described as a <a href="https://en.wikipedia.org/wiki/Internet_protocol_suite#Layering_evolution_and_representations_in_the_literature">three-, four-, or five-layer model</a>, depending in part on whether a distinction is made between the physical and link layers and in part on how the application layer is subdivided.<a href="#section-15-1" class="pilcrow">¶</a></p>
 <p id="section-15-2">In a layered network architecture, each layer processes a prepended header to complete its task. As messages move down the stack (from application toward actual transmission), they may be subdivided into smaller units, and additional layer-specific headers are prepended. On receipt, headers are removed as the message moves up the stack, and boundaries between messages may be altered.<a href="#section-15-2" class="pilcrow">¶</a></p>
 <p id="section-15-3">A complete network architecture consists of much more than the layers processing individual packets; many of the critical supporting protocols around naming, routing, security, network management, etc. utilize messages carried using the same protocol stack designed for application data.<a href="#section-15-3" class="pilcrow">¶</a></p>
-<p id="section-15-4">In a quantum network, this layering is less clear.<a href="#section-15-4" class="pilcrow">¶</a></p>
-<p id="section-15-5">(More to be added here.)<a href="#section-15-5" class="pilcrow">¶</a></p>
+<p id="section-15-4">In a quantum network, this layering is less clear.  Classical network protocol layering is often presumed to include the sequential addition of headers while preparing a packet for transmission and processing proceeds down the protocol stack, with the process inverted on packet reception.  In quantum networks, the qubits themselves are not processed in this stacked fashion, and the related classical information typically involves separate messages with separate end points as hop-by-hop entanglement is extended to end-to-end entanglement through the actions of nodes all along the path.<a href="#section-15-4" class="pilcrow">¶</a></p>
+<p id="section-15-5">Nevertheless, the notion of <em>layers of responsibility</em> or <em>separation of concerns</em> is valid,with different needs at the link, network, and application.<a href="#section-15-5" class="pilcrow">¶</a></p>
+<p id="section-15-6">(More to be added here.)<a href="#section-15-6" class="pilcrow">¶</a></p>
+<span id="name-protocol-layers-2"></span><figure id="figure-1">
+        <div class="alignCenter art-text artwork" id="section-15-7.1">
+<pre>
++-----------------+
+| Application     |
++-----------------+
+| RuleSet         |
++-----------------+
+| Link            |
++-----------------+
+| Physical        |
++-----------------+
+</pre>
+</div>
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<a href="#name-protocol-layers-2" class="selfRef">Protocol Layers</a>
+        </figcaption></figure>
+<div id="physical-layer">
+<section id="section-15.1">
+        <h3 id="name-physical-layer">
+<a href="#section-15.1" class="section-number selfRef">15.1. </a><a href="#name-physical-layer" class="section-name selfRef">Physical Layer</a>
+        </h3>
+<p id="section-15.1-1">(choice of qubit, wavelength, envelope, timing/trial rate, synchronization, detection)<a href="#section-15.1-1" class="pilcrow">¶</a></p>
+<p id="section-15.1-2">(documents on "standard photon" and "photon train" to come)<a href="#section-15.1-2" class="pilcrow">¶</a></p>
+<p id="section-15.1-3">The physical layer incorporates the quantum channel itself, whether free space or waveguide.  Specifcation of the physical layer is out of scope for this document, but the physical-layer specifications must include:<a href="#section-15.1-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-15.1-4.1">
+            <p id="section-15.1-4.1.1">signal transmission characteristics of the channel<a href="#section-15.1-4.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-15.1-4.2">
+            <p id="section-15.1-4.2.1">how nodes physically connect to the channel<a href="#section-15.1-4.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-15.1-4.3">
+            <p id="section-15.1-4.3.1">timing<a href="#section-15.1-4.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+</section>
+</div>
+<div id="link-layer">
+<section id="section-15.2">
+        <h3 id="name-link-layer">
+<a href="#section-15.2" class="section-number selfRef">15.2. </a><a href="#name-link-layer" class="section-name selfRef">Link Layer</a>
+        </h3>
+<p id="section-15.2-1">The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results recorded and reported.<a href="#section-15.2-1" class="pilcrow">¶</a></p>
+<p id="section-15.2-2">The link layer may deliver entangled states to the network layer either singly or as an ordered, tagged batch.<a href="#section-15.2-2" class="pilcrow">¶</a></p>
+<p id="section-15.2-3">The link may operate entirely on demand, or as an always-on, free-running service where requests from the network layer are serviced by using recently created entanglement.<a href="#section-15.2-3" class="pilcrow">¶</a></p>
+<p id="section-15.2-4">Can the network layer request states at one end where the status of the qubit at the other end is unknown, in either heralding or Pauli frame?  This seems to be necessary to support B class.<a href="#section-15.2-4" class="pilcrow">¶</a></p>
+<p id="section-15.2-5">(must coordinate w/ muxing, switch control)<a href="#section-15.2-5" class="pilcrow">¶</a></p>
+<p id="section-15.2-6">Similar to that described in <span>[<a href="#I-D.draft-dahlberg-ll-quantum" class="cite xref">I-D.draft-dahlberg-ll-quantum</a>]</span>, <span>[<a href="#dahlberg-ll-arxiv" class="cite xref">dahlberg-ll-arxiv</a>]</span> and <span>[<a href="#I-D.draft-zhu-qirg-qdcp" class="cite xref">I-D.draft-zhu-qirg-qdcp</a>]</span>.<a href="#section-15.2-6" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-15.2-7.1">
+            <p id="section-15.2-7.1.1">"message" format<a href="#section-15.2-7.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-15.2-7.2">
+            <p id="section-15.2-7.2.1">addressing<a href="#section-15.2-7.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-15.2-7.3">
+            <p id="section-15.2-7.3.1">multiplexing for multi-drop links<a href="#section-15.2-7.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+</section>
+</div>
+<div id="network-layer-rulesets">
+<section id="section-15.3">
+        <h3 id="name-network-layer-rulesets">
+<a href="#section-15.3" class="section-number selfRef">15.3. </a><a href="#name-network-layer-rulesets" class="section-name selfRef">Network Layer: RuleSets</a>
+        </h3>
+<p id="section-15.3-1">(responsible for both single- and multi-hop purification, and entanglement swapping)<a href="#section-15.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="application-layer">
+<section id="section-15.4">
+        <h3 id="name-application-layer">
+<a href="#section-15.4" class="section-number selfRef">15.4. </a><a href="#name-application-layer" class="section-name selfRef">Application Layer</a>
+        </h3>
+<p id="section-15.4-1">(mostly not defined here)<a href="#section-15.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="nodes-and-node-types">
@@ -2543,9 +2636,8 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
       </h2>
 <p id="section-16-1">(Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. and others.)<a href="#section-16-1" class="pilcrow">¶</a></p>
 <p id="section-16-2">The architecture of a quantum network is defined by its constituent nodes and their specialized functions.
-For clarity in describing our system, we group these nodes according to their primary contributions to network operation.
-In our architecture, we classify nodes into three main types: end nodes, for application interaction; repeater and router nodes, for extending entanglement and path management; and support nodes, for auxiliary operational tasks.<a href="#section-16-2" class="pilcrow">¶</a></p>
-<p id="section-16-3">The qNode specification provides additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs <span>[<a href="#RFC1122" class="cite xref">RFC1122</a>]</span>, <span>[<a href="#RFC1123" class="cite xref">RFC1123</a>]</span>. Each node type is further defined in a detailed specification in a separate document.<a href="#section-16-3" class="pilcrow">¶</a></p>
+In our architecture, we classify nodes into three main groups: end nodes, for application interaction; repeater and router nodes, for extending entanglement and path management; and support nodes, for auxiliary operational tasks.<a href="#section-16-2" class="pilcrow">¶</a></p>
+<p id="section-16-3">The qNode specification (a document to be published) will provide additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs <span>[<a href="#RFC1122" class="cite xref">RFC1122</a>]</span>, <span>[<a href="#RFC1123" class="cite xref">RFC1123</a>]</span>. Each node type is further defined in a detailed specification in a separate document.<a href="#section-16-3" class="pilcrow">¶</a></p>
 <div id="end-nodes">
 <section id="section-16.1">
         <h3 id="name-end-nodes">
@@ -2632,6 +2724,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <a href="#section-17.1" class="section-number selfRef">17.1. </a><a href="#name-the-link-service" class="section-name selfRef">The Link Service</a>
         </h3>
 <p id="section-17.1-1">A link provides Bell pairs across a single PSD.  Each Bell pair is named via an identifier. This service may be either real time or batched.  Generally, the physical link entanglement generation mechanism is probabilistic but heralded.  Although it is possible to use repeated trials to present a near-deterministic service <span>[<a href="#humphreys-deterministic-link" class="cite xref">humphreys-deterministic-link</a>]</span>, in this architecture we choose instead to expose the asynchronous creation of Bell pairs with timestamps.<a href="#section-17.1-1" class="pilcrow">¶</a></p>
+<p id="section-17.1-2">(Does software control of buffer qubits appear in the architecture, or is it purely an implementation detail?)<a href="#section-17.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="photonic-path-description">
@@ -2698,6 +2791,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <a href="#section-17.3" class="section-number selfRef">17.3. </a><a href="#name-point-to-point" class="section-name selfRef">Point-to-point</a>
         </h3>
 <p id="section-17.3-1">Point-to-point links may be either fiber-based or free space. A link encompassing the path of one or more photons may be partially fiber and partially free space.<a href="#section-17.3-1" class="pilcrow">¶</a></p>
+<p id="section-17.3-2">The photonic path description notation will include no 'X's.<a href="#section-17.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="switched">
@@ -2707,6 +2801,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
         </h3>
 <p id="section-17.4-1">A system built around a pool of detectors, particularly organized as BSAs, utilizing switched MIM links can also be characterized as a <em>detector-centric architecture</em>.<a href="#section-17.4-1" class="pilcrow">¶</a></p>
 <p id="section-17.4-2">For pseudocode for switching (routing) certain types of devices, see Koyama et al. <span>[<a href="#koyama-24" class="cite xref">koyama-24</a>]</span>.<a href="#section-17.4-2" class="pilcrow">¶</a></p>
+<p id="section-17.4-3">The photonic path description notation will include one or more 'X's.<a href="#section-17.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="multidrop-or-bus">
@@ -3108,7 +3203,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dd class="break"></dd>
 <dt id="aparicio-spie">[aparicio-spie]</dt>
         <dd>
-<span class="refAuthor">Aparicio, L.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Multiplexing schemes for quantum repeater networks"</span>, <span class="refContent">SPIE</span>, <span class="seriesInfo">SPIE Proceedings</span>, <span class="seriesInfo">DOI 10.1117/12.893272</span>, <time datetime="2011-09" class="refDate">September 2011</time>, <span>&lt;<a href="https://doi.org/10.1117/12.893272">https://doi.org/10.1117/12.893272</a>&gt;</span>. </dd>
+<span class="refAuthor">Aparicio, L.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Multiplexing schemes for quantum repeater networks"</span>, <span class="refContent">SPIE</span>, <span class="seriesInfo">SPIE Proceedings vol. 8163, pp. 816308</span>, <span class="seriesInfo">DOI 10.1117/12.893272</span>, <time datetime="2011-09" class="refDate">September 2011</time>, <span>&lt;<a href="https://doi.org/10.1117/12.893272">https://doi.org/10.1117/12.893272</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="awschalom-roadmap">[awschalom-roadmap]</dt>
         <dd>
@@ -3153,6 +3248,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="christandl-anon">[christandl-anon]</dt>
         <dd>
 <span class="refAuthor">Christandl, M.</span> and <span class="refAuthor">S. Wehner</span>, <span class="refTitle">"Quantum Anonymous Transmissions"</span>, <span class="refContent">Springer Berlin Heidelberg</span>, <span class="seriesInfo">Lecture Notes in Computer Science pp. 217-235</span>, <span class="seriesInfo">DOI 10.1007/11593447_12</span>, <span class="seriesInfo">ISBN ["9783540306849", "9783540322672"]</span>, <time datetime="2005" class="refDate">2005</time>, <span>&lt;<a href="https://doi.org/10.1007/11593447_12">https://doi.org/10.1007/11593447_12</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="dahlberg-ll-arxiv">[dahlberg-ll-arxiv]</dt>
+        <dd>
+<span class="refAuthor">Dahlberg, A.</span>, <span class="refAuthor">Skrzypczyk, M.</span>, <span class="refAuthor">Coopmans, T.</span>, <span class="refAuthor">Wubben, L.</span>, <span class="refAuthor">Rozpędek, F.</span>, <span class="refAuthor">Pompili, M.</span>, <span class="refAuthor">Stolk, A.</span>, <span class="refAuthor">Pawełczak, P.</span>, <span class="refAuthor">Knegjens, R.</span>, <span class="refAuthor">Filho, J.</span>, <span class="refAuthor">Hanson, R.</span>, and <span class="refAuthor">S. Wehner</span>, <span class="refTitle">"A Link Layer Protocol for Quantum Networks"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo"> arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.1903.09778</span>, <time datetime="2019" class="refDate">2019</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.1903.09778">https://doi.org/10.48550/ARXIV.1903.09778</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="dally-towles">[dally-towles]</dt>
         <dd>
@@ -3218,6 +3317,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Gottesman, D.</span>, <span class="refAuthor">Jennewein, T.</span>, and <span class="refAuthor">S. Croke</span>, <span class="refTitle">"Longer-Baseline Telescopes Using Quantum Repeaters"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review Letters vol. 109, no. 7</span>, <span class="seriesInfo">DOI 10.1103/physrevlett.109.070503</span>, <time datetime="2012-08" class="refDate">August 2012</time>, <span>&lt;<a href="https://doi.org/10.1103/physrevlett.109.070503">https://doi.org/10.1103/physrevlett.109.070503</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="haener-qmpi">[haener-qmpi]</dt>
+        <dd>
+<span class="refAuthor">Häner, T.</span>, <span class="refAuthor">Steiger, D.</span>, <span class="refAuthor">Hoefler, T.</span>, and <span class="refAuthor">M. Troyer</span>, <span class="refTitle">"Distributed quantum computing with QMPI"</span>, <span class="refContent">ACM</span>, <span class="seriesInfo">Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis pp. 1-13</span>, <span class="seriesInfo">DOI 10.1145/3458817.3476172</span>, <time datetime="2021-11" class="refDate">November 2021</time>, <span>&lt;<a href="https://doi.org/10.1145/3458817.3476172">https://doi.org/10.1145/3458817.3476172</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="hajdusek-qcomm">[hajdusek-qcomm]</dt>
         <dd>
 <span class="refAuthor">Hajdušek, M.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Quantum Communications"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2311.02367</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2311.02367">https://doi.org/10.48550/ARXIV.2311.02367</a>&gt;</span>. </dd>
@@ -3254,6 +3357,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Humphreys, P.</span>, <span class="refAuthor">Kalb, N.</span>, <span class="refAuthor">Morits, J.</span>, <span class="refAuthor">Schouten, R.</span>, <span class="refAuthor">Vermeulen, R.</span>, <span class="refAuthor">Twitchen, D.</span>, <span class="refAuthor">Markham, M.</span>, and <span class="refAuthor">R. Hanson</span>, <span class="refTitle">"Deterministic delivery of remote entanglement on a quantum network"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">Nature vol. 558, no. 7709, pp. 268-273</span>, <span class="seriesInfo">DOI 10.1038/s41586-018-0200-5</span>, <time datetime="2018-06" class="refDate">June 2018</time>, <span>&lt;<a href="https://doi.org/10.1038/s41586-018-0200-5">https://doi.org/10.1038/s41586-018-0200-5</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="I-D.draft-dahlberg-ll-quantum">[I-D.draft-dahlberg-ll-quantum]</dt>
+        <dd>
+<span class="refAuthor">Dahlberg, A.</span>, <span class="refAuthor">Skrzypczyk, M.</span>, and <span class="refAuthor">S. Wehner</span>, <span class="refTitle">"The Link Layer service in a Quantum Internet"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dahlberg-ll-quantum-03</span>, <time datetime="2019-10-10" class="refDate">10 October 2019</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dahlberg-ll-quantum-03">https://datatracker.ietf.org/doc/html/draft-dahlberg-ll-quantum-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.draft-hajdusek-qirg-timing-physics">[I-D.draft-hajdusek-qirg-timing-physics]</dt>
         <dd>
 <span class="refAuthor">Hajdusek, M.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Timing Regimes in Quantum Networks and their Physical Underpinnings"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-hajdusek-qirg-timing-physics-01</span>, <time datetime="2026-03-18" class="refDate">18 March 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-hajdusek-qirg-timing-physics-01">https://datatracker.ietf.org/doc/html/draft-hajdusek-qirg-timing-physics-01</a>&gt;</span>. </dd>
@@ -3265,6 +3372,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="I-D.draft-van-meter-qirg-quantum-connection-setup">[I-D.draft-van-meter-qirg-quantum-connection-setup]</dt>
         <dd>
 <span class="refAuthor">Van Meter, R.</span> and <span class="refAuthor">T. Matsuo</span>, <span class="refTitle">"Connection Setup in a Quantum Network"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-van-meter-qirg-quantum-connection-setup-01</span>, <time datetime="2019-09-11" class="refDate">11 September 2019</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-van-meter-qirg-quantum-connection-setup-01">https://datatracker.ietf.org/doc/html/draft-van-meter-qirg-quantum-connection-setup-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.draft-zhu-qirg-qdcp">[I-D.draft-zhu-qirg-qdcp]</dt>
+        <dd>
+<span class="refAuthor">Zhu, A.</span>, <span class="refAuthor">Zhang, Y.</span>, <span class="refAuthor">Broberg, R. M.</span>, <span class="refAuthor">Feng, L.</span>, and <span class="refAuthor">J. M. Smith</span>, <span class="refTitle">"Quantum Datagram Control Protocol (QDCP) for IP Optical Environments"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-zhu-qirg-qdcp-01</span>, <time datetime="2026-04-01" class="refDate">1 April 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-zhu-qirg-qdcp-01">https://datatracker.ietf.org/doc/html/draft-zhu-qirg-qdcp-01</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="ilo-okeke-clock">[ilo-okeke-clock]</dt>
         <dd>

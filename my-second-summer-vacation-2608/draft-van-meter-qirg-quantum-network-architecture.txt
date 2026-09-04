@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 17 February 2027                                Keio University
-                                                          16 August 2026
+Expires: 8 March 2027                                    Keio University
+                                                        4 September 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 February 2027.
+   This Internet-Draft will expire on 8 March 2027.
 
 Copyright Notice
 
@@ -125,6 +125,10 @@ Table of Contents
      14.3.  Control
      14.4.  Management
    15. Protocol Layers
+     15.1.  Physical Layer
+     15.2.  Link Layer
+     15.3.  Network Layer: RuleSets
+     15.4.  Application Layer
    16. Nodes and Node Types
      16.1.  End Nodes
      16.2.  Support Nodes
@@ -669,10 +673,11 @@ Table of Contents
    locus of control for network protocols.  The classes of nodes are
    described later in this document.
 
-   A _logical node_ provides a single communication and control point
-   for the services of a particular node type or a composite node type,
-   but may comprise a set of physical devices rather than a single
-   device, and may be physically packaged in more than one box.
+   A _logical node_ or _composite node_ provides a single communication
+   and control point for the services of a particular node type or a
+   composite node type, but may comprise a set of physical devices
+   rather than a single device, and may be physically packaged in more
+   than one box.
 
 8.3.  Quantum Links
 
@@ -768,7 +773,12 @@ Table of Contents
 
    The execution model is expected to be much like the classical
    supercomputing Message Passing Interface (MPI)
-   (https://en.wikipedia.org/wiki/Message_Passing_Interface).
+   (https://en.wikipedia.org/wiki/Message_Passing_Interface), in the
+   sense that nodes cooperate in a tightly coupled fashion, exchanging
+   data and controlling program execution, with each node executing a
+   portion of a single, large computation.  One specific implementation
+   of Quantum MPI has, in fact, been proposed [haener-qmpi], but here we
+   mean this in the broader sense.)
 
    General hardware environment:
 
@@ -1331,9 +1341,96 @@ Table of Contents
    utilize messages carried using the same protocol stack designed for
    application data.
 
-   In a quantum network, this layering is less clear.
+   In a quantum network, this layering is less clear.  Classical network
+   protocol layering is often presumed to include the sequential
+   addition of headers while preparing a packet for transmission and
+   processing proceeds down the protocol stack, with the process
+   inverted on packet reception.  In quantum networks, the qubits
+   themselves are not processed in this stacked fashion, and the related
+   classical information typically involves separate messages with
+   separate end points as hop-by-hop entanglement is extended to end-to-
+   end entanglement through the actions of nodes all along the path.
+
+   Nevertheless, the notion of _layers of responsibility_ or _separation
+   of concerns_ is valid,with different needs at the link, network, and
+   application.
 
    (More to be added here.)
+
+                            +-----------------+
+                            | Application     |
+                            +-----------------+
+                            | RuleSet         |
+                            +-----------------+
+                            | Link            |
+                            +-----------------+
+                            | Physical        |
+                            +-----------------+
+
+                         Figure 1: Protocol Layers
+
+15.1.  Physical Layer
+
+   (choice of qubit, wavelength, envelope, timing/trial rate,
+   synchronization, detection)
+
+   (documents on "standard photon" and "photon train" to come)
+
+   The physical layer incorporates the quantum channel itself, whether
+   free space or waveguide.  Specifcation of the physical layer is out
+   of scope for this document, but the physical-layer specifications
+   must include:
+
+   *  signal transmission characteristics of the channel
+
+   *  how nodes physically connect to the channel
+
+   *  timing
+
+15.2.  Link Layer
+
+   The link layer sits below the network layer and uses physical-layer
+   quantum phenomena plus classical messaging to provide its service.
+   The primary service provided by the link layer is heralded, named
+   entanglement across a quantum channel with defined endpoints.  In
+   this architecture, the link service provides only bipartite
+   entanglement.  The link layer architecture will support B, C and T
+   class applications, though not all links are required to support all
+   classes.  In support of these classes, the entangled states may be
+   either still active and available for further use by the network
+   layer, or one or both of the qubits may already have been measured,
+   with the measurement basis and results recorded and reported.
+
+   The link layer may deliver entangled states to the network layer
+   either singly or as an ordered, tagged batch.
+
+   The link may operate entirely on demand, or as an always-on, free-
+   running service where requests from the network layer are serviced by
+   using recently created entanglement.
+
+   Can the network layer request states at one end where the status of
+   the qubit at the other end is unknown, in either heralding or Pauli
+   frame?  This seems to be necessary to support B class.
+
+   (must coordinate w/ muxing, switch control)
+
+   Similar to that described in [I-D.draft-dahlberg-ll-quantum],
+   [dahlberg-ll-arxiv] and [I-D.draft-zhu-qirg-qdcp].
+
+   *  "message" format
+
+   *  addressing
+
+   *  multiplexing for multi-drop links
+
+15.3.  Network Layer: RuleSets
+
+   (responsible for both single- and multi-hop purification, and
+   entanglement swapping)
+
+15.4.  Application Layer
+
+   (mostly not defined here)
 
 16.  Nodes and Node Types
 
@@ -1342,18 +1439,17 @@ Table of Contents
    papers by Van Meter et al. and others.)
 
    The architecture of a quantum network is defined by its constituent
-   nodes and their specialized functions.  For clarity in describing our
-   system, we group these nodes according to their primary contributions
-   to network operation.  In our architecture, we classify nodes into
-   three main types: end nodes, for application interaction; repeater
-   and router nodes, for extending entanglement and path management; and
-   support nodes, for auxiliary operational tasks.
+   nodes and their specialized functions.  In our architecture, we
+   classify nodes into three main groups: end nodes, for application
+   interaction; repeater and router nodes, for extending entanglement
+   and path management; and support nodes, for auxiliary operational
+   tasks.
 
-   The qNode specification provides additional details on the common
-   roles and responsibilities of all quantum network nodes, and serves
-   as the equivalent of the Internet hosts requirements RFCs [RFC1122],
-   [RFC1123].  Each node type is further defined in a detailed
-   specification in a separate document.
+   The qNode specification (a document to be published) will provide
+   additional details on the common roles and responsibilities of all
+   quantum network nodes, and serves as the equivalent of the Internet
+   hosts requirements RFCs [RFC1122], [RFC1123].  Each node type is
+   further defined in a detailed specification in a separate document.
 
 16.1.  End Nodes
 
@@ -1541,6 +1637,9 @@ Table of Contents
    instead to expose the asynchronous creation of Bell pairs with
    timestamps.
 
+   (Does software control of buffer qubits appear in the architecture,
+   or is it purely an implementation detail?)
+
 17.2.  Photonic Path Description
 
    The optical path over which photons flow from source to detector in
@@ -1595,6 +1694,8 @@ Table of Contents
    encompassing the path of one or more photons may be partially fiber
    and partially free space.
 
+   The photonic path description notation will include no 'X's.
+
 17.4.  Switched
 
    A system built around a pool of detectors, particularly organized as
@@ -1603,6 +1704,8 @@ Table of Contents
 
    For pseudocode for switching (routing) certain types of devices, see
    Koyama et al. [koyama-24].
+
+   The photonic path description notation will include one or more 'X's.
 
 17.5.  Multidrop or Bus
 
@@ -1966,8 +2069,8 @@ Table of Contents
 
    [aparicio-spie]
               Aparicio, L. and R. Van Meter, "Multiplexing schemes for
-              quantum repeater networks", SPIE, SPIE Proceedings,
-              DOI 10.1117/12.893272, September 2011,
+              quantum repeater networks", SPIE, SPIE Proceedings vol.
+              8163, pp. 816308, DOI 10.1117/12.893272, September 2011,
               <https://doi.org/10.1117/12.893272>.
 
    [awschalom-roadmap]
@@ -2054,6 +2157,14 @@ Table of Contents
               in Computer Science pp. 217-235, DOI 10.1007/11593447_12,
               ISBN ["9783540306849", "9783540322672"], 2005,
               <https://doi.org/10.1007/11593447_12>.
+
+   [dahlberg-ll-arxiv]
+              Dahlberg, A., Skrzypczyk, M., Coopmans, T., Wubben, L.,
+              Rozpędek, F., Pompili, M., Stolk, A., Pawełczak, P.,
+              Knegjens, R., Filho, J., Hanson, R., and S. Wehner, "A
+              Link Layer Protocol for Quantum Networks", arXiv,  arXiv,
+              DOI 10.48550/ARXIV.1903.09778, 2019,
+              <https://doi.org/10.48550/ARXIV.1903.09778>.
 
    [dally-towles]
               Dally, W. J. and B. P. Towles, "Principles and Practices
@@ -2165,6 +2276,14 @@ Table of Contents
               no. 7, DOI 10.1103/physrevlett.109.070503, August 2012,
               <https://doi.org/10.1103/physrevlett.109.070503>.
 
+   [haener-qmpi]
+              Häner, T., Steiger, D., Hoefler, T., and M. Troyer,
+              "Distributed quantum computing with QMPI", ACM,
+              Proceedings of the International Conference for High
+              Performance Computing, Networking, Storage and
+              Analysis pp. 1-13, DOI 10.1145/3458817.3476172, November
+              2021, <https://doi.org/10.1145/3458817.3476172>.
+
    [hajdusek-qcomm]
               Hajdušek, M. and R. Van Meter, "Quantum Communications",
               arXiv, DOI 10.48550/ARXIV.2311.02367, 2023,
@@ -2234,6 +2353,13 @@ Table of Contents
               DOI 10.1038/s41586-018-0200-5, June 2018,
               <https://doi.org/10.1038/s41586-018-0200-5>.
 
+   [I-D.draft-dahlberg-ll-quantum]
+              Dahlberg, A., Skrzypczyk, M., and S. Wehner, "The Link
+              Layer service in a Quantum Internet", Work in Progress,
+              Internet-Draft, draft-dahlberg-ll-quantum-03, 10 October
+              2019, <https://datatracker.ietf.org/doc/html/draft-
+              dahlberg-ll-quantum-03>.
+
    [I-D.draft-hajdusek-qirg-timing-physics]
               Hajdusek, M. and R. Van Meter, "Timing Regimes in Quantum
               Networks and their Physical Underpinnings", Work in
@@ -2256,6 +2382,14 @@ Table of Contents
               van-meter-qirg-quantum-connection-setup-01, 11 September
               2019, <https://datatracker.ietf.org/doc/html/draft-van-
               meter-qirg-quantum-connection-setup-01>.
+
+   [I-D.draft-zhu-qirg-qdcp]
+              Zhu, A., Zhang, Y., Broberg, R. M., Feng, L., and J. M.
+              Smith, "Quantum Datagram Control Protocol (QDCP) for IP
+              Optical Environments", Work in Progress, Internet-Draft,
+              draft-zhu-qirg-qdcp-01, 1 April 2026,
+              <https://datatracker.ietf.org/doc/html/draft-zhu-qirg-
+              qdcp-01>.
 
    [ilo-okeke-clock]
               Ilo-Okeke, E., Tessler, L., Dowling, J., and T. Byrnes,
