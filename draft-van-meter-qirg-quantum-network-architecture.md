@@ -174,6 +174,20 @@ informative:
       seriesinfo:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
+  delle-donne-os-arxiv: DOI.10.48550/arXiv.2407.18306
+  delle-donne-os-nature: DOI.10.1038/s41586-025-08704-w
+  delle-donne-thesis:
+    target: https://pure.tudelft.nl/ws/portalfiles/portal/153555360/dissertation_cdelledonne.pdf
+    title: Software Abstractions for Programmable Quantum Network Nodes
+    author:
+        ins: C. Delle Donne
+        name: Carlo Delle Donne
+        org: Technical University of Delft
+    date: 2023
+    seriesinfo:
+      "Ph.D.": "Dissertation, Technical University Delft"
+    format:
+      PDF: https://pure.tudelft.nl/ws/portalfiles/portal/153555360/
   drost: DOI.10.1364/JOCN.8.000331
   dulek-homomorphic: DOI.10.4086/toc.2018.v014a007
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
@@ -882,7 +896,9 @@ The physical layer incorporates the quantum channel itself, whether free space o
 
 ## Link Layer
 
-The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results recorded and reported.
+The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints {{I-D.draft-dahlberg-ll-quantum}}, {{dahlberg-ll-arxiv}}, {{delle-donne-thesis}}, {{delle-donne-os-nature}}.  The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results recorded and reported.
+
+See p. 36 of {{delle-donne-thesis}} for a decent description of the link service.
 
 The link layer may deliver entangled states to the network layer either singly or as an ordered, tagged batch.
 
@@ -890,13 +906,43 @@ The link may operate entirely on demand, or as an always-on, free-running servic
 
 Can the network layer request states at one end where the status of the qubit at the other end is unknown, in either heralding or Pauli frame?  This seems to be necessary to support B class.
 
-(must coordinate w/ muxing, switch control)
+For multidrop links, the link layer must coordinate with multiplexing and switch control as part of the control plane {{I-D.draft-zhu-qirg-qdcp}}.
 
-Similar to that described in {{I-D.draft-dahlberg-ll-quantum}}, {{dahlberg-ll-arxiv}} and {{I-D.draft-zhu-qirg-qdcp}}.
+The link may consist of several network nodes.  Besides the two endpoints, switches, BSAs, and EPPSes may be involved.  Although these support nodes are part of the network architecture, their presence is not visible beyond the boundaries of the link or PSD.
+
+In this architecture, fidelity is the responsibility of the network layer; the link layer always provides raw Bell pairs of base fidelity.
+
+Link monitoring and fidelity management?
 
 * "message" format
 * addressing
 * multiplexing for multi-drop links
+
+### Link/Network Layer Interface
+
+The link/network interface is best described as a software interface, executed separately at each link endpoint.
+
+The network-->link request:
+
+* addresses of nodes
+* single/fixed number/stream
+
+The link-->network response:
+
+* addresses of nodes
+* length of array of entangled states
+* array of entangled states
+    - identifier for entangled state
+    - (timestamp separate from identifier? needed or not?)
+    - flags
+        - confirmed/pending confirmation
+        - measured/live
+    - if measured, basis
+    - if measured, result
+
+### Link Management
+
+(split between here and network management section?)
 
 ## Network Layer: RuleSets
 
