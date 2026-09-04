@@ -127,6 +127,8 @@ Table of Contents
    15. Protocol Layers
      15.1.  Physical Layer
      15.2.  Link Layer
+       15.2.1.  Link/Network Layer Interface
+       15.2.2.  Link Management
      15.3.  Network Layer: RuleSets
      15.4.  Application Layer
    16. Nodes and Node Types
@@ -1389,17 +1391,22 @@ Table of Contents
 
 15.2.  Link Layer
 
-   The link layer sits below the network layer and uses physical-layer
-   quantum phenomena plus classical messaging to provide its service.
    The primary service provided by the link layer is heralded, named
-   entanglement across a quantum channel with defined endpoints.  In
-   this architecture, the link service provides only bipartite
-   entanglement.  The link layer architecture will support B, C and T
-   class applications, though not all links are required to support all
+   entanglement across a quantum channel with defined endpoints
+   [I-D.draft-dahlberg-ll-quantum], [dahlberg-ll-arxiv],
+   [delle-donne-thesis], [delle-donne-os-nature].  The link layer sits
+   below the network layer and uses physical-layer quantum phenomena
+   plus classical messaging to provide its service.  In this
+   architecture, the link service provides only bipartite entanglement.
+   The link layer architecture will support B, C and T class
+   applications, though not all links are required to support all
    classes.  In support of these classes, the entangled states may be
    either still active and available for further use by the network
    layer, or one or both of the qubits may already have been measured,
    with the measurement basis and results recorded and reported.
+
+   See p. 36 of [delle-donne-thesis] for a decent description of the
+   link service.
 
    The link layer may deliver entangled states to the network layer
    either singly or as an ordered, tagged batch.
@@ -1412,16 +1419,63 @@ Table of Contents
    the qubit at the other end is unknown, in either heralding or Pauli
    frame?  This seems to be necessary to support B class.
 
-   (must coordinate w/ muxing, switch control)
+   For multidrop links, the link layer must coordinate with multiplexing
+   and switch control as part of the control plane
+   [I-D.draft-zhu-qirg-qdcp].
 
-   Similar to that described in [I-D.draft-dahlberg-ll-quantum],
-   [dahlberg-ll-arxiv] and [I-D.draft-zhu-qirg-qdcp].
+   The link may consist of several network nodes.  Besides the two
+   endpoints, switches, BSAs, and EPPSes may be involved.  Although
+   these support nodes are part of the network architecture, their
+   presence is not visible beyond the boundaries of the link or PSD.
+
+   In this architecture, fidelity is the responsibility of the network
+   layer; the link layer always provides raw Bell pairs of base
+   fidelity.
+
+   Link monitoring and fidelity management?
 
    *  "message" format
 
    *  addressing
 
    *  multiplexing for multi-drop links
+
+15.2.1.  Link/Network Layer Interface
+
+   The link/network interface is best described as a software interface,
+   executed separately at each link endpoint.
+
+   The network-->link request:
+
+   *  addresses of nodes
+
+   *  single/fixed number/stream
+
+   The link-->network response:
+
+   *  addresses of nodes
+
+   *  length of array of entangled states
+
+   *  array of entangled states
+
+      -  identifier for entangled state
+
+      -  (timestamp separate from identifier? needed or not?)
+
+      -  flags
+
+         o  confirmed/pending confirmation
+
+         o  measured/live
+
+      -  if measured, basis
+
+      -  if measured, result
+
+15.2.2.  Link Management
+
+   (split between here and network management section?)
 
 15.3.  Network Layer: RuleSets
 
@@ -2177,6 +2231,38 @@ Table of Contents
               Modern Physics vol. 89, no. 3,
               DOI 10.1103/revmodphys.89.035002, July 2017,
               <https://doi.org/10.1103/revmodphys.89.035002>.
+
+   [delle-donne-os-arxiv]
+              Donne, C., Iuliano, M., van der Vecht, B., Ferreira, G.,
+              Jirovská, H., van der Steenhoven, T., Dahlberg, A.,
+              Skrzypczyk, M., Fioretto, D., Teller, M., Filippov, P.,
+              Montblanch, A., Fischer, J., van Ommen, B., Demetriou, N.,
+              Leichtle, D., Music, L., Ollivier, H., Raa, I., Kozlowski,
+              W., Taminiau, T., Pawełczak, P., Northup, T., Hanson, R.,
+              and S. Wehner, "Design and demonstration of an operating
+              system for executing applications on quantum network
+              nodes", arXiv, DOI 10.48550/ARXIV.2407.18306, 2024,
+              <https://doi.org/10.48550/ARXIV.2407.18306>.
+
+   [delle-donne-os-nature]
+              Delle Donne, C., Iuliano, M., van der Vecht, B., Ferreira,
+              G., Jirovská, H., van der Steenhoven, T., Dahlberg, A.,
+              Skrzypczyk, M., Fioretto, D., Teller, M., Filippov, P.,
+              Montblanch, A., Fischer, J., van Ommen, H., Demetriou, N.,
+              Leichtle, D., Music, L., Ollivier, H., te Raa, I.,
+              Kozlowski, W., Taminiau, T., Pawełczak, P., Northup, T.,
+              Hanson, R., and S. Wehner, "An operating system for
+              executing applications on quantum network nodes", Springer
+              Science and Business Media LLC, Nature vol. 639, no. 8054,
+              pp. 321-328, DOI 10.1038/s41586-025-08704-w, March 2025,
+              <https://doi.org/10.1038/s41586-025-08704-w>.
+
+   [delle-donne-thesis]
+              Delle Donne, C., "Software Abstractions for Programmable
+              Quantum Network Nodes", Ph.D. Dissertation, Technical
+              University Delft, 2023,
+              <https://pure.tudelft.nl/ws/portalfiles/portal/153555360/
+              dissertation_cdelledonne.pdf>.
 
    [divincenzo-criteria]
               DiVincenzo, D. and IBM, "The Physical Implementation of

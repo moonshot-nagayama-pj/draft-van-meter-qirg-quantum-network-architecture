@@ -1351,6 +1351,14 @@ svg {
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.2">
                 <p id="section-toc.1-1.15.2.2.1"><a href="#section-15.2" class="auto internal xref">15.2</a>.  <a href="#name-link-layer" class="internal xref">Link Layer</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.2.2.1">
+                    <p id="section-toc.1-1.15.2.2.2.1.1"><a href="#section-15.2.1" class="auto internal xref">15.2.1</a>.  <a href="#name-link-network-layer-interfac" class="internal xref">Link/Network Layer Interface</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.2.2.2">
+                    <p id="section-toc.1-1.15.2.2.2.2.1"><a href="#section-15.2.2" class="auto internal xref">15.2.2</a>.  <a href="#name-link-management" class="internal xref">Link Management</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.3">
                 <p id="section-toc.1-1.15.2.3.1"><a href="#section-15.3" class="auto internal xref">15.3</a>.  <a href="#name-network-layer-rulesets" class="internal xref">Network Layer: RuleSets</a></p>
@@ -2592,23 +2600,88 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
         <h3 id="name-link-layer">
 <a href="#section-15.2" class="section-number selfRef">15.2. </a><a href="#name-link-layer" class="section-name selfRef">Link Layer</a>
         </h3>
-<p id="section-15.2-1">The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results recorded and reported.<a href="#section-15.2-1" class="pilcrow">¶</a></p>
-<p id="section-15.2-2">The link layer may deliver entangled states to the network layer either singly or as an ordered, tagged batch.<a href="#section-15.2-2" class="pilcrow">¶</a></p>
-<p id="section-15.2-3">The link may operate entirely on demand, or as an always-on, free-running service where requests from the network layer are serviced by using recently created entanglement.<a href="#section-15.2-3" class="pilcrow">¶</a></p>
-<p id="section-15.2-4">Can the network layer request states at one end where the status of the qubit at the other end is unknown, in either heralding or Pauli frame?  This seems to be necessary to support B class.<a href="#section-15.2-4" class="pilcrow">¶</a></p>
-<p id="section-15.2-5">(must coordinate w/ muxing, switch control)<a href="#section-15.2-5" class="pilcrow">¶</a></p>
-<p id="section-15.2-6">Similar to that described in <span>[<a href="#I-D.draft-dahlberg-ll-quantum" class="cite xref">I-D.draft-dahlberg-ll-quantum</a>]</span>, <span>[<a href="#dahlberg-ll-arxiv" class="cite xref">dahlberg-ll-arxiv</a>]</span> and <span>[<a href="#I-D.draft-zhu-qirg-qdcp" class="cite xref">I-D.draft-zhu-qirg-qdcp</a>]</span>.<a href="#section-15.2-6" class="pilcrow">¶</a></p>
+<p id="section-15.2-1">The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints <span>[<a href="#I-D.draft-dahlberg-ll-quantum" class="cite xref">I-D.draft-dahlberg-ll-quantum</a>]</span>, <span>[<a href="#dahlberg-ll-arxiv" class="cite xref">dahlberg-ll-arxiv</a>]</span>, <span>[<a href="#delle-donne-thesis" class="cite xref">delle-donne-thesis</a>]</span>, <span>[<a href="#delle-donne-os-nature" class="cite xref">delle-donne-os-nature</a>]</span>.  The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results recorded and reported.<a href="#section-15.2-1" class="pilcrow">¶</a></p>
+<p id="section-15.2-2">See p. 36 of <span>[<a href="#delle-donne-thesis" class="cite xref">delle-donne-thesis</a>]</span> for a decent description of the link service.<a href="#section-15.2-2" class="pilcrow">¶</a></p>
+<p id="section-15.2-3">The link layer may deliver entangled states to the network layer either singly or as an ordered, tagged batch.<a href="#section-15.2-3" class="pilcrow">¶</a></p>
+<p id="section-15.2-4">The link may operate entirely on demand, or as an always-on, free-running service where requests from the network layer are serviced by using recently created entanglement.<a href="#section-15.2-4" class="pilcrow">¶</a></p>
+<p id="section-15.2-5">Can the network layer request states at one end where the status of the qubit at the other end is unknown, in either heralding or Pauli frame?  This seems to be necessary to support B class.<a href="#section-15.2-5" class="pilcrow">¶</a></p>
+<p id="section-15.2-6">For multidrop links, the link layer must coordinate with multiplexing and switch control as part of the control plane <span>[<a href="#I-D.draft-zhu-qirg-qdcp" class="cite xref">I-D.draft-zhu-qirg-qdcp</a>]</span>.<a href="#section-15.2-6" class="pilcrow">¶</a></p>
+<p id="section-15.2-7">The link may consist of several network nodes.  Besides the two endpoints, switches, BSAs, and EPPSes may be involved.  Although these support nodes are part of the network architecture, their presence is not visible beyond the boundaries of the link or PSD.<a href="#section-15.2-7" class="pilcrow">¶</a></p>
+<p id="section-15.2-8">In this architecture, fidelity is the responsibility of the network layer; the link layer always provides raw Bell pairs of base fidelity.<a href="#section-15.2-8" class="pilcrow">¶</a></p>
+<p id="section-15.2-9">Link monitoring and fidelity management?<a href="#section-15.2-9" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-15.2-7.1">
-            <p id="section-15.2-7.1.1">"message" format<a href="#section-15.2-7.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-15.2-10.1">
+            <p id="section-15.2-10.1.1">"message" format<a href="#section-15.2-10.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-15.2-7.2">
-            <p id="section-15.2-7.2.1">addressing<a href="#section-15.2-7.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-15.2-10.2">
+            <p id="section-15.2-10.2.1">addressing<a href="#section-15.2-10.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-15.2-7.3">
-            <p id="section-15.2-7.3.1">multiplexing for multi-drop links<a href="#section-15.2-7.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-15.2-10.3">
+            <p id="section-15.2-10.3.1">multiplexing for multi-drop links<a href="#section-15.2-10.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
+<div id="linknetwork-layer-interface">
+<section id="section-15.2.1">
+          <h4 id="name-link-network-layer-interfac">
+<a href="#section-15.2.1" class="section-number selfRef">15.2.1. </a><a href="#name-link-network-layer-interfac" class="section-name selfRef">Link/Network Layer Interface</a>
+          </h4>
+<p id="section-15.2.1-1">The link/network interface is best described as a software interface, executed separately at each link endpoint.<a href="#section-15.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-15.2.1-2">The network--&gt;link request:<a href="#section-15.2.1-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-15.2.1-3.1">
+              <p id="section-15.2.1-3.1.1">addresses of nodes<a href="#section-15.2.1-3.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-15.2.1-3.2">
+              <p id="section-15.2.1-3.2.1">single/fixed number/stream<a href="#section-15.2.1-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-15.2.1-4">The link--&gt;network response:<a href="#section-15.2.1-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-15.2.1-5.1">
+              <p id="section-15.2.1-5.1.1">addresses of nodes<a href="#section-15.2.1-5.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-15.2.1-5.2">
+              <p id="section-15.2.1-5.2.1">length of array of entangled states<a href="#section-15.2.1-5.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-15.2.1-5.3">
+              <p id="section-15.2.1-5.3.1">array of entangled states<a href="#section-15.2.1-5.3.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-15.2.1-5.3.2.1">
+                  <p id="section-15.2.1-5.3.2.1.1">identifier for entangled state<a href="#section-15.2.1-5.3.2.1.1" class="pilcrow">¶</a></p>
+</li>
+                <li class="normal" id="section-15.2.1-5.3.2.2">
+                  <p id="section-15.2.1-5.3.2.2.1">(timestamp separate from identifier? needed or not?)<a href="#section-15.2.1-5.3.2.2.1" class="pilcrow">¶</a></p>
+</li>
+                <li class="normal" id="section-15.2.1-5.3.2.3">
+                  <p id="section-15.2.1-5.3.2.3.1">flags<a href="#section-15.2.1-5.3.2.3.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-15.2.1-5.3.2.3.2.1">
+                      <p id="section-15.2.1-5.3.2.3.2.1.1">confirmed/pending confirmation<a href="#section-15.2.1-5.3.2.3.2.1.1" class="pilcrow">¶</a></p>
+</li>
+                    <li class="normal" id="section-15.2.1-5.3.2.3.2.2">
+                      <p id="section-15.2.1-5.3.2.3.2.2.1">measured/live<a href="#section-15.2.1-5.3.2.3.2.2.1" class="pilcrow">¶</a></p>
+</li>
+                  </ul>
+</li>
+                <li class="normal" id="section-15.2.1-5.3.2.4">
+                  <p id="section-15.2.1-5.3.2.4.1">if measured, basis<a href="#section-15.2.1-5.3.2.4.1" class="pilcrow">¶</a></p>
+</li>
+                <li class="normal" id="section-15.2.1-5.3.2.5">
+                  <p id="section-15.2.1-5.3.2.5.1">if measured, result<a href="#section-15.2.1-5.3.2.5.1" class="pilcrow">¶</a></p>
+</li>
+              </ul>
+</li>
+          </ul>
+</section>
+</div>
+<div id="link-management">
+<section id="section-15.2.2">
+          <h4 id="name-link-management">
+<a href="#section-15.2.2" class="section-number selfRef">15.2.2. </a><a href="#name-link-management" class="section-name selfRef">Link Management</a>
+          </h4>
+<p id="section-15.2.2-1">(split between here and network management section?)<a href="#section-15.2.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="network-layer-rulesets">
@@ -3260,6 +3333,18 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="degen-sensing">[degen-sensing]</dt>
         <dd>
 <span class="refAuthor">Degen, C.</span>, <span class="refAuthor">Reinhard, F.</span>, and <span class="refAuthor">P. Cappellaro</span>, <span class="refTitle">"Quantum sensing"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Reviews of Modern Physics vol. 89, no. 3</span>, <span class="seriesInfo">DOI 10.1103/revmodphys.89.035002</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://doi.org/10.1103/revmodphys.89.035002">https://doi.org/10.1103/revmodphys.89.035002</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="delle-donne-os-arxiv">[delle-donne-os-arxiv]</dt>
+        <dd>
+<span class="refAuthor">Donne, C.</span>, <span class="refAuthor">Iuliano, M.</span>, <span class="refAuthor">van der Vecht, B.</span>, <span class="refAuthor">Ferreira, G.</span>, <span class="refAuthor">Jirovská, H.</span>, <span class="refAuthor">van der Steenhoven, T.</span>, <span class="refAuthor">Dahlberg, A.</span>, <span class="refAuthor">Skrzypczyk, M.</span>, <span class="refAuthor">Fioretto, D.</span>, <span class="refAuthor">Teller, M.</span>, <span class="refAuthor">Filippov, P.</span>, <span class="refAuthor">Montblanch, A.</span>, <span class="refAuthor">Fischer, J.</span>, <span class="refAuthor">van Ommen, B.</span>, <span class="refAuthor">Demetriou, N.</span>, <span class="refAuthor">Leichtle, D.</span>, <span class="refAuthor">Music, L.</span>, <span class="refAuthor">Ollivier, H.</span>, <span class="refAuthor">Raa, I.</span>, <span class="refAuthor">Kozlowski, W.</span>, <span class="refAuthor">Taminiau, T.</span>, <span class="refAuthor">Pawełczak, P.</span>, <span class="refAuthor">Northup, T.</span>, <span class="refAuthor">Hanson, R.</span>, and <span class="refAuthor">S. Wehner</span>, <span class="refTitle">"Design and demonstration of an operating system for executing applications on quantum network nodes"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2407.18306</span>, <time datetime="2024" class="refDate">2024</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2407.18306">https://doi.org/10.48550/ARXIV.2407.18306</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="delle-donne-os-nature">[delle-donne-os-nature]</dt>
+        <dd>
+<span class="refAuthor">Delle Donne, C.</span>, <span class="refAuthor">Iuliano, M.</span>, <span class="refAuthor">van der Vecht, B.</span>, <span class="refAuthor">Ferreira, G.</span>, <span class="refAuthor">Jirovská, H.</span>, <span class="refAuthor">van der Steenhoven, T.</span>, <span class="refAuthor">Dahlberg, A.</span>, <span class="refAuthor">Skrzypczyk, M.</span>, <span class="refAuthor">Fioretto, D.</span>, <span class="refAuthor">Teller, M.</span>, <span class="refAuthor">Filippov, P.</span>, <span class="refAuthor">Montblanch, A.</span>, <span class="refAuthor">Fischer, J.</span>, <span class="refAuthor">van Ommen, H.</span>, <span class="refAuthor">Demetriou, N.</span>, <span class="refAuthor">Leichtle, D.</span>, <span class="refAuthor">Music, L.</span>, <span class="refAuthor">Ollivier, H.</span>, <span class="refAuthor">te Raa, I.</span>, <span class="refAuthor">Kozlowski, W.</span>, <span class="refAuthor">Taminiau, T.</span>, <span class="refAuthor">Pawełczak, P.</span>, <span class="refAuthor">Northup, T.</span>, <span class="refAuthor">Hanson, R.</span>, and <span class="refAuthor">S. Wehner</span>, <span class="refTitle">"An operating system for executing applications on quantum network nodes"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">Nature vol. 639, no. 8054, pp. 321-328</span>, <span class="seriesInfo">DOI 10.1038/s41586-025-08704-w</span>, <time datetime="2025-03" class="refDate">March 2025</time>, <span>&lt;<a href="https://doi.org/10.1038/s41586-025-08704-w">https://doi.org/10.1038/s41586-025-08704-w</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="delle-donne-thesis">[delle-donne-thesis]</dt>
+        <dd>
+<span class="refAuthor">Delle Donne, C.</span>, <span class="refTitle">"Software Abstractions for Programmable Quantum Network Nodes"</span>, <span class="seriesInfo">Ph.D. Dissertation, Technical University Delft</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://pure.tudelft.nl/ws/portalfiles/portal/153555360/dissertation_cdelledonne.pdf">https://pure.tudelft.nl/ws/portalfiles/portal/153555360/dissertation_cdelledonne.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="divincenzo-criteria">[divincenzo-criteria]</dt>
         <dd>
