@@ -675,10 +675,10 @@ This section documents the requirements for all networks adhering to this archit
 * Operates on qubits. (Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)
 * Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)
 * Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.
-* The architecture must support deployments ranging from multicomputer to wide area networks.
-* The architecture must support multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
-* The architecture must support entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
-* The architecture must support evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.
+* Support deployments ranging from multicomputer to wide area networks.
+* Support multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
+* Support entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
+* Support evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.
 
 ### Interface Requirements
 
@@ -870,35 +870,38 @@ Nevertheless, the notion of _layers of responsibility_ or _separation of concern
   a["A label"] b:2 c:2 d -->
 
 ~~~~~~~~
-+-----------------+
-| Application     |
-+-----------------+
-| RuleSet         |
-+-----------------+
-| Link            |
-+-----------------+
-| Physical        |
-+-----------------+
++---------------------------+
+| Application               |
++---------------------------+
+| Network (RuleSet)         |
++---------------------------+
+| Link                      |
++---------------------------+
+| Physical                  |
++---------------------------+
 ~~~~~~~~
 {: artwork-name="fig-layers" artwork-align="center" title="Protocol Layers" }
 
 ## Physical Layer
 
-(choice of qubit, wavelength, envelope, timing/trial rate, synchronization, detection)
-
-(documents on "standard photon" and "photon train" to come)
-
 The physical layer incorporates the quantum channel itself, whether free space or waveguide.  Specifcation of the physical layer is out of scope for this document, but the physical-layer specifications must include:
 
 * signal transmission characteristics of the channel
 * how nodes physically connect to the channel
-* timing
+* choice of photonic qubit
+* wavelength
+* wave packet envelope shape and duration
+* timing/trial rate
+* how link synchronization is achieved
+* certain characteristics of detection subsystem
+
+Additional details on how to specify a physical layer will be presented in documents on the "standard photon" and "photon train", to come.
 
 ## Link Layer
 
 The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints {{I-D.draft-dahlberg-ll-quantum}}, {{dahlberg-ll-arxiv}}, {{delle-donne-thesis}}, {{delle-donne-os-nature}}.  The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results recorded and reported.
 
-See p. 36 of {{delle-donne-thesis}} for a decent description of the link service.
+See p. 36 of {{delle-donne-thesis}} for a decent description of the link service.  They refer to K-type (keep), M-type (measure) and R-type (remote) entanglement requests.  (What about reverse-R type?)
 
 The link layer may deliver entangled states to the network layer either singly or as an ordered, tagged batch.
 
@@ -910,9 +913,9 @@ For multidrop links, the link layer must coordinate with multiplexing and switch
 
 The link may consist of several network nodes.  Besides the two endpoints, switches, BSAs, and EPPSes may be involved.  Although these support nodes are part of the network architecture, their presence is not visible beyond the boundaries of the link or PSD.
 
-In this architecture, fidelity is the responsibility of the network layer; the link layer always provides raw Bell pairs of base fidelity.
+In this architecture, fidelity is the responsibility of the network layer; the link layer always provides raw Bell pairs of base fidelity.  Thus, fidelity is part of neither the request to nor response from the link layer.  During connection setup, information about link fidelity is acquired from the link management and used by the Responder to plan the connection.
 
-Link monitoring and fidelity management?
+Thus, link monitoring and link fidelity management are the responsibility of the link architecture but are not part of the link layer protocol.
 
 * "message" format
 * addressing
@@ -920,12 +923,15 @@ Link monitoring and fidelity management?
 
 ### Link/Network Layer Interface
 
+(should this get moved to the Link section below?)
+
 The link/network interface is best described as a software interface, executed separately at each link endpoint.
 
 The network-->link request:
 
 * addresses of nodes
 * single/fixed number/stream
+* disposition: keep or measure, basis
 
 The link-->network response:
 
@@ -940,13 +946,11 @@ The link-->network response:
     - if measured, basis
     - if measured, result
 
-### Link Management
-
-(split between here and network management section?)
-
 ## Network Layer: RuleSets
 
 (responsible for both single- and multi-hop purification, and entanglement swapping)
+
+The network layer subsumes the functions commonly divided into network and transport in many architectures.  It serves as a lightweight, restricted (not Turing complete) distributed computation platform.
 
 ## Application Layer
 
@@ -1084,6 +1088,16 @@ The photonic path description notation will include one or more 'X's.
 ## Multidrop or Bus
 
 A multidrop link, or a bus, is a shared physical channel to which more than two stations may be attached.
+
+### Link Management
+
+Configuration.
+
+Management of fidelity, trial rate, detection parameters, etc.
+
+Monitors slowly changing fidelity.
+
+Supplies information about link fidelity and rate to other subsystems such as routing and connection setup.
 
 # Connections
 
