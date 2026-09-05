@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 8 March 2027                                    Keio University
-                                                        4 September 2026
+Expires: 9 March 2027                                    Keio University
+                                                        5 September 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 March 2027.
+   This Internet-Draft will expire on 9 March 2027.
 
 Copyright Notice
 
@@ -128,7 +128,6 @@ Table of Contents
      15.1.  Physical Layer
      15.2.  Link Layer
        15.2.1.  Link/Network Layer Interface
-       15.2.2.  Link Management
      15.3.  Network Layer: RuleSets
      15.4.  Application Layer
    16. Nodes and Node Types
@@ -142,6 +141,7 @@ Table of Contents
      17.3.  Point-to-point
      17.4.  Switched
      17.5.  Multidrop or Bus
+       17.5.1.  Link Management
    18. Connections
    19. Resource Management: Multiplexing and Routing
    20. Classical Communication
@@ -1126,19 +1126,19 @@ Table of Contents
    *  Supports pairwise Bell pair creation between nodes with one or
       more of the B, C or T timing classes above.
 
-   *  The architecture must support deployments ranging from
-      multicomputer to wide area networks.
+   *  Support deployments ranging from multicomputer to wide area
+      networks.
 
-   *  The architecture must support multiple photonic synchronization
-      domains, as either point-to-point or optically switched paths.
-      The architecture must support some form of buffering between PSDs.
+   *  Support multiple photonic synchronization domains, as either
+      point-to-point or optically switched paths.  The architecture must
+      support some form of buffering between PSDs.
 
-   *  The architecture must support entanglement swapping.  (Note that
-      single PSD deployments may not need entanglement swapping.)
+   *  Support entanglement swapping.  (Note that single PSD deployments
+      may not need entanglement swapping.)
 
-   *  The architecture must support evolution of single-photon,
-      unentangled, single-purpose quantum key distribution networks to
-      fully entangled, multipurpose networks.
+   *  Support evolution of single-photon, unentangled, single-purpose
+      quantum key distribution networks to fully entangled, multipurpose
+      networks.
 
 11.2.2.  Interface Requirements
 
@@ -1359,24 +1359,19 @@ Table of Contents
 
    (More to be added here.)
 
-                            +-----------------+
-                            | Application     |
-                            +-----------------+
-                            | RuleSet         |
-                            +-----------------+
-                            | Link            |
-                            +-----------------+
-                            | Physical        |
-                            +-----------------+
+                       +---------------------------+
+                       | Application               |
+                       +---------------------------+
+                       | Network (RuleSet)         |
+                       +---------------------------+
+                       | Link                      |
+                       +---------------------------+
+                       | Physical                  |
+                       +---------------------------+
 
                          Figure 1: Protocol Layers
 
 15.1.  Physical Layer
-
-   (choice of qubit, wavelength, envelope, timing/trial rate,
-   synchronization, detection)
-
-   (documents on "standard photon" and "photon train" to come)
 
    The physical layer incorporates the quantum channel itself, whether
    free space or waveguide.  Specifcation of the physical layer is out
@@ -1387,7 +1382,21 @@ Table of Contents
 
    *  how nodes physically connect to the channel
 
-   *  timing
+   *  choice of photonic qubit
+
+   *  wavelength
+
+   *  wave packet envelope shape and duration
+
+   *  timing/trial rate
+
+   *  how link synchronization is achieved
+
+   *  certain characteristics of detection subsystem
+
+   Additional details on how to specify a physical layer will be
+   presented in documents on the "standard photon" and "photon train",
+   to come.
 
 15.2.  Link Layer
 
@@ -1406,7 +1415,8 @@ Table of Contents
    with the measurement basis and results recorded and reported.
 
    See p. 36 of [delle-donne-thesis] for a decent description of the
-   link service.
+   link service.  They refer to K-type (keep), M-type (measure) and
+   R-type (remote) entanglement requests.  (What about reverse-R type?)
 
    The link layer may deliver entangled states to the network layer
    either singly or as an ordered, tagged batch.
@@ -1430,9 +1440,14 @@ Table of Contents
 
    In this architecture, fidelity is the responsibility of the network
    layer; the link layer always provides raw Bell pairs of base
-   fidelity.
+   fidelity.  Thus, fidelity is part of neither the request to nor
+   response from the link layer.  During connection setup, information
+   about link fidelity is acquired from the link management and used by
+   the Responder to plan the connection.
 
-   Link monitoring and fidelity management?
+   Thus, link monitoring and link fidelity management are the
+   responsibility of the link architecture but are not part of the link
+   layer protocol.
 
    *  "message" format
 
@@ -1442,6 +1457,8 @@ Table of Contents
 
 15.2.1.  Link/Network Layer Interface
 
+   (should this get moved to the Link section below?)
+
    The link/network interface is best described as a software interface,
    executed separately at each link endpoint.
 
@@ -1450,6 +1467,8 @@ Table of Contents
    *  addresses of nodes
 
    *  single/fixed number/stream
+
+   *  disposition: keep or measure, basis
 
    The link-->network response:
 
@@ -1473,14 +1492,15 @@ Table of Contents
 
       -  if measured, result
 
-15.2.2.  Link Management
-
-   (split between here and network management section?)
-
 15.3.  Network Layer: RuleSets
 
    (responsible for both single- and multi-hop purification, and
    entanglement swapping)
+
+   The network layer subsumes the functions commonly divided into
+   network and transport in many architectures.  It serves as a
+   lightweight, restricted (not Turing complete) distributed computation
+   platform.
 
 15.4.  Application Layer
 
@@ -1765,6 +1785,17 @@ Table of Contents
 
    A multidrop link, or a bus, is a shared physical channel to which
    more than two stations may be attached.
+
+17.5.1.  Link Management
+
+   Configuration.
+
+   Management of fidelity, trial rate, detection parameters, etc.
+
+   Monitors slowly changing fidelity.
+
+   Supplies information about link fidelity and rate to other subsystems
+   such as routing and connection setup.
 
 18.  Connections
 
