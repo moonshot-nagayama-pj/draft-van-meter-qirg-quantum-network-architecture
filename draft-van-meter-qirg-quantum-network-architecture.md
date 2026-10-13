@@ -236,6 +236,7 @@ informative:
   mori-psds: DOI.10.1109/QCE60285.2024.00218
   morimae-blind: DOI.10.1103/PhysRevA.87.050301
   muralidharan-generations: DOI.10.1038/srep20463
+  pnpq: DOI.10.5281/zenodo.16886214
   proctor-quantum-sensing: DOI.10.48550/arXiv.1702.04271
   proctor-multiparm: DOI.10.1103/PhysRevLett.120.080501
   ramette-remote: DOI.10.1038/s41534-024-00855-4
@@ -297,7 +298,7 @@ This section describes goals and non-goals for this document itself, rather than
 
 ## Non-Goals
 
-* Specification of physical links
+* Specification of physical links (including photonic wave packets)
 * Internetworking
 
 # Relationship to Documents by QIRG and Other Organizations
@@ -348,7 +349,7 @@ This document assumes basic knowledge of the underlying technology and goals of 
     - "Generations" of quantum repeaters {{muralidharan-generations}}, {{azuma-rmp}}
     - (Repeater graph states may be helpful, but are not used in the current architecture)
 
-Because terms such as _fidelity_ have varying definitions, they will be defined in this set of documents (where? Timing Regimes?).
+Because terms such as _fidelity_ have varying definitions, they will be defined in this set of documents {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
 Readers needing additional background are referred to:
 
@@ -492,9 +493,9 @@ This section introduces concepts in classical and quantum computer and network a
 
 A quantum device stores, carries, measures or computes on quantum variables.
 
-A quantum device (often shortened to just "device" in this specification) is under software control; i.e. optical fibers or beam splitters are not classified as quantum devices.
+For the purposes of this architecture, a quantum device (often shortened to just "device" in this specification) is under software control; i.e. passive elements such as optical fibers or beam splitters are not classified as quantum devices.
 
-Control of devices is usually done with respect to some physical characteristic of the device itself, rather than dealing with the abstract notion of qubits.  A controllable wave plate, for example, may be adjusted in units of degrees of rotation of the plate.  An example of a software package that provides such functionality is PnPQ.
+Control of devices is usually done with respect to some physical characteristic of the device itself, rather than dealing with the abstract notion of qubits.  A controllable wave plate, for example, may be adjusted in units of degrees of rotation of the plate.  An example of a software package that provides such functionality is PnPQ {{pnpq}}.
 
 ## Quantum Nodes
 
@@ -516,7 +517,7 @@ Note that the most common operational mode uses only pairs of photons, one from 
 
 In multicomputer architectures, a _direct_ architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An _indirect_ architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect {{dally-towles}}.
 
-The distinction is somewhat artificial in that direct architectures sometimes incorporate a small switch inside the node, in which case the matching term depends on where you draw the boundary of the node, and because computational nodes can be configured to act only as routers within the network, modeling an indirect architecture using direct hardware.
+The distinction is somewhat artificial in that direct architectures sometimes incorporate a small switch (sometimes called a "router") inside the node, in which case the choice of term depends on where you draw the boundary of the node, and because computational nodes can be configured to act only as routers within the network, modeling an indirect architecture using direct hardware.
 
 ## Detector-centric Architecture
 
@@ -538,7 +539,7 @@ The first deployment of production-level, distant quantum entanglement is likely
 
 A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
 
-The execution model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface), in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.)
+The program structural model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface), in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.
 
 General hardware environment:
 
@@ -568,13 +569,13 @@ The realities of quantum hardware result in a few important differences from cla
 
 * Multicomputer interconnects may be either optically switched or composed entirely of point-to-point links. In switched networks, depending on optical hardware as well as photonic qubit representation, reconfiguring the switch or switches may be an extremely high-latency operation.
 * Application execution at end nodes proceeds in phases tied to specific communication patterns. Even with a fixed sequence of application-level operations, the execution time of a phase can be variable because entanglement generation is probabilistic. Local gates can also be probabilistic under some circumstances, but for many node hardware types, fast local gate execution means the impact of variable gate execution time will be small.
-* In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase must be done at the direction of the job controller.
+* In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase in quantum multicomputer program execution must be done at the direction of the job controller.
 * Because execution is centrally coordinated, the network system is not required to provide multiplexing. (This is a substantial difference from data center networks, QLANs and QWANs.)
 * The compiler may include multihop communication within a phase using hop-by-hop teleportation without reconfiguring any switches; this is beyond the scope of this architecture.
 * Execution of the quantum portion of the node program generally involves hard real-time actions, both unconditional and conditioned on prior quantum measurement results. This generally requires compilation of the quantum program to very low-level actions to be executed by FPGAs or ASICs.
 * Systems may be partially or completely emulated, decoupling development of different subsystems. e.g., an EPPS plus a MEAS together can emulate a COMP node that emits single photons.
 * Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).
-* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery {{ramette-remote}}, {{leone-remote}}, or {{sinclair-ft-interconnect}}.
+* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery {{ramette-remote}}, {{leone-remote}},{{sinclair-ft-interconnect}}.
 
 ## Data Center Network (QDCN)
 
@@ -606,11 +607,7 @@ Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiV
 
 ## Photons, Wave Packets and Optical Modes
 
-Optical mode (link-layer view).
-
-An optical mode is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon or is empty.
-
-The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.
+An optical mode is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon or is empty.  The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.
 
 In quantum networking, link capacity and state must be described in terms of modes (slots), not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful.
 
@@ -623,9 +620,9 @@ A quantum optical link may define one mode per time window. During each window, 
 
 Photons are used in networks to carry qubits. There are several possible on-the-wire photonic qubit representations, e.g.
 
-* Polarization
-* Time bin
-* Which path
+* Polarization (e.g. horizontal v. vertical)
+* Time bin (e.g. early v. late)
+* Which path (e.g. passing through a particular set of lenses or fibers)
 * Energy level (wavelength)
 
 These representations and more about the concept of an _optical mode_ are discussed in the Standard Photons document, and are provided here only for informational purposes.
@@ -676,10 +673,10 @@ This section documents the requirements for all networks adhering to this archit
 * Operates on qubits. (Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)
 * Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)
 * Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.
-* Support deployments ranging from multicomputer to wide area networks.
-* Support multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
-* Support entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
-* Support evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.
+* Supports deployments ranging from multicomputer to wide area networks.
+* Supports multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
+* Supports entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
+* Supports evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.
 
 ### Interface Requirements
 
