@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 9 March 2027                                    Keio University
-                                                        5 September 2026
+Expires: 16 April 2027                                   Keio University
+                                                         13 October 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 March 2027.
+   This Internet-Draft will expire on 16 April 2027.
 
 Copyright Notice
 
@@ -2862,6 +2862,16 @@ Table of Contents
               gross: A modular quantum computer based on bivariate
               bicycle codes", arXiv, DOI 10.48550/ARXIV.2506.03094,
               2025, <https://doi.org/10.48550/ARXIV.2506.03094>.
+
+   [yu-two-level]
+              Yu, S., Perego, E., Phillips, J., Cheah, Y., Umesh, P.,
+              Gao, G., Liu, J., Kissel, E., Bregar, M., Sun, K., Wu, Q.,
+              Valivarthi, R., Saglamyurek, E., Wu, W., Spiropulu, M.,
+              Häffner, H., and I. Monga, "A Two-Level Control Framework
+              for Quantum Networks", IEEE, 2025 IEEE International
+              Conference on Quantum Computing and Engineering (QCE) pp.
+              1302-1311, DOI 10.1109/qce65121.2025.00145, August 2025,
+              <https://doi.org/10.1109/qce65121.2025.00145>.
 
    [zukowski-entanglement-swapping]
               Kaszlikowski, D., Kwek, L., Chen, J., Żukowski, M., and C.
