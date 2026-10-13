@@ -1554,7 +1554,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         </h3>
 <ul class="normal">
 <li class="normal" id="section-3.2-1.1">
-            <p id="section-3.2-1.1.1">Specification of physical links<a href="#section-3.2-1.1.1" class="pilcrow">¶</a></p>
+            <p id="section-3.2-1.1.1">Specification of physical links (including photonic wave packets)<a href="#section-3.2-1.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.2-1.2">
             <p id="section-3.2-1.2.1">Internetworking<a href="#section-3.2-1.2.1" class="pilcrow">¶</a></p>
@@ -1707,7 +1707,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           </ul>
 </li>
       </ul>
-<p id="section-5-3">Because terms such as <em>fidelity</em> have varying definitions, they will be defined in this set of documents (where? Timing Regimes?).<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">Because terms such as <em>fidelity</em> have varying definitions, they will be defined in this set of documents <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-5-3" class="pilcrow">¶</a></p>
 <p id="section-5-4">Readers needing additional background are referred to:<a href="#section-5-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5-5.1">
@@ -2024,8 +2024,8 @@ Since consuming extra resources is more costly than waiting, these operations de
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-quantum-devices" class="section-name selfRef">Quantum Devices</a>
         </h3>
 <p id="section-8.1-1">A quantum device stores, carries, measures or computes on quantum variables.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<p id="section-8.1-2">A quantum device (often shortened to just "device" in this specification) is under software control; i.e. optical fibers or beam splitters are not classified as quantum devices.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
-<p id="section-8.1-3">Control of devices is usually done with respect to some physical characteristic of the device itself, rather than dealing with the abstract notion of qubits.  A controllable wave plate, for example, may be adjusted in units of degrees of rotation of the plate.  An example of a software package that provides such functionality is PnPQ.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
+<p id="section-8.1-2">For the purposes of this architecture, a quantum device (often shortened to just "device" in this specification) is under software control; i.e. passive elements such as optical fibers or beam splitters are not classified as quantum devices.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+<p id="section-8.1-3">Control of devices is usually done with respect to some physical characteristic of the device itself, rather than dealing with the abstract notion of qubits.  A controllable wave plate, for example, may be adjusted in units of degrees of rotation of the plate.  An example of a software package that provides such functionality is PnPQ <span>[<a href="#pnpq" class="cite xref">pnpq</a>]</span>.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="quantum-nodes">
@@ -2060,7 +2060,7 @@ Since consuming extra resources is more costly than waiting, these operations de
 <a href="#section-8.5" class="section-number selfRef">8.5. </a><a href="#name-direct-and-indirect-multico" class="section-name selfRef">Direct and Indirect Multicomputer Architectures</a>
         </h3>
 <p id="section-8.5-1">In multicomputer architectures, a <em>direct</em> architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An <em>indirect</em> architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect <span>[<a href="#dally-towles" class="cite xref">dally-towles</a>]</span>.<a href="#section-8.5-1" class="pilcrow">¶</a></p>
-<p id="section-8.5-2">The distinction is somewhat artificial in that direct architectures sometimes incorporate a small switch inside the node, in which case the matching term depends on where you draw the boundary of the node, and because computational nodes can be configured to act only as routers within the network, modeling an indirect architecture using direct hardware.<a href="#section-8.5-2" class="pilcrow">¶</a></p>
+<p id="section-8.5-2">The distinction is somewhat artificial in that direct architectures sometimes incorporate a small switch (sometimes called a "router") inside the node, in which case the choice of term depends on where you draw the boundary of the node, and because computational nodes can be configured to act only as routers within the network, modeling an indirect architecture using direct hardware.<a href="#section-8.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="detector-centric-architecture">
@@ -2095,7 +2095,7 @@ Since consuming extra resources is more costly than waiting, these operations de
         </h3>
 <p id="section-9.1-1">The first deployment of production-level, distant quantum entanglement is likely to be in a <em>quantum multicomputer</em>, based on the same principles as classical distributed-memory supercomputers from the <a href="https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube">Caltech Cosmic Cube</a> to <a href="https://en.wikipedia.org/wiki/Fugaku_(supercomputer)">Fugaku</a> <span>[<a href="#rdv-thesis" class="cite xref">rdv-thesis</a>]</span>.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture <span>[<a href="#choi-fat-tree" class="cite xref">choi-fat-tree</a>]</span> has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
 <p id="section-9.1-2">A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.<a href="#section-9.1-2" class="pilcrow">¶</a></p>
-<p id="section-9.1-3">The execution model is expected to be much like the classical supercomputing <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">Message Passing Interface (MPI)</a>, in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed <span>[<a href="#haener-qmpi" class="cite xref">haener-qmpi</a>]</span>, but here we mean this in the broader sense.)<a href="#section-9.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.1-3">The program structural model is expected to be much like the classical supercomputing <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">Message Passing Interface (MPI)</a>, in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed <span>[<a href="#haener-qmpi" class="cite xref">haener-qmpi</a>]</span>, but here we mean this in the broader sense.<a href="#section-9.1-3" class="pilcrow">¶</a></p>
 <p id="section-9.1-4">General hardware environment:<a href="#section-9.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-9.1-5.1">
@@ -2165,7 +2165,7 @@ Since consuming extra resources is more costly than waiting, these operations de
             <p id="section-9.1-9.2.1">Application execution at end nodes proceeds in phases tied to specific communication patterns. Even with a fixed sequence of application-level operations, the execution time of a phase can be variable because entanglement generation is probabilistic. Local gates can also be probabilistic under some circumstances, but for many node hardware types, fast local gate execution means the impact of variable gate execution time will be small.<a href="#section-9.1-9.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-9.3">
-            <p id="section-9.1-9.3.1">In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase must be done at the direction of the job controller.<a href="#section-9.1-9.3.1" class="pilcrow">¶</a></p>
+            <p id="section-9.1-9.3.1">In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase in quantum multicomputer program execution must be done at the direction of the job controller.<a href="#section-9.1-9.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-9.4">
             <p id="section-9.1-9.4.1">Because execution is centrally coordinated, the network system is not required to provide multiplexing. (This is a substantial difference from data center networks, QLANs and QWANs.)<a href="#section-9.1-9.4.1" class="pilcrow">¶</a></p>
@@ -2183,7 +2183,7 @@ Since consuming extra resources is more costly than waiting, these operations de
             <p id="section-9.1-9.8.1">Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).<a href="#section-9.1-9.8.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-9.9">
-            <p id="section-9.1-9.9.1">Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery <span>[<a href="#ramette-remote" class="cite xref">ramette-remote</a>]</span>, <span>[<a href="#leone-remote" class="cite xref">leone-remote</a>]</span>, or <span>[<a href="#sinclair-ft-interconnect" class="cite xref">sinclair-ft-interconnect</a>]</span>.<a href="#section-9.1-9.9.1" class="pilcrow">¶</a></p>
+            <p id="section-9.1-9.9.1">Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery <span>[<a href="#ramette-remote" class="cite xref">ramette-remote</a>]</span>, <span>[<a href="#leone-remote" class="cite xref">leone-remote</a>]</span>,<span>[<a href="#sinclair-ft-interconnect" class="cite xref">sinclair-ft-interconnect</a>]</span>.<a href="#section-9.1-9.9.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -2237,13 +2237,11 @@ Since consuming extra resources is more costly than waiting, these operations de
         <h3 id="name-photons-wave-packets-and-op">
 <a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-photons-wave-packets-and-op" class="section-name selfRef">Photons, Wave Packets and Optical Modes</a>
         </h3>
-<p id="section-10.2-1">Optical mode (link-layer view).<a href="#section-10.2-1" class="pilcrow">¶</a></p>
-<p id="section-10.2-2">An optical mode is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon or is empty.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
-<p id="section-10.2-3">The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.<a href="#section-10.2-3" class="pilcrow">¶</a></p>
-<p id="section-10.2-4">In quantum networking, link capacity and state must be described in terms of modes (slots), not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful.<a href="#section-10.2-4" class="pilcrow">¶</a></p>
-<p id="section-10.2-5">Technical note: In idealized models, distinct modes correspond to orthogonal field solutions, ensuring perfect distinguishability.<a href="#section-10.2-5" class="pilcrow">¶</a></p>
-<p id="section-10.2-6">Short example:
-A quantum optical link may define one mode per time window. During each window, the receiver monitors the mode. A detection event indicates that the mode was occupied by at least one photon; the absence of a detection indicates that the same mode was empty. Both outcomes correspond to distinct physical states of the link.<a href="#section-10.2-6" class="pilcrow">¶</a></p>
+<p id="section-10.2-1">An optical mode is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon or is empty.  The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.2-2">In quantum networking, link capacity and state must be described in terms of modes (slots), not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
+<p id="section-10.2-3">Technical note: In idealized models, distinct modes correspond to orthogonal field solutions, ensuring perfect distinguishability.<a href="#section-10.2-3" class="pilcrow">¶</a></p>
+<p id="section-10.2-4">Short example:
+A quantum optical link may define one mode per time window. During each window, the receiver monitors the mode. A detection event indicates that the mode was occupied by at least one photon; the absence of a detection indicates that the same mode was empty. Both outcomes correspond to distinct physical states of the link.<a href="#section-10.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="photonic-qubits">
@@ -2254,13 +2252,13 @@ A quantum optical link may define one mode per time window. During each window, 
 <p id="section-10.3-1">Photons are used in networks to carry qubits. There are several possible on-the-wire photonic qubit representations, e.g.<a href="#section-10.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-10.3-2.1">
-            <p id="section-10.3-2.1.1">Polarization<a href="#section-10.3-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-10.3-2.1.1">Polarization (e.g. horizontal v. vertical)<a href="#section-10.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-10.3-2.2">
-            <p id="section-10.3-2.2.1">Time bin<a href="#section-10.3-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-10.3-2.2.1">Time bin (e.g. early v. late)<a href="#section-10.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-10.3-2.3">
-            <p id="section-10.3-2.3.1">Which path<a href="#section-10.3-2.3.1" class="pilcrow">¶</a></p>
+            <p id="section-10.3-2.3.1">Which path (e.g. passing through a particular set of lenses or fibers)<a href="#section-10.3-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-10.3-2.4">
             <p id="section-10.3-2.4.1">Energy level (wavelength)<a href="#section-10.3-2.4.1" class="pilcrow">¶</a></p>
@@ -2364,16 +2362,16 @@ A quantum optical link may define one mode per time window. During each window, 
               <p id="section-11.2.1-1.3.1">Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.<a href="#section-11.2.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.2.1-1.4">
-              <p id="section-11.2.1-1.4.1">Support deployments ranging from multicomputer to wide area networks.<a href="#section-11.2.1-1.4.1" class="pilcrow">¶</a></p>
+              <p id="section-11.2.1-1.4.1">Supports deployments ranging from multicomputer to wide area networks.<a href="#section-11.2.1-1.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.2.1-1.5">
-              <p id="section-11.2.1-1.5.1">Support multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.<a href="#section-11.2.1-1.5.1" class="pilcrow">¶</a></p>
+              <p id="section-11.2.1-1.5.1">Supports multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.<a href="#section-11.2.1-1.5.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.2.1-1.6">
-              <p id="section-11.2.1-1.6.1">Support entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)<a href="#section-11.2.1-1.6.1" class="pilcrow">¶</a></p>
+              <p id="section-11.2.1-1.6.1">Supports entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)<a href="#section-11.2.1-1.6.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.2.1-1.7">
-              <p id="section-11.2.1-1.7.1">Support evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.<a href="#section-11.2.1-1.7.1" class="pilcrow">¶</a></p>
+              <p id="section-11.2.1-1.7.1">Supports evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.<a href="#section-11.2.1-1.7.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -3549,6 +3547,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="nist-singles">[nist-singles]</dt>
         <dd>
 <span class="refAuthor">Bienfang, J.</span>, <span class="refAuthor">Gerrits, T.</span>, <span class="refAuthor">Kuo, P.</span>, <span class="refAuthor">Migdall, A.</span>, <span class="refAuthor">Polyakov, S.</span>, and <span class="refAuthor">O. Slattery</span>, <span class="refTitle">"Single-photon Sources and Detectors Dictionary"</span>, <span class="refContent">National Institute of Standards and Technology</span>, <span class="seriesInfo">DOI 10.6028/nist.ir.8486r1</span>, <time datetime="2025-08" class="refDate">August 2025</time>, <span>&lt;<a href="https://doi.org/10.6028/nist.ir.8486r1">https://doi.org/10.6028/nist.ir.8486r1</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="pnpq">[pnpq]</dt>
+        <dd>
+<span class="refAuthor">Taherkhani, A.</span>, <span class="refAuthor">Todd, A.</span>, <span class="refAuthor">Matsumiya, L.</span>, and <span class="refAuthor">T. Shen</span>, <span class="refTitle">"PnPQ"</span>, <span class="refContent">Zenodo</span>, <span class="seriesInfo">DOI 10.5281/ZENODO.16886214</span>, <time datetime="2025-11" class="refDate">November 2025</time>, <span>&lt;<a href="https://doi.org/10.5281/ZENODO.16886214">https://doi.org/10.5281/ZENODO.16886214</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="proctor-multiparm">[proctor-multiparm]</dt>
         <dd>
