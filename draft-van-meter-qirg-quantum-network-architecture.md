@@ -259,6 +259,7 @@ informative:
   xu-dist-qec: DOI.10.1103/PhysRevLett.129.240502
   yin-1200km: DOI.10.1126/science.aan3211
   yoder-tour-de-gross: DOI.10.48550/arXiv.2506.03094
+  yu-two-level: DOI.10.1109/QCE65121.2025.00145
   zukowski-entanglement-swapping: DOI.10.1103/PhysRevA.65.032118
 ...
 
