@@ -159,6 +159,7 @@ informative:
   buterakos-graph-generation: DOI.10.1103/PhysRevX.7.041023
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   christandl-anon: DOI.10.1007/11593447_12
+  ciobanu-multi-ring: DOI.doi.org/10.1038/s41598-025-00391-x
   degen-sensing: DOI.10.1103/RevModPhys.89.035002
   dahlberg-ll-arxiv: DOI.10.48550/arXiv.1903.09778
   dally-towles:
@@ -237,6 +238,7 @@ informative:
   morimae-blind: DOI.10.1103/PhysRevA.87.050301
   muralidharan-generations: DOI.10.1038/srep20463
   pnpq: DOI.10.5281/zenodo.16886214
+  preskill-nisq: DOI.10.22331/q-2018-08-06-79
   proctor-quantum-sensing: DOI.10.48550/arXiv.1702.04271
   proctor-multiparm: DOI.10.1103/PhysRevLett.120.080501
   ramette-remote: DOI.10.1038/s41534-024-00855-4
@@ -537,7 +539,7 @@ As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, en
 
 The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)) {{rdv-thesis}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
 
-A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
+A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction {{preskill-nisq}}, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
 
 The program structural model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface), in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.
 
@@ -1163,7 +1165,7 @@ However, this level of detail is not, and should not be, visible to the RuleSet 
 
 Within a RuleSet instance on a given node, the RuleSet mechanism identifies a quantum resource primarily by its **tag** --- a label that categorizes the resource into a specific pool corresponding to its current role or stage in the protocol.
 <!--  (as discussed in \cref{subsec:architecture-memory:ruleset-definition}). -->
-To ensure an unambiguous and absolute ordering of multiple resources that may share the same tag (e.g., several Bell pairs awaiting purification), each resource, upon being allocated to a tag, is automatically assigned a \emph{sequence number} by the local RuleSet engine.
+To ensure an unambiguous and absolute ordering of multiple resources that may share the same tag (e.g., several Bell pairs awaiting purification), each resource, upon being allocated to a tag, is automatically assigned a *sequence number* by the local RuleSet engine.
 The combination `<tag,seq no.>` thus serves as a distinct and locally unique key within that RuleSet instance for referencing a resource and associating it with relevant metadata, such as its tracked fidelity.
 Actions specified within Rules typically reference these resources based on their tag and their relative order within that tag, for instance, by operating on the resource with the smallest sequence number (i.e., the oldest available in that pool).
 This structured internal naming is vital for deterministic local operations and for preventing local operational mismatches that could lead to problems like the leapfrogging issue if not handled carefully at a higher protocol design level.
@@ -1253,7 +1255,7 @@ PSD: Each link is a separate PSD.
 
 A _direct_ interconnect. All nodes in a ring have exactly two neighbors. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.
 
-A ring is described in (something from Simon's group).
+A ring is described in {{ciobanu-multi-ring}} (something from Simon's group).
 
 PSD: Each link is a separate PSD.
 
