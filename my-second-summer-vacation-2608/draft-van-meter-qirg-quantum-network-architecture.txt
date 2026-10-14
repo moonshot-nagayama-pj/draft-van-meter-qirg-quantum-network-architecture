@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 16 April 2027                                   Keio University
-                                                         13 October 2026
+Expires: 17 April 2027                                   Keio University
+                                                         14 October 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 April 2027.
+   This Internet-Draft will expire on 17 April 2027.
 
 Copyright Notice
 
@@ -766,14 +766,14 @@ Table of Contents
    networks in this set of specifications.
 
    A multicomputer may be a noisy, intermediate-scale quantum (NISQ)
-   system without quantum error correction, or may be a fault-tolerant
-   system.  Fault-tolerant systems are variously described as fault-
-   tolerant quantum computers (FTQC), fault-tolerant application-scale
-   quantum (FASQ) systems, or cryptographically relevant quantum
-   computers (CRQC).  FTQCs require the network to generate many more
-   entangled states with tight timing requirements to allow distributed
-   quantum error correction or the creation of fully error-corrected
-   entangled states for application use.
+   system without quantum error correction [preskill-nisq], or may be a
+   fault-tolerant system.  Fault-tolerant systems are variously
+   described as fault-tolerant quantum computers (FTQC), fault-tolerant
+   application-scale quantum (FASQ) systems, or cryptographically
+   relevant quantum computers (CRQC).  FTQCs require the network to
+   generate many more entangled states with tight timing requirements to
+   allow distributed quantum error correction or the creation of fully
+   error-corrected entangled states for application use.
 
    The program structural model is expected to be much like the
    classical supercomputing Message Passing Interface (MPI)
@@ -1923,8 +1923,8 @@ Table of Contents
    current role or stage in the protocol.  To ensure an unambiguous and
    absolute ordering of multiple resources that may share the same tag
    (e.g., several Bell pairs awaiting purification), each resource, upon
-   being allocated to a tag, is automatically assigned a \emph{sequence
-   number} by the local RuleSet engine.  The combination <tag,seq no.>
+   being allocated to a tag, is automatically assigned a _sequence
+   number_ by the local RuleSet engine.  The combination <tag,seq no.>
    thus serves as a distinct and locally unique key within that RuleSet
    instance for referencing a resource and associating it with relevant
    metadata, such as its tracked fidelity.  Actions specified within
@@ -2081,7 +2081,8 @@ Table of Contents
    neighbors.  Each node must act as a memory buffer and repeater to
    enable communication between non-neighboring nodes.
 
-   A ring is described in (something from Simon's group).
+   A ring is described in [ciobanu-multi-ring] (something from Simon's
+   group).
 
    PSD: Each link is a separate PSD.
 
@@ -2242,6 +2243,14 @@ Table of Contents
               in Computer Science pp. 217-235, DOI 10.1007/11593447_12,
               ISBN ["9783540306849", "9783540322672"], 2005,
               <https://doi.org/10.1007/11593447_12>.
+
+   [ciobanu-multi-ring]
+              Ciobanu, B., Calafeteanu, T., Popa, A., Tătăroiu, R., and
+              P. Popescu, "Optimal entanglement distribution within a
+              multi-ring topology", Springer Science and Business Media
+              LLC, Scientific Reports vol. 15, no. 1,
+              DOI 10.1038/s41598-025-00391-x, May 2025,
+              <https://doi.org/10.1038/s41598-025-00391-x>.
 
    [dahlberg-ll-arxiv]
               Dahlberg, A., Skrzypczyk, M., Coopmans, T., Wubben, L.,
@@ -2636,6 +2645,13 @@ Table of Contents
    [pnpq]     Taherkhani, A., Todd, A., Matsumiya, L., and T. Shen,
               "PnPQ", Zenodo, DOI 10.5281/ZENODO.16886214, November
               2025, <https://doi.org/10.5281/ZENODO.16886214>.
+
+   [preskill-nisq]
+              Preskill, J., "Quantum Computing in the NISQ era and
+              beyond", Verein zur Forderung des Open Access Publizierens
+              in den Quantenwissenschaften, Quantum vol. 2, pp. 79,
+              DOI 10.22331/q-2018-08-06-79, August 2018,
+              <https://doi.org/10.22331/q-2018-08-06-79>.
 
    [proctor-multiparm]
               Proctor, T., Knott, P., and J. Dunningham, "Multiparameter
