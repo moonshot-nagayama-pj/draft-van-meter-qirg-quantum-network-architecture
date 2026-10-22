@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 17 April 2027                                   Keio University
-                                                         14 October 2026
+Expires: 25 April 2027                                   Keio University
+                                                         22 October 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 April 2027.
+   This Internet-Draft will expire on 25 April 2027.
 
 Copyright Notice
 
@@ -475,12 +475,13 @@ Table of Contents
    Applications fall into two large categories: inherently distributed
    applications, or subdivision of monolithic applications for
    distributed execution, as in supercomputing applications running on
-   multicomputer architectures.
-
-   For a discussion of some inherently distributed applications of
-   quantum networks, see [RFC9583].  This network architecture supports
-   the applications listed in that RFC, though not all networks will
-   support all applications.
+   multicomputer architectures.  The inherently distributed applications
+   can be further categorized into cryptographic functions, distributed
+   computation, and distributed sensing.  For a discussion of some
+   inherently distributed applications of quantum networks, see
+   [RFC9583].  This network architecture supports the applications
+   listed in that RFC, though not all networks will support all
+   applications.
 
 7.2.  Entangled States Consumption Patterns
 
@@ -728,7 +729,9 @@ Table of Contents
    local area network.
 
    A detector-centric architecture is an indirect architecture if the
-   pool of detectors is behind a switch or network of switches.
+   pool of detectors is behind a switch or network of switches.  If the
+   detectors are arranged as Bell State Analyzers (BSAs), we can call
+   the architecture _BSA-centric_.  This will be the common case.
 
 8.7.  Source-centric Architecture
 
@@ -1268,9 +1271,9 @@ Table of Contents
    quantum devices.  The quantum devices may be local or remote.
 
    The quantum plane functionality executes the functions described as
-   "Interferometric Stabilization" and "Wave Packet Overlap" and subject
-   to the constraints in "Detector Timing Windows" in the Timing Regimes
-   document.
+   "Interferometric Stabilization" and "Wave Packet Overlap" and is
+   subject to the constraints in "Detector Timing Windows" in the Timing
+   Regimes document [I-D.draft-hajdusek-qirg-timing-physics].
 
 14.2.  Data
 
@@ -1279,12 +1282,13 @@ Table of Contents
    communication ports and software that generate and consume such
    messages.
 
-   When operating in device mode, the Data Plane consists of RPCs for
-   controlling individual devices.
+   When operating in device mode, the Data Plane consists of remote
+   procedure calls (RPCs) for controlling individual devices.
 
    Data plane functions may share data with management plane functions
-   as part of the link management process, e.g. using disti-mation.  If
-   this is done, security and privacy concerns must be addressed.
+   as part of the link management process, e.g. using disti-mation
+   [casapao-disti-mation].  If this is done, security and privacy
+   concerns must be addressed.
 
    The control plane functionality executes the functions described as
    "Pre-configured Event-driven Tasks" in the Timing Regimes document.
@@ -2135,8 +2139,10 @@ Table of Contents
    [abane-routing]
               Abane, A., Cubeddu, M., Mai, V., and A. Battou,
               "Entanglement Routing in Quantum Networks: A Comprehensive
-              Survey", arXiv, DOI 10.48550/ARXIV.2408.01234, 2024,
-              <https://doi.org/10.48550/ARXIV.2408.01234>.
+              Survey", Institute of Electrical and Electronics Engineers
+              (IEEE), IEEE Transactions on Quantum Engineering vol. 6,
+              pp. 1-39, DOI 10.1109/tqe.2025.3541123, 2025,
+              <https://doi.org/10.1109/tqe.2025.3541123>.
 
    [aboy-governance]
               Aboy, M., Gasser, U., Cohen, I., and M. Kop, "Quantum
@@ -2229,6 +2235,15 @@ Table of Contents
               State Emitters", American Physical Society (APS), Physical
               Review X vol. 7, no. 4, DOI 10.1103/physrevx.7.041023,
               October 2017, <https://doi.org/10.1103/physrevx.7.041023>.
+
+   [casapao-disti-mation]
+              Casapao, J., Maity, A., Benchasattabuse, N., Hajdušek, M.,
+              Van Meter, R., and D. Elkouss, "Disti-Mator, an
+              entanglement distillation-based state estimator", Springer
+              Science and Business Media LLC, Communications
+              Physics vol. 8, no. 1, DOI 10.1038/s42005-025-02352-2,
+              November 2025,
+              <https://doi.org/10.1038/s42005-025-02352-2>.
 
    [choi-fat-tree]
               Choi, H., Davis, M., Iñesta, Á., and D. Englund, "Scalable

@@ -24,11 +24,11 @@
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.12.2
+    platformdirs 4.13.4
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.9.1
+    wcwidth 0.9.2
 -->
 <link href="draft-van-meter-qirg-quantum-network-architecture.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1048,7 +1048,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Van Meter, et al.</td>
-<td class="center">Expires 17 April 2027</td>
+<td class="center">Expires 25 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1061,12 +1061,12 @@ svg {
 <dd class="internet-draft">draft-van-meter-qirg-quantum-network-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-10-14" class="published">14 October 2026</time>
+<time datetime="2026-10-22" class="published">22 October 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-04-17">17 April 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-25">25 April 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1119,7 +1119,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1859,8 +1859,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-types-of-applications">
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-types-of-applications" class="section-name selfRef">Types of Applications</a>
         </h3>
-<p id="section-7.1-1">Applications fall into two large categories: inherently distributed applications, or subdivision of monolithic applications for distributed execution, as in supercomputing applications running on multicomputer architectures.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
-<p id="section-7.1-2">For a discussion of some inherently distributed applications of quantum networks, see <span>[<a href="#RFC9583" class="cite xref">RFC9583</a>]</span>. This network architecture supports the applications listed in that RFC, though not all networks will support all applications.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
+<p id="section-7.1-1">Applications fall into two large categories: inherently distributed applications, or subdivision of monolithic applications for distributed execution, as in supercomputing applications running on multicomputer architectures.  The inherently distributed applications can be further categorized into cryptographic functions, distributed computation, and distributed sensing.  For a discussion of some inherently distributed applications of quantum networks, see <span>[<a href="#RFC9583" class="cite xref">RFC9583</a>]</span>. This network architecture supports the applications listed in that RFC, though not all networks will support all applications.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="entangled-states-consumption-patterns">
@@ -2069,7 +2068,7 @@ Since consuming extra resources is more costly than waiting, these operations de
 <a href="#section-8.6" class="section-number selfRef">8.6. </a><a href="#name-detector-centric-architectu" class="section-name selfRef">Detector-centric Architecture</a>
         </h3>
 <p id="section-8.6-1">Several detectors may be packaged as a single subsystem for purposes such as cooling, power, control and time stamping.  An architecture built around a shared pool of detectors is a <em>detector-centric architecture</em>. This structure facilities entanglement distribution in a quantum system interconnect, data center network or some forms of local area network.<a href="#section-8.6-1" class="pilcrow">¶</a></p>
-<p id="section-8.6-2">A detector-centric architecture is an indirect architecture if the pool of detectors is behind a switch or network of switches.<a href="#section-8.6-2" class="pilcrow">¶</a></p>
+<p id="section-8.6-2">A detector-centric architecture is an indirect architecture if the pool of detectors is behind a switch or network of switches.  If the detectors are arranged as Bell State Analyzers (BSAs), we can call the architecture <em>BSA-centric</em>.  This will be the common case.<a href="#section-8.6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="source-centric-architecture">
@@ -2511,7 +2510,7 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
 <a href="#section-14.1" class="section-number selfRef">14.1. </a><a href="#name-quantum" class="section-name selfRef">Quantum</a>
         </h3>
 <p id="section-14.1-1">The quantum signals and in-channel, hardware-dependent, real-time classical signals for timing and synchronization of photon wave packets.  A node with a quantum plane incorporates one or more quantum devices.  The quantum devices may be local or remote.<a href="#section-14.1-1" class="pilcrow">¶</a></p>
-<p id="section-14.1-2">The quantum plane functionality executes the functions described as "Interferometric Stabilization" and "Wave Packet Overlap" and subject to the constraints in "Detector Timing Windows" in the Timing Regimes document.<a href="#section-14.1-2" class="pilcrow">¶</a></p>
+<p id="section-14.1-2">The quantum plane functionality executes the functions described as "Interferometric Stabilization" and "Wave Packet Overlap" and is subject to the constraints in "Detector Timing Windows" in the Timing Regimes document <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-14.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="data">
@@ -2520,8 +2519,8 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
 <a href="#section-14.2" class="section-number selfRef">14.2. </a><a href="#name-data" class="section-name selfRef">Data</a>
         </h3>
 <p id="section-14.2-1">When operating in qubit mode, the Data Plane consists of classical messages that convey events for RuleSet operation and the communication ports and software that generate and consume such messages.<a href="#section-14.2-1" class="pilcrow">¶</a></p>
-<p id="section-14.2-2">When operating in device mode, the Data Plane consists of RPCs for controlling individual devices.<a href="#section-14.2-2" class="pilcrow">¶</a></p>
-<p id="section-14.2-3">Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation. If this is done, security and privacy concerns must be addressed.<a href="#section-14.2-3" class="pilcrow">¶</a></p>
+<p id="section-14.2-2">When operating in device mode, the Data Plane consists of remote procedure calls (RPCs) for controlling individual devices.<a href="#section-14.2-2" class="pilcrow">¶</a></p>
+<p id="section-14.2-3">Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation <span>[<a href="#casapao-disti-mation" class="cite xref">casapao-disti-mation</a>]</span>. If this is done, security and privacy concerns must be addressed.<a href="#section-14.2-3" class="pilcrow">¶</a></p>
 <p id="section-14.2-4">The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document.<a href="#section-14.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -3286,7 +3285,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dl class="references">
 <dt id="abane-routing">[abane-routing]</dt>
         <dd>
-<span class="refAuthor">Abane, A.</span>, <span class="refAuthor">Cubeddu, M.</span>, <span class="refAuthor">Mai, V.</span>, and <span class="refAuthor">A. Battou</span>, <span class="refTitle">"Entanglement Routing in Quantum Networks: A Comprehensive Survey"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.2408.01234</span>, <time datetime="2024" class="refDate">2024</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.2408.01234">https://doi.org/10.48550/ARXIV.2408.01234</a>&gt;</span>. </dd>
+<span class="refAuthor">Abane, A.</span>, <span class="refAuthor">Cubeddu, M.</span>, <span class="refAuthor">Mai, V.</span>, and <span class="refAuthor">A. Battou</span>, <span class="refTitle">"Entanglement Routing in Quantum Networks: A Comprehensive Survey"</span>, <span class="refContent">Institute of Electrical and Electronics Engineers (IEEE)</span>, <span class="seriesInfo">IEEE Transactions on Quantum Engineering vol. 6, pp. 1-39</span>, <span class="seriesInfo">DOI 10.1109/tqe.2025.3541123</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://doi.org/10.1109/tqe.2025.3541123">https://doi.org/10.1109/tqe.2025.3541123</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="aboy-governance">[aboy-governance]</dt>
         <dd>
@@ -3335,6 +3334,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="buterakos-graph-generation">[buterakos-graph-generation]</dt>
         <dd>
 <span class="refAuthor">Buterakos, D.</span>, <span class="refAuthor">Barnes, E.</span>, and <span class="refAuthor">S. Economou</span>, <span class="refTitle">"Deterministic Generation of All-Photonic Quantum Repeaters from Solid-State Emitters"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review X vol. 7, no. 4</span>, <span class="seriesInfo">DOI 10.1103/physrevx.7.041023</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://doi.org/10.1103/physrevx.7.041023">https://doi.org/10.1103/physrevx.7.041023</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="casapao-disti-mation">[casapao-disti-mation]</dt>
+        <dd>
+<span class="refAuthor">Casapao, J.</span>, <span class="refAuthor">Maity, A.</span>, <span class="refAuthor">Benchasattabuse, N.</span>, <span class="refAuthor">Hajdušek, M.</span>, <span class="refAuthor">Van Meter, R.</span>, and <span class="refAuthor">D. Elkouss</span>, <span class="refTitle">"Disti-Mator, an entanglement distillation-based state estimator"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">Communications Physics vol. 8, no. 1</span>, <span class="seriesInfo">DOI 10.1038/s42005-025-02352-2</span>, <time datetime="2025-11" class="refDate">November 2025</time>, <span>&lt;<a href="https://doi.org/10.1038/s42005-025-02352-2">https://doi.org/10.1038/s42005-025-02352-2</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="choi-fat-tree">[choi-fat-tree]</dt>
         <dd>
