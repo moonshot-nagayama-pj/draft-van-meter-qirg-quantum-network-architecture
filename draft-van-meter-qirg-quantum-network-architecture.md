@@ -532,72 +532,6 @@ A detector-centric architecture is an indirect architecture if the pool of detec
 
 Many of the detector-centric network topologies can be inverted, such that the pool of detectors is replaced by a pool of entangled photon pair sources.  The network then is used to distribute entanglement, with the photons measured, absorbed into memories, interfered with locally generated photons, or otherwise utilized at or near the end nodes.  Such a network was proposed by Drost _et al._ {{drost}}.
 
-# A Sketch of the System Model
-
-As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, entangled quantum network technology can be deployed in a variety of scenarios with different requirements and assumptions. A full description of each of these is delegated to other documents, but a brief description here will help to orient discussions of design points in order to justify certain decisions.
-
-## Multicomputer
-
-The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)) {{rdv-thesis}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
-
-A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction {{preskill-nisq}}, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
-
-The program structural model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface), in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.
-
-General hardware environment:
-
-* A multicomputer consists of a set of quantum nodes that are connected via quantum optical channels. The system may be either a direct (point-to-point, end node-to-end node) or an indirect (switched) design.
-* Every quantum node has a set of quantum devices and a classical controller.
-* End nodes are generally computational nodes, but measurement-only, sensor, and specialized memory storage nodes may be included.
-* End nodes are capable of running application programs as well as executing the minimum operations to build end-to-end entangled states.
-* End nodes may be built using multi-level hardware interconnects; when gates between physically distant qubits are mediated by first creating shared entangled states, the creation of those entangled states is the responsibility of the network subsystem.
-* Multicomputer interconnects are closed systems, with no need for cryptographic security mechanisms.
-
-Many aspects of compilation and job execution are beyond the scope of this set of specifications, but some points will affect the network node definitions and interfaces, so it is important to present them here to establish a basis for design decisions:
-
-* The general purpose of a multicomputer system is to execute application programs that exceed the capabilities of a single quantum node. The subdivision of the application into smaller quantum programs and the assignment of those sub-programs to nodes in the network is beyond the scope of this specification, and may be either automatically done by the compiler or manually done by the programmer.
-* Programs are centrally compiled and distributed to nodes.  (Note that, technically, this is different from classical MPI, where a _command_ is sent to worker nodes, but the mapping of that command to an executable program and versioning and distribution of programs are outside the scope of MPI. It is, however, a convenient assumption and common practice to ensure the same program is executed at all worker nodes.)
-* Execution is coordinated by a job controller: every node executes the same program, but with different parameters (e.g., which portion of the problem to work on).
-* Applications consist of both classical computation and quantum computation; within a node, the classical portion of the program delegates certain computational tasks to the quantum processor (sometimes called a QPU), similar to a classical [coprocessor](https://en.wikipedia.org/wiki/Coprocessor) such as a [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit).
-* Classical data related to quantum operations (principally measurement results and event notifications that trigger further actions) is sent peer-to-peer, not back to the centralized controller, during execution.
-* Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a [socket](https://en.wikipedia.org/wiki/Network_socket) in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.
-* The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking) {{farhadi-sdn}}. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) {{mccanne-bpf}} : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
-* In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.
-* In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)
-* Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.
-* Compilation and execution may achieve application goals via teledata, telegate or measurement of multiqubit Pauli operators transparently; the network is unaware of this distinction. Management of application-level variables and their movement from node to node, if any, is the responsibility of the compiler and is beyond the scope of this specification.
-* The resources in a multicomputer may be partitioned to run multiple jobs {{sane-jobs}}, but this is beyond the scope of the current specifications.
-
-The realities of quantum hardware result in a few important differences from classical multicomputers:
-
-* Multicomputer interconnects may be either optically switched or composed entirely of point-to-point links. In switched networks, depending on optical hardware as well as photonic qubit representation, reconfiguring the switch or switches may be an extremely high-latency operation.
-* Application execution at end nodes proceeds in phases tied to specific communication patterns. Even with a fixed sequence of application-level operations, the execution time of a phase can be variable because entanglement generation is probabilistic. Local gates can also be probabilistic under some circumstances, but for many node hardware types, fast local gate execution means the impact of variable gate execution time will be small.
-* In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase in quantum multicomputer program execution must be done at the direction of the job controller.
-* Because execution is centrally coordinated, the network system is not required to provide multiplexing. (This is a substantial difference from data center networks, QLANs and QWANs.)
-* The compiler may include multihop communication within a phase using hop-by-hop teleportation without reconfiguring any switches; this is beyond the scope of this architecture.
-* Execution of the quantum portion of the node program generally involves hard real-time actions, both unconditional and conditioned on prior quantum measurement results. This generally requires compilation of the quantum program to very low-level actions to be executed by FPGAs or ASICs.
-* Systems may be partially or completely emulated, decoupling development of different subsystems. e.g., an EPPS plus a MEAS together can emulate a COMP node that emits single photons.
-* Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).
-* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery {{ramette-remote}}, {{leone-remote}},{{sinclair-ft-interconnect}}.
-
-## Data Center Network (QDCN)
-
-The hardware for quantum data center networks will be almost identical to multicomputers; the primary differences are in the workload, scheduling, programming model and assumptions of trust. Distributed control and protocols for multiplexing and connection setup may be necessary.
-
-## Local-Area Network (QLAN)
-
-A QLAN will be deployed within a building or across a campus. It may connect quantum computers (including but not necessarily multicomputers) and sensors. A sensor, for example, may be connected to a computer with substantial memory for e.g. shadow tomography, learning from few measurements and related protocols.
-
-A QLAN will have a less regular topology than a multicomputer or QDCN. Distance, latency, fidelity, and success probability will all vary on a per-link basis.
-
-Distributed control and protocols for multiplexing and connection setup are necessary {{aparicio-spie}}.
-
-## Wide-Area Network (QWAN)
-
-Wide-area networks may involve client-server or peer-to-peer communication. One particular scenario of interest is a measurement-only (MEAS) client end node connecting to a centralized, supercomputer-scale quantum computer (perhaps, but not necessarily, a multicomputer) for the purposes of executing _blind quantum computation_ {{fitzsimons-blind}}, {{morimae-blind}}.
-
-QWAN client-server communication very likely will suffer from the "incast" problem of excessive traffic concentrating near certain nodes. Management of this problem is beyond the scope of this document.
-
 # Quantum Optical Building Blocks
 
 This section informally describes the physical building blocks and concepts used in the physical layer of a quantum network.  These definitions will use equations defined in {{I-D.draft-hajdusek-qirg-timing-physics}}.
@@ -668,6 +602,72 @@ Photons emitted by quantum memories, such as single atoms, may remain entangled 
 ## Detectors
 
 Detectors may be either _single-photon detectors_, which click when _one or more_ photons hit the detector, or _number resolving detectors_, which can distinguish between one, two, or more photons hitting the detector within the same time window {{nist-singles}}. In this document, detectors may be assumed to be single-photon detectors.
+
+# A Sketch of the System Model
+
+As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, entangled quantum network technology can be deployed in a variety of scenarios with different requirements and assumptions. A full description of each of these is delegated to other documents, but a brief description here will help to orient discussions of design points in order to justify certain decisions.
+
+## Multicomputer
+
+The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)) {{rdv-thesis}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
+
+A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction {{preskill-nisq}}, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
+
+The program structural model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface), in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.
+
+General hardware environment:
+
+* A multicomputer consists of a set of quantum nodes that are connected via quantum optical channels. The system may be either a direct (point-to-point, end node-to-end node) or an indirect (switched) design.
+* Every quantum node has a set of quantum devices and a classical controller.
+* End nodes are generally computational nodes, but measurement-only, sensor, and specialized memory storage nodes may be included.
+* End nodes are capable of running application programs as well as executing the minimum operations to build end-to-end entangled states.
+* End nodes may be built using multi-level hardware interconnects; when gates between physically distant qubits are mediated by first creating shared entangled states, the creation of those entangled states is the responsibility of the network subsystem.
+* Multicomputer interconnects are closed systems, with no need for cryptographic security mechanisms.
+
+Many aspects of compilation and job execution are beyond the scope of this set of specifications, but some points will affect the network node definitions and interfaces, so it is important to present them here to establish a basis for design decisions:
+
+* The general purpose of a multicomputer system is to execute application programs that exceed the capabilities of a single quantum node. The subdivision of the application into smaller quantum programs and the assignment of those sub-programs to nodes in the network is beyond the scope of this specification, and may be either automatically done by the compiler or manually done by the programmer.
+* Programs are centrally compiled and distributed to nodes.  (Note that, technically, this is different from classical MPI, where a _command_ is sent to worker nodes, but the mapping of that command to an executable program and versioning and distribution of programs are outside the scope of MPI. It is, however, a convenient assumption and common practice to ensure the same program is executed at all worker nodes.)
+* Execution is coordinated by a job controller: every node executes the same program, but with different parameters (e.g., which portion of the problem to work on).
+* Applications consist of both classical computation and quantum computation; within a node, the classical portion of the program delegates certain computational tasks to the quantum processor (sometimes called a QPU), similar to a classical [coprocessor](https://en.wikipedia.org/wiki/Coprocessor) such as a [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit).
+* Classical data related to quantum operations (principally measurement results and event notifications that trigger further actions) is sent peer-to-peer, not back to the centralized controller, during execution.
+* Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a [socket](https://en.wikipedia.org/wiki/Network_socket) in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.
+* The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking) {{farhadi-sdn}}. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) {{mccanne-bpf}} : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
+* In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.
+* In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)
+* Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.
+* Compilation and execution may achieve application goals via teledata, telegate or measurement of multiqubit Pauli operators transparently; the network is unaware of this distinction. Management of application-level variables and their movement from node to node, if any, is the responsibility of the compiler and is beyond the scope of this specification.
+* The resources in a multicomputer may be partitioned to run multiple jobs {{sane-jobs}}, but this is beyond the scope of the current specifications.
+
+The realities of quantum hardware result in a few important differences from classical multicomputers:
+
+* Multicomputer interconnects may be either optically switched or composed entirely of point-to-point links. In switched networks, depending on optical hardware as well as photonic qubit representation, reconfiguring the switch or switches may be an extremely high-latency operation.
+* Application execution at end nodes proceeds in phases tied to specific communication patterns. Even with a fixed sequence of application-level operations, the execution time of a phase can be variable because entanglement generation is probabilistic. Local gates can also be probabilistic under some circumstances, but for many node hardware types, fast local gate execution means the impact of variable gate execution time will be small.
+* In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase in quantum multicomputer program execution must be done at the direction of the job controller.
+* Because execution is centrally coordinated, the network system is not required to provide multiplexing. (This is a substantial difference from data center networks, QLANs and QWANs.)
+* The compiler may include multihop communication within a phase using hop-by-hop teleportation without reconfiguring any switches; this is beyond the scope of this architecture.
+* Execution of the quantum portion of the node program generally involves hard real-time actions, both unconditional and conditioned on prior quantum measurement results. This generally requires compilation of the quantum program to very low-level actions to be executed by FPGAs or ASICs.
+* Systems may be partially or completely emulated, decoupling development of different subsystems. e.g., an EPPS plus a MEAS together can emulate a COMP node that emits single photons.
+* Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).
+* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery {{ramette-remote}}, {{leone-remote}},{{sinclair-ft-interconnect}}.
+
+## Data Center Network (QDCN)
+
+The hardware for quantum data center networks will be almost identical to multicomputers; the primary differences are in the workload, scheduling, programming model and assumptions of trust. Distributed control and protocols for multiplexing and connection setup may be necessary.
+
+## Local-Area Network (QLAN)
+
+A QLAN will be deployed within a building or across a campus. It may connect quantum computers (including but not necessarily multicomputers) and sensors. A sensor, for example, may be connected to a computer with substantial memory for e.g. shadow tomography, learning from few measurements and related protocols.
+
+A QLAN will have a less regular topology than a multicomputer or QDCN. Distance, latency, fidelity, and success probability will all vary on a per-link basis.
+
+Distributed control and protocols for multiplexing and connection setup are necessary {{aparicio-spie}}.
+
+## Wide-Area Network (QWAN)
+
+Wide-area networks may involve client-server or peer-to-peer communication. One particular scenario of interest is a measurement-only (MEAS) client end node connecting to a centralized, supercomputer-scale quantum computer (perhaps, but not necessarily, a multicomputer) for the purposes of executing _blind quantum computation_ {{fitzsimons-blind}}, {{morimae-blind}}.
+
+QWAN client-server communication very likely will suffer from the "incast" problem of excessive traffic concentrating near certain nodes. Management of this problem is beyond the scope of this document.
 
 # Requirements and Goals for the Architecture {#reqgoals}
 
