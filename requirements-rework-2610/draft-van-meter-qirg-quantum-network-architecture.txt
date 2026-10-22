@@ -91,21 +91,21 @@ Table of Contents
      8.5.  Direct and Indirect Multicomputer Architectures
      8.6.  Detector-centric Architecture
      8.7.  Source-centric Architecture
-   9.  A Sketch of the System Model
-     9.1.  Multicomputer
-     9.2.  Data Center Network (QDCN)
-     9.3.  Local-Area Network (QLAN)
-     9.4.  Wide-Area Network (QWAN)
-   10. Quantum Optical Building Blocks
-     10.1.  Qubits
-     10.2.  Photons, Wave Packets and Optical Modes
-     10.3.  Photonic Qubits
-     10.4.  Memories
-     10.5.  Photon Sources
-       10.5.1.  Unentangled Single Photons
-       10.5.2.  Entangled Photon Pairs
-       10.5.3.  Memory-Emitted Photons
-     10.6.  Detectors
+   9.  Quantum Optical Building Blocks
+     9.1.  Qubits
+     9.2.  Photons, Wave Packets and Optical Modes
+     9.3.  Photonic Qubits
+     9.4.  Memories
+     9.5.  Photon Sources
+       9.5.1.  Unentangled Single Photons
+       9.5.2.  Entangled Photon Pairs
+       9.5.3.  Memory-Emitted Photons
+     9.6.  Detectors
+   10. A Sketch of the System Model
+     10.1.  Multicomputer
+     10.2.  Data Center Network (QDCN)
+     10.3.  Local-Area Network (QLAN)
+     10.4.  Wide-Area Network (QWAN)
    11. Requirements and Goals for the Architecture
      11.1.  Normative Requirements
      11.2.  General Requirements
@@ -749,7 +749,143 @@ Table of Contents
    locally generated photons, or otherwise utilized at or near the end
    nodes.  Such a network was proposed by Drost _et al._ [drost].
 
-9.  A Sketch of the System Model
+9.  Quantum Optical Building Blocks
+
+   This section informally describes the physical building blocks and
+   concepts used in the physical layer of a quantum network.  These
+   definitions will use equations defined in
+   [I-D.draft-hajdusek-qirg-timing-physics].
+
+9.1.  Qubits
+
+   In this network architecture, we use only qubits, which may have two
+   states identified as 0 and 1.  Quantum information systems using
+   qutrits, qudits, qunats or continuous variable (c.v.) quantum states
+   are beyond the scope of the current set of specifications.
+
+   Qubits (also defined in RFC 9340) must conform to a sufficient subset
+   of the DiVincenzo criteria [divincenzo-criteria].
+
+9.2.  Photons, Wave Packets and Optical Modes
+
+   An optical mode is a well-defined slot of a physical link, specified
+   by path, time window, frequency, polarization, or similar parameters,
+   such that the receiver can be configured to monitor that slot and
+   determine whether it is occupied by at least one photon or is empty.
+   The mode exists regardless of whether a photon is present; a photon
+   is an excitation of the mode, not the mode itself.
+
+   Loosely, a photon is a quantum of light.  More detailed analysis of a
+   photon requires understanding _wave packets_ and _optical modes_.
+
+   A wave packet is the non-zero amplitude of the electrical and
+   magnetic fields, and generally corresponds to a single excitation of
+   the electrical field, i.e. a single photon.  The length of the wave
+   packet is determined by the physics of the photon emission process,
+   possibly modified by dispersion in the channel, and in turn
+   determines the minimum length of a time slot in the link design.
+
+   An _optical mode_ is a well-defined slot of a physical link,
+   specified by path, time window, frequency, polarization, or similar
+   parameters, such that the receiver can be configured to monitor that
+   slot and determine whether it is occupied by at least one photon wave
+   packet or is empty.
+
+   The mode exists regardless of whether a photon is present; a photon
+   is an excitation of the mode, not the mode itself.
+
+   In quantum networking, link capacity and state must be described in
+   terms of modes (slots), not photons; photons merely occupy modes,
+   while empty modes correspond to vacuum states that are still
+   physically and operationally meaningful.
+
+   Technical note: In idealized models, distinct modes correspond to
+   orthogonal solutions of the field equations, ensuring perfect
+   distinguishability.
+
+   Short example: A quantum optical link may define one mode per time
+   window.  During each window, the receiver monitors the mode.  A
+   detection event indicates that the mode was occupied by at least one
+   photon; the absence of a detection indicates that the same mode was
+   empty.  Both outcomes correspond to distinct physical states of the
+   link.
+
+9.3.  Photonic Qubits
+
+   Photons are used in networks to carry qubits.  There are several
+   possible on-the-wire photonic qubit representations, e.g.
+
+   *  Polarization (e.g. horizontal v. vertical)
+
+   *  Time bin (e.g. early v. late)
+
+   *  Which path (e.g. passing through a particular set of lenses or
+      fibers)
+
+   *  Energy level (wavelength)
+
+   These representations and more about the concept of an _optical mode_
+   are discussed in the Standard Photons document, and are provided here
+   only for informational purposes.
+
+9.4.  Memories
+
+   For our purposes, we do not need to worry about the physical
+   implementation of memories, only that they may hold quantum data
+   (qubits) that may be under the management of the network software and
+   protocols.  They may be entangled with photons or with other memory
+   qubits.
+
+   Generally, the creation or entanglement of a state in memory is
+   imperfect, and the memory has a finite lifetime.
+
+   The entanglement of a memory qubit with a photon is a technology-
+   dependent process.  To create fiber-compatible and optical equipment-
+   compatible photons, wavelength conversion via transduction may be
+   necessary.  In 2025, transduction is a low-probability process, and
+   hurts fidelity as well.
+
+9.5.  Photon Sources
+
+   Photons may be emitted by _sources_ of many types [nist-singles].
+   Single photons may come from attenuated lasers, or be emitted by a
+   variety of quantum devices, such as quantum dots, or by individual
+   atoms.
+
+   Photons may be unentangled, entangled with other photons, or
+   entangled with quantum memories.
+
+9.5.1.  Unentangled Single Photons
+
+   Unentangled photons exhibit quantum properties.  They can carry
+   information in any of the characteristics listed above, and may be
+   put into a superposition of multiple basis states for e.g. quantum
+   key distribution purposes.  In this document, unentangled individual
+   photons are not used.
+
+9.5.2.  Entangled Photon Pairs
+
+   Pairs of photons entangled with each other can be made via a variety
+   of physical processes.  Devices that make such pairs can be
+   components of nodes such as the Entangled Photon Pair Source (EPPS),
+   described in a separate document.
+
+9.5.3.  Memory-Emitted Photons
+
+   Photons emitted by quantum memories, such as single atoms, may remain
+   entangled to the memory, if the memory was in a superposition of
+   basis states.
+
+9.6.  Detectors
+
+   Detectors may be either _single-photon detectors_, which click when
+   _one or more_ photons hit the detector, or _number resolving
+   detectors_, which can distinguish between one, two, or more photons
+   hitting the detector within the same time window [nist-singles].  In
+   this document, detectors may be assumed to be single-photon
+   detectors.
+
+10.  A Sketch of the System Model
 
    As noted in the 2022 roadmap for quantum interconnects
    [awschalom-roadmap], entangled quantum network technology can be
@@ -758,7 +894,7 @@ Table of Contents
    other documents, but a brief description here will help to orient
    discussions of design points in order to justify certain decisions.
 
-9.1.  Multicomputer
+10.1.  Multicomputer
 
    The first deployment of production-level, distant quantum
    entanglement is likely to be in a _quantum multicomputer_, based on
@@ -953,7 +1089,7 @@ Table of Contents
       specifications, but may involve distributed lattice surgery
       [ramette-remote], [leone-remote],[sinclair-ft-interconnect].
 
-9.2.  Data Center Network (QDCN)
+10.2.  Data Center Network (QDCN)
 
    The hardware for quantum data center networks will be almost
    identical to multicomputers; the primary differences are in the
@@ -961,7 +1097,7 @@ Table of Contents
    Distributed control and protocols for multiplexing and connection
    setup may be necessary.
 
-9.3.  Local-Area Network (QLAN)
+10.3.  Local-Area Network (QLAN)
 
    A QLAN will be deployed within a building or across a campus.  It may
    connect quantum computers (including but not necessarily
@@ -976,7 +1112,7 @@ Table of Contents
    Distributed control and protocols for multiplexing and connection
    setup are necessary [aparicio-spie].
 
-9.4.  Wide-Area Network (QWAN)
+10.4.  Wide-Area Network (QWAN)
 
    Wide-area networks may involve client-server or peer-to-peer
    communication.  One particular scenario of interest is a measurement-
@@ -989,142 +1125,6 @@ Table of Contents
    "incast" problem of excessive traffic concentrating near certain
    nodes.  Management of this problem is beyond the scope of this
    document.
-
-10.  Quantum Optical Building Blocks
-
-   This section informally describes the physical building blocks and
-   concepts used in the physical layer of a quantum network.  These
-   definitions will use equations defined in
-   [I-D.draft-hajdusek-qirg-timing-physics].
-
-10.1.  Qubits
-
-   In this network architecture, we use only qubits, which may have two
-   states identified as 0 and 1.  Quantum information systems using
-   qutrits, qudits, qunats or continuous variable (c.v.) quantum states
-   are beyond the scope of the current set of specifications.
-
-   Qubits (also defined in RFC 9340) must conform to a sufficient subset
-   of the DiVincenzo criteria [divincenzo-criteria].
-
-10.2.  Photons, Wave Packets and Optical Modes
-
-   An optical mode is a well-defined slot of a physical link, specified
-   by path, time window, frequency, polarization, or similar parameters,
-   such that the receiver can be configured to monitor that slot and
-   determine whether it is occupied by at least one photon or is empty.
-   The mode exists regardless of whether a photon is present; a photon
-   is an excitation of the mode, not the mode itself.
-
-   Loosely, a photon is a quantum of light.  More detailed analysis of a
-   photon requires understanding _wave packets_ and _optical modes_.
-
-   A wave packet is the non-zero amplitude of the electrical and
-   magnetic fields, and generally corresponds to a single excitation of
-   the electrical field, i.e. a single photon.  The length of the wave
-   packet is determined by the physics of the photon emission process,
-   possibly modified by dispersion in the channel, and in turn
-   determines the minimum length of a time slot in the link design.
-
-   An _optical mode_ is a well-defined slot of a physical link,
-   specified by path, time window, frequency, polarization, or similar
-   parameters, such that the receiver can be configured to monitor that
-   slot and determine whether it is occupied by at least one photon wave
-   packet or is empty.
-
-   The mode exists regardless of whether a photon is present; a photon
-   is an excitation of the mode, not the mode itself.
-
-   In quantum networking, link capacity and state must be described in
-   terms of modes (slots), not photons; photons merely occupy modes,
-   while empty modes correspond to vacuum states that are still
-   physically and operationally meaningful.
-
-   Technical note: In idealized models, distinct modes correspond to
-   orthogonal solutions of the field equations, ensuring perfect
-   distinguishability.
-
-   Short example: A quantum optical link may define one mode per time
-   window.  During each window, the receiver monitors the mode.  A
-   detection event indicates that the mode was occupied by at least one
-   photon; the absence of a detection indicates that the same mode was
-   empty.  Both outcomes correspond to distinct physical states of the
-   link.
-
-10.3.  Photonic Qubits
-
-   Photons are used in networks to carry qubits.  There are several
-   possible on-the-wire photonic qubit representations, e.g.
-
-   *  Polarization (e.g. horizontal v. vertical)
-
-   *  Time bin (e.g. early v. late)
-
-   *  Which path (e.g. passing through a particular set of lenses or
-      fibers)
-
-   *  Energy level (wavelength)
-
-   These representations and more about the concept of an _optical mode_
-   are discussed in the Standard Photons document, and are provided here
-   only for informational purposes.
-
-10.4.  Memories
-
-   For our purposes, we do not need to worry about the physical
-   implementation of memories, only that they may hold quantum data
-   (qubits) that may be under the management of the network software and
-   protocols.  They may be entangled with photons or with other memory
-   qubits.
-
-   Generally, the creation or entanglement of a state in memory is
-   imperfect, and the memory has a finite lifetime.
-
-   The entanglement of a memory qubit with a photon is a technology-
-   dependent process.  To create fiber-compatible and optical equipment-
-   compatible photons, wavelength conversion via transduction may be
-   necessary.  In 2025, transduction is a low-probability process, and
-   hurts fidelity as well.
-
-10.5.  Photon Sources
-
-   Photons may be emitted by _sources_ of many types [nist-singles].
-   Single photons may come from attenuated lasers, or be emitted by a
-   variety of quantum devices, such as quantum dots, or by individual
-   atoms.
-
-   Photons may be unentangled, entangled with other photons, or
-   entangled with quantum memories.
-
-10.5.1.  Unentangled Single Photons
-
-   Unentangled photons exhibit quantum properties.  They can carry
-   information in any of the characteristics listed above, and may be
-   put into a superposition of multiple basis states for e.g. quantum
-   key distribution purposes.  In this document, unentangled individual
-   photons are not used.
-
-10.5.2.  Entangled Photon Pairs
-
-   Pairs of photons entangled with each other can be made via a variety
-   of physical processes.  Devices that make such pairs can be
-   components of nodes such as the Entangled Photon Pair Source (EPPS),
-   described in a separate document.
-
-10.5.3.  Memory-Emitted Photons
-
-   Photons emitted by quantum memories, such as single atoms, may remain
-   entangled to the memory, if the memory was in a superposition of
-   basis states.
-
-10.6.  Detectors
-
-   Detectors may be either _single-photon detectors_, which click when
-   _one or more_ photons hit the detector, or _number resolving
-   detectors_, which can distinguish between one, two, or more photons
-   hitting the detector within the same time window [nist-singles].  In
-   this document, detectors may be assumed to be single-photon
-   detectors.
 
 11.  Requirements and Goals for the Architecture
 
