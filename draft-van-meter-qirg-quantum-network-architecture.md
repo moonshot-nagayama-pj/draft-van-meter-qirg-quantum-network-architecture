@@ -396,7 +396,7 @@ In this document, we use the abbreviations and other related technical terms lis
 | time slot | a fully specified time and place where a photon may be detected; compare to window and time bin |
 | time window | the time interval where a detector is enabled; compare to time bin and time slot |
 
-# Applications of Networks
+# Applications of Networks {#app}
 
 The requirements for a network are determined by the application workload.  This section orients architectural decisions by briefly introducing applications and the communication patterns they exhibit, which is a key factor determining the suitability of particular architectures.
 
@@ -669,7 +669,7 @@ Photons emitted by quantum memories, such as single atoms, may remain entangled 
 
 Detectors may be either _single-photon detectors_, which click when _one or more_ photons hit the detector, or _number resolving detectors_, which can distinguish between one, two, or more photons hitting the detector within the same time window {{nist-singles}}. In this document, detectors may be assumed to be single-photon detectors.
 
-# Requirements and Goals for the Architecture
+# Requirements and Goals for the Architecture {#reqgoals}
 
 This section documents the requirements for all networks adhering to this architecture.
 
@@ -682,15 +682,16 @@ This section documents the requirements for all networks adhering to this archit
 
 ### Functional Goals
 
-The following are goals of this architecture.  Note that while the architectural decisions support all of these goals, individual implementations may not support every item in the list.
+The following are goals of this architecture.  Note that while the architectural decisions support all of these goals, individual implementations may not support every item in the list, i.e. a single-PSD implementation may not support memory-based entanglement swapping or may be insufficient for wide-area networking.
 
-* Operates on qubits. Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.
-* Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)
-* Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.
-* Supports deployments ranging from multicomputer to wide area networks.
-* Supports multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
-* Supports entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
-* Supports evolution of single-photon, unentangled, single-purpose quantum key distribution networks (perhaps with trusted relay nodes) to fully entangled, multipurpose networks.
+* The architecture is defined only for qubits. Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.
+* The architecture defines support for pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes in {{app}}.  (The architecture does not define multipartite states as a service of the network; applications that require them are responsible for building them from Bell pairs.)
+* The architecture is independent of physical implementation of memories, photonic data representations, etc.
+* The architecture supports deployments ranging from multicomputer to wide area networks.
+* The architecture supports multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
+* The architecture supports entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
+* The architecture supports methods of assessing and managing errors, including photon loss and decoherence.
+* The architecture aims to support evolution of single-photon, unentangled, single-purpose quantum key distribution networks (perhaps with trusted relay nodes) to fully entangled, multipurpose networks.
 
 ### Interface Requirements
 
@@ -717,6 +718,8 @@ Physical requirements such as distance, wavelength, vibration, power, etc. will 
 * The architecture must support the use of both manual and automated network configuration tools.
 
 # Top Level Architecture
+
+This section describes key design decisions made to achieve the goals outlined in {{reqgoals}}.
 
 <!--
 ### Summary
