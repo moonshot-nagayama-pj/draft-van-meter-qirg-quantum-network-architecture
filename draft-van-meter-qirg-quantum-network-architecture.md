@@ -194,6 +194,7 @@ informative:
   dulek-homomorphic: DOI.10.4086/toc.2018.v014a007
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
   E91: DOI.10.1103/PhysRevLett.67.661
+  eisert-remote-gate: DOI.10.1103/PhysRevA.62.052317
   fan-dgs-dist: DOI.10.1109/TQE.2025.3552006
   farhadi-sdn: DOI.10.1016/j.comnet.2015.02.014
   fischer-dgs: DOI.10.1109/QCE52317.2021.00049
@@ -252,6 +253,7 @@ informative:
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
   sutcliffe-dist-qec: DOI.10.1109/QCE65121.2025.00076
   taherkhani-byz: DOI.10.1088/2058-9565/aa9bb1
+  van-meter-dist-arith: DOI.10.1145/1324177.1324179
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
   van-meter-path-sel: DOI.10.1007/s13119-013-0026-2
   van-meter-qi-arch: DOI.10.1109/QCE53715.2022.00055
@@ -347,7 +349,7 @@ This document assumes basic knowledge of the underlying technology and goals of 
 * Quantum networking
     - Teleportation
     - Purification
-    - Entanglement swapping
+    - Entanglement swapping {{zukowski-entanglement-swapping}}
     - Quantum key distribution {{BB84}}, {{E91}}, {{BBM92}}
     - "Generations" of quantum repeaters {{muralidharan-generations}}, {{azuma-rmp}}
     - (Repeater graph states may be helpful, but are not used in the current architecture)
@@ -388,11 +390,11 @@ In this document, we use the abbreviations and other related technical terms lis
 | multiqubit Pauli operators | tensor product of Pauli operators acting on two or more qubits |
 | switch point | a 2x2 junction that can be either X (cross) or = (straight) |
 | switch device | a single integrated, fiber- or free space-connected (physical) component, comprising one or more switch points |
-| teledata | application execution via teleporting data from node to node, then executing gates locally.  May be done remotely, mediated by Bell pairs. |
-| telegate | application execution via remote gates (as defined by Eisert et al.).  May be done remotely, mediated by Bell pairs. |
-| time bin | compare to window and time slot |
-| time slot | compare to window and time bin |
-| window | compare to time bin and time slot |
+| teledata | application execution via teleporting data from node to node, then executing gates locally.  May be done remotely, mediated by Bell pairs. {{van-meter-dist-arith}} |
+| telegate | application execution via remote gates (as defined by Eisert et al. {{eisert-remote-gate}}).  May be done remotely, mediated by Bell pairs. {{van-meter-dist-arith}} |
+| time bin | a method of qubit encoding using photons; compare to window and time slot |
+| time slot | a fully specified time and place where a photon may be detected; compare to window and time bin |
+| time window | the time interval where a detector is enabled; compare to time bin and time slot |
 
 # Applications of Networks
 
@@ -609,10 +611,19 @@ Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiV
 ## Photons, Wave Packets and Optical Modes
 
 An optical mode is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon or is empty.  The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.
+<!-- Optical mode (link-layer view). -->
+
+Loosely, a photon is a quantum of light. More detailed analysis of a photon requires understanding _wave packets_ and _optical modes_.
+
+A wave packet is the non-zero amplitude of the electrical and magnetic fields, and generally corresponds to a single excitation of the electrical field, i.e. a single photon.  The length of the wave packet is determined by the physics of the photon emission process, possibly modified by dispersion in the channel, and in turn determines the minimum length of a time slot in the link design.
+
+An _optical mode_ is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon wave packet or is empty.
+
+The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.
 
 In quantum networking, link capacity and state must be described in terms of modes (slots), not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful.
 
-Technical note: In idealized models, distinct modes correspond to orthogonal field solutions, ensuring perfect distinguishability.
+Technical note: In idealized models, distinct modes correspond to orthogonal solutions of the field equations, ensuring perfect distinguishability.
 
 Short example:
 A quantum optical link may define one mode per time window. During each window, the receiver monitors the mode. A detection event indicates that the mode was occupied by at least one photon; the absence of a detection indicates that the same mode was empty. Both outcomes correspond to distinct physical states of the link.
@@ -638,7 +649,7 @@ The entanglement of a memory qubit with a photon is a technology-dependent proce
 
 ## Photon Sources
 
-Photons may be emitted by _sources_ of many types {{nist-singles}} .  Single photons may come from attenuated lasers, or be emitted by a variety of quantum devices, such as quantum dots, or by individual atoms.
+Photons may be emitted by _sources_ of many types {{nist-singles}}.  Single photons may come from attenuated lasers, or be emitted by a variety of quantum devices, such as quantum dots, or by individual atoms.
 
 Photons may be unentangled, entangled with other photons, or entangled with quantum memories.
 
@@ -838,7 +849,7 @@ When operating in device mode, the Data Plane consists of remote procedure calls
 
 Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation {{casapao-disti-mation}}. If this is done, security and privacy concerns must be addressed.
 
-The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document.
+The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
 ## Control
 
@@ -846,13 +857,13 @@ The classical control plane is responsible for establishing and managing connect
 
 Control plane functions may share data with management plane functions, e.g. sharing parameter adjustment values and timings. If this is done, security and privacy concerns must be addressed.
 
-The control plane functionality executes the functions described as "Measurement basis selection", "Optical switch control" and some tasks in "Host-side Application-level Tasks" in the Timing Regimes document.
+The control plane functionality executes the functions described as "Measurement basis selection", "Optical switch control" and some tasks in "Host-side Application-level Tasks" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
 ## Management
 
 While connection-specific changes to configuration, such as switching and necessary, immediate changes to e.g. polarization and optical delay may appear as control plane functions, slow-rate monitoring and adjustment of parameters such as timing or polarization due to drift in temperature, voltage or other parameters is the responsibility of the management plane. The management plane may receive useful data on the health and fidelity of links as a result of data plane and control plane operations.
 
-The management plane functionality executes the functions described as "Background Tasks" in the Timing Regimes document.
+The management plane functionality executes the functions described as "Background Tasks" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
 # Protocol Layers
 
