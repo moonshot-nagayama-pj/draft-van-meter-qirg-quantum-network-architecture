@@ -115,8 +115,10 @@ informative:
   RFC9340:
   RFC9413:
   RFC9583:
+  I-D.draft-dahlberg-ll-quantum:
   I-D.draft-hajdusek-qirg-timing-physics:
   I-D.draft-kaws-qirg-advent:
+  I-D.draft-zhu-qirg-qdcp:
   res-mgmt-het:
     target: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
     title: Resource Management in Heterogeneous Quantum Repeater Networks
@@ -142,7 +144,7 @@ informative:
     format:
       PDF: https://arxiv.org/pdf/quant-ph/0607065
   nist-singles: DOI.10.6028/NIST.IR.8486r1
-  abane-routing: DOI.10.48550/arXiv.2408.01234
+  abane-routing: DOI.10.1109/TQE.2025.3541123
   aboy-governance: DOI.10.1126/science.adw0018
   ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
   aparicio-spie: DOI.10.1117/12.893272
@@ -155,9 +157,12 @@ informative:
   broadbent-bfk-protocol: DOI.10.1109/FOCS.2009.36
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
   buterakos-graph-generation: DOI.10.1103/PhysRevX.7.041023
+  casapao-disti-mation: DOI.10.1038/s42005-025-02352-2
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   christandl-anon: DOI.10.1007/11593447_12
+  ciobanu-multi-ring: DOI.doi.org/10.1038/s41598-025-00391-x
   degen-sensing: DOI.10.1103/RevModPhys.89.035002
+  dahlberg-ll-arxiv: DOI.10.48550/arXiv.1903.09778
   dally-towles:
       title: Principles and Practices of Interconnection Networks
       author:
@@ -171,6 +176,20 @@ informative:
       seriesinfo:
         ISBN: 978-0-08-049780-8
   divincenzo-criteria: DOI.10.48550/arXiv.quant-ph/0002077
+  delle-donne-os-arxiv: DOI.10.48550/arXiv.2407.18306
+  delle-donne-os-nature: DOI.10.1038/s41586-025-08704-w
+  delle-donne-thesis:
+    target: https://pure.tudelft.nl/ws/portalfiles/portal/153555360/dissertation_cdelledonne.pdf
+    title: Software Abstractions for Programmable Quantum Network Nodes
+    author:
+        ins: C. Delle Donne
+        name: Carlo Delle Donne
+        org: Technical University of Delft
+    date: 2023
+    seriesinfo:
+      "Ph.D.": "Dissertation, Technical University Delft"
+    format:
+      PDF: https://pure.tudelft.nl/ws/portalfiles/portal/153555360/
   drost: DOI.10.1364/JOCN.8.000331
   dulek-homomorphic: DOI.10.4086/toc.2018.v014a007
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
@@ -185,6 +204,7 @@ informative:
   ghz: DOI.10.48550/arXiv.0712.0921
   giovannetti-metro: DOI.10.1038/nphoton.2011.35
   gottesman-telescope: DOI.10.1103/PhysRevLett.109.070503
+  haener-qmpi: DOI.10.1145/3458817.3476172
   ilo-okeke-clock: DOI.10.1038/s41534-018-0090-2
   hajdusek-qcomm: DOI.10.48550/arXiv.2311.02367
   haldar-sat-dist: DOI.10.1103/PhysRevA.107.022615
@@ -194,6 +214,7 @@ informative:
   hilaire-rgs-optimizing-gen-time: DOI.10.22331/q-2021-02-15-397
   horsman-lattice-surgery: DOI.10.1088/1367-2630/14/12/123011
   huang-imaging-stars: DOI.10.1103/PhysRevLett.129.210502
+  humphreys-deterministic-link: DOI.10.1038/s41586-018-0200-5
   khatri-spooky: DOI.10.1038/s41534-020-00327-5
   kim-ft-million: DOI.10.1145/3620665.3640388
   koyama-24: DOI.10.1109/QCE60285.2024.00219
@@ -218,6 +239,8 @@ informative:
   mori-psds: DOI.10.1109/QCE60285.2024.00218
   morimae-blind: DOI.10.1103/PhysRevA.87.050301
   muralidharan-generations: DOI.10.1038/srep20463
+  pnpq: DOI.10.5281/zenodo.16886214
+  preskill-nisq: DOI.10.22331/q-2018-08-06-79
   proctor-quantum-sensing: DOI.10.48550/arXiv.1702.04271
   proctor-multiparm: DOI.10.1103/PhysRevLett.120.080501
   ramette-remote: DOI.10.1038/s41534-024-00855-4
@@ -242,6 +265,7 @@ informative:
   xu-dist-qec: DOI.10.1103/PhysRevLett.129.240502
   yin-1200km: DOI.10.1126/science.aan3211
   yoder-tour-de-gross: DOI.10.48550/arXiv.2506.03094
+  yu-two-level: DOI.10.1109/QCE65121.2025.00145
   zukowski-entanglement-swapping: DOI.10.1103/PhysRevA.65.032118
 ...
 
@@ -279,7 +303,7 @@ This section describes goals and non-goals for this document itself, rather than
 
 ## Non-Goals
 
-* Specification of physical links
+* Specification of physical links (including photonic wave packets)
 * Internetworking
 
 # Relationship to Documents by QIRG and Other Organizations
@@ -330,8 +354,7 @@ This document assumes basic knowledge of the underlying technology and goals of 
     - "Generations" of quantum repeaters {{muralidharan-generations}}, {{azuma-rmp}}
     - (Repeater graph states may be helpful, but are not used in the current architecture)
 
-Because terms such as _fidelity_ have varying definitions, they will be defined in this set of documents.
-<!-- (where? Timing Regimes?). -->
+Because terms such as _fidelity_ have varying definitions, they will be defined in this set of documents {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
 Readers needing additional background are referred to:
 
@@ -379,9 +402,7 @@ The requirements for a network are determined by the application workload.  This
 
 ## Types of Applications
 
-Applications fall into two large categories: inherently distributed applications, or subdivision of monolithic applications for distributed execution, as in supercomputing applications running on multicomputer architectures.
-
-For a discussion of some inherently distributed applications of quantum networks, see {{RFC9583}}. This network architecture supports the applications listed in that RFC, though not all networks will support all applications.
+Applications fall into two large categories: inherently distributed applications, or subdivision of monolithic applications for distributed execution, as in supercomputing applications running on multicomputer architectures.  The inherently distributed applications can be further categorized into cryptographic functions, distributed computation, and distributed sensing.  For a discussion of some inherently distributed applications of quantum networks, see {{RFC9583}}. This network architecture supports the applications listed in that RFC, though not all networks will support all applications.
 
 ## Entangled States Consumption Patterns
 
@@ -475,15 +496,15 @@ This section introduces concepts in classical and quantum computer and network a
 
 A quantum device stores, carries, measures or computes on quantum variables.
 
-A quantum device (often shortened to just "device" in this specification) is under software control; i.e. optical fibers or beam splitters are not classified as quantum devices.
+For the purposes of this architecture, a quantum device (often shortened to just "device" in this specification) is under software control; i.e. passive elements such as optical fibers or beam splitters are not classified as quantum devices.
 
-Control of devices is usually done with respect to some physical characteristic of the device itself, rather than dealing with the abstract notion of qubits.  A controllable wave plate, for example, may be adjusted in units of degrees of rotation of the plate.  An example of a software package that provides such functionality is PnPQ.
+Control of devices is usually done with respect to some physical characteristic of the device itself, rather than dealing with the abstract notion of qubits.  A controllable wave plate, for example, may be adjusted in units of degrees of rotation of the plate.  An example of a software package that provides such functionality is PnPQ {{pnpq}}.
 
 ## Quantum Nodes
 
 A node comprises one or more quantum devices, and serves as a single locus of control for network protocols.  The classes of nodes are described later in this document.
 
-A _logical node_ provides a single communication and control point for the services of a particular node type or a composite node type, but may comprise a set of physical devices rather than a single device, and may be physically packaged in more than one box.
+A _logical node_ or _composite node_ provides a single communication and control point for the services of a particular node type or a composite node type, but may comprise a set of physical devices rather than a single device, and may be physically packaged in more than one box.
 
 ## Quantum Links
 
@@ -499,13 +520,13 @@ Note that the most common operational mode uses only pairs of photons, one from 
 
 In multicomputer architectures, a _direct_ architecture features links that go directly from computational node to computational node. Hypercubes, meshes and toruses are typically direct architectures.  An _indirect_ architecture interposes one or more switches between computational nodes.  Fat trees, Clos and Benes networks, and the various -fly topologies are generally indirect {{dally-towles}}.
 
-The distinction is somewhat artificial in that direct architectures sometimes incorporate a small switch inside the node, in which case the matching term depends on where you draw the boundary of the node, and because computational nodes can be configured to act only as routers within the network, modeling an indirect architecture using direct hardware.
+The distinction is somewhat artificial in that direct architectures sometimes incorporate a small switch (sometimes called a "router") inside the node, in which case the choice of term depends on where you draw the boundary of the node, and because computational nodes can be configured to act only as routers within the network, modeling an indirect architecture using direct hardware.
 
 ## Detector-centric Architecture
 
 Several detectors may be packaged as a single subsystem for purposes such as cooling, power, control and time stamping.  An architecture built around a shared pool of detectors is a _detector-centric architecture_. This structure facilities entanglement distribution in a quantum system interconnect, data center network or some forms of local area network.
 
-A detector-centric architecture is an indirect architecture if the pool of detectors is behind a switch or network of switches.
+A detector-centric architecture is an indirect architecture if the pool of detectors is behind a switch or network of switches.  If the detectors are arranged as Bell State Analyzers (BSAs), we can call the architecture _BSA-centric_.  This will be the common case.
 
 ## Source-centric Architecture
 
@@ -519,9 +540,9 @@ As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, en
 
 The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)) {{rdv-thesis}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
 
-A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
+A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction {{preskill-nisq}}, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
 
-The execution model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface).
+The program structural model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface), in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.
 
 General hardware environment:
 
@@ -551,13 +572,13 @@ The realities of quantum hardware result in a few important differences from cla
 
 * Multicomputer interconnects may be either optically switched or composed entirely of point-to-point links. In switched networks, depending on optical hardware as well as photonic qubit representation, reconfiguring the switch or switches may be an extremely high-latency operation.
 * Application execution at end nodes proceeds in phases tied to specific communication patterns. Even with a fixed sequence of application-level operations, the execution time of a phase can be variable because entanglement generation is probabilistic. Local gates can also be probabilistic under some circumstances, but for many node hardware types, fast local gate execution means the impact of variable gate execution time will be small.
-* In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase must be done at the direction of the job controller.
+* In switched systems, reconfiguration of switches is centrally coordinated between phases. Thus, while classical data moves directly node-to-node during autonomous phase execution, advancing from phase to phase in quantum multicomputer program execution must be done at the direction of the job controller.
 * Because execution is centrally coordinated, the network system is not required to provide multiplexing. (This is a substantial difference from data center networks, QLANs and QWANs.)
 * The compiler may include multihop communication within a phase using hop-by-hop teleportation without reconfiguring any switches; this is beyond the scope of this architecture.
 * Execution of the quantum portion of the node program generally involves hard real-time actions, both unconditional and conditioned on prior quantum measurement results. This generally requires compilation of the quantum program to very low-level actions to be executed by FPGAs or ASICs.
 * Systems may be partially or completely emulated, decoupling development of different subsystems. e.g., an EPPS plus a MEAS together can emulate a COMP node that emits single photons.
 * Systems may be noisy, intermediate-scale quantum (NISQ); near-term, small-scale fault tolerant; or fault-tolerant, application-scale quantum (FASQ).
-* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery {{ramette-remote}}, {{leone-remote}}, or {{sinclair-ft-interconnect}}.
+* Quantum error correction is above the level of these specifications, but may involve distributed lattice surgery {{ramette-remote}}, {{leone-remote}},{{sinclair-ft-interconnect}}.
 
 ## Data Center Network (QDCN)
 
@@ -589,6 +610,7 @@ Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiV
 
 ## Photons, Wave Packets and Optical Modes
 
+An optical mode is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon or is empty.  The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.
 <!-- Optical mode (link-layer view). -->
 
 Loosely, a photon is a quantum of light. More detailed analysis of a photon requires understanding _wave packets_ and _optical modes_.
@@ -610,9 +632,9 @@ A quantum optical link may define one mode per time window. During each window, 
 
 Photons are used in networks to carry qubits. There are several possible on-the-wire photonic qubit representations, e.g.
 
-* Polarization
-* Time bin
-* Which path
+* Polarization (e.g. horizontal v. vertical)
+* Time bin (e.g. early v. late)
+* Which path (e.g. passing through a particular set of lenses or fibers)
 * Energy level (wavelength)
 
 These representations and more about the concept of an _optical mode_ are discussed in the Standard Photons document, and are provided here only for informational purposes.
@@ -649,7 +671,7 @@ Detectors may be either _single-photon detectors_, which click when _one or more
 
 # Requirements
 
-This section documents the requirements for all networks adhering to this architecture.
+This section documents the requirements for all networks adhering to this architecture.  Note that while the architecture must accommodate all of these requirements, individual implementations may not support all of these items.
 
 ## Normative Requirements
 
@@ -660,13 +682,13 @@ This section documents the requirements for all networks adhering to this archit
 
 ### Functional Requirements
 
-* Operates on qubits. (Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)
+* Operates on qubits. Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.
 * Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)
 * Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.
-* The architecture must support deployments ranging from multicomputer to wide area networks.
-* The architecture must support multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
-* The architecture must support entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
-* The architecture must support evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.
+* Supports deployments ranging from multicomputer to wide area networks.
+* Supports multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
+* Supports entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
+* Supports evolution of single-photon, unentangled, single-purpose quantum key distribution networks (perhaps with trusted relay nodes) to fully entangled, multipurpose networks.
 
 ### Interface Requirements
 
@@ -771,7 +793,7 @@ Physical requirements such as distance, wavelength, vibration, power, etc. will 
 
 This network architecture is entirely classically controlled.  Its task is to generate shared quantum states for applications residing at separate nodes. While many quantum events are inherently probabilistic, and loss of photons is also inherently probabilistic, this architecture does not use multipartite quantum states for e.g. routing of two-party requests.  (An extension of this network architecture may support generation of multi-partite state for applications at a later date.)
 
-# Communication Service
+## Communication Service
 
 (Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. {{van-meter-qi-arch}} and others.)
 
@@ -786,6 +808,8 @@ At the other end of the spectrum, networks may offer richer services such as mul
 or fault-tolerant state teleportation.
 While applications can, in theory, synthesize these states from Bell pairs, direct network-level support may offer efficiency gains and reduce sensitivity to noise by internalizing complex procedures like direct graph state generations or supporting the delivery of error-correcting code encoded logical qubits.
 
+### Bell Pairs as the Core Network Service
+
 In our architecture, we adopt Bell pair distribution as the core network service, as it allows for a well-scoped, foundational architectural framework.
 <!-- As we will see later, in \cref{sec:architecture-memory:discussion},
 this architecture is also extensible to multipartite entanglement services.
@@ -794,6 +818,8 @@ These extensions build naturally on the base protocols discussed here and sugges
 Importantly, the semantics of Bell pair distribution are not merely those of passive delivery.
 Even in this basic model, distributed quantum computation occurs along the path via entanglement swapping, possibly combined with purification at intermediate repeater nodes.
 A proper service definition must account for this processing, as it directly affects fidelity, latency, and trust assumptions in the network.
+
+### Timing as a Critical Auxilary Service
 
 In addition to quantum state delivery, timing information is often a critical part of the service.
 Applications in distributed quantum sensing and clock synchronization {{degen-sensing}}, {{proctor-quantum-sensing}}, {{proctor-multiparm}}, {{giovannetti-metro}}, {{gottesman-telescope}}, {{ilo-okeke-clock}}
@@ -813,15 +839,15 @@ All nodes in the network will have one or more of the following classes of inter
 
 The quantum signals and in-channel, hardware-dependent, real-time classical signals for timing and synchronization of photon wave packets.  A node with a quantum plane incorporates one or more quantum devices.  The quantum devices may be local or remote.
 
-The quantum plane functionality executes the functions described as "Interferometric Stabilization" and "Wave Packet Overlap" and subject to the constraints in "Detector Timing Windows" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
+The quantum plane functionality executes the functions described as "Interferometric Stabilization" and "Wave Packet Overlap" and is subject to the constraints in "Detector Timing Windows" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
 ## Data
 
 When operating in qubit mode, the Data Plane consists of classical messages that convey events for RuleSet operation and the communication ports and software that generate and consume such messages.
 
-When operating in device mode, the Data Plane consists of RPCs for controlling individual devices.
+When operating in device mode, the Data Plane consists of remote procedure calls (RPCs) for controlling individual devices.
 
-Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation. If this is done, security and privacy concerns must be addressed.
+Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation {{casapao-disti-mation}}. If this is done, security and privacy concerns must be addressed.
 
 The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
@@ -847,19 +873,111 @@ In a layered network architecture, each layer processes a prepended header to co
 
 A complete network architecture consists of much more than the layers processing individual packets; many of the critical supporting protocols around naming, routing, security, network management, etc. utilize messages carried using the same protocol stack designed for application data.
 
-In a quantum network, this layering is less clear.
+In a quantum network, this layering is less clear.  Classical network protocol layering is often presumed to include the sequential addition of headers while preparing a packet for transmission and processing proceeds down the protocol stack, with the process inverted on packet reception.  In quantum networks, the qubits themselves are not processed in this stacked fashion, and the related classical information typically involves separate messages with separate end points as hop-by-hop entanglement is extended to end-to-end entanglement through the actions of nodes all along the path.
+
+Nevertheless, the notion of _layers of responsibility_ or _separation of concerns_ is valid,with different needs at the link, network, and application.
 
 (More to be added here.)
+
+<!-- block couldn't figure out how to mermaid
+  columns 3
+  a["A label"] b:2 c:2 d -->
+
+~~~~~~~~
++---------------------------+
+| Application               |
++---------------------------+
+| Network (RuleSet)         |
++---------------------------+
+| Link                      |
++---------------------------+
+| Physical                  |
++---------------------------+
+~~~~~~~~
+{: artwork-name="fig-layers" artwork-align="center" title="Protocol Layers" }
+
+## Physical Layer
+
+The physical layer incorporates the quantum channel itself, whether free space or waveguide.  Specifcation of the physical layer is out of scope for this document, but the physical-layer specifications must include:
+
+* signal transmission characteristics of the channel
+* how nodes physically connect to the channel
+* choice of photonic qubit
+* wavelength
+* wave packet envelope shape and duration
+* timing/trial rate
+* how link synchronization is achieved
+* certain characteristics of detection subsystem
+
+Additional details on how to specify a physical layer will be presented in documents on the "standard photon" and "photon train", to come.
+
+## Link Layer
+
+The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints {{I-D.draft-dahlberg-ll-quantum}}, {{dahlberg-ll-arxiv}}, {{delle-donne-thesis}}, {{delle-donne-os-nature}}.  The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results recorded and reported.
+
+See p. 36 of {{delle-donne-thesis}} for a decent description of the link service.  They refer to K-type (keep), M-type (measure) and R-type (remote) entanglement requests.  (What about reverse-R type?)
+
+The link layer may deliver entangled states to the network layer either singly or as an ordered, tagged batch.
+
+The link may operate entirely on demand, or as an always-on, free-running service where requests from the network layer are serviced by using recently created entanglement.
+
+Can the network layer request states at one end where the status of the qubit at the other end is unknown, in either heralding or Pauli frame?  This seems to be necessary to support B class.
+
+For multidrop links, the link layer must coordinate with multiplexing and switch control as part of the control plane {{I-D.draft-zhu-qirg-qdcp}}.
+
+The link may consist of several network nodes.  Besides the two endpoints, switches, BSAs, and EPPSes may be involved.  Although these support nodes are part of the network architecture, their presence is not visible beyond the boundaries of the link or PSD.
+
+In this architecture, fidelity is the responsibility of the network layer; the link layer always provides raw Bell pairs of base fidelity.  Thus, fidelity is part of neither the request to nor response from the link layer.  During connection setup, information about link fidelity is acquired from the link management and used by the Responder to plan the connection.
+
+Thus, link monitoring and link fidelity management are the responsibility of the link architecture but are not part of the link layer protocol.
+
+* "message" format
+* addressing
+* multiplexing for multi-drop links
+
+### Link/Network Layer Interface
+
+(should this get moved to the Link section below?)
+
+The link/network interface is best described as a software interface, executed separately at each link endpoint.
+
+The network-->link request:
+
+* addresses of nodes
+* single/fixed number/stream
+* disposition: keep or measure, basis
+
+The link-->network response:
+
+* addresses of nodes
+* length of array of entangled states
+* array of entangled states
+    - identifier for entangled state
+    - (timestamp separate from identifier? needed or not?)
+    - flags
+        - confirmed/pending confirmation
+        - measured/live
+    - if measured, basis
+    - if measured, result
+
+## Network Layer: RuleSets
+
+(responsible for both single- and multi-hop purification, and entanglement swapping)
+
+The network layer subsumes the functions commonly divided into network and transport in many architectures.  It serves as a lightweight, restricted (not Turing complete) distributed computation platform.
+
+## Application Layer
+
+(mostly not defined here)
 
 # Nodes and Node Types
 
 (Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. and others.)
 
 The architecture of a quantum network is defined by its constituent nodes and their specialized functions.
-For clarity in describing our system, we group these nodes according to their primary contributions to network operation.
-In our architecture, we classify nodes into three main types: end nodes, for application interaction; repeater and router nodes, for extending entanglement and path management; and support nodes, for auxiliary operational tasks.
+In our architecture, we classify nodes into three main groups: end nodes, for application interaction; repeater and router nodes, for extending entanglement and path management; and support nodes, for auxiliary operational tasks.
 
-The qNode specification provides additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs {{RFC1122}}, {{RFC1123}}. Each node type is further defined in a detailed specification in a separate document.
+The qNode specification (a document to be published) will provide additional details on the common roles and responsibilities of all quantum network nodes, and serves as the equivalent of the Internet hosts requirements RFCs {{RFC1122}}, {{RFC1123}}. Each node type is further defined in a detailed specification in a separate document.
 
 ## End Nodes
 
@@ -933,7 +1051,9 @@ A node may also aggregate the functions of more than one node, in a form known a
 
 ## The Link Service
 
-A link provides Bell pairs across a single PSD.  Each Bell pair is named via an identifier. This service may be either real time or batched.
+A link provides Bell pairs across a single PSD.  Each Bell pair is named via an identifier. This service may be either real time or batched.  Generally, the physical link entanglement generation mechanism is probabilistic but heralded.  Although it is possible to use repeated trials to present a near-deterministic service {{humphreys-deterministic-link}}, in this architecture we choose instead to expose the asynchronous creation of Bell pairs with timestamps.
+
+(Does software control of buffer qubits appear in the architecture, or is it purely an implementation detail?)
 
 ## Photonic Path Description
 
@@ -969,15 +1089,29 @@ In a switched architecture, for example, photons may pass through paths such as:
 
 Point-to-point links may be either fiber-based or free space. A link encompassing the path of one or more photons may be partially fiber and partially free space.
 
+The photonic path description notation will include no 'X's.
+
 ## Switched
 
 A system built around a pool of detectors, particularly organized as BSAs, utilizing switched MIM links can also be characterized as a _detector-centric architecture_.
 
 For pseudocode for switching (routing) certain types of devices, see Koyama et al. {{koyama-24}}.
 
+The photonic path description notation will include one or more 'X's.
+
 ## Multidrop or Bus
 
 A multidrop link, or a bus, is a shared physical channel to which more than two stations may be attached.
+
+### Link Management
+
+Configuration.
+
+Management of fidelity, trial rate, detection parameters, etc.
+
+Monitors slowly changing fidelity.
+
+Supplies information about link fidelity and rate to other subsystems such as routing and connection setup.
 
 # Connections
 
@@ -1045,7 +1179,7 @@ However, this level of detail is not, and should not be, visible to the RuleSet 
 
 Within a RuleSet instance on a given node, the RuleSet mechanism identifies a quantum resource primarily by its **tag** --- a label that categorizes the resource into a specific pool corresponding to its current role or stage in the protocol.
 <!--  (as discussed in \cref{subsec:architecture-memory:ruleset-definition}). -->
-To ensure an unambiguous and absolute ordering of multiple resources that may share the same tag (e.g., several Bell pairs awaiting purification), each resource, upon being allocated to a tag, is automatically assigned a \emph{sequence number} by the local RuleSet engine.
+To ensure an unambiguous and absolute ordering of multiple resources that may share the same tag (e.g., several Bell pairs awaiting purification), each resource, upon being allocated to a tag, is automatically assigned a *sequence number* by the local RuleSet engine.
 The combination `<tag,seq no.>` thus serves as a distinct and locally unique key within that RuleSet instance for referencing a resource and associating it with relevant metadata, such as its tracked fidelity.
 Actions specified within Rules typically reference these resources based on their tag and their relative order within that tag, for instance, by operating on the resource with the smallest sequence number (i.e., the oldest available in that pool).
 This structured internal naming is vital for deterministic local operations and for preventing local operational mismatches that could lead to problems like the leapfrogging issue if not handled carefully at a higher protocol design level.
@@ -1135,7 +1269,7 @@ PSD: Each link is a separate PSD.
 
 A _direct_ interconnect. All nodes in a ring have exactly two neighbors. Each node must act as a memory buffer and repeater to enable communication between non-neighboring nodes.
 
-<!-- A ring is described in (something from Simon's group). -->
+A ring is described in {{ciobanu-multi-ring}} (something from Simon's group).
 
 PSD: Each link is a separate PSD.
 
