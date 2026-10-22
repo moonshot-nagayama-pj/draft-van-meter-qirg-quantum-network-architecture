@@ -660,7 +660,7 @@ Detectors may be either _single-photon detectors_, which click when _one or more
 
 # Requirements
 
-This section documents the requirements for all networks adhering to this architecture.
+This section documents the requirements for all networks adhering to this architecture.  Note that while the architecture must accommodate all of these requirements, individual implementations may not support all of these items.
 
 ## Normative Requirements
 
@@ -671,13 +671,13 @@ This section documents the requirements for all networks adhering to this archit
 
 ### Functional Requirements
 
-* Operates on qubits. (Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.)
+* Operates on qubits. Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.
 * Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)
 * Supports pairwise Bell pair creation between nodes with one or more of the B, C or T timing classes above.
 * Supports deployments ranging from multicomputer to wide area networks.
 * Supports multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
 * Supports entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
-* Supports evolution of single-photon, unentangled, single-purpose quantum key distribution networks to fully entangled, multipurpose networks.
+* Supports evolution of single-photon, unentangled, single-purpose quantum key distribution networks (perhaps with trusted relay nodes) to fully entangled, multipurpose networks.
 
 ### Interface Requirements
 
@@ -782,7 +782,7 @@ Physical requirements such as distance, wavelength, vibration, power, etc. will 
 
 This network architecture is entirely classically controlled.  Its task is to generate shared quantum states for applications residing at separate nodes. While many quantum events are inherently probabilistic, and loss of photons is also inherently probabilistic, this architecture does not use multipartite quantum states for e.g. routing of two-party requests.  (An extension of this network architecture may support generation of multi-partite state for applications at a later date.)
 
-# Communication Service
+## Communication Service
 
 (Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. {{van-meter-qi-arch}} and others.)
 
@@ -797,6 +797,8 @@ At the other end of the spectrum, networks may offer richer services such as mul
 or fault-tolerant state teleportation.
 While applications can, in theory, synthesize these states from Bell pairs, direct network-level support may offer efficiency gains and reduce sensitivity to noise by internalizing complex procedures like direct graph state generations or supporting the delivery of error-correcting code encoded logical qubits.
 
+### Bell Pairs as the Core Network Service
+
 In our architecture, we adopt Bell pair distribution as the core network service, as it allows for a well-scoped, foundational architectural framework.
 <!-- As we will see later, in \cref{sec:architecture-memory:discussion},
 this architecture is also extensible to multipartite entanglement services.
@@ -805,6 +807,8 @@ These extensions build naturally on the base protocols discussed here and sugges
 Importantly, the semantics of Bell pair distribution are not merely those of passive delivery.
 Even in this basic model, distributed quantum computation occurs along the path via entanglement swapping, possibly combined with purification at intermediate repeater nodes.
 A proper service definition must account for this processing, as it directly affects fidelity, latency, and trust assumptions in the network.
+
+### Timing as a Critical Auxilary Service
 
 In addition to quantum state delivery, timing information is often a critical part of the service.
 Applications in distributed quantum sensing and clock synchronization {{degen-sensing}}, {{proctor-quantum-sensing}}, {{proctor-multiparm}}, {{giovannetti-metro}}, {{gottesman-telescope}}, {{ilo-okeke-clock}}
