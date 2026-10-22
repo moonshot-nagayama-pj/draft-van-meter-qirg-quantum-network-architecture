@@ -669,9 +669,9 @@ Photons emitted by quantum memories, such as single atoms, may remain entangled 
 
 Detectors may be either _single-photon detectors_, which click when _one or more_ photons hit the detector, or _number resolving detectors_, which can distinguish between one, two, or more photons hitting the detector within the same time window {{nist-singles}}. In this document, detectors may be assumed to be single-photon detectors.
 
-# Requirements
+# Requirements and Goals for the Architecture
 
-This section documents the requirements for all networks adhering to this architecture.  Note that while the architecture must accommodate all of these requirements, individual implementations may not support all of these items.
+This section documents the requirements for all networks adhering to this architecture.
 
 ## Normative Requirements
 
@@ -680,7 +680,9 @@ This section documents the requirements for all networks adhering to this archit
 
 ## General Requirements
 
-### Functional Requirements
+### Functional Goals
+
+The following are goals of this architecture.  Note that while the architectural decisions support all of these goals, individual implementations may not support every item in the list.
 
 * Operates on qubits. Qutrits, qudits, qunats and continuous-variable systems are out of scope of this architecture, except where physical or link layers present such physical variables as qubits.
 * Is independent of physical implementation of memories, photonic data representations, etc. (Multipartite states created by the network are not a requirement of the network.)
