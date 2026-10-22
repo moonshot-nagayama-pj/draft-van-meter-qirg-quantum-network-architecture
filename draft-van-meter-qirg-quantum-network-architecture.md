@@ -144,7 +144,7 @@ informative:
     format:
       PDF: https://arxiv.org/pdf/quant-ph/0607065
   nist-singles: DOI.10.6028/NIST.IR.8486r1
-  abane-routing: DOI.10.48550/arXiv.2408.01234
+  abane-routing: DOI.10.1109/TQE.2025.3541123
   aboy-governance: DOI.10.1126/science.adw0018
   ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
   aparicio-spie: DOI.10.1117/12.893272
@@ -157,6 +157,7 @@ informative:
   broadbent-bfk-protocol: DOI.10.1109/FOCS.2009.36
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
   buterakos-graph-generation: DOI.10.1103/PhysRevX.7.041023
+  casapao-disti-mation: DOI.10.1038/s42005-025-02352-2
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   christandl-anon: DOI.10.1007/11593447_12
   ciobanu-multi-ring: DOI.doi.org/10.1038/s41598-025-00391-x
@@ -399,9 +400,7 @@ The requirements for a network are determined by the application workload.  This
 
 ## Types of Applications
 
-Applications fall into two large categories: inherently distributed applications, or subdivision of monolithic applications for distributed execution, as in supercomputing applications running on multicomputer architectures.
-
-For a discussion of some inherently distributed applications of quantum networks, see {{RFC9583}}. This network architecture supports the applications listed in that RFC, though not all networks will support all applications.
+Applications fall into two large categories: inherently distributed applications, or subdivision of monolithic applications for distributed execution, as in supercomputing applications running on multicomputer architectures.  The inherently distributed applications can be further categorized into cryptographic functions, distributed computation, and distributed sensing.  For a discussion of some inherently distributed applications of quantum networks, see {{RFC9583}}. This network architecture supports the applications listed in that RFC, though not all networks will support all applications.
 
 ## Entangled States Consumption Patterns
 
@@ -525,7 +524,7 @@ The distinction is somewhat artificial in that direct architectures sometimes in
 
 Several detectors may be packaged as a single subsystem for purposes such as cooling, power, control and time stamping.  An architecture built around a shared pool of detectors is a _detector-centric architecture_. This structure facilities entanglement distribution in a quantum system interconnect, data center network or some forms of local area network.
 
-A detector-centric architecture is an indirect architecture if the pool of detectors is behind a switch or network of switches.
+A detector-centric architecture is an indirect architecture if the pool of detectors is behind a switch or network of switches.  If the detectors are arranged as Bell State Analyzers (BSAs), we can call the architecture _BSA-centric_.  This will be the common case.
 
 ## Source-centric Architecture
 
@@ -825,15 +824,15 @@ All nodes in the network will have one or more of the following classes of inter
 
 The quantum signals and in-channel, hardware-dependent, real-time classical signals for timing and synchronization of photon wave packets.  A node with a quantum plane incorporates one or more quantum devices.  The quantum devices may be local or remote.
 
-The quantum plane functionality executes the functions described as "Interferometric Stabilization" and "Wave Packet Overlap" and subject to the constraints in "Detector Timing Windows" in the Timing Regimes document.
+The quantum plane functionality executes the functions described as "Interferometric Stabilization" and "Wave Packet Overlap" and is subject to the constraints in "Detector Timing Windows" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
 ## Data
 
 When operating in qubit mode, the Data Plane consists of classical messages that convey events for RuleSet operation and the communication ports and software that generate and consume such messages.
 
-When operating in device mode, the Data Plane consists of RPCs for controlling individual devices.
+When operating in device mode, the Data Plane consists of remote procedure calls (RPCs) for controlling individual devices.
 
-Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation. If this is done, security and privacy concerns must be addressed.
+Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation {{casapao-disti-mation}}. If this is done, security and privacy concerns must be addressed.
 
 The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document.
 
