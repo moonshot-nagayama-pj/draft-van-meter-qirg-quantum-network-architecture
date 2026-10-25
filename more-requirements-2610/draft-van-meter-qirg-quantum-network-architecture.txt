@@ -130,7 +130,6 @@ Table of Contents
    14. Protocol Layers
      14.1.  Physical Layer
      14.2.  Link Layer
-       14.2.1.  Link/Network Layer Interface
      14.3.  Network Layer: RuleSets
      14.4.  Application Layer
    15. Nodes and Node Types
@@ -140,11 +139,12 @@ Table of Contents
      15.4.  Composite Nodes
    16. Links
      16.1.  The Link Service
-     16.2.  Photonic Path Description
-     16.3.  Point-to-point
-     16.4.  Switched
-     16.5.  Multidrop or Bus
-       16.5.1.  Link Management
+     16.2.  Link/Network Layer Interface
+     16.3.  Photonic Path Description
+     16.4.  Point-to-point
+     16.5.  Switched
+     16.6.  Multidrop or Bus
+     16.7.  Link Management
    17. Connections
    18. Resource Management: Multiplexing and Routing
    19. Classical Communication
@@ -273,8 +273,7 @@ Table of Contents
 
       -  Single-Photon Sources and Detectors Dictionary [nist-singles]
 
-   *  Quantum Internet Research Group (QIRG)
-      (https://datatracker.ietf.org/group/qirg/about/) (part of IRTF)
+   *  Quantum Internet Research Group (QIRG) (part of IRTF)
 
       -  [RFC9340]
 
@@ -950,7 +949,7 @@ Table of Contents
    error-corrected entangled states for application use.
 
    The program structural model is expected to be much like the
-   classical supercomputing [Message Passing Interface (MPI) [mpi-5.0],
+   classical supercomputing Message Passing Interface (MPI) [mpi-5.0],
    in the sense that nodes cooperate in a tightly coupled fashion,
    exchanging data and controlling program execution, with each node
    executing a portion of a single, large computation.  One specific
@@ -1493,11 +1492,12 @@ Table of Contents
    classes.  In support of these classes, the entangled states may be
    either still active and available for further use by the network
    layer, or one or both of the qubits may already have been measured,
-   with the measurement basis and results recorded and reported.
+   with the measurement basis and results and possibly a high-precision
+   timestamp recorded and reported.
 
-   See p. 36 of [delle-donne-thesis] for a decent description of the
-   link service.  They refer to K-type (keep), M-type (measure) and
-   R-type (remote) entanglement requests.  (What about reverse-R type?)
+   See p. 36 of [delle-donne-thesis] for a description of the link
+   service.  They refer to K-type (keep), M-type (measure) and R-type
+   (remote) entanglement requests.  (What about reverse-R type?)
 
    The link layer may deliver entangled states to the network layer
    either singly or as an ordered, tagged batch.
@@ -1535,43 +1535,6 @@ Table of Contents
    *  addressing
 
    *  multiplexing for multi-drop links
-
-14.2.1.  Link/Network Layer Interface
-
-   (should this get moved to the Link section below?)
-
-   The link/network interface is best described as a software interface,
-   executed separately at each link endpoint.
-
-   The network-->link request:
-
-   *  addresses of nodes
-
-   *  single/fixed number/stream
-
-   *  disposition: keep or measure, basis
-
-   The link-->network response:
-
-   *  addresses of nodes
-
-   *  length of array of entangled states
-
-   *  array of entangled states
-
-      -  identifier for entangled state
-
-      -  (timestamp separate from identifier? needed or not?)
-
-      -  flags
-
-         o  confirmed/pending confirmation
-
-         o  measured/live
-
-      -  if measured, basis
-
-      -  if measured, result
 
 14.3.  Network Layer: RuleSets
 
@@ -1795,7 +1758,42 @@ Table of Contents
    (Does software control of buffer qubits appear in the architecture,
    or is it purely an implementation detail?)
 
-16.2.  Photonic Path Description
+16.2.  Link/Network Layer Interface
+
+   The link/network interface is best described as a software interface,
+   executed separately at each link endpoint.
+
+   The network-->link request:
+
+   *  addresses of nodes
+
+   *  single/fixed number/stream
+
+   *  disposition: keep or measure, basis
+
+   The link-->network response:
+
+   *  addresses of nodes
+
+   *  length of array of entangled states
+
+   *  array of entangled states
+
+      -  identifier for entangled state
+
+      -  (timestamp separate from identifier? needed or not?)
+
+      -  flags
+
+         o  confirmed/pending confirmation
+
+         o  measured/live
+
+      -  if measured, basis
+
+      -  if measured, result
+
+16.3.  Photonic Path Description
 
    The optical path over which photons flow from source to detector in
    the process of creating a Bell pair can be described using
@@ -1843,7 +1841,7 @@ Table of Contents
    (Question: Does this notation also need to represent frequency
    conversion?)
 
-16.3.  Point-to-point
+16.4.  Point-to-point
 
    Point-to-point links may be either fiber-based or free space.  A link
    encompassing the path of one or more photons may be partially fiber
@@ -1851,7 +1849,7 @@ Table of Contents
 
    The photonic path description notation will include no 'X's.
 
-16.4.  Switched
+16.5.  Switched
 
    A system built around a pool of detectors, particularly organized as
    BSAs, utilizing switched MIM links can also be characterized as a
@@ -1862,12 +1860,12 @@ Table of Contents
 
    The photonic path description notation will include one or more 'X's.
 
-16.5.  Multidrop or Bus
+16.6.  Multidrop or Bus
 
    A multidrop link, or a bus, is a shared physical channel to which
    more than two stations may be attached.
 
-16.5.1.  Link Management
+16.7.  Link Management
 
    Configuration.
 
