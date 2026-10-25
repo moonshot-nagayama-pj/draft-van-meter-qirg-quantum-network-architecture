@@ -316,9 +316,9 @@ Table of Contents
 
    *  Quantum networking
 
-      -  Teleportation
+      -  Teleportation [bennett-teleportation]
 
-      -  Purification
+      -  Purification [dur-purification]
 
       -  Entanglement swapping [zukowski-entanglement-swapping]
 
@@ -2298,6 +2298,15 @@ Table of Contents
               54, no. 5, pp. 3824-3851, DOI 10.1103/physreva.54.3824,
               November 1996, <https://doi.org/10.1103/physreva.54.3824>.
 
+   [bennett-teleportation]
+              Bennett, C., Brassard, G., Crépeau, C., Jozsa, R., Peres,
+              A., and W. Wootters, "Teleporting an unknown quantum state
+              via dual classical and Einstein-Podolsky-Rosen channels",
+              American Physical Society (APS), Physical Review
+              Letters vol. 70, no. 13, pp. 1895-1899,
+              DOI 10.1103/physrevlett.70.1895, March 1993,
+              <https://doi.org/10.1103/physrevlett.70.1895>.
+
    [broadbent-bfk-protocol]
               Broadbent, A., Fitzsimons, J., and E. Kashefi, "Universal
               Blind Quantum Computation", IEEE, 2009 50th Annual IEEE
@@ -2421,6 +2430,13 @@ Table of Contents
               Computing Exchange, Theory of Computing vol. 14, no. 1,
               pp. 1-45, DOI 10.4086/toc.2018.v014a007, 2018,
               <https://doi.org/10.4086/toc.2018.v014a007>.
+
+   [dur-purification]
+              Dür, W. and H. Briegel, "Entanglement purification and
+              quantum error correction", IOP Publishing, Reports on
+              Progress in Physics vol. 70, no. 8, pp. 1381-1424,
+              DOI 10.1088/0034-4885/70/8/r03, July 2007,
+              <https://doi.org/10.1088/0034-4885/70/8/r03>.
 
    [dur-w-state]
               Dür, W., Vidal, G., and J. Cirac, "Three qubits can be
