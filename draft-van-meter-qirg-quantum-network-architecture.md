@@ -1153,6 +1153,12 @@ Connections may be created using either a fully-distributed protocol {{I-D.draft
 
 Connections are unaware of the shared use of resources and of other connections. Multiplexing is the responsibility of a separate subsystem, though connection setup should be done with awareness of the availability of unavailability of resources at involved nodes.
 
+# Application Layer
+
+## APIs for Network Service ("Quantum Sockets")
+
+The API used by classical software to interface with the quantum depends on which class of timing dependency pattern (B, C, or T) is to be supported.
+
 # Resource Management: Multiplexing and Routing
 
 Both link usage time slots and memory can be shared among multiple connections and therefore must be actively managed via a multiplexing system.  This task is particularly challenging in switched networks.
@@ -1314,10 +1320,6 @@ A quantum local area network will have:
 * distributed routing
 
 PSD: If the QLAN does not include optical switches, but uses repeaters, each link is a separate PSD. If the QLAN includes optical switches, the PSDs may have irregular boundaries.
-
-# APIs for Network Service ("Quantum Sockets")
-
-The API used by classical software to interface with the quantum depends on which class of timing dependency pattern (B, C, or T) is to be supported.
 
 # Security Considerations
 
