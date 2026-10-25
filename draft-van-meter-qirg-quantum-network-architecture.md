@@ -341,7 +341,7 @@ Some of these are listed here for reference:
     - [Y.3800 series](https://www.itu.int/itu-t/recommendations/index.aspx?ser=Y) on quantum key distribution networks
 * National Institute of Standards and Technology (NIST)
     - Single-Photon Sources and Detectors Dictionary {{nist-singles}}
-* [Quantum Internet Research Group (QIRG)](https://datatracker.ietf.org/group/qirg/about/) (part of IRTF)
+* Quantum Internet Research Group (QIRG) (part of IRTF)
     - {{RFC9340}}
     - {{RFC9583}}
 
@@ -642,7 +642,7 @@ The first deployment of production-level, distant quantum entanglement is likely
 
 A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction {{preskill-nisq}}, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
 
-The program structural model is expected to be much like the classical supercomputing [Message Passing Interface (MPI) {{mpi-5.0}}, in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.
+The program structural model is expected to be much like the classical supercomputing Message Passing Interface (MPI) {{mpi-5.0}}, in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.
 
 General hardware environment:
 
@@ -947,9 +947,9 @@ Additional details on how to specify a physical layer will be presented in docum
 
 ## Link Layer
 
-The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints {{I-D.draft-dahlberg-ll-quantum}}, {{dahlberg-ll-arxiv}}, {{delle-donne-thesis}}, {{delle-donne-os-nature}}.  The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results recorded and reported.
+The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints {{I-D.draft-dahlberg-ll-quantum}}, {{dahlberg-ll-arxiv}}, {{delle-donne-thesis}}, {{delle-donne-os-nature}}.  The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results and possibly a high-precision timestamp recorded and reported.
 
-See p. 36 of {{delle-donne-thesis}} for a decent description of the link service.  They refer to K-type (keep), M-type (measure) and R-type (remote) entanglement requests.  (What about reverse-R type?)
+See p. 36 of {{delle-donne-thesis}} for a description of the link service.  They refer to K-type (keep), M-type (measure) and R-type (remote) entanglement requests.  (What about reverse-R type?)
 
 The link layer may deliver entangled states to the network layer either singly or as an ordered, tagged batch.
 
@@ -968,31 +968,6 @@ Thus, link monitoring and link fidelity management are the responsibility of the
 * "message" format
 * addressing
 * multiplexing for multi-drop links
-
-### Link/Network Layer Interface
-
-(should this get moved to the Link section below?)
-
-The link/network interface is best described as a software interface, executed separately at each link endpoint.
-
-The network-->link request:
-
-* addresses of nodes
-* single/fixed number/stream
-* disposition: keep or measure, basis
-
-The link-->network response:
-
-* addresses of nodes
-* length of array of entangled states
-* array of entangled states
-    - identifier for entangled state
-    - (timestamp separate from identifier? needed or not?)
-    - flags
-        - confirmed/pending confirmation
-        - measured/live
-    - if measured, basis
-    - if measured, result
 
 ## Network Layer: RuleSets
 
@@ -1089,6 +1064,29 @@ A link provides Bell pairs across a single PSD.  Each Bell pair is named via an 
 
 (Does software control of buffer qubits appear in the architecture, or is it purely an implementation detail?)
 
+## Link/Network Layer Interface
+
+The link/network interface is best described as a software interface, executed separately at each link endpoint.
+
+The network-->link request:
+
+* addresses of nodes
+* single/fixed number/stream
+* disposition: keep or measure, basis
+
+The link-->network response:
+
+* addresses of nodes
+* length of array of entangled states
+* array of entangled states
+    - identifier for entangled state
+    - (timestamp separate from identifier? needed or not?)
+    - flags
+        - confirmed/pending confirmation
+        - measured/live
+    - if measured, basis
+    - if measured, result
+
 ## Photonic Path Description
 
 The optical path over which photons flow from source to detector in the process of creating a Bell pair can be described using terminology that names the node types in the path; the direction of flow of photons can be inferred. This path description can be applied to point-to-point or switched links within a single PSD.
@@ -1137,7 +1135,7 @@ The photonic path description notation will include one or more 'X's.
 
 A multidrop link, or a bus, is a shared physical channel to which more than two stations may be attached.
 
-### Link Management
+## Link Management
 
 Configuration.
 
