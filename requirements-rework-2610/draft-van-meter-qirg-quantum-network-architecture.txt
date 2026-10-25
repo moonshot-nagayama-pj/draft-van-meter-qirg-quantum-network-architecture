@@ -91,6 +91,7 @@ Table of Contents
      8.5.  Direct and Indirect Multicomputer Architectures
      8.6.  Detector-centric Architecture
      8.7.  Source-centric Architecture
+     8.8.  Qubit v.  Device Operational Mode
    9.  Quantum Optical Building Blocks
      9.1.  Qubits
      9.2.  Photons, Wave Packets and Optical Modes
@@ -681,9 +682,9 @@ Table of Contents
 
 8.2.  Quantum Nodes
 
-   A node comprises one or more quantum devices, and serves as a single
-   locus of control for network protocols.  The classes of nodes are
-   described later in this document.
+   A quantum node comprises one or more quantum devices, and serves as a
+   single locus of control for network protocols.  The classes of nodes
+   are described in detail in in detail in Section 15.
 
    A _logical node_ or _composite node_ provides a single communication
    and control point for the services of a particular node type or a
@@ -691,11 +692,11 @@ Table of Contents
    rather than a single device, and may be physically packaged in more
    than one box.
 
-   Nodes are described in detail in Section 15.
-
 8.3.  Quantum Links
 
-   Links are described in Section 16.
+   A quantum link provides entanglement suitable for one of the
+   application classes described in Section 7.  Links are described in
+   Section 16.
 
 8.4.  Photonic Synchronization Domains
 
@@ -750,6 +751,32 @@ Table of Contents
    with the photons measured, absorbed into memories, interfered with
    locally generated photons, or otherwise utilized at or near the end
    nodes.  Such a network was proposed by Drost _et al._ [drost].
+
+8.8.  Qubit v.  Device Operational Mode
+
+   Conventionally, entangled quantum networks are described in terms of
+   unitary and non-unitary actions on qubits, just as the Internet
+   protocols are defined in terms of bits and bytes (octets) rather than
+   voltages, signal times and optical signal strengths.  This _qubit
+   operational mode_ is natural and allows for technology-independent,
+   high-level protocol development.
+
+   However, as described above, quantum nodes are built of quantum
+   devices, and at times it is preferable to use a _device operational
+   mode_.  Such a mode is inevitably hardware-dependent, requiring
+   special-purpose software, limiting network scalability and
+   portability.  Cases where the device operational mode is useful:
+
+   *  as a building block for higher-level protocols;
+
+   *  during hardware development;
+
+   *  during system installation or maintenance at a customer site;
+
+   *  in link-level monitoring protocols; and
+
+   *  when multicomputer compiler and/or distributed-computation
+      middleware want to optimize the system for themselves.
 
 9.  Quantum Optical Building Blocks
 

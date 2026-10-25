@@ -1226,6 +1226,9 @@ svg {
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.7">
                 <p id="section-toc.1-1.8.2.7.1"><a href="#section-8.7" class="auto internal xref">8.7</a>.  <a href="#name-source-centric-architecture" class="internal xref">Source-centric Architecture</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.8">
+                <p id="section-toc.1-1.8.2.8.1"><a href="#section-8.8" class="auto internal xref">8.8</a>.  <a href="#name-qubit-v-device-operational-" class="internal xref">Qubit v. Device Operational Mode</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
@@ -2042,9 +2045,8 @@ Since consuming extra resources is more costly than waiting, these operations de
         <h3 id="name-quantum-nodes">
 <a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-quantum-nodes" class="section-name selfRef">Quantum Nodes</a>
         </h3>
-<p id="section-8.2-1">A node comprises one or more quantum devices, and serves as a single locus of control for network protocols.  The classes of nodes are described later in this document.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-1">A quantum node comprises one or more quantum devices, and serves as a single locus of control for network protocols.  The classes of nodes are described in detail in in detail in <a href="#nodes" class="auto internal xref">Section 15</a>.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
 <p id="section-8.2-2">A <em>logical node</em> or <em>composite node</em> provides a single communication and control point for the services of a particular node type or a composite node type, but may comprise a set of physical devices rather than a single device, and may be physically packaged in more than one box.<a href="#section-8.2-2" class="pilcrow">¶</a></p>
-<p id="section-8.2-3">Nodes are described in detail in <a href="#nodes" class="auto internal xref">Section 15</a>.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="quantum-links">
@@ -2052,7 +2054,7 @@ Since consuming extra resources is more costly than waiting, these operations de
         <h3 id="name-quantum-links">
 <a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-quantum-links" class="section-name selfRef">Quantum Links</a>
         </h3>
-<p id="section-8.3-1">Links are described in <a href="#links" class="auto internal xref">Section 16</a>.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+<p id="section-8.3-1">A quantum link provides entanglement suitable for one of the application classes described in <a href="#app" class="auto internal xref">Section 7</a>. Links are described in <a href="#links" class="auto internal xref">Section 16</a>.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="photonic-synchronization-domains">
@@ -2088,6 +2090,32 @@ Since consuming extra resources is more costly than waiting, these operations de
 <a href="#section-8.7" class="section-number selfRef">8.7. </a><a href="#name-source-centric-architecture" class="section-name selfRef">Source-centric Architecture</a>
         </h3>
 <p id="section-8.7-1">Many of the detector-centric network topologies can be inverted, such that the pool of detectors is replaced by a pool of entangled photon pair sources.  The network then is used to distribute entanglement, with the photons measured, absorbed into memories, interfered with locally generated photons, or otherwise utilized at or near the end nodes.  Such a network was proposed by Drost <em>et al.</em> <span>[<a href="#drost" class="cite xref">drost</a>]</span>.<a href="#section-8.7-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="qubit-v-device-operational-mode">
+<section id="section-8.8">
+        <h3 id="name-qubit-v-device-operational-">
+<a href="#section-8.8" class="section-number selfRef">8.8. </a><a href="#name-qubit-v-device-operational-" class="section-name selfRef">Qubit v. Device Operational Mode</a>
+        </h3>
+<p id="section-8.8-1">Conventionally, entangled quantum networks are described in terms of unitary and non-unitary actions on qubits, just as the Internet protocols are defined in terms of bits and bytes (octets) rather than voltages, signal times and optical signal strengths.  This <em>qubit operational mode</em> is natural and allows for technology-independent, high-level protocol development.<a href="#section-8.8-1" class="pilcrow">¶</a></p>
+<p id="section-8.8-2">However, as described above, quantum nodes are built of quantum devices, and at times it is preferable to use a <em>device operational mode</em>.  Such a mode is inevitably hardware-dependent, requiring special-purpose software, limiting network scalability and portability.  Cases where the device operational mode is useful:<a href="#section-8.8-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.8-3.1">
+            <p id="section-8.8-3.1.1">as a building block for higher-level protocols;<a href="#section-8.8-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.8-3.2">
+            <p id="section-8.8-3.2.1">during hardware development;<a href="#section-8.8-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.8-3.3">
+            <p id="section-8.8-3.3.1">during system installation or maintenance at a customer site;<a href="#section-8.8-3.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.8-3.4">
+            <p id="section-8.8-3.4.1">in link-level monitoring protocols; and<a href="#section-8.8-3.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.8-3.5">
+            <p id="section-8.8-3.5.1">when multicomputer compiler and/or distributed-computation middleware want to optimize the system for themselves.<a href="#section-8.8-3.5.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
 </section>
 </div>
 </section>
