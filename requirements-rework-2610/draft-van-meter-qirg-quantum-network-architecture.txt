@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 25 April 2027                                   Keio University
-                                                         22 October 2026
+Expires: 28 April 2027                                   Keio University
+                                                         25 October 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 April 2027.
+   This Internet-Draft will expire on 28 April 2027.
 
 Copyright Notice
 
@@ -191,7 +191,7 @@ Table of Contents
 
    For more background and discussion of the design choices in this
    architecture, see the Ph.D. dissertation of Naphan Benchasattabuse
-   [res-mgmt-het].
+   [benchasattabuse-res-mgmt-het].
 
 2.  Requirements Language
 
@@ -1284,8 +1284,10 @@ Table of Contents
 
 13.  Architectural Planes
 
-   All nodes in the network will have one or more of the following
-   classes of interfaces, also referred to as _planes_.
+   All nodes in the network will provide one or more of the following
+   classes of interfaces, also referred to as _planes_.  A plane
+   provides a view of the network.  Nodes that do not provide an
+   interface are not visible on the corresponding plane.
 
    *  *Quantum:* The quantum signals and in-channel, hardware-dependent,
       real-time classical signals for timing and synchronization of
@@ -1448,7 +1450,7 @@ Table of Contents
 
    Additional details on how to specify a physical layer will be
    presented in documents on the "standard photon" and "photon train",
-   to come.
+   which are currently being drafted.
 
 14.2.  Link Layer
 
@@ -2255,6 +2257,13 @@ Table of Contents
               557-559, DOI 10.1103/physrevlett.68.557, February 1992,
               <https://doi.org/10.1103/physrevlett.68.557>.
 
+   [benchasattabuse-res-mgmt-het]
+              Benchasattabuse, N., "Resource Management in Heterogeneous
+              Quantum Repeater Networks", Ph.D. Dissertation, Keio
+              University, 2025,
+              <https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-
+              local-compiled.pdf>.
+
    [bennett-mixed]
               Bennett, C., DiVincenzo, D., Smolin, J., and W. Wootters,
               "Mixed-state entanglement and quantum error correction",
@@ -2748,13 +2757,6 @@ Table of Contents
               Multicomputer Optimized for Shor's Factoring Algorithm",
               Ph.D. Dissertation, Keio University, 2006,
               <https://arxiv.org/abs/quant-ph/0607065>.
-
-   [res-mgmt-het]
-              Benchasattabuse, N., "Resource Management in Heterogeneous
-              Quantum Repeater Networks", Ph.D. Dissertation, Keio
-              University, 2025,
-              <https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-
-              local-compiled.pdf>.
 
    [RFC1122]  Braden, R., Ed., "Requirements for Internet Hosts -
               Communication Layers", STD 3, RFC 1122,

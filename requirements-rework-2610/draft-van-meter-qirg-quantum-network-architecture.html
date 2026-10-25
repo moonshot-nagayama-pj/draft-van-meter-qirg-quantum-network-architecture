@@ -1048,7 +1048,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Van Meter, et al.</td>
-<td class="center">Expires 25 April 2027</td>
+<td class="center">Expires 28 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1061,12 +1061,12 @@ svg {
 <dd class="internet-draft">draft-van-meter-qirg-quantum-network-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-10-22" class="published">22 October 2026</time>
+<time datetime="2026-10-25" class="published">25 October 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-04-25">25 April 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-28">28 April 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1119,7 +1119,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1514,7 +1514,7 @@ svg {
 <p id="section-1-2">We define the verb <em>to architect</em> as: within a set of environmental constraints, using a set of building blocks, design a system that satisfies a need, elegantly and economically.
 We use the noun <em>architecture</em> as: the set of blocks or subsystems, their roles and their interfaces and their overall arrangement, that defines the system. This architecture defines the overall structure, and is connected to a specific implementation as an example.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">For a description of the key concepts in quantum networks and additional references, see <span>[<a href="#RFC9340" class="cite xref">RFC9340</a>]</span> and the book <em>Quantum Communications</em> <span>[<a href="#hajdusek-qcomm" class="cite xref">hajdusek-qcomm</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">For more background and discussion of the design choices in this architecture, see the Ph.D. dissertation of Naphan Benchasattabuse <span>[<a href="#res-mgmt-het" class="cite xref">res-mgmt-het</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-4">For more background and discussion of the design choices in this architecture, see the Ph.D. dissertation of Naphan Benchasattabuse <span>[<a href="#benchasattabuse-res-mgmt-het" class="cite xref">benchasattabuse-res-mgmt-het</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirements-language">
@@ -2522,7 +2522,7 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
       <h2 id="name-architectural-planes">
 <a href="#section-13" class="section-number selfRef">13. </a><a href="#name-architectural-planes" class="section-name selfRef">Architectural Planes</a>
       </h2>
-<p id="section-13-1">All nodes in the network will have one or more of the following classes of interfaces, also referred to as <em>planes</em>.<a href="#section-13-1" class="pilcrow">¶</a></p>
+<p id="section-13-1">All nodes in the network will provide one or more of the following classes of interfaces, also referred to as <em>planes</em>.  A plane provides a view of the network.  Nodes that do not provide an interface are not visible on the corresponding plane.<a href="#section-13-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-13-2.1">
           <p id="section-13-2.1.1"><strong>Quantum:</strong> The quantum signals and in-channel, hardware-dependent, real-time classical signals for timing and synchronization of photon wave packets.  A node with a quantum plane incorporates one or more quantum devices.  The quantum devices may be local or remote.<a href="#section-13-2.1.1" class="pilcrow">¶</a></p>
@@ -2638,7 +2638,7 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
             <p id="section-14.1-2.8.1">certain characteristics of detection subsystem<a href="#section-14.1-2.8.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-14.1-3">Additional details on how to specify a physical layer will be presented in documents on the "standard photon" and "photon train", to come.<a href="#section-14.1-3" class="pilcrow">¶</a></p>
+<p id="section-14.1-3">Additional details on how to specify a physical layer will be presented in documents on the "standard photon" and "photon train", which are currently being drafted.<a href="#section-14.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="link-layer">
@@ -3352,6 +3352,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Bennett, C.</span>, <span class="refAuthor">Brassard, G.</span>, and <span class="refAuthor">N. Mermin</span>, <span class="refTitle">"Quantum cryptography without Bell’s theorem"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review Letters vol. 68, no. 5, pp. 557-559</span>, <span class="seriesInfo">DOI 10.1103/physrevlett.68.557</span>, <time datetime="1992-02" class="refDate">February 1992</time>, <span>&lt;<a href="https://doi.org/10.1103/physrevlett.68.557">https://doi.org/10.1103/physrevlett.68.557</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="benchasattabuse-res-mgmt-het">[benchasattabuse-res-mgmt-het]</dt>
+        <dd>
+<span class="refAuthor">Benchasattabuse, N.</span>, <span class="refTitle">"Resource Management in Heterogeneous Quantum Repeater Networks"</span>, <span class="seriesInfo">Ph.D. Dissertation, Keio University</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf">https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="bennett-mixed">[bennett-mixed]</dt>
         <dd>
 <span class="refAuthor">Bennett, C.</span>, <span class="refAuthor">DiVincenzo, D.</span>, <span class="refAuthor">Smolin, J.</span>, and <span class="refAuthor">W. Wootters</span>, <span class="refTitle">"Mixed-state entanglement and quantum error correction"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 54, no. 5, pp. 3824-3851</span>, <span class="seriesInfo">DOI 10.1103/physreva.54.3824</span>, <time datetime="1996-11" class="refDate">November 1996</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.54.3824">https://doi.org/10.1103/physreva.54.3824</a>&gt;</span>. </dd>
@@ -3615,10 +3619,6 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="rdv-thesis">[rdv-thesis]</dt>
         <dd>
 <span class="refAuthor">Van Meter III, R. D.</span>, <span class="refTitle">"Architecture of a Quantum Multicomputer Optimized for Shor's Factoring Algorithm"</span>, <span class="seriesInfo">Ph.D. Dissertation, Keio University</span>, <time datetime="2006" class="refDate">2006</time>, <span>&lt;<a href="https://arxiv.org/abs/quant-ph/0607065">https://arxiv.org/abs/quant-ph/0607065</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="res-mgmt-het">[res-mgmt-het]</dt>
-        <dd>
-<span class="refAuthor">Benchasattabuse, N.</span>, <span class="refTitle">"Resource Management in Heterogeneous Quantum Repeater Networks"</span>, <span class="seriesInfo">Ph.D. Dissertation, Keio University</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf">https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC1122">[RFC1122]</dt>
         <dd>
