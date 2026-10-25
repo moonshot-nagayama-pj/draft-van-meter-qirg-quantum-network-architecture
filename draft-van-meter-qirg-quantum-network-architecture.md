@@ -119,7 +119,17 @@ informative:
   I-D.draft-hajdusek-qirg-timing-physics:
   I-D.draft-kaws-qirg-advent:
   I-D.draft-zhu-qirg-qdcp:
-  res-mgmt-het:
+  nist-singles: DOI.10.6028/NIST.IR.8486r1
+  abane-routing: DOI.10.1109/TQE.2025.3541123
+  aboy-governance: DOI.10.1126/science.adw0018
+  ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
+  aparicio-spie: DOI.10.1117/12.893272
+  awschalom-roadmap: DOI.10.2172/1900586
+  azuma-rmp: DOI.10.1103/RevModPhys.95.045006
+  azuma-rgs: DOI.10.1038/ncomms7787
+  BB84: DOI.10.1016/j.tcs.2014.05.025
+  BBM92: DOI.10.1103/PhysRevLett.68.557
+  benchasattabuse-res-mgmt-het:
     target: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
     title: Resource Management in Heterogeneous Quantum Repeater Networks
     author:
@@ -131,28 +141,6 @@ informative:
       "Ph.D.": "Dissertation, Keio University"
     format:
       PDF: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
-  rdv-thesis:
-    target: https://arxiv.org/abs/quant-ph/0607065
-    title: Architecture of a Quantum Multicomputer Optimized for Shor's Factoring Algorithm
-    author:
-        ins: R. D. Van Meter III
-        name: Rodney Doyle Van Meter III
-        org: Keio University
-    date: 2006
-    seriesinfo:
-      "Ph.D.": "Dissertation, Keio University"
-    format:
-      PDF: https://arxiv.org/pdf/quant-ph/0607065
-  nist-singles: DOI.10.6028/NIST.IR.8486r1
-  abane-routing: DOI.10.1109/TQE.2025.3541123
-  aboy-governance: DOI.10.1126/science.adw0018
-  ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
-  aparicio-spie: DOI.10.1117/12.893272
-  awschalom-roadmap: DOI.10.2172/1900586
-  azuma-rmp: DOI.10.1103/RevModPhys.95.045006
-  azuma-rgs: DOI.10.1038/ncomms7787
-  BB84: DOI.10.1016/j.tcs.2014.05.025
-  BBM92: DOI.10.1103/PhysRevLett.68.557
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
   broadbent-bfk-protocol: DOI.10.1109/FOCS.2009.36
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
@@ -244,6 +232,18 @@ informative:
   proctor-quantum-sensing: DOI.10.48550/arXiv.1702.04271
   proctor-multiparm: DOI.10.1103/PhysRevLett.120.080501
   ramette-remote: DOI.10.1038/s41534-024-00855-4
+  rdv-thesis:
+    target: https://arxiv.org/abs/quant-ph/0607065
+    title: Architecture of a Quantum Multicomputer Optimized for Shor's Factoring Algorithm
+    author:
+        ins: R. D. Van Meter III
+        name: Rodney Doyle Van Meter III
+        org: Keio University
+    date: 2006
+    seriesinfo:
+      "Ph.D.": "Dissertation, Keio University"
+    format:
+      PDF: https://arxiv.org/pdf/quant-ph/0607065
   sakuma-q-fly: DOI.10.48550/arXiv.2412.09299
   sane-jobs: DOI.10.48550/arXiv.2504.18298
   sane-phonons: DOI.10.1109/QCE57702.2023.00156
@@ -284,7 +284,7 @@ We use the noun _architecture_ as: the set of blocks or subsystems, their roles 
 
 For a description of the key concepts in quantum networks and additional references, see {{RFC9340}} and the book _Quantum Communications_ {{hajdusek-qcomm}}.
 
-For more background and discussion of the design choices in this architecture, see the Ph.D. dissertation of Naphan Benchasattabuse [res-mgmt-het].
+For more background and discussion of the design choices in this architecture, see the Ph.D. dissertation of Naphan Benchasattabuse [benchasattabuse-res-mgmt-het].
 
 # Requirements Language
 
@@ -833,7 +833,7 @@ Hence, high-precision timestamps may need to be bundled into the service interfa
 
 # Architectural Planes
 
-All nodes in the network will have one or more of the following classes of interfaces, also referred to as _planes_.
+All nodes in the network will provide one or more of the following classes of interfaces, also referred to as _planes_.  A plane provides a view of the network.  Nodes that do not provide an interface are not visible on the corresponding plane.
 
 * **Quantum:** The quantum signals and in-channel, hardware-dependent, real-time classical signals for timing and synchronization of photon wave packets.  A node with a quantum plane incorporates one or more quantum devices.  The quantum devices may be local or remote.
 * **Data:** Classical data plane for exchange of messages about in-progress quantum communication sessions.  Generally, the data plane consists of _event notifications_ and _measurement results_ related to RuleSet-driven connections or testing sessions.  A data plane must be accompanied by a control plane.
@@ -914,7 +914,7 @@ The physical layer incorporates the quantum channel itself, whether free space o
 * how link synchronization is achieved
 * certain characteristics of detection subsystem
 
-Additional details on how to specify a physical layer will be presented in documents on the "standard photon" and "photon train", to come.
+Additional details on how to specify a physical layer will be presented in documents on the "standard photon" and "photon train", which are currently being drafted.
 
 ## Link Layer
 
