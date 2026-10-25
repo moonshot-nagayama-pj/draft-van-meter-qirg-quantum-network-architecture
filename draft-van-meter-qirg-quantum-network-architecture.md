@@ -226,6 +226,12 @@ informative:
   meignant-dgs: DOI.10.1103/PhysRevA.100.052333
   mori-psds: DOI.10.1109/QCE60285.2024.00218
   morimae-blind: DOI.10.1103/PhysRevA.87.050301
+  mpi-5.0:
+    title: MPI A Message-Passing Interface Standard Version 5.0
+    author:
+      name: Message_Passing_Interface_Forum
+    target: https://www.mpi-forum.org/docs/mpi-5.0/mpi50-report.pdf
+    date: 2025-06
   muralidharan-generations: DOI.10.1038/srep20463
   pnpq: DOI.10.5281/zenodo.16886214
   preskill-nisq: DOI.10.22331/q-2018-08-06-79
@@ -551,7 +557,7 @@ However, as described above, quantum nodes are built of quantum devices, and at 
 * during hardware development;
 * during system installation or maintenance at a customer site;
 * in link-level monitoring protocols; and
-* when multicomputer compiler and/or distributed-computation middleware want to optimize the system for themselves.
+* when a multicomputer compiler and/or distributed-computation middleware wants to optimize the system for themselves.
 
 # Quantum Optical Building Blocks
 
@@ -634,7 +640,7 @@ The first deployment of production-level, distant quantum entanglement is likely
 
 A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction {{preskill-nisq}}, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
 
-The program structural model is expected to be much like the classical supercomputing [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface), in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.
+The program structural model is expected to be much like the classical supercomputing [Message Passing Interface (MPI) {{mpi-5.0}}, in the sense that nodes cooperate in a tightly coupled fashion, exchanging data and controlling program execution, with each node executing a portion of a single, large computation.  One specific implementation of Quantum MPI has, in fact, been proposed {{haener-qmpi}}, but here we mean this in the broader sense.
 
 General hardware environment:
 
