@@ -146,25 +146,26 @@ Table of Contents
      16.6.  Multidrop or Bus
      16.7.  Link Management
    17. Connections
-   18. Resource Management: Multiplexing and Routing
-   19. Classical Communication
-     19.1.  Quantum Plane
-     19.2.  Control Plane
-     19.3.  Data Plane
-     19.4.  Management plane: Node and link management
-     19.5.  Mechanisms
-   20. Naming and Addressing
-     20.1.  State naming and management in RuleSets
-   21. Example Networks
-     21.1.  Fully Connected Point-to-Point
-     21.2.  Single Optical Switch
-     21.3.  Q-Fly Multicomputer
-     21.4.  Optically Switched Fat Tree
-     21.5.  Repeater Fat Tree
-     21.6.  2-D Grid Multicomputer
-     21.7.  Ring
-     21.8.  QLAN
-   22. APIs for Network Service ("Quantum Sockets")
+   18. Application Layer
+     18.1.  APIs for Network Service ("Quantum Sockets")
+   19. Resource Management: Multiplexing and Routing
+   20. Classical Communication
+     20.1.  Quantum Plane
+     20.2.  Control Plane
+     20.3.  Data Plane
+     20.4.  Management plane: Node and link management
+     20.5.  Mechanisms
+   21. Naming and Addressing
+     21.1.  State naming and management in RuleSets
+   22. Example Networks
+     22.1.  Fully Connected Point-to-Point
+     22.2.  Single Optical Switch
+     22.3.  Q-Fly Multicomputer
+     22.4.  Optically Switched Fat Tree
+     22.5.  Repeater Fat Tree
+     22.6.  2-D Grid Multicomputer
+     22.7.  Ring
+     22.8.  QLAN
    23. Security Considerations
    24. References
      24.1.  Normative References
@@ -1903,7 +1904,15 @@ Table of Contents
    subsystem, though connection setup should be done with awareness of
    the availability of unavailability of resources at involved nodes.
 
-18.  Resource Management: Multiplexing and Routing
+18.  Application Layer
+
+18.1.  APIs for Network Service ("Quantum Sockets")
+
+   The API used by classical software to interface with the quantum
+   depends on which class of timing dependency pattern (B, C, or T) is
+   to be supported.
+
+19.  Resource Management: Multiplexing and Routing
 
    Both link usage time slots and memory can be shared among multiple
    connections and therefore must be actively managed via a multiplexing
@@ -1918,7 +1927,7 @@ Table of Contents
    high throughput [van-meter-sys-design], [van-meter-path-sel].  A
    number of approaches have been proposed [abane-routing].
 
-19.  Classical Communication
+20.  Classical Communication
 
    A quantum network depends on classical communication; indeed, almost
    all of the behavior is governed by, initiated by, or managed and
@@ -1928,11 +1937,11 @@ Table of Contents
    [I-D.draft-hajdusek-qirg-timing-physics] for an outline of the
    physics driving these requirements.
 
-19.1.  Quantum Plane
+20.1.  Quantum Plane
 
    Yes, the quantum plane includes some classical signals.
 
-19.2.  Control Plane
+20.2.  Control Plane
 
    *  Qubit mode connections and communication
 
@@ -1942,7 +1951,7 @@ Table of Contents
 
    *  Device mode control
 
-19.3.  Data Plane
+20.3.  Data Plane
 
    *  Qubit mode connections and communication
 
@@ -1952,7 +1961,7 @@ Table of Contents
 
    *  Device mode control
 
-19.4.  Management plane: Node and link management
+20.4.  Management plane: Node and link management
 
    *  reporting of parameters fixed by device physics
 
@@ -1964,7 +1973,7 @@ Table of Contents
 
    *  typical network node management tasks such as software updates
 
-19.5.  Mechanisms
+20.5.  Mechanisms
 
    *  RPC for some tasks
 
@@ -1976,9 +1985,9 @@ Table of Contents
 
       -  especially qubit-mode RuleSet notifications
 
-20.  Naming and Addressing
+21.  Naming and Addressing
 
-20.1.  State naming and management in RuleSets
+21.1.  State naming and management in RuleSets
 
    (Incorporates naming material from Naphan's thesis.  Probably needs
    updating to account for testbed realities.)
@@ -2034,7 +2043,7 @@ Table of Contents
    protocols while allowing creativity with minimal restrictions on
    RuleSet creator parts.
 
-21.  Example Networks
+22.  Example Networks
 
    While a full taxonomy of networks is neither desirable nor possible
    here, we present a few network examples using point-to-point links or
@@ -2042,7 +2051,7 @@ Table of Contents
    described, followed by analysis of the path characteristics of the
    shortest path and network diameter.
 
-21.1.  Fully Connected Point-to-Point
+22.1.  Fully Connected Point-to-Point
 
    Small networks may use nodes with multiple interfaces and provide a
    direct link between each pair of nodes, making a _direct_ network.
@@ -2060,7 +2069,7 @@ Table of Contents
 
    All paths: MIM
 
-21.2.  Single Optical Switch
+22.2.  Single Optical Switch
 
    A number of the early quantum multicomputer proposals assumed a
    single, large optical switch.  Such a network is _indirect_.
@@ -2070,7 +2079,7 @@ Table of Contents
 
    All paths: MXIXM
 
-21.3.  Q-Fly Multicomputer
+22.3.  Q-Fly Multicomputer
 
    An _indirect_ interconnect.  A multi-group, BSA-centric architecture.
    All nodes are part of the same PSD.  The Q-Fly architecture is
@@ -2115,7 +2124,7 @@ Table of Contents
 
       -  non-shortest path: MXXXIXM or longer
 
-21.4.  Optically Switched Fat Tree
+22.4.  Optically Switched Fat Tree
 
    An _indirect_ interconnect.  Several parameters are needed to
    describe the full topology of a fat tree, which can also be called a
@@ -2138,13 +2147,13 @@ Table of Contents
    PSD: Although the entire network is a single PSD, each pairing is
    adjusted independently.
 
-21.5.  Repeater Fat Tree
+22.5.  Repeater Fat Tree
 
    The repeater fat tree is described in [choi-fat-tree].
 
    PSD: Each link is a separate PSD.
 
-21.6.  2-D Grid Multicomputer
+22.6.  2-D Grid Multicomputer
 
    A _direct_ interconnect.  A 2-D grid of nodes, where nodes with
    memory and certain computational capabilities (canonically COMP
@@ -2154,7 +2163,7 @@ Table of Contents
 
    PSD: Each link is a separate PSD.
 
-21.7.  Ring
+22.7.  Ring
 
    A _direct_ interconnect.  All nodes in a ring have exactly two
    neighbors.  Each node must act as a memory buffer and repeater to
@@ -2165,7 +2174,7 @@ Table of Contents
 
    PSD: Each link is a separate PSD.
 
-21.8.  QLAN
+22.8.  QLAN
 
    A quantum local area network will have:
 
@@ -2178,12 +2187,6 @@ Table of Contents
    PSD: If the QLAN does not include optical switches, but uses
    repeaters, each link is a separate PSD.  If the QLAN includes optical
    switches, the PSDs may have irregular boundaries.
-
-22.  APIs for Network Service ("Quantum Sockets")
-
-   The API used by classical software to interface with the quantum
-   depends on which class of timing dependency pattern (B, C, or T) is
-   to be supported.
 
 23.  Security Considerations
 
