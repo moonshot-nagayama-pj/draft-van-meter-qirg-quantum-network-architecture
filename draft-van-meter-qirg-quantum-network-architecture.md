@@ -142,6 +142,7 @@ informative:
     format:
       PDF: https://aqua.sfc.wide.ad.jp/publications/whit3z-thesis-local-compiled.pdf
   bennett-mixed: DOI.10.1103/PhysRevA.54.3824
+  bennett-teleportation: DOI.10.1103/PhysRevLett.70.1895
   broadbent-bfk-protocol: DOI.10.1109/FOCS.2009.36
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
   buterakos-graph-generation: DOI.10.1103/PhysRevX.7.041023
@@ -180,6 +181,7 @@ informative:
       PDF: https://pure.tudelft.nl/ws/portalfiles/portal/153555360/
   drost: DOI.10.1364/JOCN.8.000331
   dulek-homomorphic: DOI.10.4086/toc.2018.v014a007
+  dur-purification: DOI.10.1088/0034-4885/70/8/R03
   dur-w-state: DOI.10.1103/PhysRevA.62.062314
   E91: DOI.10.1103/PhysRevLett.67.661
   eisert-remote-gate: DOI.10.1103/PhysRevA.62.052317
@@ -362,8 +364,8 @@ This document assumes basic knowledge of the underlying technology and goals of 
     - Basics of quantum error correction (QEC)
 * Classical Internet-family networking
 * Quantum networking
-    - Teleportation
-    - Purification
+    - Teleportation {{bennett-teleportation}}
+    - Purification {{dur-purification}}
     - Entanglement swapping {{zukowski-entanglement-swapping}}
     - Quantum key distribution {{BB84}}, {{E91}}, {{BBM92}}
     - "Generations" of quantum repeaters {{muralidharan-generations}}, {{azuma-rmp}}
