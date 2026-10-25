@@ -897,19 +897,18 @@ Table of Contents
 10.1.  Multicomputer
 
    The first deployment of production-level, distant quantum
-   entanglement is likely to be in a _quantum multicomputer_, based on
-   the same principles as classical distributed-memory supercomputers
-   from the Caltech Cosmic Cube (https://en.wikipedia.org/wiki/
-   Caltech_Cosmic_Cube) to Fugaku (https://en.wikipedia.org/wiki/
-   Fugaku_(supercomputer)) [rdv-thesis].  Multicomputer deployments will
-   likely involve computational nodes, optical switches, Bell state
-   analyzers, and possibly entangled photon pair sources (all defined
-   below).  Quantum repeaters with memory are less likely to be deployed
-   in multicomputers, though one such architecture [choi-fat-tree] has
-   been proposed.  Because the current technology roadmaps favor this
-   type of deployment, where network design choices are in conflict or
-   unclear, multicomputer designs are given priority over wide-area
-   networks in this set of specifications.
+   entanglement is likely to be in a _quantum multicomputer_
+   [rdv-thesis], based on the same principles as classical distributed-
+   memory supercomputers from the Caltech Cosmic Cube
+   [seitz-cosmic-cube] to Fugaku [wikipedia-fugaku].  Multicomputer
+   deployments will likely involve computational nodes, optical
+   switches, Bell state analyzers, and possibly entangled photon pair
+   sources (all defined below).  Quantum repeaters with memory are less
+   likely to be deployed in multicomputers, though one such architecture
+   [choi-fat-tree] has been proposed.  Because the current technology
+   roadmaps favor this type of deployment, where network design choices
+   are in conflict or unclear, multicomputer designs are given priority
+   over wide-area networks in this set of specifications.
 
    A multicomputer may be a noisy, intermediate-scale quantum (NISQ)
    system without quantum error correction [preskill-nisq], or may be a
@@ -2838,6 +2837,12 @@ Table of Contents
               DOI 10.48550/ARXIV.1610.05238, 2016,
               <https://doi.org/10.48550/ARXIV.1610.05238>.
 
+   [seitz-cosmic-cube]
+              Seitz, C., "The cosmic cube", Association for Computing
+              Machinery (ACM), Communications of the ACM vol. 28, no. 1,
+              pp. 22-33, DOI 10.1145/2465.2467, January 1985,
+              <https://doi.org/10.1145/2465.2467>.
+
    [shapourian-qdc-infra]
               Shapourian, H., Kaur, E., Sewell, T., Zhao, J., Kilzer,
               M., Kompella, R., and R. Nejabati, "Quantum Data Center
@@ -2923,6 +2928,11 @@ Table of Contents
               Science and Business Media LLC, Nature vol. 584, no. 7822,
               pp. 551-556, DOI 10.1038/s41586-020-2619-8, August 2020,
               <https://doi.org/10.1038/s41586-020-2619-8>.
+
+   [wikipedia-fugaku]
+              Wikipedia_contributors, "Fugaku (supercomputer)",
+              September 2026, <https://en.wikipedia.org/w/
+              index.php?title=Fugaku_(supercomputer)&oldid=1373731812>.
 
    [wu-mitigating]
               Wu, X., Joshi, Y., Yan, H., Andersson, G., Anferov, A.,
