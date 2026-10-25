@@ -515,6 +515,8 @@ A node comprises one or more quantum devices, and serves as a single locus of co
 
 A _logical node_ or _composite node_ provides a single communication and control point for the services of a particular node type or a composite node type, but may comprise a set of physical devices rather than a single device, and may be physically packaged in more than one box.
 
+Nodes are described in detail in {{nodes}}.
+
 ## Quantum Links
 
 Links are described in {{links}}.
@@ -984,7 +986,7 @@ The network layer subsumes the functions commonly divided into network and trans
 
 (mostly not defined here)
 
-# Nodes and Node Types
+# Nodes and Node Types {#nodes}
 
 (Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. and others.)
 
