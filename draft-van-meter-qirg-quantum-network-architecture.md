@@ -249,6 +249,7 @@ informative:
   sane-phonons: DOI.10.1109/QCE57702.2023.00156
   satoh-attacking: DOI.10.1109/TQE.2021.3094983
   schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
+  seitz-cosmic-cube: DOI.10.1145/2465.2467
   shapourian-qdc-infra: DOI.10.48550/arXiv.2501.05598
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
   sutcliffe-dist-qec: DOI.10.1109/QCE65121.2025.00076
@@ -261,6 +262,14 @@ informative:
   van-meter-sys-design: DOI.10.1109/TNET.2008.927260
   I-D.draft-van-meter-qirg-quantum-connection-setup:
   vepsaelaeinen-ionizing: DOI.10.1038/s41586-020-2619-8
+  wikipedia-fugaku:
+    target: https://en.wikipedia.org/w/index.php?title=Fugaku_(supercomputer)&oldid=1373731812
+    title: Fugaku (supercomputer)
+    author:
+      name: "Wikipedia_contributors"
+    publisher: Wikipedia, The Free Encyclopedia.
+    date: 7 September 2026 16:47 UTC
+    Date-retrieved: 25 October 2026 09:36 UTC
   wu-mitigating: DOI.10.1103/4ctq-r6w6
   xu-dist-qec: DOI.10.1103/PhysRevLett.129.240502
   yin-1200km: DOI.10.1126/science.aan3211
@@ -609,7 +618,7 @@ As noted in the 2022 roadmap for quantum interconnects {{awschalom-roadmap}}, en
 
 ## Multicomputer
 
-The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_, based on the same principles as classical distributed-memory supercomputers from the [Caltech Cosmic Cube](https://en.wikipedia.org/wiki/Caltech_Cosmic_Cube) to [Fugaku](https://en.wikipedia.org/wiki/Fugaku_(supercomputer)) {{rdv-thesis}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
+The first deployment of production-level, distant quantum entanglement is likely to be in a _quantum multicomputer_ {{rdv-thesis}}, based on the same principles as classical distributed-memory supercomputers from the Caltech Cosmic Cube {{seitz-cosmic-cube}} to Fugaku {{wikipedia-fugaku}}.  Multicomputer deployments will likely involve computational nodes, optical switches, Bell state analyzers, and possibly entangled photon pair sources (all defined below).  Quantum repeaters with memory are less likely to be deployed in multicomputers, though one such architecture {{choi-fat-tree}} has been proposed. Because the current technology roadmaps favor this type of deployment, where network design choices are in conflict or unclear, multicomputer designs are given priority over wide-area networks in this set of specifications.
 
 A multicomputer may be a noisy, intermediate-scale quantum (NISQ) system without quantum error correction {{preskill-nisq}}, or may be a fault-tolerant system.  Fault-tolerant systems are variously described as fault-tolerant quantum computers (FTQC), fault-tolerant application-scale quantum (FASQ) systems, or cryptographically relevant quantum computers (CRQC).  FTQCs require the network to generate many more entangled states with tight timing requirements to allow distributed quantum error correction or the creation of fully error-corrected entangled states for application use.
 
