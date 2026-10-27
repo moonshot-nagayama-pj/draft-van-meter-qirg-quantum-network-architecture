@@ -369,7 +369,7 @@ This document assumes basic knowledge of the underlying technology and goals of 
     - Entanglement swapping {{zukowski-entanglement-swapping}}
     - Quantum key distribution {{BB84}}, {{E91}}, {{BBM92}}
     - "Generations" of quantum repeaters {{muralidharan-generations}}, {{azuma-rmp}}
-    - (Repeater graph states may be helpful, but are not used in the current architecture)
+    - (Repeater graph states may be helpful, but are not used in the current architecture  {{azuma-rgs}}, {{hilaire-rgs-optimizing-gen-time}},{{buterakos-graph-generation}}, {{hilaire-logical-bsm}})
 
 Because terms such as _fidelity_ have varying definitions, they will be defined in this set of documents {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
@@ -553,7 +553,7 @@ Many of the detector-centric network topologies can be inverted, such that the p
 
 Conventionally, entangled quantum networks are described in terms of unitary and non-unitary actions on qubits, just as the Internet protocols are defined in terms of bits and bytes (octets) rather than voltages, signal times and optical signal strengths.  This _qubit operational mode_ is natural and allows for technology-independent, high-level protocol development.
 
-However, as described above, quantum nodes are built of quantum devices, and at times it is preferable to use a _device operational mode_.  Such a mode is inevitably hardware-dependent, requiring special-purpose software, limiting network scalability and portability.  Cases where the device operational mode is useful:
+However, as described above, quantum nodes are built of quantum devices, and at times it is preferable to use a _device operational mode_.  Such a mode is inevitably hardware-dependent, requiring special-purpose software, limiting network scalability and code portability.  Cases where the device operational mode is useful include:
 
 * as a building block for higher-level protocols;
 * during hardware development;
@@ -567,9 +567,9 @@ This section informally describes the physical building blocks and concepts used
 
 ## Qubits
 
-In this network architecture, we use only qubits, which may have two states identified as 0 and 1.  Quantum information systems using qutrits, qudits, qunats or continuous variable (c.v.) quantum states are beyond the scope of the current set of specifications.
+This network architecture uses only qubits, which may have two states identified as 0 and 1.  Quantum information systems using qutrits, qudits, qunats or continuous variable (c.v.) quantum states are beyond the scope of the current set of specifications.
 
-Qubits (also defined in RFC 9340) must conform to a sufficient subset of the DiVincenzo criteria {{divincenzo-criteria}}.
+Qubits (defined in RFC 9340) must conform to a sufficient subset of the DiVincenzo criteria {{divincenzo-criteria}}.
 
 ## Photons, Wave Packets and Optical Modes
 
@@ -584,12 +584,9 @@ An _optical mode_ is a well-defined slot of a physical link, specified by path, 
 
 The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.
 
-In quantum networking, link capacity and state must be described in terms of modes (slots), not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful.
+In quantum networking, link capacity and state must be described in terms of modes (slots), not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful. In idealized models, distinct modes correspond to orthogonal solutions of the field equations, ensuring perfect distinguishability.
 
-Technical note: In idealized models, distinct modes correspond to orthogonal solutions of the field equations, ensuring perfect distinguishability.
-
-Short example:
-A quantum optical link may define one mode per time window. During each window, the receiver monitors the mode. A detection event indicates that the mode was occupied by at least one photon; the absence of a detection indicates that the same mode was empty. Both outcomes correspond to distinct physical states of the link.
+As an example, a quantum optical link may define one mode per time slot or detection window. During each window, the receiver monitors the mode. A detection event indicates that the mode was occupied by at least one photon; the absence of a detection indicates that the same mode was empty. Both outcomes correspond to distinct physical states of the link.
 
 ## Photonic Qubits
 
@@ -604,9 +601,9 @@ These representations and more about the concept of an _optical mode_ are discus
 
 ## Memories
 
-For our purposes, we do not need to worry about the physical implementation of memories, only that they may hold quantum data (qubits) that may be under the management of the network software and protocols. They may be entangled with photons or with other memory qubits.
+The physical implementation of memories is beyond the scope of this document.  For architectural purposes, it matters only that they may hold quantum data (qubits) that may be under the management of the network software and protocols. They may be entangled with photons or with other memory qubits.
 
-Generally, the creation or entanglement of a state in memory is imperfect, and the memory has a finite lifetime.
+Generally, the creation or entanglement of a state in memory is imperfect, and the memory has a finite lifetime.  This process of accumulated errors is _decoherence_.
 
 The entanglement of a memory qubit with a photon is a technology-dependent process. To create fiber-compatible and optical equipment-compatible photons, wavelength conversion via transduction may be necessary. In 2025, transduction is a low-probability process, and hurts fidelity as well.
 
@@ -869,13 +866,13 @@ All nodes in the network will provide one or more of the following classes of in
 * **Control:** Classical control plane for establishing and managing connections and testing sessions.  Routing and multiplexing messages are included in the control plane.
 * **Management:** Network management for configuring the devices and monitoring operation.  Managing services provided by nodes, security, addressing, etc., and monitoring health of links, collecting statistics on traffic through the node, any alerts such as security, etc.
 
-## Quantum
+## Quantum {#planes-quantum}
 
 The quantum signals and in-channel, hardware-dependent, real-time classical signals for timing and synchronization of photon wave packets.  A node with a quantum plane incorporates one or more quantum devices.  The quantum devices may be local or remote.
 
 The quantum plane functionality executes the functions described as "Interferometric Stabilization" and "Wave Packet Overlap" and is subject to the constraints in "Detector Timing Windows" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
-## Data
+## Data {#planes-data}
 
 When operating in qubit mode, the Data Plane consists of classical messages that convey events for RuleSet operation and the communication ports and software that generate and consume such messages.
 
@@ -885,7 +882,7 @@ Data plane functions may share data with management plane functions as part of t
 
 The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
-## Control
+## Control {#planes-control}
 
 The classical control plane is responsible for establishing and managing connections and testing sessions.  Routing and multiplexing messages are included in the control plane.
 
@@ -893,7 +890,7 @@ Control plane functions may share data with management plane functions, e.g. sha
 
 The control plane functionality executes the functions described as "Measurement basis selection", "Optical switch control" and some tasks in "Host-side Application-level Tasks" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
-## Management
+## Management {#planes-management}
 
 While connection-specific changes to configuration, such as switching and necessary, immediate changes to e.g. polarization and optical delay may appear as control plane functions, slow-rate monitoring and adjustment of parameters such as timing or polarization due to drift in temperature, voltage or other parameters is the responsibility of the management plane. The management plane may receive useful data on the health and fidelity of links as a result of data plane and control plane operations.
 
@@ -1171,16 +1168,22 @@ A quantum network depends on classical communication; indeed, almost all of the 
 
 ## Quantum Plane
 
-Yes, the quantum plane includes some classical signals.
+The quantum plane includes some classical signals to support tasks described in {{planes-quantum}}.  These signals are generally hard real-time, used for demarking per-qubit time bins and possibly the start and end of longer trains of qubits or photons for switching purposes, triggering emission of photons, etc.
 
-## Control Plane
+The details at this level are generally link-specific and are beyond the scope of this architecture document.
+
+## Data Plane
+
+Classical communication within the data plane sits above the link, and concerns the creation of end-to-end entangled states for established connections, as described in {{planes-data}}.
 
 * Qubit mode connections and communication
     - connection-level control of switching of photons
     - real-time event notification for RuleSets
 * Device mode control
 
-## Data Plane
+## Control Plane
+
+Within the control plane, all communication is classical, supporting the establishment of connections and management of resources as described in {{planes-control}}.
 
 * Qubit mode connections and communication
     - connection-level control of switching of photons
@@ -1188,6 +1191,8 @@ Yes, the quantum plane includes some classical signals.
 * Device mode control
 
 ## Management plane: Node and link management
+
+Within the management plane, all communication is classical, supporting the network monitoring and management of links and ordinary network node management, as described in {{planes-management}}.
 
 * reporting of parameters fixed by device physics
 * reporting and setting of parameters selectable by node configuration
