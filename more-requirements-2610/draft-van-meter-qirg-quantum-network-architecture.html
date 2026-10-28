@@ -1418,7 +1418,7 @@ svg {
                 <p id="section-toc.1-1.16.2.4.1"><a href="#section-16.4" class="auto internal xref">16.4</a>.  <a href="#name-link-design-choices-and-ope" class="internal xref">Link Design Choices and Operational Settings</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.5">
-                <p id="section-toc.1-1.16.2.5.1"><a href="#section-16.5" class="auto internal xref">16.5</a>.  <a href="#name-bootstrapping-a-link" class="internal xref">Bootstrapping a Link</a></p>
+                <p id="section-toc.1-1.16.2.5.1"><a href="#section-16.5" class="auto internal xref">16.5</a>.  <a href="#name-installing-and-bootstrappin" class="internal xref">Installing and Bootstrapping a Link</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.6">
                 <p id="section-toc.1-1.16.2.6.1"><a href="#section-16.6" class="auto internal xref">16.6</a>.  <a href="#name-spontaneous-changes-to-link" class="internal xref">Spontaneous Changes to Link Conditions</a></p>
@@ -2544,15 +2544,13 @@ Even in this basic model, distributed quantum computation occurs along the path 
 A proper service definition must account for this processing, as it directly affects fidelity, latency, and trust assumptions in the network.<a href="#section-12.2.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="timing-as-a-critical-auxilary-service">
+<div id="timestamp-service">
 <section id="section-12.2.2">
           <h4 id="name-timing-as-a-critical-auxila">
 <a href="#section-12.2.2" class="section-number selfRef">12.2.2. </a><a href="#name-timing-as-a-critical-auxila" class="section-name selfRef">Timing as a Critical Auxilary Service</a>
           </h4>
-<p id="section-12.2.2-1">In addition to quantum state delivery, timing information is often a critical part of the service.
-Applications in distributed quantum sensing and clock synchronization <span>[<a href="#degen-sensing" class="cite xref">degen-sensing</a>]</span>, <span>[<a href="#proctor-quantum-sensing" class="cite xref">proctor-quantum-sensing</a>]</span>, <span>[<a href="#proctor-multiparm" class="cite xref">proctor-multiparm</a>]</span>, <span>[<a href="#giovannetti-metro" class="cite xref">giovannetti-metro</a>]</span>, <span>[<a href="#gottesman-telescope" class="cite xref">gottesman-telescope</a>]</span>, <span>[<a href="#ilo-okeke-clock" class="cite xref">ilo-okeke-clock</a>]</span>
-require precise knowledge of when entanglement was established or when measurement events occurred.
-Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.<a href="#section-12.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-12.2.2-1">In addition to quantum state delivery, timing information is often a critical part of the service.  Applications in distributed quantum sensing and clock synchronization <span>[<a href="#degen-sensing" class="cite xref">degen-sensing</a>]</span>, <span>[<a href="#proctor-quantum-sensing" class="cite xref">proctor-quantum-sensing</a>]</span>, <span>[<a href="#proctor-multiparm" class="cite xref">proctor-multiparm</a>]</span>, <span>[<a href="#giovannetti-metro" class="cite xref">giovannetti-metro</a>]</span>, <span>[<a href="#gottesman-telescope" class="cite xref">gottesman-telescope</a>]</span>, <span>[<a href="#ilo-okeke-clock" class="cite xref">ilo-okeke-clock</a>]</span>
+require precise knowledge of when entanglement was established or when measurement events occurred.  Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.<a href="#section-12.2.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3004,12 +3002,14 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <p id="section-16.4-5">Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.<a href="#section-16.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="bootstrapping-a-link">
+<div id="installing-and-bootstrapping-a-link">
 <section id="section-16.5">
-        <h3 id="name-bootstrapping-a-link">
-<a href="#section-16.5" class="section-number selfRef">16.5. </a><a href="#name-bootstrapping-a-link" class="section-name selfRef">Bootstrapping a Link</a>
+        <h3 id="name-installing-and-bootstrappin">
+<a href="#section-16.5" class="section-number selfRef">16.5. </a><a href="#name-installing-and-bootstrappin" class="section-name selfRef">Installing and Bootstrapping a Link</a>
         </h3>
-<p id="section-16.5-1">During bootstrapping of a link and monitoring during operation, qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.<a href="#section-16.5-1" class="pilcrow">¶</a></p>
+<p id="section-16.5-1">During installation and/or bootstrapping of a link (and monitoring during operation), qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.<a href="#section-16.5-1" class="pilcrow">¶</a></p>
+<p id="section-16.5-2">A time reference may also be required for timestamping events such as photon detection time <a href="#timestamp-service" class="auto internal xref">Section 12.2.2</a>.<a href="#section-16.5-2" class="pilcrow">¶</a></p>
+<p id="section-16.5-3">For computational and cryptographic applications, these reference frames are entirely arbitrary across a link or PSD; in fact, it only matters that the link participants can agree on two orthogonal states usable as a qubit.  For sensing applications (including clock synchronization), depending on the application, these reference frames may need to be tied to physical ground truth or a standard reference.  Whether the link reference frames are absolute or relative should be reported in link management information.<a href="#section-16.5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="spontaneous-changes-to-link-conditions">

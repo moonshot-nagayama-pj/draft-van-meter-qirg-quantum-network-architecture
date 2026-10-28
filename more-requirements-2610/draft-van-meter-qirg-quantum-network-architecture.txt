@@ -146,7 +146,7 @@ Table of Contents
        16.3.3.  Switched
        16.3.4.  Multidrop or Bus
      16.4.  Link Design Choices and Operational Settings
-     16.5.  Bootstrapping a Link
+     16.5.  Installing and Bootstrapping a Link
      16.6.  Spontaneous Changes to Link Conditions
      16.7.  Link and Channel Management
    17. Connections
@@ -1904,14 +1904,26 @@ Table of Contents
    Note that this task is far more complicated in a switched or
    multidrop configuration than in a point-to-point configuration.
 
-16.5.  Bootstrapping a Link
+16.5.  Installing and Bootstrapping a Link
 
-   During bootstrapping of a link and monitoring during operation,
-   qubit- and technology-appropriate reference frames must be
-   established.  For example, the sender and receiver, or sender and
-   both receivers in the case of an EPPS-based link, must agree on
+   During installation and/or bootstrapping of a link (and monitoring
+   during operation), qubit- and technology-appropriate reference frames
+   must be established.  For example, the sender and receiver, or sender
+   and both receivers in the case of an EPPS-based link, must agree on
    "horizontal" and "vertical" when using polarization qubits or "early"
    and "late" when using time bin qubits.
+
+   A time reference may also be required for timestamping events such as
+   photon detection time Section 12.2.2.
+
+   For computational and cryptographic applications, these reference
+   frames are entirely arbitrary across a link or PSD; in fact, it only
+   matters that the link participants can agree on two orthogonal states
+   usable as a qubit.  For sensing applications (including clock
+   synchronization), depending on the application, these reference
+   frames may need to be tied to physical ground truth or a standard
+   reference.  Whether the link reference frames are absolute or
+   relative should be reported in link management information.
 
 16.6.  Spontaneous Changes to Link Conditions
 
