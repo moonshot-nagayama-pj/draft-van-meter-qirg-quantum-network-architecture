@@ -1084,7 +1084,9 @@ The link-->network response:
     - if measured, basis
     - if measured, result
 
-## Photonic Path Description
+## Link Structures
+
+### Photonic Path Description
 
 The optical path over which photons flow from source to detector in the process of creating a Bell pair can be described using terminology that names the node types in the path; the direction of flow of photons can be inferred. This path description can be applied to point-to-point or switched links within a single PSD.
 
@@ -1114,13 +1116,13 @@ In a switched architecture, for example, photons may pass through paths such as:
 
 (Question: Does this notation also need to represent frequency conversion?)
 
-## Point-to-point
+### Point-to-point
 
 Point-to-point links may be either fiber-based or free space. A link encompassing the path of one or more photons may be partially fiber and partially free space.
 
 The photonic path description notation will include no 'X's.
 
-## Switched
+### Switched
 
 A system built around a pool of detectors, particularly organized as BSAs, utilizing switched MIM links can also be characterized as a _detector-centric architecture_.
 
@@ -1128,7 +1130,7 @@ For pseudocode for switching (routing) certain types of devices, see Koyama et a
 
 The photonic path description notation will include one or more 'X's.
 
-## Multidrop or Bus
+### Multidrop or Bus
 
 A multidrop link, or a bus, is a shared physical channel to which more than two stations may be attached.
 
