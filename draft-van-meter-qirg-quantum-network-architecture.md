@@ -850,12 +850,10 @@ Importantly, the semantics of Bell pair distribution are not merely those of pas
 Even in this basic model, distributed quantum computation occurs along the path via entanglement swapping, possibly combined with purification at intermediate repeater nodes.
 A proper service definition must account for this processing, as it directly affects fidelity, latency, and trust assumptions in the network.
 
-### Timing as a Critical Auxilary Service
+### Timing as a Critical Auxilary Service {#timestamp-service}
 
-In addition to quantum state delivery, timing information is often a critical part of the service.
-Applications in distributed quantum sensing and clock synchronization {{degen-sensing}}, {{proctor-quantum-sensing}}, {{proctor-multiparm}}, {{giovannetti-metro}}, {{gottesman-telescope}}, {{ilo-okeke-clock}}
-require precise knowledge of when entanglement was established or when measurement events occurred.
-Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.
+In addition to quantum state delivery, timing information is often a critical part of the service.  Applications in distributed quantum sensing and clock synchronization {{degen-sensing}}, {{proctor-quantum-sensing}}, {{proctor-multiparm}}, {{giovannetti-metro}}, {{gottesman-telescope}}, {{ilo-okeke-clock}}
+require precise knowledge of when entanglement was established or when measurement events occurred.  Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.
 
 # Architectural Planes
 
@@ -1150,9 +1148,13 @@ Depending on the implementation, some of these parameters can be modified under 
 
 Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.
 
-## Bootstrapping a Link
+## Installing and Bootstrapping a Link
 
-During bootstrapping of a link and monitoring during operation, qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.
+During installation and/or bootstrapping of a link (and monitoring during operation), qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.
+
+A time reference may also be required for timestamping events such as photon detection time {{timestamp-service}}.
+
+For computational and cryptographic applications, these reference frames are entirely arbitrary across a link or PSD; in fact, it only matters that the link participants can agree on two orthogonal states usable as a qubit.  For sensing applications (including clock synchronization), depending on the application, these reference frames may need to be tied to physical ground truth or a standard reference.  Whether the link reference frames are absolute or relative should be reported in link management information.
 
 ## Spontaneous Changes to Link Conditions
 
