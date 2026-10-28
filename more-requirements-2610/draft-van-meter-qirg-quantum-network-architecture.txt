@@ -140,13 +140,14 @@ Table of Contents
    16. Links
      16.1.  The Link Service
      16.2.  Link/Network Layer Interface
-     16.3.  Photonic Path Description
-     16.4.  Point-to-point
-     16.5.  Switched
-     16.6.  Multidrop or Bus
-     16.7.  Link Design Choices and Operational Settings
-     16.8.  Spontaneous Changes to Link Conditions
-     16.9.  Link and Channel Management
+     16.3.  Link Structures
+       16.3.1.  Photonic Path Description
+       16.3.2.  Point-to-point
+       16.3.3.  Switched
+       16.3.4.  Multidrop or Bus
+     16.4.  Link Design Choices and Operational Settings
+     16.5.  Spontaneous Changes to Link Conditions
+     16.6.  Link and Channel Management
    17. Connections
    18. Application Layer
      18.1.  APIs for Network Service ("Quantum Sockets")
@@ -1798,7 +1799,9 @@ Table of Contents
 
       -  if measured, result
 
-16.3.  Photonic Path Description
+16.3.  Link Structures
+
+16.3.1.  Photonic Path Description
 
    The optical path over which photons flow from source to detector in
    the process of creating a Bell pair can be described using
@@ -1846,7 +1849,7 @@ Table of Contents
    (Question: Does this notation also need to represent frequency
    conversion?)
 
-16.4.  Point-to-point
+16.3.2.  Point-to-point
 
    Point-to-point links may be either fiber-based or free space.  A link
    encompassing the path of one or more photons may be partially fiber
@@ -1854,7 +1857,7 @@ Table of Contents
 
    The photonic path description notation will include no 'X's.
 
-16.5.  Switched
+16.3.3.  Switched
 
    A system built around a pool of detectors, particularly organized as
    BSAs, utilizing switched MIM links can also be characterized as a
@@ -1865,12 +1868,12 @@ Table of Contents
 
    The photonic path description notation will include one or more 'X's.
 
-16.6.  Multidrop or Bus
+16.3.4.  Multidrop or Bus
 
    A multidrop link, or a bus, is a shared physical channel to which
    more than two stations may be attached.
 
-16.7.  Link Design Choices and Operational Settings
+16.4.  Link Design Choices and Operational Settings
 
    Beyond the top-level architecture of the link, defining placement of
    subsystems (MIM, MSM, or MM links), and choice of photonic qubit
@@ -1900,7 +1903,7 @@ Table of Contents
    Note that this task is far more complicated in a switched or
    multidrop configuration than in a point-to-point configuration.
 
-16.8.  Spontaneous Changes to Link Conditions
+16.5.  Spontaneous Changes to Link Conditions
 
    During ordinary operations, the physical parameters of the channel
    may change either gradually or suddenly.  Gradual changes may be due
@@ -1919,7 +1922,7 @@ Table of Contents
    recalibration to be conducted.  In extreme cases, manual intervention
    may be required.
 
-16.9.  Link and Channel Management
+16.6.  Link and Channel Management
 
    The first task of link management is naturally configuration of the
    link.

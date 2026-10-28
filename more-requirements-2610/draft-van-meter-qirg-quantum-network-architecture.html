@@ -1398,25 +1398,30 @@ svg {
                 <p id="section-toc.1-1.16.2.2.1"><a href="#section-16.2" class="auto internal xref">16.2</a>.  <a href="#name-link-network-layer-interfac" class="internal xref">Link/Network Layer Interface</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.3">
-                <p id="section-toc.1-1.16.2.3.1"><a href="#section-16.3" class="auto internal xref">16.3</a>.  <a href="#name-photonic-path-description" class="internal xref">Photonic Path Description</a></p>
+                <p id="section-toc.1-1.16.2.3.1"><a href="#section-16.3" class="auto internal xref">16.3</a>.  <a href="#name-link-structures" class="internal xref">Link Structures</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.3.2.1">
+                    <p id="section-toc.1-1.16.2.3.2.1.1"><a href="#section-16.3.1" class="auto internal xref">16.3.1</a>.  <a href="#name-photonic-path-description" class="internal xref">Photonic Path Description</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.3.2.2">
+                    <p id="section-toc.1-1.16.2.3.2.2.1"><a href="#section-16.3.2" class="auto internal xref">16.3.2</a>.  <a href="#name-point-to-point" class="internal xref">Point-to-point</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.3.2.3">
+                    <p id="section-toc.1-1.16.2.3.2.3.1"><a href="#section-16.3.3" class="auto internal xref">16.3.3</a>.  <a href="#name-switched" class="internal xref">Switched</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.3.2.4">
+                    <p id="section-toc.1-1.16.2.3.2.4.1"><a href="#section-16.3.4" class="auto internal xref">16.3.4</a>.  <a href="#name-multidrop-or-bus" class="internal xref">Multidrop or Bus</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.4">
-                <p id="section-toc.1-1.16.2.4.1"><a href="#section-16.4" class="auto internal xref">16.4</a>.  <a href="#name-point-to-point" class="internal xref">Point-to-point</a></p>
+                <p id="section-toc.1-1.16.2.4.1"><a href="#section-16.4" class="auto internal xref">16.4</a>.  <a href="#name-link-design-choices-and-ope" class="internal xref">Link Design Choices and Operational Settings</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.5">
-                <p id="section-toc.1-1.16.2.5.1"><a href="#section-16.5" class="auto internal xref">16.5</a>.  <a href="#name-switched" class="internal xref">Switched</a></p>
+                <p id="section-toc.1-1.16.2.5.1"><a href="#section-16.5" class="auto internal xref">16.5</a>.  <a href="#name-spontaneous-changes-to-link" class="internal xref">Spontaneous Changes to Link Conditions</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.6">
-                <p id="section-toc.1-1.16.2.6.1"><a href="#section-16.6" class="auto internal xref">16.6</a>.  <a href="#name-multidrop-or-bus" class="internal xref">Multidrop or Bus</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.7">
-                <p id="section-toc.1-1.16.2.7.1"><a href="#section-16.7" class="auto internal xref">16.7</a>.  <a href="#name-link-design-choices-and-ope" class="internal xref">Link Design Choices and Operational Settings</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.8">
-                <p id="section-toc.1-1.16.2.8.1"><a href="#section-16.8" class="auto internal xref">16.8</a>.  <a href="#name-spontaneous-changes-to-link" class="internal xref">Spontaneous Changes to Link Conditions</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.9">
-                <p id="section-toc.1-1.16.2.9.1"><a href="#section-16.9" class="auto internal xref">16.9</a>.  <a href="#name-link-and-channel-management" class="internal xref">Link and Channel Management</a></p>
+                <p id="section-toc.1-1.16.2.6.1"><a href="#section-16.6" class="auto internal xref">16.6</a>.  <a href="#name-link-and-channel-management" class="internal xref">Link and Channel Management</a></p>
 </li>
             </ul>
 </li>
@@ -2876,138 +2881,145 @@ and may act as a Responder in connection setups by rewriting or generating new R
         </ul>
 </section>
 </div>
-<div id="photonic-path-description">
+<div id="link-structures">
 <section id="section-16.3">
-        <h3 id="name-photonic-path-description">
-<a href="#section-16.3" class="section-number selfRef">16.3. </a><a href="#name-photonic-path-description" class="section-name selfRef">Photonic Path Description</a>
+        <h3 id="name-link-structures">
+<a href="#section-16.3" class="section-number selfRef">16.3. </a><a href="#name-link-structures" class="section-name selfRef">Link Structures</a>
         </h3>
-<p id="section-16.3-1">The optical path over which photons flow from source to detector in the process of creating a Bell pair can be described using terminology that names the node types in the path; the direction of flow of photons can be inferred. This path description can be applied to point-to-point or switched links within a single PSD.<a href="#section-16.3-1" class="pilcrow">¶</a></p>
-<p id="section-16.3-2">Device type single-letter abbreviations and their corresponding node type:<a href="#section-16.3-2" class="pilcrow">¶</a></p>
+<div id="photonic-path-description">
+<section id="section-16.3.1">
+          <h4 id="name-photonic-path-description">
+<a href="#section-16.3.1" class="section-number selfRef">16.3.1. </a><a href="#name-photonic-path-description" class="section-name selfRef">Photonic Path Description</a>
+          </h4>
+<p id="section-16.3.1-1">The optical path over which photons flow from source to detector in the process of creating a Bell pair can be described using terminology that names the node types in the path; the direction of flow of photons can be inferred. This path description can be applied to point-to-point or switched links within a single PSD.<a href="#section-16.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-16.3.1-2">Device type single-letter abbreviations and their corresponding node type:<a href="#section-16.3.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-16.3-3.1">
-            <p id="section-16.3-3.1.1">M: memory (COMP or STOR)<a href="#section-16.3-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-16.3.1-3.1">
+              <p id="section-16.3.1-3.1.1">M: memory (COMP or STOR)<a href="#section-16.3.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-3.2">
-            <p id="section-16.3-3.2.1">S: source (of entangled photons) (EPPS)<a href="#section-16.3-3.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-3.2">
+              <p id="section-16.3.1-3.2.1">S: source (of entangled photons) (EPPS)<a href="#section-16.3.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-3.3">
-            <p id="section-16.3-3.3.1">I: interference (i.e., Bell state measurement) (BSA)<a href="#section-16.3-3.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-3.3">
+              <p id="section-16.3.1-3.3.1">I: interference (i.e., Bell state measurement) (BSA)<a href="#section-16.3.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-3.4">
-            <p id="section-16.3-3.4.1">D: detector (i.e. a measurement node) (MEAS)<a href="#section-16.3-3.4.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-3.4">
+              <p id="section-16.3.1-3.4.1">D: detector (i.e. a measurement node) (MEAS)<a href="#section-16.3.1-3.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-3.5">
-            <p id="section-16.3-3.5.1">X: switch (OSW)<a href="#section-16.3-3.5.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-3.5">
+              <p id="section-16.3.1-3.5.1">X: switch (OSW)<a href="#section-16.3.1-3.5.1" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-<p id="section-16.3-4">Examples of path descriptions that may commonly appear:<a href="#section-16.3-4" class="pilcrow">¶</a></p>
+          </ul>
+<p id="section-16.3.1-4">Examples of path descriptions that may commonly appear:<a href="#section-16.3.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-16.3-5.1">
-            <p id="section-16.3-5.1.1">DSD: detector-source-detector<a href="#section-16.3-5.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-16.3.1-5.1">
+              <p id="section-16.3.1-5.1.1">DSD: detector-source-detector<a href="#section-16.3.1-5.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-5.2">
-            <p id="section-16.3-5.2.1">MIM: memory-interference-memory<a href="#section-16.3-5.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-5.2">
+              <p id="section-16.3.1-5.2.1">MIM: memory-interference-memory<a href="#section-16.3.1-5.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-5.3">
-            <p id="section-16.3-5.3.1">MSM: memory-source-memory<a href="#section-16.3-5.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-5.3">
+              <p id="section-16.3.1-5.3.1">MSM: memory-source-memory<a href="#section-16.3.1-5.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-5.4">
-            <p id="section-16.3-5.4.1">MM: memory-memory<a href="#section-16.3-5.4.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-5.4">
+              <p id="section-16.3.1-5.4.1">MM: memory-memory<a href="#section-16.3.1-5.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-5.5">
-            <p id="section-16.3-5.5.1">DSISD: detector-source-inteference-source-detector<a href="#section-16.3-5.5.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-5.5">
+              <p id="section-16.3.1-5.5.1">DSISD: detector-source-inteference-source-detector<a href="#section-16.3.1-5.5.1" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-<p id="section-16.3-6">At any point in a path except the ends, a photon may pass through one or more switches.<a href="#section-16.3-6" class="pilcrow">¶</a></p>
-<p id="section-16.3-7">In a switched architecture, for example, photons may pass through paths such as:<a href="#section-16.3-7" class="pilcrow">¶</a></p>
+          </ul>
+<p id="section-16.3.1-6">At any point in a path except the ends, a photon may pass through one or more switches.<a href="#section-16.3.1-6" class="pilcrow">¶</a></p>
+<p id="section-16.3.1-7">In a switched architecture, for example, photons may pass through paths such as:<a href="#section-16.3.1-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-16.3-8.1">
-            <p id="section-16.3-8.1.1">DXSXD<a href="#section-16.3-8.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-16.3.1-8.1">
+              <p id="section-16.3.1-8.1.1">DXSXD<a href="#section-16.3.1-8.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-8.2">
-            <p id="section-16.3-8.2.1">MXIXM<a href="#section-16.3-8.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-8.2">
+              <p id="section-16.3.1-8.2.1">MXIXM<a href="#section-16.3.1-8.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.3-8.3">
-            <p id="section-16.3-8.3.1">MXXIXM<a href="#section-16.3-8.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-16.3.1-8.3">
+              <p id="section-16.3.1-8.3.1">MXXIXM<a href="#section-16.3.1-8.3.1" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-<p id="section-16.3-9">(Question: Does this notation also need to represent frequency conversion?)<a href="#section-16.3-9" class="pilcrow">¶</a></p>
+          </ul>
+<p id="section-16.3.1-9">(Question: Does this notation also need to represent frequency conversion?)<a href="#section-16.3.1-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="point-to-point">
-<section id="section-16.4">
-        <h3 id="name-point-to-point">
-<a href="#section-16.4" class="section-number selfRef">16.4. </a><a href="#name-point-to-point" class="section-name selfRef">Point-to-point</a>
-        </h3>
-<p id="section-16.4-1">Point-to-point links may be either fiber-based or free space. A link encompassing the path of one or more photons may be partially fiber and partially free space.<a href="#section-16.4-1" class="pilcrow">¶</a></p>
-<p id="section-16.4-2">The photonic path description notation will include no 'X's.<a href="#section-16.4-2" class="pilcrow">¶</a></p>
+<section id="section-16.3.2">
+          <h4 id="name-point-to-point">
+<a href="#section-16.3.2" class="section-number selfRef">16.3.2. </a><a href="#name-point-to-point" class="section-name selfRef">Point-to-point</a>
+          </h4>
+<p id="section-16.3.2-1">Point-to-point links may be either fiber-based or free space. A link encompassing the path of one or more photons may be partially fiber and partially free space.<a href="#section-16.3.2-1" class="pilcrow">¶</a></p>
+<p id="section-16.3.2-2">The photonic path description notation will include no 'X's.<a href="#section-16.3.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="switched">
-<section id="section-16.5">
-        <h3 id="name-switched">
-<a href="#section-16.5" class="section-number selfRef">16.5. </a><a href="#name-switched" class="section-name selfRef">Switched</a>
-        </h3>
-<p id="section-16.5-1">A system built around a pool of detectors, particularly organized as BSAs, utilizing switched MIM links can also be characterized as a <em>detector-centric architecture</em>.<a href="#section-16.5-1" class="pilcrow">¶</a></p>
-<p id="section-16.5-2">For pseudocode for switching (routing) certain types of devices, see Koyama et al. <span>[<a href="#koyama-24" class="cite xref">koyama-24</a>]</span>.<a href="#section-16.5-2" class="pilcrow">¶</a></p>
-<p id="section-16.5-3">The photonic path description notation will include one or more 'X's.<a href="#section-16.5-3" class="pilcrow">¶</a></p>
+<section id="section-16.3.3">
+          <h4 id="name-switched">
+<a href="#section-16.3.3" class="section-number selfRef">16.3.3. </a><a href="#name-switched" class="section-name selfRef">Switched</a>
+          </h4>
+<p id="section-16.3.3-1">A system built around a pool of detectors, particularly organized as BSAs, utilizing switched MIM links can also be characterized as a <em>detector-centric architecture</em>.<a href="#section-16.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-16.3.3-2">For pseudocode for switching (routing) certain types of devices, see Koyama et al. <span>[<a href="#koyama-24" class="cite xref">koyama-24</a>]</span>.<a href="#section-16.3.3-2" class="pilcrow">¶</a></p>
+<p id="section-16.3.3-3">The photonic path description notation will include one or more 'X's.<a href="#section-16.3.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="multidrop-or-bus">
-<section id="section-16.6">
-        <h3 id="name-multidrop-or-bus">
-<a href="#section-16.6" class="section-number selfRef">16.6. </a><a href="#name-multidrop-or-bus" class="section-name selfRef">Multidrop or Bus</a>
-        </h3>
-<p id="section-16.6-1">A multidrop link, or a bus, is a shared physical channel to which more than two stations may be attached.<a href="#section-16.6-1" class="pilcrow">¶</a></p>
+<section id="section-16.3.4">
+          <h4 id="name-multidrop-or-bus">
+<a href="#section-16.3.4" class="section-number selfRef">16.3.4. </a><a href="#name-multidrop-or-bus" class="section-name selfRef">Multidrop or Bus</a>
+          </h4>
+<p id="section-16.3.4-1">A multidrop link, or a bus, is a shared physical channel to which more than two stations may be attached.<a href="#section-16.3.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="link-design-choices-and-operational-settings">
-<section id="section-16.7">
+<section id="section-16.4">
         <h3 id="name-link-design-choices-and-ope">
-<a href="#section-16.7" class="section-number selfRef">16.7. </a><a href="#name-link-design-choices-and-ope" class="section-name selfRef">Link Design Choices and Operational Settings</a>
+<a href="#section-16.4" class="section-number selfRef">16.4. </a><a href="#name-link-design-choices-and-ope" class="section-name selfRef">Link Design Choices and Operational Settings</a>
         </h3>
-<p id="section-16.7-1">Beyond the top-level architecture of the link, defining placement of subsystems (MIM, MSM, or MM links), and choice of photonic qubit (polarization, time bin, etc.), designers make many choices that affect performance, robustness, and interoperability.  Many of these choices will remain implicit, but others will be reported or managed through link management software (below).<a href="#section-16.7-1" class="pilcrow">¶</a></p>
-<p id="section-16.7-2">Links depend upon other parameters of the physical channel and equipment, including:<a href="#section-16.7-2" class="pilcrow">¶</a></p>
+<p id="section-16.4-1">Beyond the top-level architecture of the link, defining placement of subsystems (MIM, MSM, or MM links), and choice of photonic qubit (polarization, time bin, etc.), designers make many choices that affect performance, robustness, and interoperability.  Many of these choices will remain implicit, but others will be reported or managed through link management software (below).<a href="#section-16.4-1" class="pilcrow">¶</a></p>
+<p id="section-16.4-2">Links depend upon other parameters of the physical channel and equipment, including:<a href="#section-16.4-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-16.7-3.1">
-            <p id="section-16.7-3.1.1">entanglement generation trial rate,<a href="#section-16.7-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-16.4-3.1">
+            <p id="section-16.4-3.1.1">entanglement generation trial rate,<a href="#section-16.4-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.7-3.2">
-            <p id="section-16.7-3.2.1">driving laser power (e.g. for SPDC-based EPPS),<a href="#section-16.7-3.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-16.4-3.2">
+            <p id="section-16.4-3.2.1">driving laser power (e.g. for SPDC-based EPPS),<a href="#section-16.4-3.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.7-3.3">
-            <p id="section-16.7-3.3.1">duration and spacing of photon detection windows,<a href="#section-16.7-3.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-16.4-3.3">
+            <p id="section-16.4-3.3.1">duration and spacing of photon detection windows,<a href="#section-16.4-3.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.7-3.4">
-            <p id="section-16.7-3.4.1">detector amplifier settings, and<a href="#section-16.7-3.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-16.4-3.4">
+            <p id="section-16.4-3.4.1">detector amplifier settings, and<a href="#section-16.4-3.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-16.7-3.5">
-            <p id="section-16.7-3.5.1">other hardware-specific parameters.<a href="#section-16.7-3.5.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-16.4-3.5">
+            <p id="section-16.4-3.5.1">other hardware-specific parameters.<a href="#section-16.4-3.5.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-16.7-4">Depending on the implementation, some of these parameters can be modified under software control, some can be monitored and reported, and some are only available to software if manually added to a configuration database.<a href="#section-16.7-4" class="pilcrow">¶</a></p>
-<p id="section-16.7-5">Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.<a href="#section-16.7-5" class="pilcrow">¶</a></p>
+<p id="section-16.4-4">Depending on the implementation, some of these parameters can be modified under software control, some can be monitored and reported, and some are only available to software if manually added to a configuration database.<a href="#section-16.4-4" class="pilcrow">¶</a></p>
+<p id="section-16.4-5">Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.<a href="#section-16.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="spontaneous-changes-to-link-conditions">
-<section id="section-16.8">
+<section id="section-16.5">
         <h3 id="name-spontaneous-changes-to-link">
-<a href="#section-16.8" class="section-number selfRef">16.8. </a><a href="#name-spontaneous-changes-to-link" class="section-name selfRef">Spontaneous Changes to Link Conditions</a>
+<a href="#section-16.5" class="section-number selfRef">16.5. </a><a href="#name-spontaneous-changes-to-link" class="section-name selfRef">Spontaneous Changes to Link Conditions</a>
         </h3>
-<p id="section-16.8-1">During ordinary operations, the physical parameters of the channel may change either gradually or suddenly.  Gradual changes may be due to e.g. temperature changes over a 24-hour cycle.  Sudden changes may be due to e.g. physical contact with or jostling of optical fibers or other vibration- and position-sensitive optical equipment.<a href="#section-16.8-1" class="pilcrow">¶</a></p>
-<p id="section-16.8-2">Detection of such changes is the responsibility of link management services (below).  Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.<a href="#section-16.8-2" class="pilcrow">¶</a></p>
-<p id="section-16.8-3">Depending on operational needs and the severity of such changes, necessary adjustments may be conducted without suspending link operation or may require the link to be declared down long enough for recalibration to be conducted.  In extreme cases, manual intervention may be required.<a href="#section-16.8-3" class="pilcrow">¶</a></p>
+<p id="section-16.5-1">During ordinary operations, the physical parameters of the channel may change either gradually or suddenly.  Gradual changes may be due to e.g. temperature changes over a 24-hour cycle.  Sudden changes may be due to e.g. physical contact with or jostling of optical fibers or other vibration- and position-sensitive optical equipment.<a href="#section-16.5-1" class="pilcrow">¶</a></p>
+<p id="section-16.5-2">Detection of such changes is the responsibility of link management services (below).  Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.<a href="#section-16.5-2" class="pilcrow">¶</a></p>
+<p id="section-16.5-3">Depending on operational needs and the severity of such changes, necessary adjustments may be conducted without suspending link operation or may require the link to be declared down long enough for recalibration to be conducted.  In extreme cases, manual intervention may be required.<a href="#section-16.5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="link-and-channel-management">
-<section id="section-16.9">
+<section id="section-16.6">
         <h3 id="name-link-and-channel-management">
-<a href="#section-16.9" class="section-number selfRef">16.9. </a><a href="#name-link-and-channel-management" class="section-name selfRef">Link and Channel Management</a>
+<a href="#section-16.6" class="section-number selfRef">16.6. </a><a href="#name-link-and-channel-management" class="section-name selfRef">Link and Channel Management</a>
         </h3>
-<p id="section-16.9-1">The first task of link management is naturally configuration of the link.<a href="#section-16.9-1" class="pilcrow">¶</a></p>
-<p id="section-16.9-2">During bootstrapping of a link and monitoring during operation, qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.<a href="#section-16.9-2" class="pilcrow">¶</a></p>
-<p id="section-16.9-3">During operation, the ongoing tasks include management of fidelity, trial rate, detection parameters, etc.<a href="#section-16.9-3" class="pilcrow">¶</a></p>
-<p id="section-16.9-4">Supplies information about link fidelity and rate to other subsystems such as routing and connection setup.<a href="#section-16.9-4" class="pilcrow">¶</a></p>
+<p id="section-16.6-1">The first task of link management is naturally configuration of the link.<a href="#section-16.6-1" class="pilcrow">¶</a></p>
+<p id="section-16.6-2">During bootstrapping of a link and monitoring during operation, qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.<a href="#section-16.6-2" class="pilcrow">¶</a></p>
+<p id="section-16.6-3">During operation, the ongoing tasks include management of fidelity, trial rate, detection parameters, etc.<a href="#section-16.6-3" class="pilcrow">¶</a></p>
+<p id="section-16.6-4">Supplies information about link fidelity and rate to other subsystems such as routing and connection setup.<a href="#section-16.6-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
