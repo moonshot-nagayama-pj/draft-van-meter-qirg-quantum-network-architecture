@@ -117,11 +117,12 @@ Table of Contents
      11.3.  Network Management Requirements
        11.3.1.  Fault Management
        11.3.2.  Configuration Management
-   12. Top Level Architecture
+   12. Architecture Overview
      12.1.  Deterministic Classical Control of Quantum States
      12.2.  Communication Service
        12.2.1.  Bell Pairs as the Core Network Service
        12.2.2.  Timing as a Critical Auxilary Service
+     12.3.  Stateful Connections Along a Pre-established Path
    13. Architectural Planes
      13.1.  Quantum
      13.2.  Data
@@ -1246,10 +1247,11 @@ Table of Contents
    *  The architecture must support the use of both manual and automated
       network configuration tools.
 
-12.  Top Level Architecture
+12.  Architecture Overview
 
    This section describes key design decisions made to achieve the goals
-   outlined in Section 11.
+   outlined in Section 11.  Details are provided in the following
+   sections.
 
 12.1.  Deterministic Classical Control of Quantum States
 
@@ -1314,6 +1316,23 @@ Table of Contents
    when entanglement was established or when measurement events
    occurred.  Hence, high-precision timestamps may need to be bundled
    into the service interface offered by the network.
+
+12.3.  Stateful Connections Along a Pre-established Path
+
+   Connections in both 1G and 2G networks require entanglement swapping
+   at the physical at logical level, respectively.  Managing
+   entanglement swapping to avoid the leapfrog problem and misrouted
+   Bell pairs requires active, coordinated control of operations on
+   qubits at multiple nodes in the network.  In this architecture, this
+   task is accomplished by establishing long-lived connections along a
+   path selected at connection setup time.  Each such connection
+   consumes a small amount of classical memory at each repeater or
+   router.  Corresponding quantum resource management (buffering,
+   multiplexing, etc.) is described below.
+
+   Authentication, authorization and accounting (AAA) and security
+   concerns, including denial of service attacks, are beyond the scope
+   of the present architecture.
 
 13.  Architectural Planes
 
@@ -1919,7 +1938,8 @@ Table of Contents
    For computational and cryptographic applications, these reference
    frames are entirely arbitrary across a link or PSD; in fact, it only
    matters that the link participants can agree on two orthogonal states
-   usable as a qubit.  For sensing applications (including clock
+   usable as a qubit, and can correctly agree upon matching of events
+   such as photon detection.  For sensing applications (including clock
    synchronization), depending on the application, these reference
    frames may need to be tied to physical ground truth or a standard
    reference.  Whether the link reference frames are absolute or

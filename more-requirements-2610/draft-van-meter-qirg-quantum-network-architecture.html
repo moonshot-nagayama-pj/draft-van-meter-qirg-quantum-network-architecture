@@ -1319,7 +1319,7 @@ svg {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-top-level-architecture" class="internal xref">Top Level Architecture</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-architecture-overview" class="internal xref">Architecture Overview</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-deterministic-classical-con" class="internal xref">Deterministic Classical Control of Quantum States</a></p>
@@ -1334,6 +1334,9 @@ svg {
                     <p id="section-toc.1-1.12.2.2.2.2.1"><a href="#section-12.2.2" class="auto internal xref">12.2.2</a>.  <a href="#name-timing-as-a-critical-auxila" class="internal xref">Timing as a Critical Auxilary Service</a></p>
 </li>
                 </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3">
+                <p id="section-toc.1-1.12.2.3.1"><a href="#section-12.3" class="auto internal xref">12.3</a>.  <a href="#name-stateful-connections-along-" class="internal xref">Stateful Connections Along a Pre-established Path</a></p>
 </li>
             </ul>
 </li>
@@ -2504,12 +2507,12 @@ Since consuming extra resources is more costly than waiting, these operations de
 </div>
 </section>
 </div>
-<div id="top-level-architecture">
+<div id="arch-overview">
 <section id="section-12">
-      <h2 id="name-top-level-architecture">
-<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-top-level-architecture" class="section-name selfRef">Top Level Architecture</a>
+      <h2 id="name-architecture-overview">
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-architecture-overview" class="section-name selfRef">Architecture Overview</a>
       </h2>
-<p id="section-12-1">This section describes key design decisions made to achieve the goals outlined in <a href="#reqgoals" class="auto internal xref">Section 11</a>.<a href="#section-12-1" class="pilcrow">¶</a></p>
+<p id="section-12-1">This section describes key design decisions made to achieve the goals outlined in <a href="#reqgoals" class="auto internal xref">Section 11</a>.  Details are provided in the following sections.<a href="#section-12-1" class="pilcrow">¶</a></p>
 <div id="deterministic-classical-control-of-quantum-states">
 <section id="section-12.1">
         <h3 id="name-deterministic-classical-con">
@@ -2553,6 +2556,15 @@ A proper service definition must account for this processing, as it directly aff
 require precise knowledge of when entanglement was established or when measurement events occurred.  Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.<a href="#section-12.2.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
+</section>
+</div>
+<div id="stateful-connections-along-a-pre-established-path">
+<section id="section-12.3">
+        <h3 id="name-stateful-connections-along-">
+<a href="#section-12.3" class="section-number selfRef">12.3. </a><a href="#name-stateful-connections-along-" class="section-name selfRef">Stateful Connections Along a Pre-established Path</a>
+        </h3>
+<p id="section-12.3-1">Connections in both 1G and 2G networks require entanglement swapping at the physical at logical level, respectively.  Managing entanglement swapping to avoid the leapfrog problem and misrouted Bell pairs requires active, coordinated control of operations on qubits at multiple nodes in the network.  In this architecture, this task is accomplished by establishing long-lived connections along a path selected at connection setup time.  Each such connection consumes a small amount of classical memory at each repeater or router.  Corresponding quantum resource management (buffering, multiplexing, etc.) is described below.<a href="#section-12.3-1" class="pilcrow">¶</a></p>
+<p id="section-12.3-2">Authentication, authorization and accounting (AAA) and security concerns, including denial of service attacks, are beyond the scope of the present architecture.<a href="#section-12.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3009,7 +3021,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
         </h3>
 <p id="section-16.5-1">During installation and/or bootstrapping of a link (and monitoring during operation), qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.<a href="#section-16.5-1" class="pilcrow">¶</a></p>
 <p id="section-16.5-2">A time reference may also be required for timestamping events such as photon detection time <a href="#timestamp-service" class="auto internal xref">Section 12.2.2</a>.<a href="#section-16.5-2" class="pilcrow">¶</a></p>
-<p id="section-16.5-3">For computational and cryptographic applications, these reference frames are entirely arbitrary across a link or PSD; in fact, it only matters that the link participants can agree on two orthogonal states usable as a qubit.  For sensing applications (including clock synchronization), depending on the application, these reference frames may need to be tied to physical ground truth or a standard reference.  Whether the link reference frames are absolute or relative should be reported in link management information.<a href="#section-16.5-3" class="pilcrow">¶</a></p>
+<p id="section-16.5-3">For computational and cryptographic applications, these reference frames are entirely arbitrary across a link or PSD; in fact, it only matters that the link participants can agree on two orthogonal states usable as a qubit, and can correctly agree upon matching of events such as photon detection.  For sensing applications (including clock synchronization), depending on the application, these reference frames may need to be tied to physical ground truth or a standard reference.  Whether the link reference frames are absolute or relative should be reported in link management information.<a href="#section-16.5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="spontaneous-changes-to-link-conditions">
