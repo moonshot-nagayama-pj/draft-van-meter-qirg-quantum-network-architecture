@@ -855,6 +855,12 @@ A proper service definition must account for this processing, as it directly aff
 In addition to quantum state delivery, timing information is often a critical part of the service.  Applications in distributed quantum sensing and clock synchronization {{degen-sensing}}, {{proctor-quantum-sensing}}, {{proctor-multiparm}}, {{giovannetti-metro}}, {{gottesman-telescope}}, {{ilo-okeke-clock}}
 require precise knowledge of when entanglement was established or when measurement events occurred.  Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.
 
+# Stateful Connections Along a Pre-established Path
+
+Connections in both 1G and 2G networks require entanglement swapping at the physical at logical level, respectively.  Managing entanglement swapping to avoid the leapfrog problem and misrouted Bell pairs requires active, coordinated control of operations on qubits at multiple nodes in the network.  In this architecture, this task is accomplished by establishing long-lived connections along a path selected at connection setup time.  Each such connection consumes a small amount of classical memory at each repeater or router.  Corresponding quantum resource management (buffering, multiplexing, etc.) is described below.
+
+Authentication, authorization and accounting (AAA) and security concerns, including denial of service attacks, are beyond the scope of the present architecture.
+
 # Architectural Planes
 
 All nodes in the network will provide one or more of the following classes of interfaces, also referred to as _planes_.  A plane provides a view of the network.  Nodes that do not provide an interface are not visible on the corresponding plane.
@@ -1154,7 +1160,7 @@ During installation and/or bootstrapping of a link (and monitoring during operat
 
 A time reference may also be required for timestamping events such as photon detection time {{timestamp-service}}.
 
-For computational and cryptographic applications, these reference frames are entirely arbitrary across a link or PSD; in fact, it only matters that the link participants can agree on two orthogonal states usable as a qubit.  For sensing applications (including clock synchronization), depending on the application, these reference frames may need to be tied to physical ground truth or a standard reference.  Whether the link reference frames are absolute or relative should be reported in link management information.
+For computational and cryptographic applications, these reference frames are entirely arbitrary across a link or PSD; in fact, it only matters that the link participants can agree on two orthogonal states usable as a qubit, and can correctly agree upon matching of events such as photon detection.  For sensing applications (including clock synchronization), depending on the application, these reference frames may need to be tied to physical ground truth or a standard reference.  Whether the link reference frames are absolute or relative should be reported in link management information.
 
 ## Spontaneous Changes to Link Conditions
 
