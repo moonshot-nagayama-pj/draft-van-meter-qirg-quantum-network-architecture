@@ -1418,10 +1418,13 @@ svg {
                 <p id="section-toc.1-1.16.2.4.1"><a href="#section-16.4" class="auto internal xref">16.4</a>.  <a href="#name-link-design-choices-and-ope" class="internal xref">Link Design Choices and Operational Settings</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.5">
-                <p id="section-toc.1-1.16.2.5.1"><a href="#section-16.5" class="auto internal xref">16.5</a>.  <a href="#name-spontaneous-changes-to-link" class="internal xref">Spontaneous Changes to Link Conditions</a></p>
+                <p id="section-toc.1-1.16.2.5.1"><a href="#section-16.5" class="auto internal xref">16.5</a>.  <a href="#name-bootstrapping-a-link" class="internal xref">Bootstrapping a Link</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.6">
-                <p id="section-toc.1-1.16.2.6.1"><a href="#section-16.6" class="auto internal xref">16.6</a>.  <a href="#name-link-and-channel-management" class="internal xref">Link and Channel Management</a></p>
+                <p id="section-toc.1-1.16.2.6.1"><a href="#section-16.6" class="auto internal xref">16.6</a>.  <a href="#name-spontaneous-changes-to-link" class="internal xref">Spontaneous Changes to Link Conditions</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.7">
+                <p id="section-toc.1-1.16.2.7.1"><a href="#section-16.7" class="auto internal xref">16.7</a>.  <a href="#name-link-and-channel-management" class="internal xref">Link and Channel Management</a></p>
 </li>
             </ul>
 </li>
@@ -3001,25 +3004,32 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <p id="section-16.4-5">Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.<a href="#section-16.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="spontaneous-changes-to-link-conditions">
+<div id="bootstrapping-a-link">
 <section id="section-16.5">
-        <h3 id="name-spontaneous-changes-to-link">
-<a href="#section-16.5" class="section-number selfRef">16.5. </a><a href="#name-spontaneous-changes-to-link" class="section-name selfRef">Spontaneous Changes to Link Conditions</a>
+        <h3 id="name-bootstrapping-a-link">
+<a href="#section-16.5" class="section-number selfRef">16.5. </a><a href="#name-bootstrapping-a-link" class="section-name selfRef">Bootstrapping a Link</a>
         </h3>
-<p id="section-16.5-1">During ordinary operations, the physical parameters of the channel may change either gradually or suddenly.  Gradual changes may be due to e.g. temperature changes over a 24-hour cycle.  Sudden changes may be due to e.g. physical contact with or jostling of optical fibers or other vibration- and position-sensitive optical equipment.<a href="#section-16.5-1" class="pilcrow">¶</a></p>
-<p id="section-16.5-2">Detection of such changes is the responsibility of link management services (below).  Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.<a href="#section-16.5-2" class="pilcrow">¶</a></p>
-<p id="section-16.5-3">Depending on operational needs and the severity of such changes, necessary adjustments may be conducted without suspending link operation or may require the link to be declared down long enough for recalibration to be conducted.  In extreme cases, manual intervention may be required.<a href="#section-16.5-3" class="pilcrow">¶</a></p>
+<p id="section-16.5-1">During bootstrapping of a link and monitoring during operation, qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.<a href="#section-16.5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="spontaneous-changes-to-link-conditions">
+<section id="section-16.6">
+        <h3 id="name-spontaneous-changes-to-link">
+<a href="#section-16.6" class="section-number selfRef">16.6. </a><a href="#name-spontaneous-changes-to-link" class="section-name selfRef">Spontaneous Changes to Link Conditions</a>
+        </h3>
+<p id="section-16.6-1">During ordinary operations, the physical parameters of the channel may change either gradually or suddenly.  Gradual changes may be due to e.g. temperature changes over a 24-hour cycle.  Sudden changes may be due to e.g. physical contact with or jostling of optical fibers or other vibration- and position-sensitive optical equipment.<a href="#section-16.6-1" class="pilcrow">¶</a></p>
+<p id="section-16.6-2">Detection of such changes is the responsibility of link management services (below).  Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.<a href="#section-16.6-2" class="pilcrow">¶</a></p>
+<p id="section-16.6-3">Depending on operational needs and the severity of such changes, necessary adjustments may be conducted without suspending link operation or may require the link to be declared down long enough for recalibration to be conducted.  In extreme cases, manual intervention may be required.<a href="#section-16.6-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="link-and-channel-management">
-<section id="section-16.6">
+<section id="section-16.7">
         <h3 id="name-link-and-channel-management">
-<a href="#section-16.6" class="section-number selfRef">16.6. </a><a href="#name-link-and-channel-management" class="section-name selfRef">Link and Channel Management</a>
+<a href="#section-16.7" class="section-number selfRef">16.7. </a><a href="#name-link-and-channel-management" class="section-name selfRef">Link and Channel Management</a>
         </h3>
-<p id="section-16.6-1">The first task of link management is naturally configuration of the link.<a href="#section-16.6-1" class="pilcrow">¶</a></p>
-<p id="section-16.6-2">During bootstrapping of a link and monitoring during operation, qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.<a href="#section-16.6-2" class="pilcrow">¶</a></p>
-<p id="section-16.6-3">During operation, the ongoing tasks include management of fidelity, trial rate, detection parameters, etc.<a href="#section-16.6-3" class="pilcrow">¶</a></p>
-<p id="section-16.6-4">Supplies information about link fidelity and rate to other subsystems such as routing and connection setup.<a href="#section-16.6-4" class="pilcrow">¶</a></p>
+<p id="section-16.7-1">The first task of link management is naturally configuration of the link.<a href="#section-16.7-1" class="pilcrow">¶</a></p>
+<p id="section-16.7-2">During operation, the ongoing tasks include management of fidelity, trial rate, detection parameters, etc.<a href="#section-16.7-2" class="pilcrow">¶</a></p>
+<p id="section-16.7-3">Supplies information about link fidelity and rate to other subsystems such as routing and connection setup.<a href="#section-16.7-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3385,6 +3395,7 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
       </h2>
 <p id="section-23-1">Quantum multicomputer systems are assumed to be constructed as isolated, centrally controlled systems with no need for confidentiality, integrity, and availability (the "CIA triad") assurance via cryptographic methods.<a href="#section-23-1" class="pilcrow">¶</a></p>
 <p id="section-23-2">Security considerations for other network types are an open topic of study and as such are not yet ready for specification and standardization <span>[<a href="#satoh-attacking" class="cite xref">satoh-attacking</a>]</span>.<a href="#section-23-2" class="pilcrow">¶</a></p>
+<p id="section-23-3">Similarly, the relationship to AAA (authentication, authorization and accounting) is an open topic.<a href="#section-23-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">

@@ -146,8 +146,9 @@ Table of Contents
        16.3.3.  Switched
        16.3.4.  Multidrop or Bus
      16.4.  Link Design Choices and Operational Settings
-     16.5.  Spontaneous Changes to Link Conditions
-     16.6.  Link and Channel Management
+     16.5.  Bootstrapping a Link
+     16.6.  Spontaneous Changes to Link Conditions
+     16.7.  Link and Channel Management
    17. Connections
    18. Application Layer
      18.1.  APIs for Network Service ("Quantum Sockets")
@@ -1903,7 +1904,16 @@ Table of Contents
    Note that this task is far more complicated in a switched or
    multidrop configuration than in a point-to-point configuration.
 
-16.5.  Spontaneous Changes to Link Conditions
+16.5.  Bootstrapping a Link
+
+   During bootstrapping of a link and monitoring during operation,
+   qubit- and technology-appropriate reference frames must be
+   established.  For example, the sender and receiver, or sender and
+   both receivers in the case of an EPPS-based link, must agree on
+   "horizontal" and "vertical" when using polarization qubits or "early"
+   and "late" when using time bin qubits.
+
+16.6.  Spontaneous Changes to Link Conditions
 
    During ordinary operations, the physical parameters of the channel
    may change either gradually or suddenly.  Gradual changes may be due
@@ -1922,17 +1932,10 @@ Table of Contents
    recalibration to be conducted.  In extreme cases, manual intervention
    may be required.
 
-16.6.  Link and Channel Management
+16.7.  Link and Channel Management
 
    The first task of link management is naturally configuration of the
    link.
-
-   During bootstrapping of a link and monitoring during operation,
-   qubit- and technology-appropriate reference frames must be
-   established.  For example, the sender and receiver, or sender and
-   both receivers in the case of an EPPS-based link, must agree on
-   "horizontal" and "vertical" when using polarization qubits or "early"
-   and "late" when using time bin qubits.
 
    During operation, the ongoing tasks include management of fidelity,
    trial rate, detection parameters, etc.
@@ -2301,6 +2304,9 @@ Table of Contents
    Security considerations for other network types are an open topic of
    study and as such are not yet ready for specification and
    standardization [satoh-attacking].
+
+   Similarly, the relationship to AAA (authentication, authorization and
+   accounting) is an open topic.
 
 24.  References
 
