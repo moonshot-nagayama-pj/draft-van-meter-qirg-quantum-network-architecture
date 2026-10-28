@@ -1202,6 +1202,12 @@ The discovery of the physical topology can be based on link state protocols, suc
 
 A quantum network depends on classical communication; indeed, almost all of the behavior is governed by, initiated by, or managed and reported via classical messages and signals. These messages and signals have several key roles, described in the following subsections. See the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}} for an outline of the physics driving these requirements.
 
+Classical communication takes three major forms:
+
+* direct physical signal
+* request for an action, formulated as a remote procedure call (RPC)
+* a stream of events
+
 ## Quantum Plane
 
 The quantum plane includes some classical signals to support tasks described in {{planes-quantum}}.  These signals are generally hard real time, used for demarking per-qubit time bins and possibly the start and end of longer trains of qubits or photons for switching purposes, triggering emission of photons, etc.  These signals may also be non-coding, involved in link management rather than creation of qubits.  Not all quantum link designs will require such classical signals.
@@ -1378,6 +1384,6 @@ Quantum multicomputer systems are assumed to be constructed as isolated, central
 
 Security considerations for other network types are an open topic of study and as such are not yet ready for specification and standardization {{satoh-attacking}}.
 
-Similarly, the relationship to AAA (authentication, authorization and accounting) is an open topic.
+Similarly, the relationship to AAA (authentication, authorization and accounting) is an open topic for research.
 
 --- back
