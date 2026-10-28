@@ -855,7 +855,7 @@ A proper service definition must account for this processing, as it directly aff
 In addition to quantum state delivery, timing information is often a critical part of the service.  Applications in distributed quantum sensing and clock synchronization {{degen-sensing}}, {{proctor-quantum-sensing}}, {{proctor-multiparm}}, {{giovannetti-metro}}, {{gottesman-telescope}}, {{ilo-okeke-clock}}
 require precise knowledge of when entanglement was established or when measurement events occurred.  Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.
 
-### Stateful Connections Along a Pre-established Path
+## Stateful Connections Along a Pre-established Path
 
 Connections in both 1G and 2G networks require entanglement swapping at the physical at logical level, respectively.  Managing entanglement swapping to avoid the leapfrog problem and misrouted Bell pairs requires active, coordinated control of operations on qubits at multiple nodes in the network.  In this architecture, this task is accomplished by establishing long-lived connections along a path selected at connection setup time.  Each such connection consumes a small amount of classical memory at each repeater or router.  Corresponding quantum resource management (buffering, multiplexing, etc.) is described below.
 
