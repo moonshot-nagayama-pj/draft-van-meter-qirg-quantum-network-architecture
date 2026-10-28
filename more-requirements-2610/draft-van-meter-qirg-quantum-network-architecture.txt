@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 30 April 2027                                   Keio University
-                                                         27 October 2026
+Expires: 1 May 2027                                      Keio University
+                                                         28 October 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 April 2027.
+   This Internet-Draft will expire on 1 May 2027.
 
 Copyright Notice
 
@@ -144,7 +144,9 @@ Table of Contents
      16.4.  Point-to-point
      16.5.  Switched
      16.6.  Multidrop or Bus
-     16.7.  Link Management
+     16.7.  Link Design Choices and Operational Settings
+     16.8.  Spontaneous Changes to Link Conditions
+     16.9.  Link and Channel Management
    17. Connections
    18. Application Layer
      18.1.  APIs for Network Service ("Quantum Sockets")
@@ -1868,13 +1870,69 @@ Table of Contents
    A multidrop link, or a bus, is a shared physical channel to which
    more than two stations may be attached.
 
-16.7.  Link Management
+16.7.  Link Design Choices and Operational Settings
 
-   Configuration.
+   Beyond the top-level architecture of the link, defining placement of
+   subsystems (MIM, MSM, or MM links), and choice of photonic qubit
+   (polarization, time bin, etc.), designers make many choices that
+   affect performance, robustness, and interoperability.  Many of these
+   choices will remain implicit, but others will be reported or managed
+   through link management software (below).
 
-   Management of fidelity, trial rate, detection parameters, etc.
+   Links depend upon other parameters of the physical channel and
+   equipment, including:
 
-   Monitors slowly changing fidelity.
+   *  entanglement generation trial rate,
+
+   *  driving laser power (e.g. for SPDC-based EPPS),
+
+   *  duration and spacing of photon detection windows,
+
+   *  detector amplifier settings, and
+
+   *  other hardware-specific parameters.
+
+   Depending on the implementation, some of these parameters can be
+   modified under software control, some can be monitored and reported,
+   and some are only available to software if manually added to a
+   configuration database.
+
+   Note that this task is far more complicated in a switched or
+   multidrop configuration than in a point-to-point configuration.
+
+16.8.  Spontaneous Changes to Link Conditions
+
+   During ordinary operations, the physical parameters of the channel
+   may change either gradually or suddenly.  Gradual changes may be due
+   to e.g. temperature changes over a 24-hour cycle.  Sudden changes may
+   be due to e.g. physical contact with or jostling of optical fibers or
+   other vibration- and position-sensitive optical equipment.
+
+   Detection of such changes is the responsibility of link management
+   services (below).  Note that this task is far more complicated in a
+   switched or multidrop configuration than in a point-to-point
+   configuration.
+
+   Depending on operational needs and the severity of such changes,
+   necessary adjustments may be conducted without suspending link
+   operation or may require the link to be declared down long enough for
+   recalibration to be conducted.  In extreme cases, manual intervention
+   may be required.
+
+16.9.  Link and Channel Management
+
+   The first task of link management is naturally configuration of the
+   link.
+
+   During bootstrapping of a link and monitoring during operation,
+   qubit- and technology-appropriate reference frames must be
+   established.  For example, the sender and receiver, or sender and
+   both receivers in the case of an EPPS-based link, must agree on
+   "horizontal" and "vertical" when using polarization qubits or "early"
+   and "late" when using time bin qubits.
+
+   During operation, the ongoing tasks include management of fidelity,
+   trial rate, detection parameters, etc.
 
    Supplies information about link fidelity and rate to other subsystems
    such as routing and connection setup.
@@ -1942,10 +2000,25 @@ Table of Contents
 20.1.  Quantum Plane
 
    The quantum plane includes some classical signals to support tasks
-   described in Section 13.1.  These signals are generally hard real-
+   described in Section 13.1.  These signals are generally hard real
    time, used for demarking per-qubit time bins and possibly the start
    and end of longer trains of qubits or photons for switching purposes,
-   triggering emission of photons, etc.
+   triggering emission of photons, etc.  These signals may also be non-
+   coding, involved in link management rather than creation of qubits.
+   Not all quantum link designs will require such classical signals.
+
+   Due to the hard real time nature of communications at this level,
+   these signals are not carried over TCP/IP and indeed may be analog
+   events rather than digitized signals.
+
+   Links should be designed with soft-failure behavior such that
+   synchronization and full link operation can be recovered without
+   manual intervention after the loss of individual signal events or
+   short outages.
+
+   Where appropriate, the status of such classical communication should
+   be reported to or made available to management tools as part of link
+   health monitoring.
 
    The details at this level are generally link-specific and are beyond
    the scope of this architecture document.
@@ -1960,9 +2033,15 @@ Table of Contents
 
       -  connection-level control of switching of photons
 
-      -  real-time event notification for RuleSets
+      -  soft real-time event notification for RuleSets
 
    *  Device mode control
+
+   _** Question: is walking in polarization control data plane or
+   control plane?  Control plane, I think. **_
+
+   Messages in the data plane are generally soft real time and assumed
+   to be reliable.
 
 20.3.  Control Plane
 
@@ -1974,7 +2053,7 @@ Table of Contents
 
       -  connection-level control of switching of photons
 
-      -  real-time event notification for RuleSets
+      -  soft real-time event notification for RuleSets
 
    *  Device mode control
 
