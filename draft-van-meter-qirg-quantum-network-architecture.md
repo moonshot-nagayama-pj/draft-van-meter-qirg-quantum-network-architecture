@@ -743,9 +743,9 @@ Physical requirements such as distance, wavelength, vibration, power, etc. will 
 
 * The architecture must support the use of both manual and automated network configuration tools.
 
-# Architecture Overview
+# Architecture Overview {#arch-overview}
 
-This section describes key design decisions made to achieve the goals outlined in {{reqgoals}}.
+This section describes key design decisions made to achieve the goals outlined in {{reqgoals}}.  Details are provided in the following sections.
 
 <!--
 ### Summary
