@@ -743,7 +743,7 @@ Physical requirements such as distance, wavelength, vibration, power, etc. will 
 
 * The architecture must support the use of both manual and automated network configuration tools.
 
-# Top Level Architecture
+# Architecture Overview
 
 This section describes key design decisions made to achieve the goals outlined in {{reqgoals}}.
 
