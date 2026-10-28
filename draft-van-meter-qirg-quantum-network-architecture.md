@@ -1150,6 +1150,10 @@ Depending on the implementation, some of these parameters can be modified under 
 
 Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.
 
+## Bootstrapping a Link
+
+During bootstrapping of a link and monitoring during operation, qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.
+
 ## Spontaneous Changes to Link Conditions
 
 During ordinary operations, the physical parameters of the channel may change either gradually or suddenly.  Gradual changes may be due to e.g. temperature changes over a 24-hour cycle.  Sudden changes may be due to e.g. physical contact with or jostling of optical fibers or other vibration- and position-sensitive optical equipment.
@@ -1161,8 +1165,6 @@ Depending on operational needs and the severity of such changes, necessary adjus
 ## Link and Channel Management
 
 The first task of link management is naturally configuration of the link.
-
-During bootstrapping of a link and monitoring during operation, qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.
 
 During operation, the ongoing tasks include management of fidelity, trial rate, detection parameters, etc.
 
@@ -1367,5 +1369,7 @@ PSD: If the QLAN does not include optical switches, but uses repeaters, each lin
 Quantum multicomputer systems are assumed to be constructed as isolated, centrally controlled systems with no need for confidentiality, integrity, and availability (the "CIA triad") assurance via cryptographic methods.
 
 Security considerations for other network types are an open topic of study and as such are not yet ready for specification and standardization {{satoh-attacking}}.
+
+Similarly, the relationship to AAA (authentication, authorization and accounting) is an open topic.
 
 --- back
