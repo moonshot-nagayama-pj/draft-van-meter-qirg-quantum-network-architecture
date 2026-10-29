@@ -262,6 +262,7 @@ informative:
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
   sutcliffe-dist-qec: DOI.10.1109/QCE65121.2025.00076
   taherkhani-byz: DOI.10.1088/2058-9565/aa9bb1
+  tennenhouse-an-arch: DOI.10.1145/231699.231701
   van-meter-dist-arith: DOI.10.1145/1324177.1324179
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
   van-meter-path-sel: DOI.10.1007/s13119-013-0026-2
@@ -658,7 +659,6 @@ Many aspects of compilation and job execution are beyond the scope of this set o
 * Applications consist of both classical computation and quantum computation; within a node, the classical portion of the program delegates certain computational tasks to the quantum processor (sometimes called a QPU), similar to a classical [coprocessor](https://en.wikipedia.org/wiki/Coprocessor) such as a [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit).
 * Classical data related to quantum operations (principally measurement results and event notifications that trigger further actions) is sent peer-to-peer, not back to the centralized controller, during execution.
 * Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a [socket](https://en.wikipedia.org/wiki/Network_socket) in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.
-* The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking) {{farhadi-sdn}}. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) {{mccanne-bpf}} : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
 * In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.
 * In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)
 * Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.
@@ -824,6 +824,16 @@ This section describes key design decisions made to achieve the goals outlined i
 
 This network architecture is entirely classically controlled.  Its task is to generate shared quantum states for applications residing at separate nodes. While many quantum events are inherently probabilistic, and loss of photons is also inherently probabilistic, this architecture does not use multipartite quantum states for e.g. routing of two-party requests.  (An extension of this network architecture may support generation of multi-partite state for applications at a later date.)
 
+This control requires extensive classical communication, which is carried over a variety of channels {{classical-comm}}, according to the requirements for various tasks {{I-D.draft-hajdusek-qirg-timing-physics}}.
+
+## Nodes, Links and Operational Modes
+
+As with typical networks, this architecture comprises nodes ({{nodes}}) and links ({{links}}), which will connect two or more nodes.
+
+While the end-to-end goal is the delivery of qubit-based entanglement, for a variety of purposes lower-level access to hardware can be desirable, so nodes may operate in either qubit mode or device mode.
+
+*** I am starting to think that "device mode" is actually a separate _plane_. ***
+
 ## Communication Service
 
 (Substantial portions of this section are adapted from Naphan Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier papers by Van Meter et al. {{van-meter-qi-arch}} and others.)
@@ -838,6 +848,8 @@ However, this approach shifts complexity to the applications, which must constru
 At the other end of the spectrum, networks may offer richer services such as multipartite entangled states {{ghz}}, {{dur-w-state}}, {{hein-multiparty}}, {{hein-graph-entanglement}}
 or fault-tolerant state teleportation.
 While applications can, in theory, synthesize these states from Bell pairs, direct network-level support may offer efficiency gains and reduce sensitivity to noise by internalizing complex procedures like direct graph state generations or supporting the delivery of error-correcting code encoded logical qubits.
+
+More concretely, this architecture supports the B, C, and T application classes described in {{app}}, requiring both Bell pairs and accompanying timestamps for some applications.
 
 ### Bell Pairs as the Core Network Service
 
@@ -859,11 +871,23 @@ require precise knowledge of when entanglement was established or when measureme
 
 Connections in both 1G and 2G networks require entanglement swapping at the physical at logical level, respectively.  Managing entanglement swapping to avoid the leapfrog problem and misrouted Bell pairs requires active, coordinated control of operations on qubits at multiple nodes in the network.  In this architecture, this task is accomplished by establishing long-lived connections along a path selected at connection setup time.  Each such connection consumes a small amount of classical memory at each repeater or router.  Corresponding quantum resource management (buffering, multiplexing, etc.) is described below.
 
+Two connection setup mechanisms are supported: a two-pass mechanism suited for multi-hop communication, especially across technological or administrative boundaries, and a direct-control mechanism, best suited for data center-scale and locally-orchestrated communication.
+
 Authentication, authorization and accounting (AAA) and security concerns, including denial of service attacks, are beyond the scope of the present architecture.
+
+## Four-Layer Protocol Stack
+
+The protocol stack for creating end-to-end entangled states consists of four layers: physical, link, network, and application.  The task of dealing with errors and ensuring reliable E2E creation, often handled in a transport layer that sits above the network layer, is subsumed into the network layer in this architecture.
+
+## RuleSet-based Network Layer
+
+The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking) {{farhadi-sdn}} and Active Networks {{tennenhouse-an-arch}}. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) {{mccanne-bpf}} : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
 
 # Architectural Planes
 
 All nodes in the network will provide one or more of the following classes of interfaces, also referred to as _planes_.  A plane provides a view of the network.  Nodes that do not provide an interface are not visible on the corresponding plane.
+
+***I am starting to think that "device mode" is actually a separate _plane_.***
 
 * **Quantum:** The quantum signals and in-channel, hardware-dependent, real-time classical signals for timing and synchronization of photon wave packets.  A node with a quantum plane incorporates one or more quantum devices.  The quantum devices may be local or remote.
 * **Data:** Classical data plane for exchange of messages about in-progress quantum communication sessions.  Generally, the data plane consists of _event notifications_ and _measurement results_ related to RuleSet-driven connections or testing sessions.  A data plane must be accompanied by a control plane.
@@ -1198,7 +1222,7 @@ Both link usage time slots and memory can be shared among multiple connections a
 
 The discovery of the physical topology can be based on link state protocols, such as direct adaptation of OSPF or IS-IS {{I-D.draft-kaws-qirg-advent}}.  These protocols use a unitless link cost.  It is known that, at least for certain physical systems, selecting a link cost corresponding to "seconds per Bell pair of a given fidelity" produces good correlation between low path cost and high throughput {{van-meter-sys-design}}, {{van-meter-path-sel}}.  A number of approaches have been proposed {{abane-routing}}.
 
-# Classical Communication
+# Classical Communication {#classical-comm}
 
 A quantum network depends on classical communication; indeed, almost all of the behavior is governed by, initiated by, or managed and reported via classical messages and signals. These messages and signals have several key roles, described in the following subsections. See the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}} for an outline of the physics driving these requirements.
 
@@ -1229,7 +1253,7 @@ Classical communication within the data plane sits above the link, and concerns 
     - soft real-time event notification for RuleSets
 * Device mode control
 
-*** Question: is walking in polarization control data plane or control plane?  Control plane, I think. ***
+***Question: is walking in polarization control device plane, data plane or control plane?  Control plane, I think.***
 
 Messages in the data plane are generally soft real time and assumed to be reliable.
 
