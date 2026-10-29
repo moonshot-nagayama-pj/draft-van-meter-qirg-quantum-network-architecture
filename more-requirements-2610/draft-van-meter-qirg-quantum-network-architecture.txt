@@ -1208,7 +1208,7 @@ Table of Contents
    *  The architecture aims to support evolution of single-photon,
       unentangled, single-purpose quantum key distribution networks
       (perhaps with trusted relay nodes) to fully entangled,
-      multipurpose networks.
+      multipurpose networks [wehner-roadmap].
 
 11.2.2.  Interface Requirements
 
@@ -3177,6 +3177,13 @@ Table of Contents
               Science and Business Media LLC, Nature vol. 584, no. 7822,
               pp. 551-556, DOI 10.1038/s41586-020-2619-8, August 2020,
               <https://doi.org/10.1038/s41586-020-2619-8>.
+
+   [wehner-roadmap]
+              Wehner, S., Elkouss, D., and R. Hanson, "Quantum internet:
+              A vision for the road ahead", American Association for the
+              Advancement of Science (AAAS), Science vol. 362, no. 6412,
+              DOI 10.1126/science.aam9288, October 2018,
+              <https://doi.org/10.1126/science.aam9288>.
 
    [wikipedia-fugaku]
               Wikipedia_contributors, "Fugaku (supercomputer)",
