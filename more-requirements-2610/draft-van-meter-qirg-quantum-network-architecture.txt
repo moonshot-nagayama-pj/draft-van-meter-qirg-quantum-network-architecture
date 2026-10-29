@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 1 May 2027                                      Keio University
-                                                         28 October 2026
+Expires: 2 May 2027                                      Keio University
+                                                         29 October 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 May 2027.
+   This Internet-Draft will expire on 2 May 2027.
 
 Copyright Notice
 
@@ -119,10 +119,13 @@ Table of Contents
        11.3.2.  Configuration Management
    12. Architecture Overview
      12.1.  Deterministic Classical Control of Quantum States
-     12.2.  Communication Service
-       12.2.1.  Bell Pairs as the Core Network Service
-       12.2.2.  Timing as a Critical Auxilary Service
-     12.3.  Stateful Connections Along a Pre-established Path
+     12.2.  Nodes, Links and Operational Modes
+     12.3.  Communication Service
+       12.3.1.  Bell Pairs as the Core Network Service
+       12.3.2.  Timing as a Critical Auxilary Service
+     12.4.  Stateful Connections Along a Pre-established Path
+     12.5.  Four-Layer Protocol Stack
+     12.6.  RuleSet-based Network Layer
    13. Architectural Planes
      13.1.  Quantum
      13.2.  Data
@@ -1033,15 +1036,6 @@ Table of Contents
       Network_socket) in an ordinary Internet application.  This quantum
       socket is an active area of research and is not defined here.
 
-   *  The creation of sequences of end-to-end entangled states, roughly
-      equivalent to TCP, is the responsibility of RuleSets, inspired by
-      software-defined networking (SDN) (https://en.wikipedia.org/wiki/
-      Software-defined_networking) [farhadi-sdn].  A RuleSet can also be
-      viewed as something like a Berkeley Packet Filter (BPF)
-      [mccanne-bpf] : it's a small program that handled actions that the
-      application could do, but the application can't achieve the low,
-      reliable latency to do it.
-
    *  In principle, all nodes are running the same program, distributed
       to all nodes.  Since the compiled application circuits are often
       parameter- or input-dependent as well, separate nodes may have
@@ -1264,7 +1258,26 @@ Table of Contents
    architecture may support generation of multi-partite state for
    applications at a later date.)
 
-12.2.  Communication Service
+   This control requires extensive classical communication, which is
+   carried over a variety of channels Section 20, according to the
+   requirements for various tasks
+   [I-D.draft-hajdusek-qirg-timing-physics].
+
+12.2.  Nodes, Links and Operational Modes
+
+   As with typical networks, this architecture comprises nodes
+   (Section 15) and links (Section 16), which will connect two or more
+   nodes.
+
+   While the end-to-end goal is the delivery of qubit-based
+   entanglement, for a variety of purposes lower-level access to
+   hardware can be desirable, so nodes may operate in either qubit mode
+   or device mode.
+
+   _** I am starting to think that "device mode" is actually a separate
+   _plane_. **_
+
+12.3.  Communication Service
 
    (Substantial portions of this section are adapted from Naphan
    Benchasattabuse's Ph.D. thesis, which in turn is adapted from earlier
@@ -1292,7 +1305,11 @@ Table of Contents
    complex procedures like direct graph state generations or supporting
    the delivery of error-correcting code encoded logical qubits.
 
-12.2.1.  Bell Pairs as the Core Network Service
+   More concretely, this architecture supports the B, C, and T
+   application classes described in Section 7, requiring both Bell pairs
+   and accompanying timestamps for some applications.
+
+12.3.1.  Bell Pairs as the Core Network Service
 
    In our architecture, we adopt Bell pair distribution as the core
    network service, as it allows for a well-scoped, foundational
@@ -1306,7 +1323,7 @@ Table of Contents
    directly affects fidelity, latency, and trust assumptions in the
    network.
 
-12.2.2.  Timing as a Critical Auxilary Service
+12.3.2.  Timing as a Critical Auxilary Service
 
    In addition to quantum state delivery, timing information is often a
    critical part of the service.  Applications in distributed quantum
@@ -1317,7 +1334,7 @@ Table of Contents
    occurred.  Hence, high-precision timestamps may need to be bundled
    into the service interface offered by the network.
 
-12.3.  Stateful Connections Along a Pre-established Path
+12.4.  Stateful Connections Along a Pre-established Path
 
    Connections in both 1G and 2G networks require entanglement swapping
    at the physical at logical level, respectively.  Managing
@@ -1330,9 +1347,33 @@ Table of Contents
    router.  Corresponding quantum resource management (buffering,
    multiplexing, etc.) is described below.
 
+   Two connection setup mechanisms are supported: a two-pass mechanism
+   suited for multi-hop communication, especially across technological
+   or administrative boundaries, and a direct-control mechanism, best
+   suited for data center-scale and locally-orchestrated communication.
+
    Authentication, authorization and accounting (AAA) and security
    concerns, including denial of service attacks, are beyond the scope
    of the present architecture.
+
+12.5.  Four-Layer Protocol Stack
+
+   The protocol stack for creating end-to-end entangled states consists
+   of four layers: physical, link, network, and application.  The task
+   of dealing with errors and ensuring reliable E2E creation, often
+   handled in a transport layer that sits above the network layer, is
+   subsumed into the network layer in this architecture.
+
+12.6.  RuleSet-based Network Layer
+
+   The creation of sequences of end-to-end entangled states, roughly
+   equivalent to TCP, is the responsibility of RuleSets, inspired by
+   software-defined networking (SDN) (https://en.wikipedia.org/wiki/
+   Software-defined_networking) [farhadi-sdn] and Active Networks
+   [tennenhouse-an-arch].  A RuleSet can also be viewed as something
+   like a Berkeley Packet Filter (BPF) [mccanne-bpf] : it's a small
+   program that handled actions that the application could do, but the
+   application can't achieve the low, reliable latency to do it.
 
 13.  Architectural Planes
 
@@ -1340,6 +1381,9 @@ Table of Contents
    classes of interfaces, also referred to as _planes_.  A plane
    provides a view of the network.  Nodes that do not provide an
    interface are not visible on the corresponding plane.
+
+   *_I am starting to think that "device mode" is actually a separate
+   _plane_._*
 
    *  *Quantum:* The quantum signals and in-channel, hardware-dependent,
       real-time classical signals for timing and synchronization of
@@ -1933,7 +1977,7 @@ Table of Contents
    and "late" when using time bin qubits.
 
    A time reference may also be required for timestamping events such as
-   photon detection time Section 12.2.2.
+   photon detection time Section 12.3.2.
 
    For computational and cryptographic applications, these reference
    frames are entirely arbitrary across a link or PSD; in fact, it only
@@ -2035,6 +2079,14 @@ Table of Contents
    [I-D.draft-hajdusek-qirg-timing-physics] for an outline of the
    physics driving these requirements.
 
+   Classical communication takes three major forms:
+
+   *  direct physical signal
+
+   *  request for an action, formulated as a remote procedure call (RPC)
+
+   *  a stream of events
+
 20.1.  Quantum Plane
 
    The quantum plane includes some classical signals to support tasks
@@ -2075,8 +2127,8 @@ Table of Contents
 
    *  Device mode control
 
-   _** Question: is walking in polarization control data plane or
-   control plane?  Control plane, I think. **_
+   *_Question: is walking in polarization control device plane, data
+   plane or control plane?  Control plane, I think._*
 
    Messages in the data plane are generally soft real time and assumed
    to be reliable.
@@ -2338,7 +2390,7 @@ Table of Contents
    standardization [satoh-attacking].
 
    Similarly, the relationship to AAA (authentication, authorization and
-   accounting) is an open topic.
+   accounting) is an open topic for research.
 
 24.  References
 
@@ -3063,6 +3115,13 @@ Table of Contents
               IOP Publishing, Quantum Science and Technology vol. 3, no.
               1, pp. 014011, DOI 10.1088/2058-9565/aa9bb1, December
               2017, <https://doi.org/10.1088/2058-9565/aa9bb1>.
+
+   [tennenhouse-an-arch]
+              Tennenhouse, D. and D. Wetherall, "Towards an active
+              network architecture", Association for Computing Machinery
+              (ACM), ACM SIGCOMM Computer Communication Review vol. 26,
+              no. 2, pp. 5-17, DOI 10.1145/231699.231701, April 1996,
+              <https://doi.org/10.1145/231699.231701>.
 
    [van-meter-dist-arith]
               Meter, R., Munro, W., Nemoto, K., and K. Itoh, "Arithmetic
