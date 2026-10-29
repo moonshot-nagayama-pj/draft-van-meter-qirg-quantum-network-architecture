@@ -271,6 +271,7 @@ informative:
   van-meter-sys-design: DOI.10.1109/TNET.2008.927260
   I-D.draft-van-meter-qirg-quantum-connection-setup:
   vepsaelaeinen-ionizing: DOI.10.1038/s41586-020-2619-8
+  wehner-roadmap: DOI.10.1126/science.aam9288
   wikipedia-fugaku:
     target: https://en.wikipedia.org/w/index.php?title=Fugaku_(supercomputer)&oldid=1373731812
     title: Fugaku (supercomputer)
@@ -717,7 +718,7 @@ The following are goals of this architecture.  Note that while the architectural
 * The architecture supports multiple photonic synchronization domains, as either point-to-point or optically switched paths.  The architecture must support some form of buffering between PSDs.
 * The architecture supports entanglement swapping.  (Note that single PSD deployments may not need entanglement swapping.)
 * The architecture supports methods of assessing and managing errors, including photon loss and decoherence.
-* The architecture aims to support evolution of single-photon, unentangled, single-purpose quantum key distribution networks (perhaps with trusted relay nodes) to fully entangled, multipurpose networks.
+* The architecture aims to support evolution of single-photon, unentangled, single-purpose quantum key distribution networks (perhaps with trusted relay nodes) to fully entangled, multipurpose networks {{wehner-roadmap}}.
 
 ### Interface Requirements
 
