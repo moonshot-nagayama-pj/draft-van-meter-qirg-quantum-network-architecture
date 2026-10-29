@@ -126,6 +126,7 @@ Table of Contents
      12.4.  Stateful Connections Along a Pre-established Path
      12.5.  Four-Layer Protocol Stack
      12.6.  RuleSet-based Network Layer
+     12.7.  Four Planes, or Views, of the Network
    13. Architectural Planes
      13.1.  Quantum
      13.2.  Data
@@ -1374,6 +1375,13 @@ Table of Contents
    like a Berkeley Packet Filter (BPF) [mccanne-bpf] : it's a small
    program that handled actions that the application could do, but the
    application can't achieve the low, reliable latency to do it.
+
+12.7.  Four Planes, or Views, of the Network
+
+   A _plane_ is a view of the network, presented by the elements of the
+   network for a particular purpose.  This architecture provides four
+   planes: quantum, data, control, and management, all described in
+   Section 13.
 
 13.  Architectural Planes
 
