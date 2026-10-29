@@ -863,7 +863,7 @@ Importantly, the semantics of Bell pair distribution are not merely those of pas
 Even in this basic model, distributed quantum computation occurs along the path via entanglement swapping, possibly combined with purification at intermediate repeater nodes.
 A proper service definition must account for this processing, as it directly affects fidelity, latency, and trust assumptions in the network.
 
-### Timing as a Critical Auxilary Service {#timestamp-service}
+### Timing as a Critical Auxiliary Service {#timestamp-service}
 
 In addition to quantum state delivery, timing information is often a critical part of the service.  Applications in distributed quantum sensing and clock synchronization {{degen-sensing}}, {{proctor-quantum-sensing}}, {{proctor-multiparm}}, {{giovannetti-metro}}, {{gottesman-telescope}}, {{ilo-okeke-clock}}
 require precise knowledge of when entanglement was established or when measurement events occurred.  Hence, high-precision timestamps may need to be bundled into the service interface offered by the network.
