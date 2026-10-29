@@ -122,7 +122,7 @@ Table of Contents
      12.2.  Nodes, Links and Operational Modes
      12.3.  Communication Service
        12.3.1.  Bell Pairs as the Core Network Service
-       12.3.2.  Timing as a Critical Auxilary Service
+       12.3.2.  Timing as a Critical Auxiliary Service
      12.4.  Stateful Connections Along a Pre-established Path
      12.5.  Four-Layer Protocol Stack
      12.6.  RuleSet-based Network Layer
@@ -1324,7 +1324,7 @@ Table of Contents
    directly affects fidelity, latency, and trust assumptions in the
    network.
 
-12.3.2.  Timing as a Critical Auxilary Service
+12.3.2.  Timing as a Critical Auxiliary Service
 
    In addition to quantum state delivery, timing information is often a
    critical part of the service.  Applications in distributed quantum
