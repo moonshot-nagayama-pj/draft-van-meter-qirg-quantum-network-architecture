@@ -884,6 +884,10 @@ The protocol stack for creating end-to-end entangled states consists of four lay
 
 The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking) {{farhadi-sdn}} and Active Networks {{tennenhouse-an-arch}}. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) {{mccanne-bpf}} : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
 
+## Four Planes, or Views, of the Network
+
+A _plane_ is a view of the network, presented by the elements of the network for a particular purpose.  This architecture provides four planes: quantum, data, control, and management, all described in {{architectural-planes}}.
+
 # Architectural Planes
 
 All nodes in the network will provide one or more of the following classes of interfaces, also referred to as _planes_.  A plane provides a view of the network.  Nodes that do not provide an interface are not visible on the corresponding plane.
