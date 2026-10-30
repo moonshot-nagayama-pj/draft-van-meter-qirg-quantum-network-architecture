@@ -575,10 +575,11 @@ Qubits (defined in RFC 9340) must conform to a sufficient subset of the DiVincen
 
 ## Photons, Wave Packets and Optical Modes
 
-An optical mode is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon or is empty.  The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.
-<!-- Optical mode (link-layer view). -->
-
 Loosely, a photon is a quantum of light. More detailed analysis of a photon requires understanding _wave packets_ and _optical modes_.
+
+An optical mode is a well-defined slot of a physical link, specified by path, time window, frequency, polarization, or similar parameters, such that the receiver can be configured to monitor that slot and determine whether it is occupied by at least one photon or is empty.  The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.
+
+(Perhaps a good analogy is the _constellation_ of states in a quadrature amplitude-modulated (QAM) signal, combined with whatever other multiplexing or signal encoding is used, such as temporal, spatial, or wavelength.  The constellation is the full state space, and a mode is the equivalent of one of those states, which may be empty or occupied.)
 
 A wave packet is the non-zero amplitude of the electrical and magnetic fields, and generally corresponds to a single excitation of the electrical field, i.e. a single photon.  The length of the wave packet is determined by the physics of the photon emission process, possibly modified by dispersion in the channel, and in turn determines the minimum length of a time slot in the link design.
 
@@ -586,7 +587,7 @@ An _optical mode_ is a well-defined slot of a physical link, specified by path, 
 
 The mode exists regardless of whether a photon is present; a photon is an excitation of the mode, not the mode itself.
 
-In quantum networking, link capacity and state must be described in terms of modes (slots), not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful. In idealized models, distinct modes correspond to orthogonal solutions of the field equations, ensuring perfect distinguishability.
+In quantum networking, link capacity and state must be described in terms of modes, not photons; photons merely occupy modes, while empty modes correspond to vacuum states that are still physically and operationally meaningful. In idealized models, distinct modes correspond to orthogonal solutions of the field equations, ensuring perfect distinguishability.
 
 As an example, a quantum optical link may define one mode per time slot or detection window. During each window, the receiver monitors the mode. A detection event indicates that the mode was occupied by at least one photon; the absence of a detection indicates that the same mode was empty. Both outcomes correspond to distinct physical states of the link.
 
