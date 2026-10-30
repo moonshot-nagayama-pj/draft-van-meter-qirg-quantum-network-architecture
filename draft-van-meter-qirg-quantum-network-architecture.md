@@ -521,7 +521,7 @@ Control of devices is usually done with respect to some physical characteristic 
 
 ## Quantum Nodes
 
-A quantum node comprises one or more quantum devices, and serves as a single locus of control for network protocols.  The classes of nodes are described in detail in in detail in {{nodes}}.
+A quantum node comprises one or more quantum devices, and serves as a single locus of control for network protocols.  The classes of nodes are described in detail in detail in {{nodes}}.
 
 A _logical node_ or _composite node_ provides a single communication and control point for the services of a particular node type or a composite node type, but may comprise a set of physical devices rather than a single device, and may be physically packaged in more than one box.
 
