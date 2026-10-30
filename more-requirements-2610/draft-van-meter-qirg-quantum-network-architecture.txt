@@ -695,7 +695,7 @@ Table of Contents
 
    A quantum node comprises one or more quantum devices, and serves as a
    single locus of control for network protocols.  The classes of nodes
-   are described in detail in detail in Section 15.
+   are described in detail in Section 15.
 
    A _logical node_ or _composite node_ provides a single communication
    and control point for the services of a particular node type or a
