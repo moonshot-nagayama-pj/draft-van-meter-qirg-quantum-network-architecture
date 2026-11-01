@@ -986,8 +986,6 @@ In a quantum network, this layering is less clear.  Classical network protocol l
 
 Nevertheless, the notion of _layers of responsibility_ or _separation of concerns_ is valid,with different needs at the link, network, and application.
 
-(More to be added here.)
-
 <!-- block couldn't figure out how to mermaid
   columns 3
   a["A label"] b:2 c:2 d -->
