@@ -915,8 +915,6 @@ The quantum plane functionality executes the functions described as "Interferome
 
 When operating in qubit mode, the Data Plane consists of classical messages that convey events for RuleSet operation and the communication ports and software that generate and consume such messages.
 
-When operating in device mode, the Data Plane consists of remote procedure calls (RPCs) for controlling individual devices.
-
 Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation {{casapao-disti-mation}}. If this is done, security and privacy concerns must be addressed.
 
 The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
@@ -1248,6 +1246,8 @@ Classical communication takes three major forms:
 
 Device plane classical communications will be via RPC or streaming data service, as appropriate.  Details are beyond the scope of this document.
 
+<!-- Question: is walking in polarization control device plane, data plane or control plane?  Device plane, I think. -->
+
 ## Quantum Plane
 
 The quantum plane includes some classical signals to support tasks described in {{planes-quantum}}.  These signals are generally hard real time, used for demarking per-qubit time bins and possibly the start and end of longer trains of qubits or photons for switching purposes, triggering emission of photons, etc.  These signals may also be non-coding, involved in link management rather than creation of qubits.  Not all quantum link designs will require such classical signals.
@@ -1264,12 +1264,8 @@ The details at this level are generally link-specific and are beyond the scope o
 
 Classical communication within the data plane sits above the link, and concerns the creation of end-to-end entangled states for established connections, as described in {{planes-data}}.
 
-* Qubit mode connections and communication
-    - connection-level control of switching of photons
-    - soft real-time event notification for RuleSets
-* Device mode control
-
-<!-- Question: is walking in polarization control device plane, data plane or control plane?  Control plane, I think. -->
+* connection-level control of switching of photons
+* soft real-time event notification for RuleSets
 
 Messages in the data plane are generally soft real time and assumed to be reliable.
 
@@ -1277,10 +1273,8 @@ Messages in the data plane are generally soft real time and assumed to be reliab
 
 Within the control plane, all communication is classical, supporting the establishment of connections and management of resources as described in {{planes-control}}.
 
-* Qubit mode connections and communication
-    - connection-level control of switching of photons
-    - soft real-time event notification for RuleSets
-* Device mode control
+* connection-level control of switching of photons
+* soft real-time event notification for RuleSets
 
 ## Management plane: Node and link management
 
