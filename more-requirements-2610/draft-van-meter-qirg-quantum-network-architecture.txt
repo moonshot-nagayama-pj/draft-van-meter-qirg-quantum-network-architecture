@@ -236,8 +236,8 @@ Table of Contents
 
    *  Specification of physical links (including photonic wave packets)
 
-   *  Definition of application-layer protocols and software interfaces
-      such as sockets
+   *  Detailed definition of application-layer protocols and software
+      interfaces such as sockets
 
    *  Internetworking
 
@@ -632,7 +632,7 @@ Table of Contents
       correction schemes, such as remote lattice surgery
       [horsman-lattice-surgery], [ramette-remote], [leone-remote],
       [sinclair-ft-interconnect] of the surface code.  If the
-      probability of creating a link is high enough, unsuccessful
+      probability of creating entanglement is high enough, unsuccessful
       attempts can be treated as depolarizing errors, which the logical
       code can tolerate without stalling the pipeline.
 
