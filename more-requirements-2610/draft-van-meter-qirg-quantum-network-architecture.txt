@@ -1059,11 +1059,11 @@ Table of Contents
 
    *  In principle, the application and the communication system are
       separately compiled and managed.  However, in practice the RuleSet
-      may be compiled as part of the application by using a library of
-      network functions.  (As with classical parallel program runtime
-      systems, the boundary between the application program, supplied
-      libraries, and the kernel itself (if any) is implementation-
-      dependent.)
+      (Section 12.6 and Section 14.3) may be compiled as part of the
+      application by using a library of network functions.  (As with
+      classical parallel program runtime systems, the boundary between
+      the application program, supplied libraries, and the kernel itself
+      (if any) is implementation-dependent.)
 
    *  Compiling the network communication into the application program
       eliminates the need for separate program and RuleSet distribution

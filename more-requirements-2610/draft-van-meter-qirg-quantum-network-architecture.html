@@ -2324,7 +2324,7 @@ Since consuming extra resources is more costly than waiting, these operations de
             <p id="section-10.1-7.7.1">In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.<a href="#section-10.1-7.7.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-10.1-7.8">
-            <p id="section-10.1-7.8.1">In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)<a href="#section-10.1-7.8.1" class="pilcrow">¶</a></p>
+            <p id="section-10.1-7.8.1">In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet (<a href="#ruleset-network-layer" class="auto internal xref">Section 12.6</a> and <a href="#network-layer" class="auto internal xref">Section 14.3</a>) may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)<a href="#section-10.1-7.8.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-10.1-7.9">
             <p id="section-10.1-7.9.1">Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.<a href="#section-10.1-7.9.1" class="pilcrow">¶</a></p>
@@ -2606,7 +2606,7 @@ require precise knowledge of when entanglement was established or when measureme
 <p id="section-12.5-1">The protocol stack for creating end-to-end entangled states consists of four layers: physical, link, network, and application.  The task of dealing with errors and ensuring reliable E2E creation, often handled in a transport layer that sits above the network layer, is subsumed into the network layer in this architecture.<a href="#section-12.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="ruleset-based-network-layer">
+<div id="ruleset-network-layer">
 <section id="section-12.6">
         <h3 id="name-ruleset-based-network-layer">
 <a href="#section-12.6" class="section-number selfRef">12.6. </a><a href="#name-ruleset-based-network-layer" class="section-name selfRef">RuleSet-based Network Layer</a>
@@ -2786,7 +2786,7 @@ require precise knowledge of when entanglement was established or when measureme
         </ul>
 </section>
 </div>
-<div id="network-layer-rulesets">
+<div id="network-layer">
 <section id="section-14.3">
         <h3 id="name-network-layer-rulesets">
 <a href="#section-14.3" class="section-number selfRef">14.3. </a><a href="#name-network-layer-rulesets" class="section-name selfRef">Network Layer: RuleSets</a>
