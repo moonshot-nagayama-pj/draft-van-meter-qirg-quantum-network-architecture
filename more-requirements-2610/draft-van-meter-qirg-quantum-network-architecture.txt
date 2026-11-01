@@ -1459,9 +1459,6 @@ Table of Contents
    communication ports and software that generate and consume such
    messages.
 
-   When operating in device mode, the Data Plane consists of remote
-   procedure calls (RPCs) for controlling individual devices.
-
    Data plane functions may share data with management plane functions
    as part of the link management process, e.g. using disti-mation
    [casapao-disti-mation].  If this is done, security and privacy
@@ -2159,13 +2156,9 @@ Table of Contents
    and concerns the creation of end-to-end entangled states for
    established connections, as described in Section 13.3.
 
-   *  Qubit mode connections and communication
+   *  connection-level control of switching of photons
 
-      -  connection-level control of switching of photons
-
-      -  soft real-time event notification for RuleSets
-
-   *  Device mode control
+   *  soft real-time event notification for RuleSets
 
    Messages in the data plane are generally soft real time and assumed
    to be reliable.
@@ -2176,13 +2169,9 @@ Table of Contents
    the establishment of connections and management of resources as
    described in Section 13.4.
 
-   *  Qubit mode connections and communication
+   *  connection-level control of switching of photons
 
-      -  connection-level control of switching of photons
-
-      -  soft real-time event notification for RuleSets
-
-   *  Device mode control
+   *  soft real-time event notification for RuleSets
 
 20.5.  Management plane: Node and link management
 

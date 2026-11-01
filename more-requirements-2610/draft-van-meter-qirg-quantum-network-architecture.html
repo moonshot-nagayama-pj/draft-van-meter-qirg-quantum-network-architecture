@@ -2671,9 +2671,8 @@ require precise knowledge of when entanglement was established or when measureme
 <a href="#section-13.3" class="section-number selfRef">13.3. </a><a href="#name-data" class="section-name selfRef">Data</a>
         </h3>
 <p id="section-13.3-1">When operating in qubit mode, the Data Plane consists of classical messages that convey events for RuleSet operation and the communication ports and software that generate and consume such messages.<a href="#section-13.3-1" class="pilcrow">¶</a></p>
-<p id="section-13.3-2">When operating in device mode, the Data Plane consists of remote procedure calls (RPCs) for controlling individual devices.<a href="#section-13.3-2" class="pilcrow">¶</a></p>
-<p id="section-13.3-3">Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation <span>[<a href="#casapao-disti-mation" class="cite xref">casapao-disti-mation</a>]</span>. If this is done, security and privacy concerns must be addressed.<a href="#section-13.3-3" class="pilcrow">¶</a></p>
-<p id="section-13.3-4">The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-13.3-4" class="pilcrow">¶</a></p>
+<p id="section-13.3-2">Data plane functions may share data with management plane functions as part of the link management process, e.g. using disti-mation <span>[<a href="#casapao-disti-mation" class="cite xref">casapao-disti-mation</a>]</span>. If this is done, security and privacy concerns must be addressed.<a href="#section-13.3-2" class="pilcrow">¶</a></p>
+<p id="section-13.3-3">The control plane functionality executes the functions described as "Pre-configured Event-driven Tasks" in the Timing Regimes document <span>[<a href="#I-D.draft-hajdusek-qirg-timing-physics" class="cite xref">I-D.draft-hajdusek-qirg-timing-physics</a>]</span>.<a href="#section-13.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="planes-control">
@@ -3193,18 +3192,10 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <p id="section-20.3-1">Classical communication within the data plane sits above the link, and concerns the creation of end-to-end entangled states for established connections, as described in <a href="#planes-data" class="auto internal xref">Section 13.3</a>.<a href="#section-20.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-20.3-2.1">
-            <p id="section-20.3-2.1.1">Qubit mode connections and communication<a href="#section-20.3-2.1.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-20.3-2.1.2.1">
-                <p id="section-20.3-2.1.2.1.1">connection-level control of switching of photons<a href="#section-20.3-2.1.2.1.1" class="pilcrow">¶</a></p>
-</li>
-              <li class="normal" id="section-20.3-2.1.2.2">
-                <p id="section-20.3-2.1.2.2.1">soft real-time event notification for RuleSets<a href="#section-20.3-2.1.2.2.1" class="pilcrow">¶</a></p>
-</li>
-            </ul>
+            <p id="section-20.3-2.1.1">connection-level control of switching of photons<a href="#section-20.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-20.3-2.2">
-            <p id="section-20.3-2.2.1">Device mode control<a href="#section-20.3-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-20.3-2.2.1">soft real-time event notification for RuleSets<a href="#section-20.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-20.3-3">Messages in the data plane are generally soft real time and assumed to be reliable.<a href="#section-20.3-3" class="pilcrow">¶</a></p>
@@ -3218,18 +3209,10 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <p id="section-20.4-1">Within the control plane, all communication is classical, supporting the establishment of connections and management of resources as described in <a href="#planes-control" class="auto internal xref">Section 13.4</a>.<a href="#section-20.4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-20.4-2.1">
-            <p id="section-20.4-2.1.1">Qubit mode connections and communication<a href="#section-20.4-2.1.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-20.4-2.1.2.1">
-                <p id="section-20.4-2.1.2.1.1">connection-level control of switching of photons<a href="#section-20.4-2.1.2.1.1" class="pilcrow">¶</a></p>
-</li>
-              <li class="normal" id="section-20.4-2.1.2.2">
-                <p id="section-20.4-2.1.2.2.1">soft real-time event notification for RuleSets<a href="#section-20.4-2.1.2.2.1" class="pilcrow">¶</a></p>
-</li>
-            </ul>
+            <p id="section-20.4-2.1.1">connection-level control of switching of photons<a href="#section-20.4-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-20.4-2.2">
-            <p id="section-20.4-2.2.1">Device mode control<a href="#section-20.4-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-20.4-2.2.1">soft real-time event notification for RuleSets<a href="#section-20.4-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
