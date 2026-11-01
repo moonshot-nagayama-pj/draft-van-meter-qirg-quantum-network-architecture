@@ -1679,13 +1679,20 @@ Table of Contents
 
 14.3.  Network Layer: RuleSets
 
-   (responsible for both single- and multi-hop purification, and
-   entanglement swapping)
+   The network layer is responsible for both single- and multi-hop
+   purification, and for entanglement swapping.  The network layer
+   subsumes the functions commonly divided into network and transport in
+   many architectures.
 
-   The network layer subsumes the functions commonly divided into
-   network and transport in many architectures.  It serves as a
-   lightweight, restricted (not Turing complete) distributed computation
-   platform.
+   In this architecture, the network layer is a lightweight, restricted
+   (not Turing complete) distributed computation platform known as
+   RuleSets.  RuleSets are distributed to nodes during the connection
+   setup process Section 17.  RuleSets themselves are a form of state,
+   and they maintain internal state during the life of the connection.
+
+   The syntax and semantics of RuleSets are described in
+   [matsuo-link-boot] [matsuo-ms-thesis] [satoh-ms-thesis]
+   [aqua-ruleset-spec].
 
 14.4.  Application Layer
 
@@ -2503,6 +2510,10 @@ Table of Contents
               8163, pp. 816308, DOI 10.1117/12.893272, September 2011,
               <https://doi.org/10.1117/12.893272>.
 
+   [aqua-ruleset-spec]
+              AQUA, "RuleSetSpec", 2023,
+              <https://github.com/sfc-aqua/RuleSetSpec/>.
+
    [awschalom-roadmap]
               , Awschalom, D., Bernien, H., Brown, R., Clerk, A.,
               Chitambar, E., Dibos, A., Dionne, J., Eriksson, M.,
@@ -2982,6 +2993,20 @@ Table of Contents
               DOI 10.1038/s41534-021-00431-0, June 2021,
               <https://doi.org/10.1038/s41534-021-00431-0>.
 
+   [matsuo-link-boot]
+              Matsuo, T., Durand, C., and R. Van Meter, "Quantum link
+              bootstrapping using a RuleSet-based communication
+              protocol", American Physical Society (APS), Physical
+              Review A vol. 100, no. 5, DOI 10.1103/physreva.100.052320,
+              November 2019,
+              <https://doi.org/10.1103/physreva.100.052320>.
+
+   [matsuo-ms-thesis]
+              Matsuo, T., "Simulation of a Dynamic, RuleSet-based
+              Quantum Network", arXiv,  arXiv,
+              DOI 10.48550/ARXIV.1908.10758, 2019,
+              <https://doi.org/10.48550/ARXIV.1908.10758>.
+
    [mayers-unconditional]
               Mayers, D., "Unconditional security in Quantum
               Cryptography", arXiv,  arXiv, DOI 10.48550/ARXIV.QUANT-
@@ -3147,6 +3172,12 @@ Table of Contents
               IEEE Transactions on Quantum Engineering vol. 2, pp. 1-17,
               DOI 10.1109/tqe.2021.3094983, 2021,
               <https://doi.org/10.1109/tqe.2021.3094983>.
+
+   [satoh-ms-thesis]
+              Satoh, R., "RuLa A Programming Language for RuleSet-based
+              Quantum Repeaters", M.S. Thesis, Keio University, 2023,
+              <https://aqua.sfc.wide.ad.jp/publications/
+              cocori_mthesis.pdf>.
 
    [schoute-shortcuts]
               Schoute, E., Mancinska, L., Islam, T., Kerenidis, I., and

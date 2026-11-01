@@ -2807,8 +2807,9 @@ require precise knowledge of when entanglement was established or when measureme
         <h3 id="name-network-layer-rulesets">
 <a href="#section-14.3" class="section-number selfRef">14.3. </a><a href="#name-network-layer-rulesets" class="section-name selfRef">Network Layer: RuleSets</a>
         </h3>
-<p id="section-14.3-1">(responsible for both single- and multi-hop purification, and entanglement swapping)<a href="#section-14.3-1" class="pilcrow">¶</a></p>
-<p id="section-14.3-2">The network layer subsumes the functions commonly divided into network and transport in many architectures.  It serves as a lightweight, restricted (not Turing complete) distributed computation platform.<a href="#section-14.3-2" class="pilcrow">¶</a></p>
+<p id="section-14.3-1">The network layer is responsible for both single- and multi-hop purification, and for entanglement swapping.  The network layer subsumes the functions commonly divided into network and transport in many architectures.<a href="#section-14.3-1" class="pilcrow">¶</a></p>
+<p id="section-14.3-2">In this architecture, the network layer is a lightweight, restricted (not Turing complete) distributed computation platform known as RuleSets.  RuleSets are distributed to nodes during the connection setup process <a href="#connections" class="auto internal xref">Section 17</a>.  RuleSets themselves are a form of state, and they maintain internal state during the life of the connection.<a href="#section-14.3-2" class="pilcrow">¶</a></p>
+<p id="section-14.3-3">The syntax and semantics of RuleSets are described in <span>[<a href="#matsuo-link-boot" class="cite xref">matsuo-link-boot</a>]</span> <span>[<a href="#matsuo-ms-thesis" class="cite xref">matsuo-ms-thesis</a>]</span> <span>[<a href="#satoh-ms-thesis" class="cite xref">satoh-ms-thesis</a>]</span> <span>[<a href="#aqua-ruleset-spec" class="cite xref">aqua-ruleset-spec</a>]</span>.<a href="#section-14.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="application-layer">
@@ -3539,6 +3540,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Aparicio, L.</span> and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Multiplexing schemes for quantum repeater networks"</span>, <span class="refContent">SPIE</span>, <span class="seriesInfo">SPIE Proceedings vol. 8163, pp. 816308</span>, <span class="seriesInfo">DOI 10.1117/12.893272</span>, <time datetime="2011-09" class="refDate">September 2011</time>, <span>&lt;<a href="https://doi.org/10.1117/12.893272">https://doi.org/10.1117/12.893272</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="aqua-ruleset-spec">[aqua-ruleset-spec]</dt>
+        <dd>
+<span class="refAuthor">AQUA</span>, <span class="refTitle">"RuleSetSpec"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://github.com/sfc-aqua/RuleSetSpec/">https://github.com/sfc-aqua/RuleSetSpec/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="awschalom-roadmap">[awschalom-roadmap]</dt>
         <dd>
 <span class="refAuthor">Awschalom, D.</span>, <span class="refAuthor">Bernien, H.</span>, <span class="refAuthor">Brown, R.</span>, <span class="refAuthor">Clerk, A.</span>, <span class="refAuthor">Chitambar, E.</span>, <span class="refAuthor">Dibos, A.</span>, <span class="refAuthor">Dionne, J.</span>, <span class="refAuthor">Eriksson, M.</span>, <span class="refAuthor">Fefferman, B.</span>, <span class="refAuthor">Fuchs, G.</span>, <span class="refAuthor">Gambetta, J.</span>, <span class="refAuthor">Goldschmidt, E.</span>, <span class="refAuthor">Guha, S.</span>, <span class="refAuthor">Heremans, F.</span>, <span class="refAuthor">Irwin, K.</span>, <span class="refAuthor">Jayich, A.</span>, <span class="refAuthor">Jiang, L.</span>, <span class="refAuthor">Karsch, J.</span>, <span class="refAuthor">Kasevich, M.</span>, <span class="refAuthor">Kolkowitz, S.</span>, <span class="refAuthor">Kwiat, P.</span>, <span class="refAuthor">Ladd, T.</span>, <span class="refAuthor">Lowell, J.</span>, <span class="refAuthor">Maslov, D.</span>, <span class="refAuthor">Mason, N.</span>, <span class="refAuthor">Matsuura, A.</span>, <span class="refAuthor">McDermott, R.</span>, <span class="refAuthor">van Meter, R.</span>, <span class="refAuthor">Miller, A.</span>, <span class="refAuthor">Orcutt, J.</span>, <span class="refAuthor">Saffman, M.</span>, <span class="refAuthor">Schleier-Smith, M.</span>, <span class="refAuthor">Singh, M.</span>, <span class="refAuthor">Smith, P.</span>, <span class="refAuthor">Suchara, M.</span>, <span class="refAuthor">Toudeh-Fallah, F.</span>, <span class="refAuthor">Turlington, M.</span>, <span class="refAuthor">Woods, B.</span>, and <span class="refAuthor">T. Zhong</span>, <span class="refTitle">"A Roadmap for Quantum Interconnects"</span>, <span class="refContent">Office of Scientific and Technical Information (OSTI)</span>, <span class="seriesInfo">DOI 10.2172/1900586</span>, <time datetime="2022-07" class="refDate">July 2022</time>, <span>&lt;<a href="https://doi.org/10.2172/1900586">https://doi.org/10.2172/1900586</a>&gt;</span>. </dd>
@@ -3787,6 +3792,14 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
         <dd>
 <span class="refAuthor">Martinis, J.</span>, <span class="refTitle">"Saving superconducting quantum processors from decay and correlated errors generated by gamma and cosmic rays"</span>, <span class="refContent">Springer Science and Business Media LLC</span>, <span class="seriesInfo">npj Quantum Information vol. 7, no. 1</span>, <span class="seriesInfo">DOI 10.1038/s41534-021-00431-0</span>, <time datetime="2021-06" class="refDate">June 2021</time>, <span>&lt;<a href="https://doi.org/10.1038/s41534-021-00431-0">https://doi.org/10.1038/s41534-021-00431-0</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="matsuo-link-boot">[matsuo-link-boot]</dt>
+        <dd>
+<span class="refAuthor">Matsuo, T.</span>, <span class="refAuthor">Durand, C.</span>, and <span class="refAuthor">R. Van Meter</span>, <span class="refTitle">"Quantum link bootstrapping using a RuleSet-based communication protocol"</span>, <span class="refContent">American Physical Society (APS)</span>, <span class="seriesInfo">Physical Review A vol. 100, no. 5</span>, <span class="seriesInfo">DOI 10.1103/physreva.100.052320</span>, <time datetime="2019-11" class="refDate">November 2019</time>, <span>&lt;<a href="https://doi.org/10.1103/physreva.100.052320">https://doi.org/10.1103/physreva.100.052320</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="matsuo-ms-thesis">[matsuo-ms-thesis]</dt>
+        <dd>
+<span class="refAuthor">Matsuo, T.</span>, <span class="refTitle">"Simulation of a Dynamic, RuleSet-based Quantum Network"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo"> arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.1908.10758</span>, <time datetime="2019" class="refDate">2019</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.1908.10758">https://doi.org/10.48550/ARXIV.1908.10758</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="mayers-unconditional">[mayers-unconditional]</dt>
         <dd>
 <span class="refAuthor">Mayers, D.</span>, <span class="refTitle">"Unconditional security in Quantum Cryptography"</span>, <span class="refContent">arXiv</span>, <span class="seriesInfo"> arXiv</span>, <span class="seriesInfo">DOI 10.48550/ARXIV.QUANT-PH/9802025</span>, <time datetime="1998" class="refDate">1998</time>, <span>&lt;<a href="https://doi.org/10.48550/ARXIV.QUANT-PH/9802025">https://doi.org/10.48550/ARXIV.QUANT-PH/9802025</a>&gt;</span>. </dd>
@@ -3894,6 +3907,10 @@ This minimal local naming scheme provided by the RuleSet engine, combined with j
 <dt id="satoh-attacking">[satoh-attacking]</dt>
         <dd>
 <span class="refAuthor">Satoh, T.</span>, <span class="refAuthor">Nagayama, S.</span>, <span class="refAuthor">Suzuki, S.</span>, <span class="refAuthor">Matsuo, T.</span>, <span class="refAuthor">Hajdusek, M.</span>, and <span class="refAuthor">R. Meter</span>, <span class="refTitle">"Attacking the Quantum Internet"</span>, <span class="refContent">Institute of Electrical and Electronics Engineers (IEEE)</span>, <span class="seriesInfo">IEEE Transactions on Quantum Engineering vol. 2, pp. 1-17</span>, <span class="seriesInfo">DOI 10.1109/tqe.2021.3094983</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://doi.org/10.1109/tqe.2021.3094983">https://doi.org/10.1109/tqe.2021.3094983</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="satoh-ms-thesis">[satoh-ms-thesis]</dt>
+        <dd>
+<span class="refAuthor">Satoh, R.</span>, <span class="refTitle">"RuLa A Programming Language for RuleSet-based Quantum Repeaters"</span>, <span class="seriesInfo">M.S. Thesis, Keio University</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://aqua.sfc.wide.ad.jp/publications/cocori_mthesis.pdf">https://aqua.sfc.wide.ad.jp/publications/cocori_mthesis.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="schoute-shortcuts">[schoute-shortcuts]</dt>
         <dd>
