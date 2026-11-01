@@ -5,8 +5,8 @@
 QIRG                                                        R. Van Meter
 Internet-Draft                                        N. Benchasattabuse
 Intended status: Informational                             A. Taherkhani
-Expires: 3 May 2027                                      Keio University
-                                                         30 October 2026
+Expires: 5 May 2027                                      Keio University
+                                                         1 November 2026
 
 
                      A Quantum Network Architecture
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 May 2027.
+   This Internet-Draft will expire on 5 May 2027.
 
 Copyright Notice
 
@@ -91,7 +91,7 @@ Table of Contents
      8.5.  Direct and Indirect Multicomputer Architectures
      8.6.  Detector-centric Architecture
      8.7.  Source-centric Architecture
-     8.8.  Qubit v.  Device Operational Mode
+     8.8.  Qubit-Level v.  Device-Level Access
    9.  Quantum Optical Building Blocks
      9.1.  Qubits
      9.2.  Photons, Wave Packets and Optical Modes
@@ -119,19 +119,20 @@ Table of Contents
        11.3.2.  Configuration Management
    12. Architecture Overview
      12.1.  Deterministic Classical Control of Quantum States
-     12.2.  Nodes, Links and Operational Modes
+     12.2.  Nodes, Links and Operational Views
      12.3.  Communication Service
        12.3.1.  Bell Pairs as the Core Network Service
        12.3.2.  Timing as a Critical Auxiliary Service
      12.4.  Stateful Connections Along a Pre-established Path
      12.5.  Four-Layer Protocol Stack
      12.6.  RuleSet-based Network Layer
-     12.7.  Four Planes, or Views, of the Network
+     12.7.  Five Planes, or Views, of the Network
    13. Architectural Planes
-     13.1.  Quantum
-     13.2.  Data
-     13.3.  Control
-     13.4.  Management
+     13.1.  Device
+     13.2.  Quantum
+     13.3.  Data
+     13.4.  Control
+     13.5.  Management
    14. Protocol Layers
      14.1.  Physical Layer
      14.2.  Link Layer
@@ -159,11 +160,12 @@ Table of Contents
      18.1.  APIs for Network Service ("Quantum Sockets")
    19. Resource Management: Multiplexing and Routing
    20. Classical Communication
-     20.1.  Quantum Plane
-     20.2.  Data Plane
-     20.3.  Control Plane
-     20.4.  Management plane: Node and link management
-     20.5.  Mechanisms
+     20.1.  Device Plane
+     20.2.  Quantum Plane
+     20.3.  Data Plane
+     20.4.  Control Plane
+     20.5.  Management plane: Node and link management
+     20.6.  Mechanisms
    21. Naming and Addressing
      21.1.  State naming and management in RuleSets
    22. Example Networks
@@ -233,6 +235,9 @@ Table of Contents
 3.2.  Non-Goals
 
    *  Specification of physical links (including photonic wave packets)
+
+   *  Definition of application-layer protocols and software interfaces
+      such as sockets
 
    *  Internetworking
 
@@ -762,21 +767,20 @@ Table of Contents
    locally generated photons, or otherwise utilized at or near the end
    nodes.  Such a network was proposed by Drost _et al._ [drost].
 
-8.8.  Qubit v.  Device Operational Mode
+8.8.  Qubit-Level v.  Device-Level Access
 
    Conventionally, entangled quantum networks are described in terms of
    unitary and non-unitary actions on qubits, just as the Internet
    protocols are defined in terms of bits and bytes (octets) rather than
-   voltages, signal times and optical signal strengths.  This _qubit
-   operational mode_ is natural and allows for technology-independent,
-   high-level protocol development.
+   voltages, signal times and optical signal strengths.  This _qubit-
+   level access_ is natural and allows for technology-independent, high-
+   level protocol development.
 
    However, as described above, quantum nodes are built of quantum
-   devices, and at times it is preferable to use a _device operational
-   mode_.  Such a mode is inevitably hardware-dependent, requiring
-   special-purpose software, limiting network scalability and code
-   portability.  Cases where the device operational mode is useful
-   include:
+   devices, and at times it is preferable to use the hardware's _device-
+   level access_.  Such an access mode is inevitably hardware-dependent,
+   requiring special-purpose software, limiting network scalability and
+   code portability.  Cases where device-level access is useful include:
 
    *  as a building block for higher-level protocols;
 
@@ -787,7 +791,10 @@ Table of Contents
    *  in link-level monitoring protocols; and
 
    *  when a multicomputer compiler and/or distributed-computation
-      middleware wants to optimize the system for themselves.
+      middleware wants to optimize the system for themselves,
+      incorporating higher-level operations into its own application and
+      using lower-level methods to access the system components on the
+      wire.
 
 9.  Quantum Optical Building Blocks
 
@@ -870,8 +877,9 @@ Table of Contents
    *  Energy level (wavelength)
 
    These representations and more about the concept of an _optical mode_
-   are discussed in the Standard Photons document, and are provided here
-   only for informational purposes.
+   are discussed in the "standard photon" and
+   [I-D.draft-hajdusek-qirg-timing-physics] documents, and are provided
+   here only for informational purposes.
 
 9.4.  Memories
 
@@ -1270,7 +1278,7 @@ Table of Contents
    requirements for various tasks
    [I-D.draft-hajdusek-qirg-timing-physics].
 
-12.2.  Nodes, Links and Operational Modes
+12.2.  Nodes, Links and Operational Views
 
    As with typical networks, this architecture comprises nodes
    (Section 15) and links (Section 16), which will connect two or more
@@ -1278,11 +1286,9 @@ Table of Contents
 
    While the end-to-end goal is the delivery of qubit-based
    entanglement, for a variety of purposes lower-level access to
-   hardware can be desirable, so nodes may operate in either qubit mode
-   or device mode.
-
-   _** I am starting to think that "device mode" is actually a separate
-   _plane_. **_
+   hardware can be desirable, so nodes may present a qubit-level view
+   (incorporated in the data plane) or a device-level view (incorporated
+   in the device plane).
 
 12.3.  Communication Service
 
@@ -1382,12 +1388,12 @@ Table of Contents
    program that handled actions that the application could do, but the
    application can't achieve the low, reliable latency to do it.
 
-12.7.  Four Planes, or Views, of the Network
+12.7.  Five Planes, or Views, of the Network
 
    A _plane_ is a view of the network, presented by the elements of the
-   network for a particular purpose.  This architecture provides four
-   planes: quantum, data, control, and management, all described in
-   Section 13.
+   network for a particular purpose.  This architecture provides five
+   planes: device, quantum, data, control, and management, all described
+   in Section 13.
 
 13.  Architectural Planes
 
@@ -1396,8 +1402,8 @@ Table of Contents
    provides a view of the network.  Nodes that do not provide an
    interface are not visible on the corresponding plane.
 
-   *_I am starting to think that "device mode" is actually a separate
-   _plane_._*
+   *  *Device:* Control and monitoring of hardware devices such as
+      switches, wave plates, detectors, etc.
 
    *  *Quantum:* The quantum signals and in-channel, hardware-dependent,
       real-time classical signals for timing and synchronization of
@@ -1421,7 +1427,20 @@ Table of Contents
       collecting statistics on traffic through the node, any alerts such
       as security, etc.
 
-13.1.  Quantum
+13.1.  Device
+
+   This view is primarily for low-level development and maintenance and
+   as a building block for higher-level protocols and software, as
+   discussed in Section 8.8.  No interpretation of the classical data as
+   qubits or controls as qubit unitary or non-unitary operations is
+   provided here.
+
+   Software packages providing this level of access to the devices
+   include PnPQ [pnpq] and tdc_toolkit [tdc_toolkit].  Generally,
+   network-level access to this functionality will be via a form of RPC
+   or streaming data.
+
+13.2.  Quantum
 
    The quantum signals and in-channel, hardware-dependent, real-time
    classical signals for timing and synchronization of photon wave
@@ -1433,7 +1452,7 @@ Table of Contents
    subject to the constraints in "Detector Timing Windows" in the Timing
    Regimes document [I-D.draft-hajdusek-qirg-timing-physics].
 
-13.2.  Data
+13.3.  Data
 
    When operating in qubit mode, the Data Plane consists of classical
    messages that convey events for RuleSet operation and the
@@ -1452,7 +1471,7 @@ Table of Contents
    "Pre-configured Event-driven Tasks" in the Timing Regimes document
    [I-D.draft-hajdusek-qirg-timing-physics].
 
-13.3.  Control
+13.4.  Control
 
    The classical control plane is responsible for establishing and
    managing connections and testing sessions.  Routing and multiplexing
@@ -1467,7 +1486,7 @@ Table of Contents
    tasks in "Host-side Application-level Tasks" in the Timing Regimes
    document [I-D.draft-hajdusek-qirg-timing-physics].
 
-13.4.  Management
+13.5.  Management
 
    While connection-specific changes to configuration, such as switching
    and necessary, immediate changes to e.g. polarization and optical
@@ -1475,8 +1494,8 @@ Table of Contents
    adjustment of parameters such as timing or polarization due to drift
    in temperature, voltage or other parameters is the responsibility of
    the management plane.  The management plane may receive useful data
-   on the health and fidelity of links as a result of data plane and
-   control plane operations.
+   on the health and fidelity of links as a result of device plane, data
+   plane and control plane operations.
 
    The management plane functionality executes the functions described
    as "Background Tasks" in the Timing Regimes document
@@ -1581,7 +1600,7 @@ Table of Contents
 
    See p. 36 of [delle-donne-thesis] for a description of the link
    service.  They refer to K-type (keep), M-type (measure) and R-type
-   (remote) entanglement requests.  (What about reverse-R type?)
+   (remote) entanglement requests.
 
    The link layer may deliver entangled states to the network layer
    either singly or as an ordered, tagged batch.
@@ -1590,9 +1609,9 @@ Table of Contents
    running service where requests from the network layer are serviced by
    using recently created entanglement.
 
-   Can the network layer request states at one end where the status of
+   The network layer can request states at one end where the status of
    the qubit at the other end is unknown, in either heralding or Pauli
-   frame?  This seems to be necessary to support B class.
+   frame.  This is necessary to support B class applications.
 
    For multidrop links, the link layer must coordinate with multiplexing
    and switch control as part of the control plane
@@ -1632,7 +1651,8 @@ Table of Contents
 
 14.4.  Application Layer
 
-   (mostly not defined here)
+   Definition of the application layer protocols is beyond the scope of
+   this document.
 
 15.  Nodes and Node Types
 
@@ -2101,10 +2121,16 @@ Table of Contents
 
    *  a stream of events
 
-20.1.  Quantum Plane
+20.1.  Device Plane
+
+   Device plane classical communications will be via RPC or streaming
+   data service, as appropriate.  Details are beyond the scope of this
+   document.
+
+20.2.  Quantum Plane
 
    The quantum plane includes some classical signals to support tasks
-   described in Section 13.1.  These signals are generally hard real
+   described in Section 13.2.  These signals are generally hard real
    time, used for demarking per-qubit time bins and possibly the start
    and end of longer trains of qubits or photons for switching purposes,
    triggering emission of photons, etc.  These signals may also be non-
@@ -2127,11 +2153,11 @@ Table of Contents
    The details at this level are generally link-specific and are beyond
    the scope of this architecture document.
 
-20.2.  Data Plane
+20.3.  Data Plane
 
    Classical communication within the data plane sits above the link,
    and concerns the creation of end-to-end entangled states for
-   established connections, as described in Section 13.2.
+   established connections, as described in Section 13.3.
 
    *  Qubit mode connections and communication
 
@@ -2140,18 +2166,15 @@ Table of Contents
       -  soft real-time event notification for RuleSets
 
    *  Device mode control
-
-   *_Question: is walking in polarization control device plane, data
-   plane or control plane?  Control plane, I think._*
 
    Messages in the data plane are generally soft real time and assumed
    to be reliable.
 
-20.3.  Control Plane
+20.4.  Control Plane
 
    Within the control plane, all communication is classical, supporting
    the establishment of connections and management of resources as
-   described in Section 13.3.
+   described in Section 13.4.
 
    *  Qubit mode connections and communication
 
@@ -2161,11 +2184,11 @@ Table of Contents
 
    *  Device mode control
 
-20.4.  Management plane: Node and link management
+20.5.  Management plane: Node and link management
 
    Within the management plane, all communication is classical,
    supporting the network monitoring and management of links and
-   ordinary network node management, as described in Section 13.4.
+   ordinary network node management, as described in Section 13.5.
 
    *  reporting of parameters fixed by device physics
 
@@ -2177,7 +2200,7 @@ Table of Contents
 
    *  typical network node management tasks such as software updates
 
-20.5.  Mechanisms
+20.6.  Mechanisms
 
    *  RPC for some tasks
 
@@ -2977,8 +3000,8 @@ Table of Contents
               <https://doi.org/10.6028/nist.ir.8486r1>.
 
    [pnpq]     Taherkhani, A., Todd, A., Matsumiya, L., and T. Shen,
-              "PnPQ", Zenodo, DOI 10.5281/ZENODO.16886214, November
-              2025, <https://doi.org/10.5281/ZENODO.16886214>.
+              "PnPQ", Zenodo, DOI 10.5281/ZENODO.16886214, October 2026,
+              <https://doi.org/10.5281/ZENODO.16886214>.
 
    [preskill-nisq]
               Preskill, J., "Quantum Computing in the NISQ era and
@@ -3129,6 +3152,11 @@ Table of Contents
               IOP Publishing, Quantum Science and Technology vol. 3, no.
               1, pp. 014011, DOI 10.1088/2058-9565/aa9bb1, December
               2017, <https://doi.org/10.1088/2058-9565/aa9bb1>.
+
+   [tdc_toolkit]
+              Todd, A. and K. Teramoto, "tdc_toolkit", Zenodo,
+              DOI 10.5281/ZENODO.16932740, June 2026,
+              <https://doi.org/10.5281/ZENODO.16932740>.
 
    [tennenhouse-an-arch]
               Tennenhouse, D. and D. Wetherall, "Towards an active
