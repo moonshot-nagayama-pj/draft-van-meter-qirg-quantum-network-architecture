@@ -819,12 +819,12 @@ Table of Contents
    Loosely, a photon is a quantum of light.  More detailed analysis of a
    photon requires understanding _wave packets_ and _optical modes_.
 
-   An optical mode is a well-defined slot of a physical link, specified
+   An optical mode is a well-defined state of a physical link, specified
    by path, time window, frequency, polarization, or similar parameters,
-   such that the receiver can be configured to monitor that slot and
-   determine whether it is occupied by at least one photon or is empty.
-   The mode exists regardless of whether a photon is present; a photon
-   is an excitation of the mode, not the mode itself.
+   such that the receiver can be configured to monitor the channel and
+   determine whether that state is occupied by at least one photon or is
+   empty.  The mode exists regardless of whether a photon is present; a
+   photon is an excitation of the mode, not the mode itself.
 
    (Perhaps a good analogy is the _constellation_ of states in a
    quadrature amplitude-modulated (QAM) signal, combined with whatever
@@ -839,15 +839,6 @@ Table of Contents
    packet is determined by the physics of the photon emission process,
    possibly modified by dispersion in the channel, and in turn
    determines the minimum length of a time slot in the link design.
-
-   An _optical mode_ is a well-defined slot of a physical link,
-   specified by path, time window, frequency, polarization, or similar
-   parameters, such that the receiver can be configured to monitor that
-   slot and determine whether it is occupied by at least one photon wave
-   packet or is empty.
-
-   The mode exists regardless of whether a photon is present; a photon
-   is an excitation of the mode, not the mode itself.
 
    In quantum networking, link capacity and state must be described in
    terms of modes, not photons; photons merely occupy modes, while empty
