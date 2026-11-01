@@ -324,7 +324,7 @@ This section describes goals and non-goals for this document itself, rather than
 ## Non-Goals
 
 * Specification of physical links (including photonic wave packets)
-* Definition of application-layer protocols and software interfaces such as sockets
+* Detailed definition of application-layer protocols and software interfaces such as sockets
 * Internetworking
 
 # Relationship to Documents by QIRG and Other Organizations
@@ -484,7 +484,7 @@ If the entanglement attempt failed (information received later), the data is dis
 The application filters out failed attempts during classical post-processing.
 
 * **Fault-Tolerant Operations:** Certain remote quantum error correction schemes, such as remote lattice surgery {{horsman-lattice-surgery}}, {{ramette-remote}}, {{leone-remote}}, {{sinclair-ft-interconnect}} of the surface code.
-If the probability of creating a link is high enough, unsuccessful attempts can be treated as depolarizing errors, which the logical code can tolerate without stalling the pipeline.
+If the probability of creating entanglement is high enough, unsuccessful attempts can be treated as depolarizing errors, which the logical code can tolerate without stalling the pipeline.
 
 ### Reactive Correction (C Class) Applications
 
