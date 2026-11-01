@@ -1309,10 +1309,13 @@ svg {
                 <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="auto internal xref">11.3</a>.  <a href="#name-network-management-requirem" class="internal xref">Network Management Requirements</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3.2.1">
-                    <p id="section-toc.1-1.11.2.3.2.1.1"><a href="#section-11.3.1" class="auto internal xref">11.3.1</a>.  <a href="#name-fault-management" class="internal xref">Fault Management</a></p>
+                    <p id="section-toc.1-1.11.2.3.2.1.1"><a href="#section-11.3.1" class="auto internal xref">11.3.1</a>.  <a href="#name-configuration-management" class="internal xref">Configuration Management</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3.2.2">
-                    <p id="section-toc.1-1.11.2.3.2.2.1"><a href="#section-11.3.2" class="auto internal xref">11.3.2</a>.  <a href="#name-configuration-management" class="internal xref">Configuration Management</a></p>
+                    <p id="section-toc.1-1.11.2.3.2.2.1"><a href="#section-11.3.2" class="auto internal xref">11.3.2</a>.  <a href="#name-fault-management" class="internal xref">Fault Management</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3.2.3">
+                    <p id="section-toc.1-1.11.2.3.2.3.1"><a href="#section-11.3.3" class="auto internal xref">11.3.3</a>.  <a href="#name-online-operations" class="internal xref">Online Operations</a></p>
 </li>
                 </ul>
 </li>
@@ -2495,31 +2498,44 @@ Since consuming extra resources is more costly than waiting, these operations de
         <h3 id="name-network-management-requirem">
 <a href="#section-11.3" class="section-number selfRef">11.3. </a><a href="#name-network-management-requirem" class="section-name selfRef">Network Management Requirements</a>
         </h3>
-<div id="fault-management">
+<p id="section-11.3-1">Network management tasks largely revolve around installation, maintenance and fault isolation and correction.  Links and nodes may also be enabled or disabled through automated or manual subsystems.<a href="#section-11.3-1" class="pilcrow">¶</a></p>
+<div id="configuration-management">
 <section id="section-11.3.1">
-          <h4 id="name-fault-management">
-<a href="#section-11.3.1" class="section-number selfRef">11.3.1. </a><a href="#name-fault-management" class="section-name selfRef">Fault Management</a>
+          <h4 id="name-configuration-management">
+<a href="#section-11.3.1" class="section-number selfRef">11.3.1. </a><a href="#name-configuration-management" class="section-name selfRef">Configuration Management</a>
           </h4>
-<ul class="normal">
-<li class="normal" id="section-11.3.1-1.1">
-              <p id="section-11.3.1-1.1.1">Supports isolation of hardware and software faults.<a href="#section-11.3.1-1.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="section-11.3.1-1.2">
-              <p id="section-11.3.1-1.2.1">Supports monitoring and reporting of fidelity.<a href="#section-11.3.1-1.2.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
+<p id="section-11.3.1-1">The architecture must support the use of both manual and automated network configuration tools to suit different installations and development processes.<a href="#section-11.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-11.3.1-2">Configuration will include manual tasks such as physically setting up equipment, as described in <a href="#link-boot" class="auto internal xref">Section 16.5</a>.<a href="#section-11.3.1-2" class="pilcrow">¶</a></p>
+<p id="section-11.3.1-3">Configuration also includes setting up software: manually configuring node devices that do not autoconfigure; selecting, turning on, and configuring the quantum-related software services for the node; and configuring the underlying classical control operating system.<a href="#section-11.3.1-3" class="pilcrow">¶</a></p>
+<p id="section-11.3.1-4">Integration of these processes into existing or new network management tools is beyond the scope of this document.<a href="#section-11.3.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="configuration-management">
+<div id="fault-management">
 <section id="section-11.3.2">
-          <h4 id="name-configuration-management">
-<a href="#section-11.3.2" class="section-number selfRef">11.3.2. </a><a href="#name-configuration-management" class="section-name selfRef">Configuration Management</a>
+          <h4 id="name-fault-management">
+<a href="#section-11.3.2" class="section-number selfRef">11.3.2. </a><a href="#name-fault-management" class="section-name selfRef">Fault Management</a>
           </h4>
+<p id="section-11.3.2-1">Quantum networks likely will be less stable than their classical counterparts for the foreseeable future.  Hardware will require extremely low-level, hardware-dependent monitoring and adjustment.<a href="#section-11.3.2-1" class="pilcrow">¶</a></p>
+<p id="section-11.3.2-2">The architecture must:<a href="#section-11.3.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-11.3.2-1.1">
-              <p id="section-11.3.2-1.1.1">The architecture must support the use of both manual and automated network configuration tools.<a href="#section-11.3.2-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-11.3.2-3.1">
+              <p id="section-11.3.2-3.1.1">support isolation of hardware and software faults, and<a href="#section-11.3.2-3.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-11.3.2-3.2">
+              <p id="section-11.3.2-3.2.1">support monitoring and reporting of fidelity.<a href="#section-11.3.2-3.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
+<p id="section-11.3.2-4">Integration of these processes into existing or new network management tools is beyond the scope of this document.<a href="#section-11.3.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="online-operations">
+<section id="section-11.3.3">
+          <h4 id="name-online-operations">
+<a href="#section-11.3.3" class="section-number selfRef">11.3.3. </a><a href="#name-online-operations" class="section-name selfRef">Online Operations</a>
+          </h4>
+<p id="section-11.3.3-1">Link and node monitoring tools, either automated or manual, can enable or disable links and nodes.  For example, a link that falls below a certain fidelity or entanglement generation rate may be taken out of service for maintenance.  Such an action must notify the routing subsystem, which in turn will relay the information via routing protocols.<a href="#section-11.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-11.3.3-2">The behavior of connections passing through nodes or links whose status changes to disabled is currently undefined.<a href="#section-11.3.3-2" class="pilcrow">¶</a></p>
+<p id="section-11.3.3-3">Integration of these processes into existing or new network management tools is beyond the scope of this document.<a href="#section-11.3.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3080,7 +3096,7 @@ and may act as a Responder in connection setups by rewriting or generating new R
 <p id="section-16.4-5">Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.<a href="#section-16.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="installing-and-bootstrapping-a-link">
+<div id="link-boot">
 <section id="section-16.5">
         <h3 id="name-installing-and-bootstrappin">
 <a href="#section-16.5" class="section-number selfRef">16.5. </a><a href="#name-installing-and-bootstrappin" class="section-name selfRef">Installing and Bootstrapping a Link</a>

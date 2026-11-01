@@ -115,8 +115,9 @@ Table of Contents
        11.2.3.  Physical Requirements
        11.2.4.  Environmental Requirements
      11.3.  Network Management Requirements
-       11.3.1.  Fault Management
-       11.3.2.  Configuration Management
+       11.3.1.  Configuration Management
+       11.3.2.  Fault Management
+       11.3.3.  Online Operations
    12. Architecture Overview
      12.1.  Deterministic Classical Control of Quantum States
      12.2.  Nodes, Links and Operational Views
@@ -1245,16 +1246,56 @@ Table of Contents
 
 11.3.  Network Management Requirements
 
-11.3.1.  Fault Management
+   Network management tasks largely revolve around installation,
+   maintenance and fault isolation and correction.  Links and nodes may
+   also be enabled or disabled through automated or manual subsystems.
 
-   *  Supports isolation of hardware and software faults.
+11.3.1.  Configuration Management
 
-   *  Supports monitoring and reporting of fidelity.
+   The architecture must support the use of both manual and automated
+   network configuration tools to suit different installations and
+   development processes.
 
-11.3.2.  Configuration Management
+   Configuration will include manual tasks such as physically setting up
+   equipment, as described in Section 16.5.
 
-   *  The architecture must support the use of both manual and automated
-      network configuration tools.
+   Configuration also includes setting up software: manually configuring
+   node devices that do not autoconfigure; selecting, turning on, and
+   configuring the quantum-related software services for the node; and
+   configuring the underlying classical control operating system.
+
+   Integration of these processes into existing or new network
+   management tools is beyond the scope of this document.
+
+11.3.2.  Fault Management
+
+   Quantum networks likely will be less stable than their classical
+   counterparts for the foreseeable future.  Hardware will require
+   extremely low-level, hardware-dependent monitoring and adjustment.
+
+   The architecture must:
+
+   *  support isolation of hardware and software faults, and
+
+   *  support monitoring and reporting of fidelity.
+
+   Integration of these processes into existing or new network
+   management tools is beyond the scope of this document.
+
+11.3.3.  Online Operations
+
+   Link and node monitoring tools, either automated or manual, can
+   enable or disable links and nodes.  For example, a link that falls
+   below a certain fidelity or entanglement generation rate may be taken
+   out of service for maintenance.  Such an action must notify the
+   routing subsystem, which in turn will relay the information via
+   routing protocols.
+
+   The behavior of connections passing through nodes or links whose
+   status changes to disabled is currently undefined.
+
+   Integration of these processes into existing or new network
+   management tools is beyond the scope of this document.
 
 12.  Architecture Overview
 
