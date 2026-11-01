@@ -1166,8 +1166,8 @@ Table of Contents
 
    QWAN client-server communication very likely will suffer from the
    "incast" problem of excessive traffic concentrating near certain
-   nodes.  Management of this problem is beyond the scope of this
-   document.
+   nodes [chen-incast].  Management of this problem is beyond the scope
+   of this document.
 
 11.  Requirements and Goals for the Architecture
 
@@ -2557,6 +2557,14 @@ Table of Contents
               Physics vol. 8, no. 1, DOI 10.1038/s42005-025-02352-2,
               November 2025,
               <https://doi.org/10.1038/s42005-025-02352-2>.
+
+   [chen-incast]
+              Chen, Y., Griffith, R., Liu, J., Katz, R., and A. Joseph,
+              "Understanding TCP incast throughput collapse in
+              datacenter networks", ACM, Proceedings of the 1st ACM
+              workshop on Research on enterprise networking pp. 73-82,
+              DOI 10.1145/1592681.1592693, August 2009,
+              <https://doi.org/10.1145/1592681.1592693>.
 
    [choi-fat-tree]
               Choi, H., Davis, M., Iñesta, Á., and D. Englund, "Scalable
