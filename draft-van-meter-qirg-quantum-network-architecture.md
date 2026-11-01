@@ -124,6 +124,14 @@ informative:
   aboy-governance: DOI.10.1126/science.adw0018
   ambainis-multiparty-coin: DOI.10.1109/CCC.2004.1313848
   aparicio-spie: DOI.10.1117/12.893272
+  aqua-ruleset-spec:
+    target: https://github.com/sfc-aqua/RuleSetSpec/
+    title: RuleSetSpec
+    author:
+        ins: AQUA
+        name: AQUA
+        org: Keio University
+    date: 2023
   awschalom-roadmap: DOI.10.2172/1900586
   azuma-rmp: DOI.10.1103/RevModPhys.95.045006
   azuma-rgs: DOI.10.1038/ncomms7787
@@ -214,6 +222,8 @@ informative:
   litinski-gosc: DOI.10.22331/q-2019-03-05-128
   mahadev-homomorphic: DOI.10.1137/18M1231055
   martinis-correlated: DOI.10.1038/s41534-021-00431-0
+  matsuo-link-boot: DOI.10.1103/PhysRevA.100.052320
+  matsuo-ms-thesis: DOI.10.48550/arXiv.1908.10758
   mayers-unconditional: DOI.10.48550/arXiv.quant-ph/9802025
   mccanne-bpf:
       title: "The BSD packet filter: a new architecture for user-level packet capture"
@@ -257,6 +267,18 @@ informative:
   sane-jobs: DOI.10.48550/arXiv.2504.18298
   sane-phonons: DOI.10.1109/QCE57702.2023.00156
   satoh-attacking: DOI.10.1109/TQE.2021.3094983
+  satoh-ms-thesis:
+    target: https://aqua.sfc.wide.ad.jp/publications/cocori_mthesis.pdf
+    title: RuLa A Programming Language for RuleSet-based Quantum Repeaters
+    author:
+        ins: R. Satoh
+        name: Ryosuke Satoh
+        org: Keio University
+    date: 2023
+    seriesinfo:
+      "M.S.": "Thesis, Keio University"
+    format:
+      PDF: https://aqua.sfc.wide.ad.jp/publications/cocori_mthesis.pdf
   schoute-shortcuts: DOI.10.48550/arXiv.1610.05238
   seitz-cosmic-cube: DOI.10.1145/2465.2467
   shapourian-qdc-infra: DOI.10.48550/arXiv.2501.05598
@@ -1029,9 +1051,11 @@ Thus, link monitoring and link fidelity management are the responsibility of the
 
 ## Network Layer: RuleSets {#network-layer}
 
-(responsible for both single- and multi-hop purification, and entanglement swapping)
+The network layer is responsible for both single- and multi-hop purification, and for entanglement swapping.  The network layer subsumes the functions commonly divided into network and transport in many architectures.
 
-The network layer subsumes the functions commonly divided into network and transport in many architectures.  It serves as a lightweight, restricted (not Turing complete) distributed computation platform.
+In this architecture, the network layer is a lightweight, restricted (not Turing complete) distributed computation platform known as RuleSets.  RuleSets are distributed to nodes during the connection setup process {{connections}}.  RuleSets themselves are a form of state, and they maintain internal state during the life of the connection.
+
+The syntax and semantics of RuleSets are described in {{matsuo-link-boot}} {{matsuo-ms-thesis}} {{satoh-ms-thesis}} {{aqua-ruleset-spec}}.
 
 ## Application Layer
 
