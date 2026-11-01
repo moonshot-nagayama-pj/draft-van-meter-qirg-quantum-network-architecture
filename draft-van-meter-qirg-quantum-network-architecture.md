@@ -262,6 +262,7 @@ informative:
   sinclair-ft-interconnect: DOI.10.48550/arxiv.2408.08955
   sutcliffe-dist-qec: DOI.10.1109/QCE65121.2025.00076
   taherkhani-byz: DOI.10.1088/2058-9565/aa9bb1
+  tdc_toolkit: DOI.10.5281/zenodo.16932740
   tennenhouse-an-arch: DOI.10.1145/231699.231701
   van-meter-dist-arith: DOI.10.1145/1324177.1324179
   van-meter-opt-timing: DOI.10.48550/arXiv.1701.04586
@@ -323,6 +324,7 @@ This section describes goals and non-goals for this document itself, rather than
 ## Non-Goals
 
 * Specification of physical links (including photonic wave packets)
+* Definition of application-layer protocols and software interfaces such as sockets
 * Internetworking
 
 # Relationship to Documents by QIRG and Other Organizations
@@ -551,17 +553,17 @@ A detector-centric architecture is an indirect architecture if the pool of detec
 
 Many of the detector-centric network topologies can be inverted, such that the pool of detectors is replaced by a pool of entangled photon pair sources.  The network then is used to distribute entanglement, with the photons measured, absorbed into memories, interfered with locally generated photons, or otherwise utilized at or near the end nodes.  Such a network was proposed by Drost _et al._ {{drost}}.
 
-## Qubit v. Device Operational Mode
+## Qubit-Level v. Device-Level Access {#qubit-v-device}
 
-Conventionally, entangled quantum networks are described in terms of unitary and non-unitary actions on qubits, just as the Internet protocols are defined in terms of bits and bytes (octets) rather than voltages, signal times and optical signal strengths.  This _qubit operational mode_ is natural and allows for technology-independent, high-level protocol development.
+Conventionally, entangled quantum networks are described in terms of unitary and non-unitary actions on qubits, just as the Internet protocols are defined in terms of bits and bytes (octets) rather than voltages, signal times and optical signal strengths.  This _qubit-level access_ is natural and allows for technology-independent, high-level protocol development.
 
-However, as described above, quantum nodes are built of quantum devices, and at times it is preferable to use a _device operational mode_.  Such a mode is inevitably hardware-dependent, requiring special-purpose software, limiting network scalability and code portability.  Cases where the device operational mode is useful include:
+However, as described above, quantum nodes are built of quantum devices, and at times it is preferable to use the hardware's _device-level access_.  Such an access mode is inevitably hardware-dependent, requiring special-purpose software, limiting network scalability and code portability.  Cases where device-level access is useful include:
 
 * as a building block for higher-level protocols;
 * during hardware development;
 * during system installation or maintenance at a customer site;
 * in link-level monitoring protocols; and
-* when a multicomputer compiler and/or distributed-computation middleware wants to optimize the system for themselves.
+* when a multicomputer compiler and/or distributed-computation middleware wants to optimize the system for themselves, incorporating higher-level operations into its own application and using lower-level methods to access the system components on the wire.
 
 # Quantum Optical Building Blocks
 
@@ -600,7 +602,7 @@ Photons are used in networks to carry qubits. There are several possible on-the-
 * Which path (e.g. passing through a particular set of lenses or fibers)
 * Energy level (wavelength)
 
-These representations and more about the concept of an _optical mode_ are discussed in the Standard Photons document, and are provided here only for informational purposes.
+These representations and more about the concept of an _optical mode_ are discussed in the "standard photon" and {{I-D.draft-hajdusek-qirg-timing-physics}} documents, and are provided here only for informational purposes.
 
 ## Memories
 
@@ -828,13 +830,11 @@ This network architecture is entirely classically controlled.  Its task is to ge
 
 This control requires extensive classical communication, which is carried over a variety of channels {{classical-comm}}, according to the requirements for various tasks {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
-## Nodes, Links and Operational Modes
+## Nodes, Links and Operational Views
 
 As with typical networks, this architecture comprises nodes ({{nodes}}) and links ({{links}}), which will connect two or more nodes.
 
-While the end-to-end goal is the delivery of qubit-based entanglement, for a variety of purposes lower-level access to hardware can be desirable, so nodes may operate in either qubit mode or device mode.
-
-*** I am starting to think that "device mode" is actually a separate _plane_. ***
+While the end-to-end goal is the delivery of qubit-based entanglement, for a variety of purposes lower-level access to hardware can be desirable, so nodes may present a qubit-level view (incorporated in the data plane) or a device-level view (incorporated in the device plane).
 
 ## Communication Service
 
@@ -885,20 +885,25 @@ The protocol stack for creating end-to-end entangled states consists of four lay
 
 The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking) {{farhadi-sdn}} and Active Networks {{tennenhouse-an-arch}}. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) {{mccanne-bpf}} : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
 
-## Four Planes, or Views, of the Network
+## Five Planes, or Views, of the Network
 
-A _plane_ is a view of the network, presented by the elements of the network for a particular purpose.  This architecture provides four planes: quantum, data, control, and management, all described in {{architectural-planes}}.
+A _plane_ is a view of the network, presented by the elements of the network for a particular purpose.  This architecture provides five planes: device, quantum, data, control, and management, all described in {{architectural-planes}}.
 
 # Architectural Planes
 
 All nodes in the network will provide one or more of the following classes of interfaces, also referred to as _planes_.  A plane provides a view of the network.  Nodes that do not provide an interface are not visible on the corresponding plane.
 
-***I am starting to think that "device mode" is actually a separate _plane_.***
-
+* **Device:** Control and monitoring of hardware devices such as switches, wave plates, detectors, etc.
 * **Quantum:** The quantum signals and in-channel, hardware-dependent, real-time classical signals for timing and synchronization of photon wave packets.  A node with a quantum plane incorporates one or more quantum devices.  The quantum devices may be local or remote.
 * **Data:** Classical data plane for exchange of messages about in-progress quantum communication sessions.  Generally, the data plane consists of _event notifications_ and _measurement results_ related to RuleSet-driven connections or testing sessions.  A data plane must be accompanied by a control plane.
 * **Control:** Classical control plane for establishing and managing connections and testing sessions.  Routing and multiplexing messages are included in the control plane.
 * **Management:** Network management for configuring the devices and monitoring operation.  Managing services provided by nodes, security, addressing, etc., and monitoring health of links, collecting statistics on traffic through the node, any alerts such as security, etc.
+
+## Device {#planes-device}
+
+This view is primarily for low-level development and maintenance and as a building block for higher-level protocols and software, as discussed in {{qubit-v-device}}.  No interpretation of the classical data as qubits or controls as qubit unitary or non-unitary operations is provided here.
+
+Software packages providing this level of access to the devices include PnPQ {{pnpq}} and tdc_toolkit {{tdc_toolkit}}.  Generally, network-level access to this functionality will be via a form of RPC or streaming data.
 
 ## Quantum {#planes-quantum}
 
@@ -926,7 +931,7 @@ The control plane functionality executes the functions described as "Measurement
 
 ## Management {#planes-management}
 
-While connection-specific changes to configuration, such as switching and necessary, immediate changes to e.g. polarization and optical delay may appear as control plane functions, slow-rate monitoring and adjustment of parameters such as timing or polarization due to drift in temperature, voltage or other parameters is the responsibility of the management plane. The management plane may receive useful data on the health and fidelity of links as a result of data plane and control plane operations.
+While connection-specific changes to configuration, such as switching and necessary, immediate changes to e.g. polarization and optical delay may appear as control plane functions, slow-rate monitoring and adjustment of parameters such as timing or polarization due to drift in temperature, voltage or other parameters is the responsibility of the management plane. The management plane may receive useful data on the health and fidelity of links as a result of device plane, data plane and control plane operations.
 
 The management plane functionality executes the functions described as "Background Tasks" in the Timing Regimes document {{I-D.draft-hajdusek-qirg-timing-physics}}.
 
@@ -980,13 +985,14 @@ Additional details on how to specify a physical layer will be presented in docum
 
 The primary service provided by the link layer is heralded, named entanglement across a quantum channel with defined endpoints {{I-D.draft-dahlberg-ll-quantum}}, {{dahlberg-ll-arxiv}}, {{delle-donne-thesis}}, {{delle-donne-os-nature}}.  The link layer sits below the network layer and uses physical-layer quantum phenomena plus classical messaging to provide its service.  In this architecture, the link service provides only bipartite entanglement.  The link layer architecture will support B, C and T class applications, though not all links are required to support all classes.  In support of these classes, the entangled states may be either still active and available for further use by the network layer, or one or both of the qubits may already have been measured, with the measurement basis and results and possibly a high-precision timestamp recorded and reported.
 
-See p. 36 of {{delle-donne-thesis}} for a description of the link service.  They refer to K-type (keep), M-type (measure) and R-type (remote) entanglement requests.  (What about reverse-R type?)
+See p. 36 of {{delle-donne-thesis}} for a description of the link service.  They refer to K-type (keep), M-type (measure) and R-type (remote) entanglement requests.
+<!-- (What about reverse-R type?) -->
 
 The link layer may deliver entangled states to the network layer either singly or as an ordered, tagged batch.
 
 The link may operate entirely on demand, or as an always-on, free-running service where requests from the network layer are serviced by using recently created entanglement.
 
-Can the network layer request states at one end where the status of the qubit at the other end is unknown, in either heralding or Pauli frame?  This seems to be necessary to support B class.
+The network layer can request states at one end where the status of the qubit at the other end is unknown, in either heralding or Pauli frame.  This is necessary to support B class applications.
 
 For multidrop links, the link layer must coordinate with multiplexing and switch control as part of the control plane {{I-D.draft-zhu-qirg-qdcp}}.
 
@@ -1008,7 +1014,7 @@ The network layer subsumes the functions commonly divided into network and trans
 
 ## Application Layer
 
-(mostly not defined here)
+Definition of the application layer protocols is beyond the scope of this document.
 
 # Nodes and Node Types {#nodes}
 
@@ -1238,6 +1244,10 @@ Classical communication takes three major forms:
 * request for an action, formulated as a remote procedure call (RPC)
 * a stream of events
 
+## Device Plane
+
+Device plane classical communications will be via RPC or streaming data service, as appropriate.  Details are beyond the scope of this document.
+
 ## Quantum Plane
 
 The quantum plane includes some classical signals to support tasks described in {{planes-quantum}}.  These signals are generally hard real time, used for demarking per-qubit time bins and possibly the start and end of longer trains of qubits or photons for switching purposes, triggering emission of photons, etc.  These signals may also be non-coding, involved in link management rather than creation of qubits.  Not all quantum link designs will require such classical signals.
@@ -1259,7 +1269,7 @@ Classical communication within the data plane sits above the link, and concerns 
     - soft real-time event notification for RuleSets
 * Device mode control
 
-***Question: is walking in polarization control device plane, data plane or control plane?  Control plane, I think.***
+<!-- Question: is walking in polarization control device plane, data plane or control plane?  Control plane, I think. -->
 
 Messages in the data plane are generally soft real time and assumed to be reliable.
 
