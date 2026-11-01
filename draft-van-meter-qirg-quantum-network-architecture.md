@@ -147,6 +147,7 @@ informative:
   bugalho-dist-multipartite: DOI.10.22331/q-2023-02-09-920
   buterakos-graph-generation: DOI.10.1103/PhysRevX.7.041023
   casapao-disti-mation: DOI.10.1038/s42005-025-02352-2
+  chen-incast: DOI.10.1145/1592681.1592693
   choi-fat-tree: DOI.10.48550/arXiv.2306.09216
   christandl-anon: DOI.10.1007/11593447_12
   ciobanu-multi-ring: DOI.doi.org/10.1038/s41598-025-00391-x
@@ -697,7 +698,7 @@ Distributed control and protocols for multiplexing and connection setup are nece
 
 Wide-area networks may involve client-server or peer-to-peer communication. One particular scenario of interest is a measurement-only (MEAS) client end node connecting to a centralized, supercomputer-scale quantum computer (perhaps, but not necessarily, a multicomputer) for the purposes of executing _blind quantum computation_ {{fitzsimons-blind}}, {{morimae-blind}}.
 
-QWAN client-server communication very likely will suffer from the "incast" problem of excessive traffic concentrating near certain nodes. Management of this problem is beyond the scope of this document.
+QWAN client-server communication very likely will suffer from the "incast" problem of excessive traffic concentrating near certain nodes {{chen-incast}}. Management of this problem is beyond the scope of this document.
 
 # Requirements and Goals for the Architecture {#reqgoals}
 
