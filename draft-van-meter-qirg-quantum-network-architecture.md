@@ -665,7 +665,7 @@ Many aspects of compilation and job execution are beyond the scope of this set o
 * Classical data related to quantum operations (principally measurement results and event notifications that trigger further actions) is sent peer-to-peer, not back to the centralized controller, during execution.
 * Within the runtime system, the interface between the (portion of the) application running at each node's classical controller is analogous to the interface between an application and the MPI messaging system or a [socket](https://en.wikipedia.org/wiki/Network_socket) in an ordinary Internet application. This quantum socket is an active area of research and is not defined here.
 * In principle, all nodes are running the same program, distributed to all nodes. Since the compiled application circuits are often parameter- or input-dependent as well, separate nodes may have separate instances of the application. This may result in a small additional burden on the execution management system.
-* In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)
+* In principle, the application and the communication system are separately compiled and managed. However, in practice the RuleSet ({{ruleset-network-layer}} and {{network-layer}}) may be compiled as part of the application by using a library of network functions.  (As with classical parallel program runtime systems, the boundary between the application program, supplied libraries, and the kernel itself (if any) is implementation-dependent.)
 * Compiling the network communication into the application program eliminates the need for separate program and RuleSet distribution protocols. However, the event messages that are part of the architecturally defined RuleSet operation are sent and received as usual, such that the behavior of the node is the same regardless of such implementation choices.
 * Compilation and execution may achieve application goals via teledata, telegate or measurement of multiqubit Pauli operators transparently; the network is unaware of this distinction. Management of application-level variables and their movement from node to node, if any, is the responsibility of the compiler and is beyond the scope of this specification.
 * The resources in a multicomputer may be partitioned to run multiple jobs {{sane-jobs}}, but this is beyond the scope of the current specifications.
@@ -882,7 +882,7 @@ Authentication, authorization and accounting (AAA) and security concerns, includ
 
 The protocol stack for creating end-to-end entangled states consists of four layers: physical, link, network, and application.  The task of dealing with errors and ensuring reliable E2E creation, often handled in a transport layer that sits above the network layer, is subsumed into the network layer in this architecture.
 
-## RuleSet-based Network Layer
+## RuleSet-based Network Layer {#ruleset-network-layer}
 
 The creation of sequences of end-to-end entangled states, roughly equivalent to TCP, is the responsibility of RuleSets, inspired by [software-defined networking (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking) {{farhadi-sdn}} and Active Networks {{tennenhouse-an-arch}}. A RuleSet can also be viewed as something like a Berkeley Packet Filter (BPF) {{mccanne-bpf}} : it's a small program that handled actions that the application could do, but the application can't achieve the low, reliable latency to do it.
 
@@ -1005,7 +1005,7 @@ Thus, link monitoring and link fidelity management are the responsibility of the
 * addressing
 * multiplexing for multi-drop links
 
-## Network Layer: RuleSets
+## Network Layer: RuleSets {#network-layer}
 
 (responsible for both single- and multi-hop purification, and entanglement swapping)
 
