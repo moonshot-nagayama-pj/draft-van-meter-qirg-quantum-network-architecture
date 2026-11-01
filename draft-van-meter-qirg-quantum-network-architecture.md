@@ -739,14 +739,36 @@ Physical requirements such as distance, wavelength, vibration, power, etc. will 
 
 ## Network Management Requirements
 
-### Fault Management
-
-* Supports isolation of hardware and software faults.
-* Supports monitoring and reporting of fidelity.
+Network management tasks largely revolve around installation, maintenance and fault isolation and correction.  Links and nodes may also be enabled or disabled through automated or manual subsystems.
 
 ### Configuration Management
 
-* The architecture must support the use of both manual and automated network configuration tools.
+The architecture must support the use of both manual and automated network configuration tools to suit different installations and development processes.
+
+Configuration will include manual tasks such as physically setting up equipment, as described in {{link-boot}}.
+
+Configuration also includes setting up software: manually configuring node devices that do not autoconfigure; selecting, turning on, and configuring the quantum-related software services for the node; and configuring the underlying classical control operating system.
+
+Integration of these processes into existing or new network management tools is beyond the scope of this document.
+
+### Fault Management
+
+Quantum networks likely will be less stable than their classical counterparts for the foreseeable future.  Hardware will require extremely low-level, hardware-dependent monitoring and adjustment.
+
+The architecture must:
+
+* support isolation of hardware and software faults, and
+* support monitoring and reporting of fidelity.
+
+Integration of these processes into existing or new network management tools is beyond the scope of this document.
+
+### Online Operations
+
+Link and node monitoring tools, either automated or manual, can enable or disable links and nodes.  For example, a link that falls below a certain fidelity or entanglement generation rate may be taken out of service for maintenance.  Such an action must notify the routing subsystem, which in turn will relay the information via routing protocols.
+
+The behavior of connections passing through nodes or links whose status changes to disabled is currently undefined.
+
+Integration of these processes into existing or new network management tools is beyond the scope of this document.
 
 # Architecture Overview {#arch-overview}
 
@@ -1189,7 +1211,7 @@ Depending on the implementation, some of these parameters can be modified under 
 
 Note that this task is far more complicated in a switched or multidrop configuration than in a point-to-point configuration.
 
-## Installing and Bootstrapping a Link
+## Installing and Bootstrapping a Link {#link-boot}
 
 During installation and/or bootstrapping of a link (and monitoring during operation), qubit- and technology-appropriate reference frames must be established.  For example, the sender and receiver, or sender and both receivers in the case of an EPPS-based link, must agree on "horizontal" and "vertical" when using polarization qubits or "early" and "late" when using time bin qubits.
 
